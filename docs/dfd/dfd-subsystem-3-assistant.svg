@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 2050" width="1100" height="2050">
+  <title>DFD Subsystem 3 Assistant</title>
+  <style>
+    .title { font: bold 20px "Microsoft YaHei", sans-serif; fill: #1a1a2e; }
+    .sub { font: 14px "Microsoft YaHei", sans-serif; fill: #4a4e69; }
+    .ent { fill: #ede7e3; stroke: #22223b; stroke-width: 2; }
+    .cloud { fill: #c9ada7; stroke: #22223b; stroke-width: 2; stroke-dasharray: 6 4; }
+    .proc0 { fill: #9a8c98; stroke: #22223b; stroke-width: 2; }
+    .proc { fill: #81b29a; stroke: #22223b; stroke-width: 1.5; }
+    .store { fill: #f2e9e4; stroke: #22223b; stroke-width: 1.5; }
+    .flow { fill: none; stroke: #22223b; stroke-width: 1.8; marker-end: url(#arr3); }
+    .ft { font: 12px "Microsoft YaHei", sans-serif; fill: #1a1a2e; font-weight: 600; }
+    .boxt { font: 13px "Microsoft YaHei", sans-serif; fill: #1a1a2e; text-anchor: middle; }
+    .sect { font: bold 16px "Microsoft YaHei", sans-serif; fill: #22223b; }
+    .panelTop { fill: #f9f2ef; stroke: #dfd1cb; stroke-width: 1; }
+    .panelBottom { fill: #f7f8fc; stroke: #d7d9e8; stroke-width: 1; }
+    .divider { stroke: #a7abc1; stroke-width: 1.5; stroke-dasharray: 6 4; }
+  </style>
+  <defs>
+    <marker id="arr3" markerWidth="12" markerHeight="8" refX="10" refY="4" orient="auto">
+      <polygon points="0 0, 12 4, 0 8" fill="#22223b"/>
+    </marker>
+  </defs>
+
+  <rect width="100%" height="100%" fill="#faf8f6"/>
+  <rect x="20" y="90" width="1060" height="370" rx="10" class="panelTop"/>
+  <line x1="20" y1="480" x2="1080" y2="480" class="divider"/>
+  <rect x="20" y="510" width="1060" height="920" rx="10" class="panelBottom"/>
+
+  <text x="550" y="42" text-anchor="middle" class="title">子系统三：智能辅助与多角色用户服务（DeepSeek）</text>
+  <text x="550" y="68" text-anchor="middle" class="sub">数据流图（上下文图 + 0层分解）</text>
+
+  <text x="40" y="108" class="sect">图1 上下文数据流图（顶层）</text>
+
+  <circle cx="550" cy="240" r="70" class="proc0"/>
+  <text x="550" y="228" class="boxt">0</text>
+  <text x="550" y="248" class="boxt">智能助手</text>
+  <text x="550" y="268" class="boxt">服务端代理</text>
+
+  <rect x="80" y="130" width="120" height="52" rx="4" class="ent"/>
+  <text x="140" y="162" class="boxt">学生</text>
+
+  <rect x="260" y="105" width="120" height="52" rx="4" class="ent"/>
+  <text x="320" y="137" class="boxt">教师</text>
+
+  <rect x="720" y="105" width="130" height="52" rx="4" class="ent"/>
+  <text x="785" y="137" class="boxt">信息化运维</text>
+
+  <rect x="40" y="360" width="150" height="72" rx="4" class="ent"/>
+  <text x="115" y="388" class="boxt">子系统一</text>
+  <text x="115" y="408" class="boxt">预约API</text>
+
+  <rect x="220" y="370" width="150" height="72" rx="4" class="ent"/>
+  <text x="295" y="398" class="boxt">子系统二</text>
+  <text x="295" y="418" class="boxt">运维摘要API</text>
+
+  <ellipse cx="950" cy="200" rx="85" ry="55" class="cloud"/>
+  <text x="950" y="195" class="boxt">DeepSeek</text>
+  <text x="950" y="215" class="boxt">云端API</text>
+
+  <rect x="860" y="360" width="130" height="56" rx="4" class="ent"/>
+  <text x="925" y="392" class="boxt">审计日志</text>
+
+  <path d="M 200 182 L 490 225" class="flow"/>
+  <text x="300" y="188" class="ft">F1 自然语言提问请求</text>
+
+  <path d="M 380 157 L 505 215" class="flow"/>
+  <text x="420" y="142" class="ft">F2 政策问答请求</text>
+
+  <path d="M 785 157 L 630 215" class="flow"/>
+  <text x="720" y="168" class="ft">F3 配额监控配置</text>
+
+  <path d="M 550 310 L 550 360" class="flow"/>
+  <text x="560" y="338" class="ft">F4 工具调用结果JSON</text>
+
+  <path d="M 165 360 L 515 295" class="flow"/>
+  <text x="300" y="328" class="ft">F5 空闲预约查询结果</text>
+
+  <path d="M 295 370 L 525 305" class="flow"/>
+  <text x="380" y="348" class="ft">F6 运维摘要查询结果</text>
+
+  <path d="M 865 200 L 690 265" class="flow"/>
+  <text x="780" y="218" class="ft">F7 chat completions 响应</text>
+
+  <path d="M 925 360 L 615 295" class="flow"/>
+  <text x="780" y="338" class="ft">F8 脱敏审计日志</text>
+
+  <text x="40" y="480" class="sect">图2 0层数据流图</text>
+
+  <path d="M 120 1180 L 120 1120 L 240 1120 L 240 1180 Z" class="store"/>
+  <line x1="120" y1="1145" x2="240" y2="1145" stroke="#22223b"/>
+  <text x="180" y="1163" class="boxt">D1</text>
+  <text x="180" y="1183" class="boxt">会话上下文</text>
+
+  <path d="M 880 1180 L 880 1120 L 1000 1120 L 1000 1180 Z" class="store"/>
+  <line x1="880" y1="1145" x2="1000" y2="1145" stroke="#22223b"/>
+  <text x="940" y="1163" class="boxt">D2</text>
+  <text x="940" y="1183" class="boxt">提示词版本</text>
+
+  <path d="M 480 1380 L 480 1320 L 620 1320 L 620 1380 Z" class="store"/>
+  <line x1="480" y1="1350" x2="620" y2="1350" stroke="#22223b"/>
+  <text x="550" y="1358" class="boxt">D3</text>
+  <text x="550" y="1378" class="boxt">FAQ降级库</text>
+
+  <circle cx="320" cy="680" r="52" class="proc"/>
+  <text x="320" y="674" class="boxt">1.0</text>
+  <text x="320" y="694" class="boxt">会话网关</text>
+
+  <circle cx="550" cy="580" r="52" class="proc"/>
+  <text x="550" y="574" class="boxt">2.0</text>
+  <text x="550" y="594" class="boxt">模型代理</text>
+
+  <circle cx="780" cy="680" r="52" class="proc"/>
+  <text x="780" y="674" class="boxt">3.0</text>
+  <text x="780" y="694" class="boxt">工具路由器</text>
+
+  <circle cx="550" cy="860" r="52" class="proc"/>
+  <text x="550" y="854" class="boxt">4.0</text>
+  <text x="550" y="874" class="boxt">安全与内容过滤</text>
+
+  <circle cx="550" cy="1040" r="52" class="proc"/>
+  <text x="550" y="1034" class="boxt">5.0</text>
+  <text x="550" y="1054" class="boxt">观测配额降级</text>
+
+  <circle cx="550" cy="1220" r="52" class="proc"/>
+  <text x="550" y="1214" class="boxt">6.0</text>
+  <text x="550" y="1234" class="boxt">响应组装SSE</text>
+
+  <rect x="40" y="640" width="90" height="44" rx="4" class="ent"/>
+  <text x="85" y="668" class="boxt">用户</text>
+
+  <rect x="980" y="620" width="90" height="52" rx="4" class="ent"/>
+  <text x="1025" y="648" class="boxt">子系统一</text>
+
+  <rect x="980" y="780" width="90" height="52" rx="4" class="ent"/>
+  <text x="1025" y="808" class="boxt">子系统二</text>
+
+  <ellipse cx="1025" cy="540" rx="55" ry="38" class="cloud"/>
+  <text x="1025" y="536" class="boxt">DeepSeek</text>
+
+  <path d="M 130 662 L 268 680" class="flow"/>
+  <path d="M 372 680 L 498 615" class="flow"/>
+  <path d="M 602 580 L 728 655" class="flow"/>
+  <path d="M 830 680 L 970 632" class="flow"/>
+  <path d="M 830 680 L 970 806" class="flow"/>
+  <path d="M 602 580 L 970 522" class="flow"/>
+  <path d="M 550 632 L 550 808" class="flow"/>
+  <path d="M 550 912 L 550 988" class="flow"/>
+  <path d="M 550 1092 L 550 1168" class="flow"/>
+  <path d="M 320 732 L 180 1140" class="flow"/>
+  <path d="M 550 612 L 940 1148" class="flow"/>
+  <path d="M 550 1172 L 550 1320" class="flow"/>
+
+  <text x="400" y="658" class="ft">OAuth绑定</text>
+  <text x="660" y="608" class="ft">stream</text>
+  <text x="880" y="738" class="ft">tools执行</text>
+  <text x="620" y="818" class="ft">关键词拦截</text>
+  <text x="620" y="998" class="ft">token限额</text>
+  <text x="620" y="1178" class="ft">来源脚注</text>
+
+  <rect x="40" y="1420" width="1020" height="200" rx="8" fill="#e8e0dd" stroke="#22223b"/>
+  <text x="60" y="1455" class="sect">符号与FR追溯（摘要）</text>
+  <text x="60" y="1485" class="ft">1.0→FR-A1,A5 · 2.0→FR-A3 · 3.0→FR-A4 · 4.0→FR-A6 · 5.0→FR-A7,A8 · 6.0→FR-A2,A9</text>
+  <text x="60" y="1515" class="ft">工具示例：search_venue_availability / get_user_reservations / get_venue_detail / get_school_booking_policy</text>
+  <text x="60" y="1545" class="ft">边界流：F1提问 F2政策问答 F3监控配置 F4工具结果 F5预约查询 F6运维摘要 F7模型响应 F8审计日志</text>
+  <text x="60" y="1585" class="sub">来源：《需求分析-子系统三-智能辅助与用户服务》V1.2</text>
+</svg>

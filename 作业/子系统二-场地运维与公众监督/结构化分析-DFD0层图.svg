@@ -1,0 +1,132 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 950 680" width="950" height="680">
+  <defs>
+    <style>
+      text { font-family: "Microsoft YaHei", "SimHei", sans-serif; }
+      .title { font-size: 20px; font-weight: bold; fill: #1a1a2e; }
+      .entity-text { font-size: 12px; font-weight: bold; fill: #2c3e50; }
+      .process-text { font-size: 13px; font-weight: bold; fill: #fff; }
+      .flow-label { font-size: 10px; fill: #555; }
+      .store-text { font-size: 11px; fill: #2c3e50; }
+    </style>
+    <filter id="shadow"><feDropShadow dx="1" dy="2" stdDeviation="2" flood-opacity="0.1"/></filter>
+  </defs>
+  <rect width="950" height="680" fill="#FAFBFC" rx="8"/>
+
+  <!-- Title -->
+  <text x="475" y="30" text-anchor="middle" class="title">子系统二——场地运维与公众监督系统 0层数据流图</text>
+  <line x1="120" y1="42" x2="830" y2="42" stroke="#4A90D9" stroke-width="1.5"/>
+
+  <!-- External Entities (Top) -->
+  <rect x="30" y="60" width="120" height="60" rx="6" fill="#E3F2FD" stroke="#1976D2" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="90" y="87" text-anchor="middle" class="entity-text">普通用户</text>
+  <text x="90" y="103" text-anchor="middle" class="flow-label">(学生/教师)</text>
+
+  <rect x="210" y="60" width="120" height="60" rx="6" fill="#E8F5E9" stroke="#388E3C" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="270" y="87" text-anchor="middle" class="entity-text">保洁运维人员</text>
+  <text x="270" y="103" text-anchor="middle" class="flow-label">(清洁/灯光)</text>
+
+  <rect x="390" y="60" width="120" height="60" rx="6" fill="#FFEBEE" stroke="#D32F2F" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="450" y="87" text-anchor="middle" class="entity-text">管理员</text>
+  <text x="450" y="103" text-anchor="middle" class="flow-label">(内容/配置)</text>
+
+  <rect x="570" y="60" width="120" height="60" rx="6" fill="#FFF3E0" stroke="#F57C00" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="630" y="87" text-anchor="middle" class="entity-text">场地负责人</text>
+  <text x="630" y="103" text-anchor="middle" class="flow-label">(接收待办)</text>
+
+  <rect x="750" y="60" width="120" height="60" rx="6" fill="#F3E5F5" stroke="#7B1FA2" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="810" y="87" text-anchor="middle" class="entity-text">子系统一</text>
+  <text x="810" y="103" text-anchor="middle" class="flow-label">(场地预约)</text>
+
+  <!-- Process 1: 运维管理 -->
+  <rect x="40" y="200" width="250" height="140" rx="10" fill="#4A90D9" stroke="#2B5F9E" stroke-width="2" filter="url(#shadow)"/>
+  <text x="165" y="235" text-anchor="middle" class="process-text" font-size="15">P1: 运维管理</text>
+  <line x1="60" y1="248" x2="270" y2="248" stroke="#fff" stroke-width="0.5"/>
+  <text x="165" y="268" text-anchor="middle" class="process-text" font-size="11">清洁打卡处理</text>
+  <text x="165" y="286" text-anchor="middle" class="process-text" font-size="11">灯光状态更新</text>
+  <text x="165" y="304" text-anchor="middle" class="process-text" font-size="11">器材信息管理</text>
+  <text x="165" y="322" text-anchor="middle" class="process-text" font-size="11">负责人配置</text>
+
+  <!-- Process 2: 评论管理 -->
+  <rect x="360" y="200" width="250" height="140" rx="10" fill="#50B86C" stroke="#3DA05A" stroke-width="2" filter="url(#shadow)"/>
+  <text x="485" y="235" text-anchor="middle" class="process-text" font-size="15">P2: 评论管理</text>
+  <line x1="380" y1="248" x2="590" y2="248" stroke="#fff" stroke-width="0.5"/>
+  <text x="485" y="268" text-anchor="middle" class="process-text" font-size="11">评论发表与展示</text>
+  <text x="485" y="286" text-anchor="middle" class="process-text" font-size="11">敏感词过滤</text>
+  <text x="485" y="304" text-anchor="middle" class="process-text" font-size="11">反刷屏控制</text>
+  <text x="485" y="322" text-anchor="middle" class="process-text" font-size="11">违规评论处理</text>
+
+  <!-- Process 3: 可用性输出 -->
+  <rect x="680" y="200" width="230" height="140" rx="10" fill="#F5A623" stroke="#E0950F" stroke-width="2" filter="url(#shadow)"/>
+  <text x="795" y="235" text-anchor="middle" class="process-text" font-size="15">P3: 可用性输出</text>
+  <line x1="700" y1="248" x2="890" y2="248" stroke="#fff" stroke-width="0.5"/>
+  <text x="795" y="268" text-anchor="middle" class="process-text" font-size="11">可用性评估</text>
+  <text x="795" y="286" text-anchor="middle" class="process-text" font-size="11">状态码生成</text>
+  <text x="795" y="304" text-anchor="middle" class="process-text" font-size="11">原因文本输出</text>
+  <text x="795" y="322" text-anchor="middle" class="process-text" font-size="11">维护标志列表</text>
+
+  <!-- Data Stores -->
+  <rect x="140" y="430" width="120" height="45" rx="2" fill="#ECEFF1" stroke="#546E7A" stroke-width="1.5"/>
+  <text x="200" y="448" text-anchor="middle" class="store-text" font-weight="bold">D1: t_venue_ops</text>
+  <text x="200" y="462" text-anchor="middle" class="store-text" font-size="10">场地运维信息</text>
+
+  <rect x="370" y="430" width="120" height="45" rx="2" fill="#ECEFF1" stroke="#546E7A" stroke-width="1.5"/>
+  <text x="430" y="448" text-anchor="middle" class="store-text" font-weight="bold">D2: t_comment</text>
+  <text x="430" y="462" text-anchor="middle" class="store-text" font-size="10">评论数据</text>
+
+  <rect x="610" y="430" width="120" height="45" rx="2" fill="#ECEFF1" stroke="#546E7A" stroke-width="1.5"/>
+  <text x="670" y="448" text-anchor="middle" class="store-text" font-weight="bold">D3: t_venue</text>
+  <text x="670" y="462" text-anchor="middle" class="store-text" font-size="10">场地基本信息</text>
+
+  <!-- Flows: External → P1 -->
+  <line x1="270" y1="110" x2="165" y2="195" stroke="#388E3C" stroke-width="1.5" marker-end="url(#aG)"/>
+  <text x="285" y="155" class="flow-label" fill="#388E3C">清洁打卡/灯光记录</text>
+
+  <line x1="450" y1="120" x2="250" y2="195" stroke="#D32F2F" stroke-width="1.5" marker-end="url(#aR)"/>
+  <text x="380" y="150" class="flow-label" fill="#D32F2F">配置负责人/规则</text>
+
+  <line x1="630" y1="120" x2="300" y2="195" stroke="#E65100" stroke-width="1.5" marker-end="url(#aO)"/>
+  <text x="500" y="155" class="flow-label" fill="#E65100">接收待办提醒</text>
+
+  <!-- Flows: External → P2 -->
+  <line x1="90" y1="120" x2="350" y2="195" stroke="#1976D2" stroke-width="1.5" marker-end="url(#aB)"/>
+  <text x="170" y="150" class="flow-label" fill="#1976D2">发表评论/查看评论</text>
+
+  <line x1="450" y1="120" x2="485" y2="195" stroke="#D32F2F" stroke-width="1.5" marker-end="url(#aR)"/>
+  <text x="460" y="158" class="flow-label" fill="#D32F2F">处理违规评论</text>
+
+  <!-- Markers -->
+  <defs>
+    <marker id="aG" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#388E3C"/></marker>
+    <marker id="aR" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#D32F2F"/></marker>
+    <marker id="aO" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#E65100"/></marker>
+    <marker id="aB" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#1976D2"/></marker>
+  </defs>
+
+  <!-- Flows: P1 → D1 -->
+  <line x1="200" y1="340" x2="200" y2="425" stroke="#546E7A" stroke-width="1.5"/>
+  <text x="210" y="385" class="flow-label">读写</text>
+
+  <!-- Flows: P2 → D2 -->
+  <line x1="485" y1="340" x2="435" y2="428" stroke="#546E7A" stroke-width="1.5"/>
+  <text x="465" y="385" class="flow-label">读写</text>
+
+  <!-- Flows: P3 → D1, D3 -->
+  <line x1="750" y1="340" x2="300" y2="400" stroke="#546E7A" stroke-width="1.5"/>
+  <text x="480" y="375" class="flow-label">读取运维信息</text>
+
+  <!-- Flows: P1 → P3 (trigger re-evaluation) -->
+  <line x1="350" y1="270" x2="672" y2="270" stroke="#F5A623" stroke-width="1.5" stroke-dasharray="6,3" marker-end="url(#aO)"/>
+  <text x="500" y="262" class="flow-label" fill="#F5A623">运维状态变更→触发可用性重算</text>
+
+  <!-- Flows: P3 → 子系统一 -->
+  <line x1="910" y1="250" x2="940" y2="100" stroke="#F5A623" stroke-width="1.5" marker-end="url(#aO)"/>
+  <text x="910" y="175" class="flow-label" fill="#F5A623" font-size="9">可用性输出</text>
+
+  <!-- Flows: 子系统一 → P3 (query) -->
+  <line x1="800" y1="120" x2="800" y2="195" stroke="#7B1FA2" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#aP)"/>
+  <defs><marker id="aP" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#7B1FA2"/></marker></defs>
+  <text x="815" y="155" class="flow-label" fill="#7B1FA2">查询可用性</text>
+
+  <!-- Labels -->
+  <text x="475" y="520" text-anchor="middle" font-size="11" fill="#999">图例: —→ 数据流 ---→ 控制/触发流 ═ 数据存储</text>
+</svg>

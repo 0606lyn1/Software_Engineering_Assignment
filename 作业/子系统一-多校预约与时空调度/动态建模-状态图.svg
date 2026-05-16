@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 950 650" width="950" height="650">
+  <defs>
+    <style>
+      text { font-family: 'Microsoft YaHei', 'SimHei', sans-serif; }
+      .title { font-size: 22px; font-weight: bold; fill: #1a1a2e; }
+      .state-name { font-size: 16px; font-weight: bold; }
+      .state-desc { font-size: 11px; fill: #888; }
+      .tran { font-size: 11px; fill: #555; }
+    </style>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#555"/>
+    </marker>
+    <filter id="shadow">
+      <feDropShadow dx="2" dy="2" stdDeviation="3" flood-opacity="0.12"/>
+    </filter>
+  </defs>
+
+  <rect width="950" height="650" fill="#fafbff" rx="8"/>
+  <text x="475" y="42" text-anchor="middle" class="title">UML状态图 — Reservation对象生命周期</text>
+
+  <!-- Initial state -->
+  <circle cx="80" cy="160" r="15" fill="#333"/>
+  <circle cx="80" cy="160" r="7" fill="#fff"/>
+
+  <!-- PENDING -->
+  <rect x="140" y="95" width="190" height="100" rx="50" fill="#fef3c7" stroke="#f59e0b" stroke-width="3" filter="url(#shadow)"/>
+  <text x="235" y="145" text-anchor="middle" class="state-name" fill="#92400e">PENDING</text>
+  <text x="235" y="168" text-anchor="middle" class="state-desc">待确认</text>
+  <rect x="185" y="180" width="100" height="20" rx="10" fill="#fef3c7" stroke="#f59e0b" stroke-width="1"/>
+  <text x="235" y="194" text-anchor="middle" font-size="10" fill="#a16207">entry/ 写入数据库</text>
+
+  <!-- Initial → PENDING -->
+  <line x1="95" y1="160" x2="140" y2="145" stroke="#555" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="115" y="152" font-size="10" fill="#555">提交预约</text>
+
+  <!-- CONFIRMED -->
+  <rect x="400" y="95" width="190" height="100" rx="50" fill="#d1fae5" stroke="#10b981" stroke-width="3" filter="url(#shadow)"/>
+  <text x="495" y="145" text-anchor="middle" class="state-name" fill="#065f46">CONFIRMED</text>
+  <text x="495" y="168" text-anchor="middle" class="state-desc">已确认</text>
+  <rect x="440" y="180" width="110" height="20" rx="10" fill="#d1fae5" stroke="#10b981" stroke-width="1"/>
+  <text x="495" y="194" text-anchor="middle" font-size="10" fill="#047857">do/ 通知用户</text>
+
+  <!-- PENDING → CONFIRMED -->
+  <line x1="330" y1="145" x2="400" y2="145" stroke="#10b981" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <text x="355" y="135" class="tran" fill="#10b981">系统确认 /</text>
+  <text x="355" y="151" class="tran" fill="#10b981">管理员审核通过</text>
+
+  <!-- COMPLETED -->
+  <rect x="660" y="95" width="190" height="100" rx="50" fill="#e0e7ff" stroke="#6366f1" stroke-width="3" filter="url(#shadow)"/>
+  <text x="755" y="145" text-anchor="middle" class="state-name" fill="#3730a3">COMPLETED</text>
+  <text x="755" y="168" text-anchor="middle" class="state-desc">已完成</text>
+
+  <!-- CONFIRMED → COMPLETED -->
+  <line x1="590" y1="145" x2="660" y2="145" stroke="#6366f1" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <text x="615" y="135" class="tran" fill="#6366f1">时间到达 /</text>
+  <text x="615" y="151" class="tran" fill="#6366f1">使用完成</text>
+
+  <!-- CANCELLED -->
+  <rect x="380" y="310" width="190" height="100" rx="50" fill="#fee2e2" stroke="#ef4444" stroke-width="3" filter="url(#shadow)"/>
+  <text x="475" y="360" text-anchor="middle" class="state-name" fill="#991b1b">CANCELLED</text>
+  <text x="475" y="383" text-anchor="middle" class="state-desc">已取消</text>
+  <rect x="420" y="395" width="110" height="20" rx="10" fill="#fee2e2" stroke="#ef4444" stroke-width="1"/>
+  <text x="475" y="409" text-anchor="middle" font-size="10" fill="#b91c1c">exit/ 释放时段</text>
+
+  <!-- PENDING → CANCELLED -->
+  <line x1="235" y1="195" x2="420" y2="325" stroke="#ef4444" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <text x="300" y="255" class="tran" fill="#ef4444">用户取消 / 超时取消</text>
+  <text x="300" y="270" font-size="9" fill="#999">[提前≥2小时]</text>
+
+  <!-- CONFIRMED → CANCELLED -->
+  <line x1="475" y1="195" x2="475" y2="310" stroke="#ef4444" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <text x="490" y="260" class="tran" fill="#ef4444">管理员取消 /</text>
+  <text x="490" y="276" class="tran" fill="#ef4444">场馆锁定触发</text>
+
+  <!-- Self-transition on CONFIRMED: extend -->
+  <path d="M590,160 Q620,100 550,80 Q470,60 400,95" fill="none" stroke="#f59e0b" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#arrow)"/>
+  <text x="470" y="78" class="tran" fill="#f59e0b" font-size="9">延长预约时间</text>
+
+  <!-- Final states -->
+  <circle cx="755" cy="260" r="15" fill="#333"/>
+  <circle cx="755" cy="260" r="7" fill="#fff"/>
+  <line x1="755" y1="195" x2="755" y2="245" stroke="#555" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <circle cx="475" cy="480" r="15" fill="#333"/>
+  <circle cx="475" cy="480" r="7" fill="#fff"/>
+  <line x1="475" y1="410" x2="475" y2="465" stroke="#555" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Notes -->
+  <rect x="50" y="540" width="850" height="85" rx="8" fill="#f8f8f8" stroke="#ddd" stroke-width="1"/>
+  <text x="70" y="565" font-size="13" font-weight="bold" fill="#333">状态迁移规则说明：</text>
+  <text x="70" y="585" font-size="12" fill="#555">• entry/ —— 进入状态时执行的动作    exit/ —— 离开状态时执行的动作    do/ —— 停留状态期间执行的活动</text>
+  <text x="70" y="605" font-size="12" fill="#555">• PENDING→CANCELLED 需要提前≥2小时取消约束，否则仅允许管理员操作    • CANCELLED为终态，不可逆转</text>
+  <text x="70" y="625" font-size="12" fill="#555">• CONFIRMED→COMPLETED 由系统定时器在end_time到达后自动触发状态迁移</text>
+</svg>

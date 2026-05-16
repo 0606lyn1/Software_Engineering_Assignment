@@ -1,0 +1,112 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 650" width="1000" height="650">
+  <defs>
+    <style>
+      text { font-family: 'Microsoft YaHei', 'SimHei', sans-serif; }
+      .title { font-size: 22px; font-weight: bold; fill: #1a1a2e; }
+      .ext { font-size: 15px; font-weight: bold; fill: #333; }
+      .proc { font-size: 17px; font-weight: bold; fill: #fff; }
+      .flow { font-size: 13px; font-weight: bold; fill: #444; }
+      .ds { font-size: 14px; font-weight: bold; fill: #333; }
+    </style>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#555"/>
+    </marker>
+    <marker id="arrowBlue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#4a6cf7"/>
+    </marker>
+    <filter id="shadow">
+      <feDropShadow dx="2" dy="3" stdDeviation="3" flood-opacity="0.1"/>
+    </filter>
+  </defs>
+
+  <rect width="1000" height="650" fill="#fafbff" rx="8"/>
+
+  <!-- Title -->
+  <text x="500" y="40" text-anchor="middle" class="title">DFD顶层图 — 体育场馆预约系统</text>
+
+  <!-- External Entity: 学生 -->
+  <rect x="40" y="90" width="150" height="65" rx="10" fill="#ebf0ff" stroke="#4a6cf7" stroke-width="2" filter="url(#shadow)"/>
+  <text x="115" y="120" text-anchor="middle" class="ext">学生</text>
+  <text x="115" y="140" text-anchor="middle" class="ext" font-size="12" fill="#666">Student</text>
+
+  <!-- External Entity: 教师 -->
+  <rect x="40" y="200" width="150" height="65" rx="10" fill="#fff0f5" stroke="#f5576c" stroke-width="2" filter="url(#shadow)"/>
+  <text x="115" y="230" text-anchor="middle" class="ext">教师</text>
+  <text x="115" y="250" text-anchor="middle" class="ext" font-size="12" fill="#666">Teacher</text>
+
+  <!-- External Entity: 管理员 -->
+  <rect x="40" y="450" width="150" height="65" rx="10" fill="#e6f7ff" stroke="#4facfe" stroke-width="2" filter="url(#shadow)"/>
+  <text x="115" y="480" text-anchor="middle" class="ext">管理员</text>
+  <text x="115" y="500" text-anchor="middle" class="ext" font-size="12" fill="#666">Admin</text>
+
+  <!-- Central Process -->
+  <circle cx="500" cy="320" r="100" fill="#4a6cf7" filter="url(#shadow)" opacity="0.95"/>
+  <circle cx="500" cy="320" r="90" fill="none" stroke="#fff" stroke-width="1" stroke-dasharray="4,3" opacity="0.4"/>
+  <text x="500" y="310" text-anchor="middle" class="proc">体育场馆</text>
+  <text x="500" y="335" text-anchor="middle" class="proc">预约系统</text>
+  <text x="500" y="358" text-anchor="middle" font-size="11" fill="#d0d8ff" font-family="sans-serif">P0</text>
+
+  <!-- External Entity: 子系统二 -->
+  <rect x="810" y="150" width="160" height="65" rx="10" fill="#f0fff0" stroke="#52c41a" stroke-width="2" filter="url(#shadow)"/>
+  <text x="890" y="180" text-anchor="middle" class="ext">子系统二</text>
+  <text x="890" y="200" text-anchor="middle" class="ext" font-size="12" fill="#666">器材管理</text>
+
+  <!-- External Entity: 子系统三 -->
+  <rect x="810" y="420" width="160" height="65" rx="10" fill="#fffbe6" stroke="#faad14" stroke-width="2" filter="url(#shadow)"/>
+  <text x="890" y="450" text-anchor="middle" class="ext">子系统三</text>
+  <text x="890" y="470" text-anchor="middle" class="ext" font-size="12" fill="#666">赛事组织</text>
+
+  <!-- Data Store -->
+  <rect x="440" y="520" width="50" height="70" rx="2" fill="none" stroke="#333" stroke-width="1.5"/>
+  <rect x="440" y="520" width="50" height="18" rx="2" fill="#666" stroke="#333" stroke-width="1"/>
+  <text x="465" y="534" text-anchor="middle" font-size="10" fill="#fff">DB</text>
+  <text x="465" y="560" text-anchor="middle" class="ds" font-size="12">数据库</text>
+
+  <!-- Flow: 学生 → 系统 (预约请求) -->
+  <line x1="190" y1="122" x2="405" y2="230" stroke="#4a6cf7" stroke-width="2.5" marker-end="url(#arrowBlue)"/>
+  <text x="330" y="158" class="flow" fill="#4a6cf7">预约请求/时段查询</text>
+
+  <!-- Flow: 系统 → 学生 (预约结果) -->
+  <line x1="405" y1="260" x2="190" y2="155" stroke="#4a6cf7" stroke-width="2.5" marker-end="url(#arrowBlue)"/>
+  <text x="330" y="225" class="flow" fill="#4a6cf7">预约确认/推荐列表</text>
+
+  <!-- Flow: 教师 → 系统 (占场规则) -->
+  <line x1="190" y1="232" x2="405" y2="290" stroke="#f5576c" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <text x="330" y="255" class="flow" fill="#f5576c">教学占场规则</text>
+
+  <!-- Flow: 系统 → 教师 -->
+  <line x1="405" y1="310" x2="190" y2="250" stroke="#f5576c" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <text x="300" y="285" class="flow" fill="#f5576c">占场确认/统计</text>
+
+  <!-- Flow: 管理员 → 系统 -->
+  <line x1="190" y1="482" x2="405" y2="390" stroke="#4facfe" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <text x="320" y="425" class="flow" fill="#4facfe">管理指令/锁定请求</text>
+
+  <!-- Flow: 系统 → 管理员 -->
+  <line x1="405" y1="350" x2="190" y2="460" stroke="#4facfe" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <text x="300" y="410" class="flow" fill="#4facfe">管理视图/审计日志</text>
+
+  <!-- Flow: 系统 ← → 子系统二 -->
+  <line x1="590" y1="290" x2="810" y2="182" stroke="#52c41a" stroke-width="1.5" marker-end="url(#arrow)" stroke-dasharray="5,3"/>
+  <text x="710" y="225" class="flow" fill="#52c41a" font-size="11">器材状态查询</text>
+
+  <!-- Flow: 系统 ← → 子系统三 -->
+  <line x1="590" y1="360" x2="810" y2="452" stroke="#faad14" stroke-width="1.5" marker-end="url(#arrow)" stroke-dasharray="5,3"/>
+  <text x="710" y="415" class="flow" fill="#faad14" font-size="11">赛事日程同步</text>
+
+  <!-- Flow: 系统 → DB -->
+  <line x1="485" y1="415" x2="465" y2="520" stroke="#555" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="425" y="475" class="flow" font-size="11">读写数据</text>
+
+  <!-- Legend -->
+  <rect x="30" y="580" width="940" height="55" rx="8" fill="#f5f5f5" stroke="#ddd" stroke-width="1"/>
+  <text x="50" y="602" font-size="13" font-weight="bold" fill="#555">图例：</text>
+  <circle cx="130" cy="598" r="6" fill="#4a6cf7"/>
+  <text x="145" y="604" font-size="12" fill="#555">处理过程</text>
+  <rect x="210" y="592" width="20" height="12" rx="2" fill="none" stroke="#555" stroke-width="1"/>
+  <text x="238" y="604" font-size="12" fill="#555">外部实体</text>
+  <line x1="320" y1="598" x2="360" y2="598" stroke="#555" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="368" y="604" font-size="12" fill="#555">数据流</text>
+  <rect x="450" y="592" width="20" height="14" rx="1" fill="none" stroke="#555" stroke-width="1"/>
+  <text x="478" y="604" font-size="12" fill="#555">数据存储</text>
+</svg>

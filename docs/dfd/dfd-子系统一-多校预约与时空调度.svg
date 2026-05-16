@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 2000" width="1100" height="2000">
+  <title>DFD Subsystem 1 Booking</title>
+  <desc>DFD for multi-campus venue booking per requirements doc</desc>
+  <style>
+    .title { font: bold 20px "Microsoft YaHei", "PingFang SC", sans-serif; fill: #0d1b2a; }
+    .sub { font: 14px "Microsoft YaHei", sans-serif; fill: #415a77; }
+    .ent { fill: #e0e1dd; stroke: #1b263b; stroke-width: 2; }
+    .proc0 { fill: #d4a373; stroke: #1b263b; stroke-width: 2; }
+    .proc { fill: #a3b18a; stroke: #1b263b; stroke-width: 1.5; }
+    .store { fill: #f5f5f4; stroke: #1b263b; stroke-width: 1.5; fill-opacity: 1; }
+    .flow { fill: none; stroke: #1b263b; stroke-width: 1.8; marker-end: url(#arr); }
+    .ft { font: 12px "Microsoft YaHei", sans-serif; fill: #0d1b2a; font-weight: 600; }
+    .boxt { font: 13px "Microsoft YaHei", sans-serif; fill: #0d1b2a; text-anchor: middle; }
+    .sect { font: bold 16px "Microsoft YaHei", sans-serif; fill: #1b263b; }
+    .panelTop { fill: #fffaf0; stroke: #d9d4c8; stroke-width: 1; }
+    .panelBottom { fill: #f8fbff; stroke: #d4deea; stroke-width: 1; }
+    .divider { stroke: #9fb3c8; stroke-width: 1.5; stroke-dasharray: 6 4; }
+  </style>
+  <defs>
+    <marker id="arr" markerWidth="12" markerHeight="8" refX="10" refY="4" orient="auto">
+      <polygon points="0 0, 12 4, 0 8" fill="#1b263b"/>
+    </marker>
+  </defs>
+
+  <rect width="100%" height="100%" fill="#fdfcf8"/>
+  <rect x="20" y="90" width="1060" height="360" rx="10" class="panelTop"/>
+  <line x1="20" y1="470" x2="1080" y2="470" class="divider"/>
+  <rect x="20" y="500" width="1060" height="900" rx="10" class="panelBottom"/>
+
+  <text x="550" y="42" text-anchor="middle" class="title">子系统一：多校体育场地预约与时空调度</text>
+  <text x="550" y="68" text-anchor="middle" class="sub">数据流图（上下文图 + 0层分解）</text>
+
+  <text x="40" y="108" class="sect">图1 上下文数据流图（顶层）</text>
+
+  <circle cx="550" cy="240" r="68" class="proc0"/>
+  <text x="550" y="228" class="boxt">0</text>
+  <text x="550" y="252" class="boxt">预约与时空调度</text>
+
+  <rect x="80" y="140" width="120" height="56" rx="4" class="ent"/>
+  <text x="140" y="174" class="boxt">学生</text>
+
+  <rect x="260" y="110" width="120" height="56" rx="4" class="ent"/>
+  <text x="320" y="144" class="boxt">教师</text>
+
+  <rect x="720" y="110" width="150" height="56" rx="4" class="ent"/>
+  <text x="795" y="144" class="boxt">场地管理员</text>
+
+  <rect x="880" y="350" width="140" height="72" rx="4" class="ent"/>
+  <text x="950" y="378" class="boxt">统一身份认证</text>
+
+  <rect x="40" y="350" width="130" height="72" rx="4" class="ent"/>
+  <text x="105" y="378" class="boxt">子系统二</text>
+  <text x="105" y="396" class="boxt">场地可约性</text>
+
+  <rect x="190" y="370" width="130" height="72" rx="4" class="ent"/>
+  <text x="255" y="398" class="boxt">子系统三</text>
+  <text x="255" y="416" class="boxt">助手查询</text>
+
+  <rect x="740" y="370" width="130" height="56" rx="4" class="ent"/>
+  <text x="805" y="402" class="boxt">地图服务</text>
+
+  <path d="M 200 182 L 490 215" class="flow"/>
+  <text x="300" y="188" class="ft">F1 预约申请与我的预约查询</text>
+
+  <path d="M 380 148 L 505 205" class="flow"/>
+  <text x="410" y="132" class="ft">F2 教学占场计划</text>
+
+  <path d="M 795 166 L 615 208" class="flow"/>
+  <text x="720" y="158" class="ft">F3 闭馆审核指令</text>
+
+  <path d="M 550 308 L 550 350" class="flow"/>
+  <text x="560" y="332" class="ft">F4 空闲时段查询结果</text>
+
+  <path d="M 170 350 L 515 285" class="flow"/>
+  <text x="280" y="312" class="ft">F5 场地可约状态</text>
+
+  <path d="M 255 370 L 525 295" class="flow"/>
+  <text x="360" y="342" class="ft">F6 结构化只读查询结果</text>
+
+  <path d="M 950 350 L 618 285" class="flow"/>
+  <text x="780" y="328" class="ft">F7 身份认证上下文</text>
+
+  <path d="M 805 370 L 615 285" class="flow"/>
+  <text x="700" y="352" class="ft">F8 距离坐标数据</text>
+
+  <text x="40" y="480" class="sect">图2 0层数据流图</text>
+
+  <path d="M 120 880 L 120 820 L 220 820 L 220 880 Z" class="store"/>
+  <line x1="120" y1="840" x2="220" y2="840" stroke="#1b263b"/>
+  <text x="170" y="858" class="boxt">D1</text>
+  <text x="170" y="878" class="boxt">场地与规则</text>
+
+  <path d="M 120 1120 L 120 1060 L 220 1060 L 220 1120 Z" class="store"/>
+  <line x1="120" y1="1080" x2="220" y2="1080" stroke="#1b263b"/>
+  <text x="170" y="1098" class="boxt">D2</text>
+  <text x="170" y="1118" class="boxt">教学占用</text>
+
+  <path d="M 920 880 L 920 820 L 1020 820 L 1020 880 Z" class="store"/>
+  <line x1="920" y1="850" x2="1020" y2="850" stroke="#1b263b"/>
+  <text x="970" y="858" class="boxt">D3</text>
+  <text x="970" y="878" class="boxt">课外预约</text>
+
+  <path d="M 920 1120 L 920 1060 L 1020 1060 L 1020 1120 Z" class="store"/>
+  <line x1="920" y1="1090" x2="1020" y2="1090" stroke="#1b263b"/>
+  <text x="970" y="1098" class="boxt">D4</text>
+  <text x="970" y="1118" class="boxt">状态与闭馆</text>
+
+  <path d="M 480 1320 L 480 1260 L 620 1260 L 620 1320 Z" class="store"/>
+  <line x1="480" y1="1290" x2="620" y2="1290" stroke="#1b263b"/>
+  <text x="550" y="1308" class="boxt">D5</text>
+  <text x="550" y="1328" class="boxt">行为偏好</text>
+
+  <circle cx="280" cy="720" r="52" class="proc"/>
+  <text x="280" y="714" class="boxt">1.0</text>
+  <text x="280" y="734" class="boxt">目录与租户</text>
+
+  <circle cx="550" cy="620" r="52" class="proc"/>
+  <text x="550" y="614" class="boxt">2.0</text>
+  <text x="550" y="634" class="boxt">教学占场</text>
+
+  <circle cx="820" cy="720" r="52" class="proc"/>
+  <text x="820" y="714" class="boxt">3.0</text>
+  <text x="820" y="734" class="boxt">课外预约</text>
+
+  <circle cx="550" cy="900" r="52" class="proc"/>
+  <text x="550" y="894" class="boxt">4.0</text>
+  <text x="550" y="914" class="boxt">状态与闭馆</text>
+
+  <circle cx="550" cy="1060" r="52" class="proc"/>
+  <text x="550" y="1054" class="boxt">5.0</text>
+  <text x="550" y="1074" class="boxt">计划推荐提醒</text>
+
+  <circle cx="550" cy="1220" r="52" class="proc"/>
+  <text x="550" y="1214" class="boxt">6.0</text>
+  <text x="550" y="1234" class="boxt">统计与对外服务</text>
+
+  <rect x="40" y="688" width="90" height="44" rx="4" class="ent"/>
+  <text x="85" y="716" class="boxt">师生</text>
+
+  <rect x="40" y="968" width="90" height="44" rx="4" class="ent"/>
+  <text x="85" y="996" class="boxt">管理员</text>
+
+  <rect x="980" y="688" width="90" height="52" rx="4" class="ent"/>
+  <text x="1025" y="714" class="boxt">子系统二</text>
+
+  <rect x="980" y="1038" width="90" height="52" rx="4" class="ent"/>
+  <text x="1025" y="1064" class="boxt">子系统三</text>
+
+  <path d="M 130 710 L 228 720" class="flow"/>
+  <path d="M 332 720 L 498 665" class="flow"/>
+  <path d="M 602 620 L 768 688" class="flow"/>
+  <path d="M 602 640 L 220 1080" class="flow"/>
+  <path d="M 820 772 L 970 838" class="flow"/>
+  <path d="M 872 720 L 980 714" class="flow"/>
+  <path d="M 550 672 L 550 848" class="flow"/>
+  <path d="M 130 990 L 498 930" class="flow"/>
+  <path d="M 550 952 L 550 1008" class="flow"/>
+  <path d="M 602 900 L 920 1090" class="flow"/>
+  <path d="M 550 1112 L 550 1168" class="flow"/>
+  <path d="M 550 1168 L 550 1320" class="flow"/>
+  <path d="M 280 772 L 170 820" class="flow"/>
+  <path d="M 550 848 L 970 860" class="flow"/>
+  <path d="M 590 1220 L 970 1095" class="flow"/>
+
+  <text x="330" y="698" class="ft">维护目录</text>
+  <text x="660" y="648" class="ft">写入D2</text>
+  <text x="880" y="752" class="ft">冲突校验</text>
+  <text x="350" y="860" class="ft">教学占用写库</text>
+  <text x="905" y="700" class="ft">可约性校验</text>
+  <text x="300" y="965" class="ft">闭馆指令</text>
+  <text x="620" y="780" class="ft">甘特/锁定</text>
+  <text x="700" y="980" class="ft">状态写库</text>
+  <text x="620" y="1005" class="ft">就近推荐</text>
+  <text x="565" y="1278" class="ft">偏好更新</text>
+  <text x="650" y="1185" class="ft">CSV/venue状态</text>
+
+  <rect x="40" y="1420" width="1020" height="200" rx="8" fill="#e8e6e3" stroke="#415a77"/>
+  <text x="60" y="1455" class="sect">符号与FR追溯（摘要）</text>
+  <text x="60" y="1485" class="ft">1.0→FR-1,2 · 2.0→FR-3 · 3.0→FR-4,5 · 4.0→FR-6 · 5.0→FR-7,8,9 · 6.0→集成与报表</text>
+  <text x="60" y="1515" class="ft">D1场地规则 D2教学占用 D3课外预约 D4闭馆状态 D5行为数据（可清除）</text>
+  <text x="60" y="1545" class="ft">边界流：F1预约申请 F2教学占场 F3闭馆指令 F4空闲查询 F5可约状态 F6助手查询 F7认证上下文 F8距离坐标</text>
+  <text x="60" y="1585" class="sub">来源：《需求分析-子系统一-多校预约与时空调度》V1.2</text>
+</svg>

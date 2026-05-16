@@ -1,0 +1,83 @@
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 650" width="1000" height="650">
+  <defs>
+    <style>text{font-family:"Microsoft YaHei","SimHei",sans-serif}</style>
+  </defs>
+  <rect width="1000" height="650" fill="#f8fbfe" rx="8"/>
+  <text x="500" y="28" text-anchor="middle" font-size="20" font-weight="bold" fill="#1a1a2e">子系统三 - 对象图（张三问篮球场场景）</text>
+  <text x="500" y="50" text-anchor="middle" font-size="13" fill="#666">场景：学生张三询问"今晚东校区还有篮球场吗？"并得到DeepSeek回答</text>
+
+  <!-- Object: 张三:User -->
+  <rect x="30" y="80" width="220" height="85" rx="6" fill="#E3F2FD" stroke="#2196F3" stroke-width="2"/>
+  <text x="140" y="102" text-anchor="middle" font-size="13" font-weight="bold" fill="#1565C0">张三 : Student</text>
+  <line x1="30" y1="112" x2="250" y2="112" stroke="#2196F3" stroke-width="1"/>
+  <text x="40" y="130" font-size="11" fill="#333">userId = 1001</text>
+  <text x="40" y="148" font-size="11" fill="#333">username = "zhangsan"</text>
+  <text x="40" y="166" font-size="11" fill="#333">role = "STUDENT"</text>
+
+  <!-- Object: assistantController -->
+  <rect x="350" y="80" width="260" height="85" rx="6" fill="#E8F5E9" stroke="#4CAF50" stroke-width="2"/>
+  <text x="480" y="102" text-anchor="middle" font-size="12" font-weight="bold" fill="#2E7D32">assistantController : AssistantController</text>
+  <line x1="350" y1="112" x2="610" y2="112" stroke="#4CAF50" stroke-width="1"/>
+  <text x="360" y="130" font-size="11" fill="#333">assistantService → ServiceImpl ref</text>
+
+  <!-- Object: serviceImpl -->
+  <rect x="700" y="80" width="270" height="115" rx="6" fill="#FFF3E0" stroke="#FF9800" stroke-width="2"/>
+  <text x="835" y="102" text-anchor="middle" font-size="12" font-weight="bold" fill="#E65100">serviceImpl : AssistantServiceImpl</text>
+  <line x1="700" y1="112" x2="970" y2="112" stroke="#FF9800" stroke-width="1"/>
+  <text x="710" y="130" font-size="11" fill="#333">deepSeekApiUrl = "https://api.deepseek.com/v1/.."</text>
+  <text x="710" y="148" font-size="11" fill="#333">model = "deepseek-chat"</text>
+  <text x="710" y="166" font-size="11" fill="#333">timeout = 25s</text>
+  <text x="710" y="184" font-size="11" fill="#333">deepSeekState = ONLINE</text>
+
+  <!-- Object: request -->
+  <rect x="350" y="220" width="260" height="65" rx="6" fill="#F3E5F5" stroke="#9C27B0" stroke-width="2"/>
+  <text x="480" y="242" text-anchor="middle" font-size="12" font-weight="bold" fill="#6A1B9A">request : AssistantAskRequest</text>
+  <line x1="350" y1="252" x2="610" y2="252" stroke="#9C27B0" stroke-width="1"/>
+  <text x="360" y="270" font-size="11" fill="#333">question = "今晚东校区还有篮球场吗"</text>
+
+  <!-- Object: answerResponse -->
+  <rect x="700" y="240" width="270" height="85" rx="6" fill="#F3E5F5" stroke="#9C27B0" stroke-width="2"/>
+  <text x="835" y="262" text-anchor="middle" font-size="12" font-weight="bold" fill="#6A1B9A">answer : AssistantAnswerResponse</text>
+  <line x1="700" y1="272" x2="970" y2="272" stroke="#9C27B0" stroke-width="1"/>
+  <text x="710" y="290" font-size="11" fill="#333">answer = "东校区篮球场1号场今晚18:00-...</text>
+  <text x="710" y="308" font-size="11" fill="#333">suggestions = ["东校区篮球场2号场", ...]</text>
+  <text x="710" y="326" font-size="11" fill="#333">provider = "deepseek"</text>
+
+  <!-- Object: apiResponse -->
+  <rect x="350" y="340" width="260" height="65" rx="6" fill="#F3E5F5" stroke="#9C27B0" stroke-width="2"/>
+  <text x="480" y="362" text-anchor="middle" font-size="12" font-weight="bold" fill="#6A1B9A">response : ApiResponse&lt;AssistantAnswerResponse&gt;</text>
+  <line x1="350" y1="372" x2="610" y2="372" stroke="#9C27B0" stroke-width="1"/>
+  <text x="360" y="390" font-size="11" fill="#333">code = 0, message = "success"</text>
+
+  <!-- Links (object references and flows) -->
+  <line x1="250" y1="122" x2="350" y2="122" stroke="#333" stroke-width="1.2"/>
+  <text x="300" y="115" font-size="9" fill="#555">POST /ask</text>
+
+  <line x1="480" y1="165" x2="480" y2="220" stroke="#333" stroke-width="1.2"/>
+  <text x="490" y="198" font-size="9" fill="#555">creates</text>
+
+  <line x1="610" y1="240" x2="700" y2="160" stroke="#333" stroke-width="1.2" stroke-dasharray="5,3"/>
+
+  <line x1="610" y1="155" x2="700" y2="155" stroke="#333" stroke-width="1" stroke-dasharray="4,3"/>
+  <text x="655" y="150" font-size="9" fill="#555">answer()</text>
+
+  <line x1="835" y1="325" x2="835" y2="370" stroke="#333" stroke-width="1" stroke-dasharray="5,3"/>
+
+  <!-- DeepSeek API Call -->
+  <rect x="350" y="450" width="620" height="75" rx="6" fill="#FCE4EC" stroke="#E91E63" stroke-width="2"/>
+  <text x="660" y="475" text-anchor="middle" font-size="13" font-weight="bold" fill="#C2185B">DeepSeek API 调用 (外部)</text>
+  <line x1="350" y1="485" x2="970" y2="485" stroke="#E91E63" stroke-width="1"/>
+  <text x="360" y="505" font-size="11" fill="#333">POST https://api.deepseek.com/v1/chat/completions → model: deepseek-chat, messages: [system:"你是体育场馆智能助手...", user:"今晚东校区还有篮球场吗"]</text>
+  <text x="360" y="520" font-size="11" fill="#555">→ Response: {"choices":[{"message":{"content":"东校区篮球场1号场今晚18:00-20:00空闲，[点击预约](/reservation?venueId=1&date=today)"}}]}</text>
+
+  <!-- Link to DeepSeek -->
+  <line x1="700" y1="195" x2="660" y2="450" stroke="#E91E63" stroke-width="1" stroke-dasharray="5,3"/>
+  <text x="720" y="320" font-size="9" fill="#E91E63">HTTP调用25s超时</text>
+
+  <!-- Legend -->
+  <rect x="30" y="560" width="940" height="70" rx="6" fill="#fff" stroke="#ccc" stroke-width="1"/>
+  <text x="50" y="585" font-size="12" font-weight="bold" fill="#333">对象图说明：</text>
+  <text x="50" y="605" font-size="11" fill="#555">该对象图展示了一个具体时刻下的对象实例快照：学生张三（userId=1001, role=STUDENT）通过POST /api/assistant/ask</text>
+  <text x="50" y="620" font-size="11" fill="#555">发送问题"今晚东校区还有篮球场吗"，AssistantServiceImpl 在 ONLINE 状态下调用 DeepSeek API 并获得回答。</text>
+</svg>

@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 650" width="900" height="650">
+  <defs>
+    <style>
+      text { font-family: "Microsoft YaHei", "SimHei", sans-serif; }
+      .title { font-size: 20px; font-weight: bold; fill: #1a1a2e; }
+      .entity-text { font-size: 13px; font-weight: bold; fill: #2c3e50; }
+      .flow-label { font-size: 11px; fill: #555; }
+      .process-text { font-size: 14px; font-weight: bold; fill: #fff; }
+      .sub-text { font-size: 11px; fill: #fff; }
+    </style>
+    <filter id="shadow"><feDropShadow dx="1" dy="2" stdDeviation="2" flood-opacity="0.12"/></filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="900" height="650" fill="#FAFBFC" rx="8"/>
+
+  <!-- Title -->
+  <text x="450" y="32" text-anchor="middle" class="title">子系统二——场地运维与公众监督系统 顶层数据流图 (DFD-0)</text>
+  <line x1="100" y1="44" x2="800" y2="44" stroke="#4A90D9" stroke-width="1.5"/>
+
+  <!-- External Entity 1: 普通用户 (left) -->
+  <rect x="30" y="250" width="140" height="80" rx="6" fill="#E3F2FD" stroke="#1976D2" stroke-width="2" filter="url(#shadow)"/>
+  <text x="100" y="285" text-anchor="middle" class="entity-text">普通用户</text>
+  <text x="100" y="305" text-anchor="middle" class="flow-label">(学生/教师)</text>
+
+  <!-- External Entity 2: 保洁运维人员 (top-left) -->
+  <rect x="30" y="90" width="140" height="80" rx="6" fill="#E8F5E9" stroke="#388E3C" stroke-width="2" filter="url(#shadow)"/>
+  <text x="100" y="125" text-anchor="middle" class="entity-text">保洁运维人员</text>
+  <text x="100" y="145" text-anchor="middle" class="flow-label">(清洁/灯光/器材)</text>
+
+  <!-- External Entity 3: 管理员 (bottom-left) -->
+  <rect x="30" y="410" width="140" height="80" rx="6" fill="#FFEBEE" stroke="#D32F2F" stroke-width="2" filter="url(#shadow)"/>
+  <text x="100" y="445" text-anchor="middle" class="entity-text">管理员</text>
+  <text x="100" y="465" text-anchor="middle" class="flow-label">(内容/配置)</text>
+
+  <!-- External Entity 4: 子系统一 (right) -->
+  <rect x="730" y="250" width="140" height="80" rx="6" fill="#FFF3E0" stroke="#F57C00" stroke-width="2" filter="url(#shadow)"/>
+  <text x="800" y="285" text-anchor="middle" class="entity-text">子系统一</text>
+  <text x="800" y="305" text-anchor="middle" class="flow-label">(场地预约)</text>
+
+  <!-- Central Process: 场地运维与公众监督系统 -->
+  <ellipse cx="450" cy="290" rx="170" ry="130" fill="#4A90D9" stroke="#2B5F9E" stroke-width="2" filter="url(#shadow)"/>
+  <text x="450" y="275" text-anchor="middle" class="process-text">场地运维与公众监督</text>
+  <text x="450" y="295" text-anchor="middle" class="process-text">系统</text>
+  <line x1="320" y1="310" x2="580" y2="310" stroke="#fff" stroke-width="0.5" opacity="0.5"/>
+  <text x="450" y="328" text-anchor="middle" class="sub-text">VenueOpsController / CommentController</text>
+  <text x="450" y="345" text-anchor="middle" class="sub-text">VenueOpsService / CommentService</text>
+  <text x="450" y="362" text-anchor="middle" class="sub-text">t_venue_ops / t_comment</text>
+
+  <!-- Flows: User → System -->
+  <!-- User viewing ops status -->
+  <line x1="170" y1="265" x2="280" y2="250" stroke="#1976D2" stroke-width="1.5" marker-end="url(#arrowBlue)"/>
+  <defs><marker id="arrowBlue" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#1976D2"/></marker></defs>
+  <text x="190" y="245" class="flow-label" fill="#1976D2">查看运维状态</text>
+
+  <!-- User posting comments -->
+  <line x1="170" y1="300" x2="280" y2="305" stroke="#1976D2" stroke-width="1.5" marker-end="url(#arrowBlue)"/>
+  <text x="190" y="330" class="flow-label" fill="#1976D2">发表评论/评分</text>
+
+  <!-- System → User (response) -->
+  <line x1="280" y1="275" x2="170" y2="280" stroke="#1976D2" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#arrowBlueR)"/>
+  <defs><marker id="arrowBlueR" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#1976D2"/></marker></defs>
+  <text x="190" y="275" class="flow-label" fill="#999">状态/评论数据显示</text>
+
+  <!-- Cleaner → System -->
+  <line x1="170" y1="130" x2="300" y2="230" stroke="#388E3C" stroke-width="1.5" marker-end="url(#arrowGreen)"/>
+  <defs><marker id="arrowGreen" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#388E3C"/></marker></defs>
+  <text x="190" y="175" class="flow-label" fill="#388E3C">清洁打卡/灯光记录/器材更新</text>
+
+  <!-- System → Cleaner (response) -->
+  <line x1="300" y1="245" x2="170" y2="138" stroke="#388E3C" stroke-width="1.5" stroke-dasharray="5,3"/>
+  <text x="220" y="195" class="flow-label" fill="#999">保存确认</text>
+
+  <!-- Admin → System -->
+  <line x1="170" y1="450" x2="280" y2="360" stroke="#D32F2F" stroke-width="1.5" marker-end="url(#arrowRed)"/>
+  <defs><marker id="arrowRed" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#D32F2F"/></marker></defs>
+  <text x="190" y="400" class="flow-label" fill="#D32F2F">处理评论/配置负责人</text>
+
+  <!-- System → Admin (response) -->
+  <line x1="280" y1="330" x2="170" y2="440" stroke="#D32F2F" stroke-width="1.5" stroke-dasharray="5,3"/>
+  <text x="220" y="380" class="flow-label" fill="#999">操作结果</text>
+
+  <!-- System → 子系统一 (availability output) -->
+  <line x1="620" y1="290" x2="730" y2="290" stroke="#F57C00" stroke-width="2" marker-end="url(#arrowOrange)"/>
+  <defs><marker id="arrowOrange" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#F57C00"/></marker></defs>
+  <text x="650" y="280" class="flow-label" fill="#F57C00">场地可用性数据</text>
+  <text x="650" y="295" class="flow-label" fill="#F57C00">(VenueAvailabilityResponse)</text>
+
+  <!-- 子系统一 → System (query availability) -->
+  <line x1="730" y1="265" x2="620" y2="270" stroke="#F57C00" stroke-width="1.5" stroke-dasharray="5,3"/>
+  <text x="650" y="260" class="flow-label" fill="#999">查询可用性请求</text>
+
+  <!-- Footer -->
+  <text x="450" y="560" text-anchor="middle" font-size="10" fill="#999">图例: —→ 数据流 ---→ 响应流  □ 外部实体  ○ 处理过程</text>
+  <text x="450" y="580" text-anchor="middle" font-size="12" fill="#888">说明: 顶层DFD展示子系统二与外部实体（用户、保洁人员、管理员、子系统一）之间的数据流交互</text>
+</svg>

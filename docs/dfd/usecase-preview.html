@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>需求图表预览：用例图与 DFD</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #f8fafc; color: #1e293b; font-family: "Segoe UI", "Microsoft YaHei", system-ui, sans-serif; line-height: 1.5; }
+    .wrap { max-width: 1200px; margin: 0 auto; padding: 20px 16px 48px; }
+    h1 { font-size: 1.35rem; font-weight: 700; margin: 0 0 8px; }
+    .lead { color: #64748b; font-size: 0.95rem; margin: 0 0 24px; }
+    section { margin-bottom: 2.5rem; }
+    h2 { font-size: 1.1rem; color: #0f172a; border-left: 4px solid #2563eb; padding-left: 10px; margin: 0 0 12px; }
+    h3 { font-size: 0.95rem; color: #334155; font-weight: 600; margin: 16px 0 8px; }
+    figure { margin: 0 0 1rem; background: #fff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 12px; box-shadow: 0 1px 3px rgba(0,0,0,.06); }
+    figcaption { font-size: 0.8rem; color: #64748b; margin-top: 8px; }
+    figcaption code { font-size: 0.75rem; background: #f1f5f9; padding: 2px 6px; border-radius: 4px; }
+    img { display: block; max-width: 100%; height: auto; }
+    .grid2 { display: grid; gap: 1rem; }
+    @media (min-width: 900px) { .grid2 { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>需求图表预览</h1>
+    <p class="lead">子系统一、子系统二：用例图与数据流图（DFD）。子系统三仅列 DFD。在资源管理器中双击本文件即可本地预览；打印或「另存为 PDF」可交作业。</p>
+
+    <section>
+      <h2>子系统一：多校体育场地预约与时空调度</h2>
+      <h3>用例图</h3>
+      <figure>
+        <img src="usecase-子系统一-多校预约与时空调度.svg" alt="子系统一用例图" width="1320" height="980" />
+        <figcaption>完整版（含 include / extend / 依赖）。同义文件：<code>usecase-subsystem-1-booking.svg</code></figcaption>
+      </figure>
+      <h3>数据流图（DFD）</h3>
+      <figure>
+        <img src="dfd-子系统一-多校预约与时空调度.svg" alt="子系统一 DFD" width="1100" height="2000" />
+        <figcaption>顶层上下文 + 0 层分解。同义文件：<code>dfd-subsystem-1-booking.svg</code></figcaption>
+      </figure>
+    </section>
+
+    <section>
+      <h2>子系统二：场地运维、资产与公众监督</h2>
+      <h3>用例图</h3>
+      <figure>
+        <img src="usecase-子系统二-场地运维与公众监督.svg" alt="子系统二用例图" width="1380" height="1180" />
+        <figcaption>完整版：泛化、include（含 UC-O1a）、extend、依赖；外部含子系统一/三、物联网关、统一身份认证。底部附 FR/DFD 追溯。同义文件：<code>usecase-subsystem-2-operations.svg</code></figcaption>
+      </figure>
+      <h3>数据流图（DFD）</h3>
+      <figure>
+        <img src="dfd-子系统二-场地运维与公众监督.svg" alt="子系统二 DFD" width="1100" height="2280" />
+        <figcaption>顶层上下文 + 0 层分解。同义文件：<code>dfd-subsystem-2-operations.svg</code></figcaption>
+      </figure>
+    </section>
+
+    <section>
+      <h2>子系统三：智能辅助与用户服务</h2>
+      <h3>数据流图（DFD）</h3>
+      <figure>
+        <img src="dfd-子系统三-智能辅助与用户服务.svg" alt="子系统三 DFD" width="1100" height="2050" />
+        <figcaption>同义文件：<code>dfd-subsystem-3-assistant.svg</code></figcaption>
+      </figure>
+    </section>
+  </div>
+</body>
+</html>

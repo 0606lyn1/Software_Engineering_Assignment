@@ -1,0 +1,99 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 950 650" width="950" height="650">
+  <defs>
+    <style>
+      text { font-family: 'Microsoft YaHei', 'SimHei', sans-serif; }
+      .title { font-size: 22px; font-weight: bold; fill: #1a1a2e; }
+      .lifeline { font-size: 13px; font-weight: bold; fill: #fff; }
+      .msg { font-size: 11px; fill: #333; }
+    </style>
+    <marker id="arrowMsg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#4facfe"/>
+    </marker>
+    <marker id="arrowRet" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#888"/>
+    </marker>
+  </defs>
+
+  <rect width="950" height="650" fill="#fafbff" rx="8"/>
+  <text x="475" y="38" text-anchor="middle" class="title">顺序图 — 管理员锁定时段/临时闭馆</text>
+
+  <!-- Lifelines -->
+  <rect x="40" y="65" width="100" height="40" rx="6" fill="#4facfe" filter="url(#shadow)"/>
+  <text x="90" y="90" text-anchor="middle" class="lifeline">管理员</text>
+
+  <rect x="200" y="65" width="130" height="40" rx="6" fill="#10b981" filter="url(#shadow)"/>
+  <text x="265" y="90" text-anchor="middle" class="lifeline">AdminManage.vue</text>
+
+  <rect x="390" y="65" width="160" height="40" rx="6" fill="#f59e0b" filter="url(#shadow)"/>
+  <text x="470" y="75" text-anchor="middle" class="lifeline">Reservation</text>
+  <text x="470" y="93" text-anchor="middle" font-size="10" fill="#e0e0e0">Controller</text>
+
+  <rect x="610" y="65" width="160" height="40" rx="6" fill="#8b5cf6" filter="url(#shadow)"/>
+  <text x="690" y="75" text-anchor="middle" class="lifeline">Reservation</text>
+  <text x="690" y="93" text-anchor="middle" font-size="10" fill="#e0e0e0">ServiceImpl</text>
+
+  <rect x="830" y="65" width="90" height="40" rx="6" fill="#ec4899" filter="url(#shadow)"/>
+  <text x="875" y="90" text-anchor="middle" class="lifeline">MySQL</text>
+
+  <!-- Lifeline lines -->
+  <line x1="90" y1="105" x2="90" y2="620" stroke="#4facfe" stroke-width="1.5" stroke-dasharray="6,4"/>
+  <line x1="265" y1="105" x2="265" y2="620" stroke="#10b981" stroke-width="1.5" stroke-dasharray="6,4"/>
+  <line x1="470" y1="105" x2="470" y2="620" stroke="#f59e0b" stroke-width="1.5" stroke-dasharray="6,4"/>
+  <line x1="690" y1="105" x2="690" y2="620" stroke="#8b5cf6" stroke-width="1.5" stroke-dasharray="6,4"/>
+  <line x1="875" y1="105" x2="875" y2="620" stroke="#ec4899" stroke-width="1.5" stroke-dasharray="6,4"/>
+
+  <!-- Activation -->
+  <rect x="85" y="120" width="10" height="490" fill="#4facfe" opacity="0.2" rx="2"/>
+  <rect x="260" y="170" width="10" height="430" fill="#10b981" opacity="0.2" rx="2"/>
+  <rect x="465" y="230" width="10" height="370" fill="#f59e0b" opacity="0.2" rx="2"/>
+  <rect x="685" y="290" width="10" height="300" fill="#8b5cf6" opacity="0.2" rx="2"/>
+  <rect x="870" y="380" width="10" height="160" fill="#ec4899" opacity="0.2" rx="2"/>
+
+  <!-- Messages -->
+  <line x1="90" y1="135" x2="265" y2="155" stroke="#4facfe" stroke-width="2" marker-end="url(#arrowMsg)"/>
+  <text x="170" y="152" class="msg" fill="#4facfe">1. 进入时段锁定页面</text>
+
+  <line x1="90" y1="175" x2="265" y2="195" stroke="#4facfe" stroke-width="2" marker-end="url(#arrowMsg)"/>
+  <text x="170" y="192" class="msg" fill="#4facfe">2. 选择场馆+时段+锁定原因</text>
+
+  <line x1="265" y1="215" x2="470" y2="235" stroke="#10b981" stroke-width="2" marker-end="url(#arrowMsg)"/>
+  <text x="360" y="232" class="msg" fill="#10b981">3. PUT /api/reservations/lock</text>
+
+  <line x1="470" y1="255" x2="690" y2="275" stroke="#f59e0b" stroke-width="2" marker-end="url(#arrowMsg)"/>
+  <text x="575" y="272" class="msg" fill="#f59e0b">4. lockVenueSlots(venueId, start, end)</text>
+
+  <!-- Self-call: validate -->
+  <rect x="695" y="295" width="190" height="40" rx="4" fill="#f5f3ff" stroke="#8b5cf6" stroke-width="1" stroke-dasharray="3,2"/>
+  <text x="700" y="312" font-size="10" fill="#7c3aed">验证：时段有效性 + 权限</text>
+  <text x="700" y="328" font-size="10" fill="#7c3aed">查询：该时段预约列表(预览影响)</text>
+
+  <!-- INSERT lock record -->
+  <line x1="690" y1="355" x2="875" y2="375" stroke="#8b5cf6" stroke-width="2" marker-end="url(#arrowMsg)"/>
+  <text x="770" y="372" class="msg" fill="#8b5cf6">5. INSERT INTO t_lock_record</text>
+
+  <line x1="875" y1="395" x2="690" y2="415" stroke="#888" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#arrowRet)"/>
+  <text x="790" y="412" class="msg" fill="#888">6. 锁定记录写入成功</text>
+
+  <!-- UPDATE reservations -->
+  <line x1="690" y1="435" x2="875" y2="455" stroke="#8b5cf6" stroke-width="2" marker-end="url(#arrowMsg)"/>
+  <text x="770" y="452" class="msg" fill="#8b5cf6">7. UPDATE t_reservation SET status='CANCELLED'</text>
+  <text x="800" y="468" class="msg" fill="#8b5cf6" font-size="9">(批量取消冲突预约)</text>
+
+  <line x1="875" y1="490" x2="690" y2="510" stroke="#888" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#arrowRet)"/>
+  <text x="790" y="507" class="msg" fill="#888">8. 更新成功(1条被取消)</text>
+
+  <!-- INSERT audit log -->
+  <line x1="690" y1="530" x2="875" y2="550" stroke="#8b5cf6" stroke-width="2" marker-end="url(#arrowMsg)"/>
+  <text x="780" y="547" class="msg" fill="#8b5cf6">9. INSERT INTO t_audit_log</text>
+
+  <line x1="875" y1="570" x2="690" y2="590" stroke="#888" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#arrowRet)"/>
+  <text x="790" y="587" class="msg" fill="#888">10. 审计日志写入成功</text>
+
+  <!-- Return to Controller -->
+  <line x1="690" y1="610" x2="470" y2="625" stroke="#888" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#arrowRet)"/>
+  <text x="575" y="622" class="msg" fill="#888">11. ApiResponse.success</text>
+
+  <!-- Notify (async) -->
+  <line x1="690" y1="635" x2="265" y2="650" stroke="#f5576c" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#arrowRet)"/>
+  <text x="400" y="648" class="msg" fill="#f5576c">12. 异步推送通知(受影响用户)</text>
+</svg>

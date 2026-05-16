@@ -1,0 +1,80 @@
+package com.example.tiyu.controller;
+
+import com.example.tiyu.common.ApiResponse;
+import com.example.tiyu.dto.UserCreateRequest;
+import com.example.tiyu.dto.UserUpdateRequest;
+import com.example.tiyu.entity.User;
+import com.example.tiyu.exception.BusinessException;
+import com.example.tiyu.service.UserService;
+import io.swagger.v3.oas.annotations.Operation;
+import jakarta.validation.Valid;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.web.bind.annotation.*;
+
+import java.time.LocalDateTime;
+import java.util.List;
+
+@RestController
+@RequestMapping("/api/users")
+public class UserController {
+
+    private final UserService userService;
+    private final PasswordEncoder passwordEncoder;
+
+    public UserController(UserService userService, PasswordEncoder passwordEncoder) {
+        this.userService = userService;
+        this.passwordEncoder = passwordEncoder;
+    }
+
+    @GetMapping
+    @Operation(summary = "用户列表")
+    public ApiResponse<List<User>> list() {
+        return ApiResponse.success(userService.list());
+    }
+
+    @GetMapping("/{id}")
+    @Operation(summary = "查询用户")
+    public ApiResponse<User> getById(@PathVariable Long id) {
+        return ApiResponse.success(userService.getById(id));
+    }
+
+    @PostMapping
+    @Operation(summary = "新增用户")
+    public ApiResponse<User> create(@Valid @RequestBody UserCreateRequest request) {
+        if (userService.lambdaQuery().eq(User::getUsername, request.getUsername()).exists()) {
+            throw new BusinessException("用户名已存在");
+        }
+
+        User user = new User();
+        user.setUsername(request.getUsername());
+        user.setPassword(passwordEncoder.encode(request.getPassword()));
+        user.setEmail(request.getEmail());
+        user.setRole(request.getRole() == null ? "USER" : request.getRole());
+        user.setCreatedAt(LocalDateTime.now());
+        userService.save(user);
+        return ApiResponse.success("创建成功", user);
+    }
+
+    @PutMapping("/{id}")
+    @Operation(summary = "修改用户")
+    public ApiResponse<User> update(@PathVariable Long id, @Valid @RequestBody UserUpdateRequest request) {
+        User existing = userService.getById(id);
+        if (existing == null) {
+            throw new BusinessException("用户不存在");
+        }
+        existing.setUsername(request.getUsername());
+        existing.setEmail(request.getEmail());
+        if (request.getRole() != null && !request.getRole().isBlank()) {
+            existing.setRole(request.getRole());
+        }
+        userService.updateById(existing);
+        return ApiResponse.success("更新成功", existing);
+    }
+
+    @DeleteMapping("/{id}")
+    @Operation(summary = "删除用户")
+    public ApiResponse<Void> delete(@PathVariable Long id) {
+        userService.removeById(id);
+        return ApiResponse.success("删除成功", null);
+    }
+}

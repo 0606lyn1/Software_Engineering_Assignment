@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 500" width="900" height="500">
+  <defs>
+    <style>
+      text { font-family: "Microsoft YaHei", "SimHei", sans-serif; }
+      .title { font-size: 20px; font-weight: bold; fill: #1a1a2e; }
+      .obj-title { font-size: 12px; font-weight: bold; }
+      .val { font-size: 10.5px; fill: #333; }
+      .sec-title { font-size: 14px; font-weight: bold; fill: #2c3e50; }
+    </style>
+    <filter id="shadow"><feDropShadow dx="1" dy="2" stdDeviation="1.5" flood-opacity="0.08"/></filter>
+  </defs>
+  <rect width="900" height="500" fill="#FAFBFC" rx="8"/>
+
+  <text x="450" y="28" text-anchor="middle" class="title">子系统二——场地运维与公众监督系统 对象图</text>
+  <line x1="140" y1="40" x2="760" y2="40" stroke="#4A90D9" stroke-width="1.5"/>
+
+  <text x="50" y="70" class="sec-title">场景：保洁李四于2026-05-10 14:00完成篮球场清洁打卡</text>
+  <line x1="50" y1="80" x2="800" y2="80" stroke="#ddd" stroke-width="1"/>
+
+  <!-- Object 1: Venue 篮球场 -->
+  <rect x="40" y="100" width="200" height="145" rx="4" fill="#fff" stroke="#1976D2" stroke-width="2" filter="url(#shadow)"/>
+  <rect x="40" y="100" width="200" height="28" rx="4" fill="#1976D2"/>
+  <text x="140" y="118" text-anchor="middle" class="obj-title" fill="#fff">basketballCourt: t_venue</text>
+  <text x="52" y="142" class="val">id = 101</text>
+  <text x="52" y="160" class="val">name = "篮球场1号"</text>
+  <text x="52" y="178" class="val">type = "OUTDOOR_BASKETBALL"</text>
+  <text x="52" y="196" class="val">location = "东区运动场"</text>
+  <text x="52" y="214" class="val">is_outdoor = true</text>
+  <text x="52" y="232" class="val">status = "ACTIVE"</text>
+  <text x="52" y="244" font-size="9" fill="#1976D2">(场地基本信息)</text>
+
+  <!-- Object 2: VenueOps 运维信息 (before cleaning) -->
+  <rect x="330" y="100" width="230" height="260" rx="4" fill="#fff" stroke="#388E3C" stroke-width="2" filter="url(#shadow)"/>
+  <rect x="330" y="100" width="230" height="28" rx="4" fill="#388E3C"/>
+  <text x="445" y="118" text-anchor="middle" class="obj-title" fill="#fff">ops_basketball: t_venue_ops</text>
+  <text x="342" y="144" class="val">id = 201</text>
+  <text x="342" y="162" class="val">venueId = 101</text>
+  <text x="342" y="180" class="val">maintenanceStatus = NORMAL</text>
+  <text x="342" y="198" class="val">cleaningStatus = PENDING_RECTIFICATION</text>
+  <text x="342" y="210" class="val" font-size="9" fill="#E74C3C">  (上次清洁: 待整改)</text>
+  <text x="342" y="228" class="val">lightingStatus = NORMAL</text>
+  <text x="342" y="246" class="val">reservationPolicy = ALLOW_WITH_WARNING</text>
+  <text x="342" y="264" class="val">responsibleName = "王五"</text>
+  <text x="342" y="282" class="val">responsibleRole = "体育馆管理员"</text>
+  <text x="342" y="300" class="val">responsiblePhone = "138****5678"</text>
+  <text x="342" y="318" class="val">lastCleanedAt = 2026-05-08</text>
+  <text x="342" y="336" class="val">updatedAt = 2026-05-10 14:00</text>
+  <text x="342" y="354" font-size="9" fill="#388E3C">(清洁打卡后更新)</text>
+
+  <!-- Object 3: CleaningLog 清洁日志 -->
+  <rect x="650" y="100" width="210" height="155" rx="4" fill="#fff" stroke="#5C6BC0" stroke-width="2" filter="url(#shadow)"/>
+  <rect x="650" y="100" width="210" height="28" rx="4" fill="#5C6BC0"/>
+  <text x="755" y="118" text-anchor="middle" class="obj-title" fill="#fff">log_20260510: t_cleaning_log</text>
+  <text x="662" y="144" class="val">id = 301</text>
+  <text x="662" y="162" class="val">venueId = 101</text>
+  <text x="662" y="180" class="val">cleanerId = 502 (李四)</text>
+  <text x="662" y="198" class="val">cleanResult = "合格"</text>
+  <text x="662" y="216" class="val">cleanNotes = "已完成清洁"</text>
+  <text x="662" y="234" class="val">photoUrl = null</text>
+  <text x="662" y="252" font-size="9" fill="#5C6BC0">(新创建的清洁记录)</text>
+
+  <!-- Object 4: User 保洁李四 -->
+  <rect x="40" y="300" width="200" height="130" rx="4" fill="#fff" stroke="#7B1FA2" stroke-width="2" filter="url(#shadow)"/>
+  <rect x="40" y="300" width="200" height="28" rx="4" fill="#7B1FA2"/>
+  <text x="140" y="318" text-anchor="middle" class="obj-title" fill="#fff">cleaner_li: t_user</text>
+  <text x="52" y="342" class="val">id = 502</text>
+  <text x="52" y="360" class="val">username = "cleaner_li"</text>
+  <text x="52" y="378" class="val">role = ROLE_CLEANER</text>
+  <text x="52" y="396" class="val">phone = "13612345678"</text>
+  <text x="52" y="414" class="val">realName = "李四"</text>
+  <text x="52" y="426" font-size="9" fill="#7B1FA2">(保洁运维人员)</text>
+
+  <!-- Object 5: VenueAvailabilityResponse (after cleaning) -->
+  <rect x="650" y="300" width="220" height="100" rx="4" fill="#fff" stroke="#E65100" stroke-width="2" filter="url(#shadow)"/>
+  <rect x="650" y="300" width="220" height="28" rx="4" fill="#E65100"/>
+  <text x="760" y="318" text-anchor="middle" class="obj-title" fill="#fff">availabilityResp: VenueAvailabilityResponse</text>
+  <text x="662" y="344" class="val">reservable = true</text>
+  <text x="662" y="362" class="val">reasonCode = "OK"</text>
+  <text x="662" y="380" class="val">displayMessage = "场地可预约"</text>
+  <text x="662" y="392" font-size="9" fill="#E65100">(清洁合格后重新评估)</text>
+
+  <!-- Link lines between objects -->
+  <!-- Venue → VenueOps -->
+  <line x1="240" y1="170" x2="328" y2="170" stroke="#1976D2" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <text x="275" y="163" font-size="9" fill="#1976D2">1:1</text>
+
+  <!-- VenueOps → CleaningLog -->
+  <line x1="560" y1="170" x2="648" y2="170" stroke="#5C6BC0" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <text x="595" y="163" font-size="9" fill="#5C6BC0">1:N</text>
+
+  <!-- User → CleaningLog -->
+  <line x1="240" y1="360" x2="648" y2="210" stroke="#7B1FA2" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <text x="400" y="290" font-size="9" fill="#7B1FA2">执行</text>
+
+  <!-- VenueOps → AvailabilityResponse -->
+  <line x1="560" y1="300" x2="648" y2="350" stroke="#E65100" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <text x="595" y="323" font-size="9" fill="#E65100">评估→生成</text>
+
+  <text x="450" y="480" text-anchor="middle" font-size="10" fill="#999">对象图：展示某一时刻系统的对象实例快照及其之间的链接关系</text>
+</svg>

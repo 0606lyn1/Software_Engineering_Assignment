@@ -1,0 +1,96 @@
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 680" width="1000" height="680">
+  <defs>
+    <marker id="aha" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#333"/>
+    </marker>
+    <style>text{font-family:"Microsoft YaHei","SimHei",sans-serif}</style>
+  </defs>
+  <rect width="1000" height="680" fill="#f8fbfe" rx="8"/>
+  <text x="500" y="28" text-anchor="middle" font-size="20" font-weight="bold" fill="#1a1a2e">子系统三 - 状态迁移图</text>
+
+  <!-- ===== DeepSeek Service State Machine ===== -->
+  <text x="500" y="55" text-anchor="middle" font-size="16" font-weight="bold" fill="#6C63FF">4.1 DeepSeek服务状态机</text>
+
+  <!-- Initial -->
+  <circle cx="100" cy="130" r="15" fill="#333"/>
+  <line x1="115" y1="130" x2="200" y2="130" stroke="#333" stroke-width="1.5" marker-end="url(#aha)"/>
+
+  <!-- State: ONLINE -->
+  <rect x="210" y="90" width="200" height="80" rx="40" fill="#C8E6C9" stroke="#4CAF50" stroke-width="3"/>
+  <text x="310" y="122" text-anchor="middle" font-size="18" font-weight="bold" fill="#2E7D32">ONLINE</text>
+  <text x="310" y="148" text-anchor="middle" font-size="11" fill="#555">正常响应 &lt;5s</text>
+
+  <!-- State: DEGRADED -->
+  <rect x="530" y="90" width="220" height="80" rx="40" fill="#FFF3E0" stroke="#FF9800" stroke-width="3"/>
+  <text x="640" y="122" text-anchor="middle" font-size="18" font-weight="bold" fill="#E65100">DEGRADED</text>
+  <text x="640" y="148" text-anchor="middle" font-size="11" fill="#555">部分超时，仍尝试调用</text>
+
+  <!-- State: OFFLINE -->
+  <rect x="370" y="250" width="260" height="80" rx="40" fill="#FFCDD2" stroke="#F44336" stroke-width="3"/>
+  <text x="500" y="282" text-anchor="middle" font-size="18" font-weight="bold" fill="#C62828">OFFLINE</text>
+  <text x="500" y="308" text-anchor="middle" font-size="11" fill="#555">纯Fallback模式，停止调用</text>
+
+  <!-- Transitions -->
+  <!-- ONLINE→DEGRADED -->
+  <line x1="410" y1="110" x2="530" y2="110" stroke="#E65100" stroke-width="2" marker-end="url(#aha)"/>
+  <text x="460" y="100" font-size="11" fill="#E65100">连续3次超时(&gt;25s)</text>
+
+  <!-- DEGRADED→ONLINE -->
+  <path d="M530 155 C470 200, 350 200, 310 155" fill="none" stroke="#2E7D32" stroke-width="2" marker-end="url(#aha)"/>
+  <text x="400" y="205" font-size="11" fill="#2E7D32">任一请求成功响应</text>
+
+  <!-- DEGRADED→OFFLINE -->
+  <line x1="640" y1="170" x2="640" y2="250" stroke="#C62828" stroke-width="2" marker-end="url(#aha)"/>
+  <text x="655" y="215" font-size="11" fill="#C62828">5xx连续失败3次</text>
+
+  <!-- OFFLINE→ONLINE -->
+  <path d="M370 290 C250 290, 200 200, 210 155" fill="none" stroke="#2E7D32" stroke-width="2" marker-end="url(#aha)"/>
+  <text x="220" y="235" font-size="11" fill="#2E7D32">健康检查通过</text>
+
+  <!-- OFFLINE→DEGRADED -->
+  <path d="M370 310 C280 350, 430 360, 530 170" fill="none" stroke="#E65100" stroke-width="1.5" marker-end="url(#aha)" stroke-dasharray="6,3"/>
+  <text x="340" y="360" font-size="10" fill="#E65100">人工恢复(备用端点)</text>
+
+  <!-- ===== Session State Machine ===== -->
+  <line x1="50" y1="390" x2="950" y2="390" stroke="#ccc" stroke-width="1" stroke-dasharray="8,4"/>
+
+  <text x="500" y="420" text-anchor="middle" font-size="16" font-weight="bold" fill="#9C27B0">4.2 对话会话状态机</text>
+
+  <!-- Session Initial -->
+  <circle cx="100" cy="500" r="15" fill="#333"/>
+  <line x1="115" y1="500" x2="200" y2="500" stroke="#333" stroke-width="1.5" marker-end="url(#aha)"/>
+
+  <!-- State: CREATED -->
+  <rect x="210" y="465" width="180" height="70" rx="35" fill="#E3F2FD" stroke="#2196F3" stroke-width="3"/>
+  <text x="300" y="498" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">CREATED</text>
+  <text x="300" y="518" text-anchor="middle" font-size="11" fill="#555">会话已创建</text>
+
+  <!-- State: ACTIVE -->
+  <rect x="470" y="465" width="180" height="70" rx="35" fill="#C8E6C9" stroke="#4CAF50" stroke-width="3"/>
+  <text x="560" y="498" text-anchor="middle" font-size="16" font-weight="bold" fill="#2E7D32">ACTIVE</text>
+  <text x="560" y="518" text-anchor="middle" font-size="11" fill="#555">对话活跃中</text>
+
+  <!-- State: EXPIRED -->
+  <rect x="390" y="580" width="220" height="70" rx="35" fill="#F3E5F5" stroke="#9C27B0" stroke-width="3"/>
+  <text x="500" y="613" text-anchor="middle" font-size="16" font-weight="bold" fill="#6A1B9A">EXPIRED</text>
+  <text x="500" y="633" text-anchor="middle" font-size="11" fill="#555">30min无活动过期</text>
+
+  <!-- State: CLOSED -->
+  <rect x="730" y="580" width="180" height="70" rx="35" fill="#ECEFF1" stroke="#78909C" stroke-width="3"/>
+  <text x="820" y="613" text-anchor="middle" font-size="16" font-weight="bold" fill="#546E7A">CLOSED</text>
+  <text x="820" y="633" text-anchor="middle" font-size="11" fill="#555">用户主动关闭</text>
+
+  <!-- Transitions -->
+  <line x1="390" y1="500" x2="470" y2="500" stroke="#2E7D32" stroke-width="2" marker-end="url(#aha)"/>
+  <text x="420" y="490" font-size="11" fill="#2E7D32">发送首条消息</text>
+
+  <line x1="560" y1="535" x2="500" y2="580" stroke="#6A1B9A" stroke-width="2" marker-end="url(#aha)"/>
+  <text x="510" y="560" font-size="11" fill="#6A1B9A">30min无活动</text>
+
+  <line x1="530" y1="615" x2="470" y2="530" stroke="#2E7D32" stroke-width="1.5" marker-end="url(#aha)" stroke-dasharray="5,3"/>
+  <text x="580" y="575" font-size="10" fill="#2E7D32">用户重新提问</text>
+
+  <line x1="650" y1="500" x2="730" y2="600" stroke="#78909C" stroke-width="2" marker-end="url(#aha)"/>
+  <text x="700" y="545" font-size="11" fill="#78909C">关闭对话面板</text>
+</svg>

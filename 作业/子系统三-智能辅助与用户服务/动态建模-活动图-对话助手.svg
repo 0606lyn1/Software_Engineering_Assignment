@@ -1,0 +1,135 @@
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 920" width="1000" height="920">
+  <defs>
+    <marker id="ax" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#333"/>
+    </marker>
+    <style>text{font-family:"Microsoft YaHei","SimHei",sans-serif}</style>
+  </defs>
+  <rect width="1000" height="920" fill="#f8fbfe" rx="8"/>
+  <text x="500" y="25" text-anchor="middle" font-size="20" font-weight="bold" fill="#1a1a2e">子系统三 - 活动图（对话助手完整流程）</text>
+
+  <!-- Swimlane dividers -->
+  <line x1="200" y1="45" x2="200" y2="890" stroke="#999" stroke-width="1.5" stroke-dasharray="6,3"/>
+  <line x1="480" y1="45" x2="480" y2="890" stroke="#999" stroke-width="1.5" stroke-dasharray="6,3"/>
+  <line x1="760" y1="45" x2="760" y2="890" stroke="#999" stroke-width="1.5" stroke-dasharray="6,3"/>
+
+  <!-- Swimlane headers -->
+  <rect x="10" y="45" width="190" height="30" rx="6" fill="#6C63FF"/>
+  <text x="105" y="65" text-anchor="middle" font-size="14" font-weight="bold" fill="#fff">用户 (User)</text>
+
+  <rect x="210" y="45" width="270" height="30" rx="6" fill="#2196F3"/>
+  <text x="345" y="65" text-anchor="middle" font-size="14" font-weight="bold" fill="#fff">前端 (SmartAssistant.vue)</text>
+
+  <rect x="490" y="45" width="270" height="30" rx="6" fill="#4CAF50"/>
+  <text x="625" y="65" text-anchor="middle" font-size="14" font-weight="bold" fill="#fff">后端 (Spring Boot)</text>
+
+  <rect x="770" y="45" width="220" height="30" rx="6" fill="#FF9800"/>
+  <text x="880" y="65" text-anchor="middle" font-size="14" font-weight="bold" fill="#fff">DeepSeek API</text>
+
+  <!-- Start -->
+  <circle cx="105" cy="100" r="12" fill="#333"/>
+  <text x="105" y="128" text-anchor="middle" font-size="10" fill="#555">用户输入问题</text>
+
+  <line x1="105" y1="112" x2="105" y2="140" stroke="#333" stroke-width="1.5"/>
+
+  <!-- Activity: Frontend validate -->
+  <rect x="240" y="140" width="210" height="40" rx="8" fill="#BBDEFB" stroke="#2196F3" stroke-width="2"/>
+  <text x="345" y="166" text-anchor="middle" font-size="12" fill="#1565C0">前端校验输入</text>
+
+  <line x1="105" y1="140" x2="240" y2="160" stroke="#333" stroke-width="1.2"/>
+  <text x="170" y="148" font-size="9" fill="#555">POST</text>
+
+  <!-- Decision: Is logged in? -->
+  <polygon points="345,210 405,250 345,290 285,250" fill="#FFFDE7" stroke="#F9A825" stroke-width="2"/>
+  <text x="345" y="248" text-anchor="middle" font-size="10" fill="#F57F17">已登录?</text>
+
+  <line x1="345" y1="180" x2="345" y2="210" stroke="#333" stroke-width="1.5"/>
+
+  <!-- [No] → Show login prompt -->
+  <rect x="40" y="250" width="130" height="40" rx="8" fill="#FFCDD2" stroke="#F44336" stroke-width="1.5"/>
+  <text x="105" y="276" text-anchor="middle" font-size="11" fill="#C62828">提示登录</text>
+  <line x1="285" y1="250" x2="170" y2="270" stroke="#F44336" stroke-width="1.2"/>
+  <text x="200" y="242" font-size="9" fill="#F44336">[否]</text>
+
+  <!-- [Yes] → POST to backend -->
+  <rect x="530" y="250" width="190" height="40" rx="8" fill="#C8E6C9" stroke="#4CAF50" stroke-width="2"/>
+  <text x="625" y="276" text-anchor="middle" font-size="12" fill="#2E7D32">接收请求 → 验证JWT</text>
+  <line x1="405" y1="250" x2="530" y2="270" stroke="#2E7D32" stroke-width="1.2"/>
+  <text x="460" y="242" font-size="9" fill="#2E7D32">[是]</text>
+
+  <line x1="625" y1="290" x2="625" y2="320" stroke="#333" stroke-width="1.5"/>
+
+  <!-- Activity: Intent parsing -->
+  <rect x="530" y="320" width="190" height="40" rx="8" fill="#C8E6C9" stroke="#4CAF50" stroke-width="2"/>
+  <text x="625" y="346" text-anchor="middle" font-size="12" fill="#2E7D32">意图解析</text>
+
+  <line x1="625" y1="360" x2="625" y2="390" stroke="#333" stroke-width="1.5"/>
+
+  <!-- Decision: Tool call needed? -->
+  <polygon points="625,390 685,430 625,470 565,430" fill="#FFFDE7" stroke="#F9A825" stroke-width="2"/>
+  <text x="625" y="428" text-anchor="middle" font-size="10" fill="#F57F17">需要工具调用?</text>
+
+  <line x1="625" y1="470" x2="625" y2="505" stroke="#333" stroke-width="1.5"/>
+
+  <!-- [Yes] → Tool call -->
+  <rect x="530" y="505" width="190" height="50" rx="8" fill="#C8E6C9" stroke="#4CAF50" stroke-width="2"/>
+  <text x="625" y="525" text-anchor="middle" font-size="11" fill="#2E7D32">调用工具函数</text>
+  <text x="625" y="543" text-anchor="middle" font-size="10" fill="#555">Subsystem1 / Subsystem2 API</text>
+  <line x1="685" y1="430" x2="720" y2="520" stroke="#2E7D32" stroke-width="1.2"/>
+  <text x="720" y="470" font-size="9" fill="#2E7D32">[是]</text>
+
+  <rect x="530" y="575" width="190" height="35" rx="8" fill="#C8E6C9" stroke="#4CAF50" stroke-width="2"/>
+  <text x="625" y="597" text-anchor="middle" font-size="11" fill="#2E7D32">结果聚合 → 嵌入Prompt</text>
+
+  <line x1="625" y1="610" x2="625" y2="640" stroke="#333" stroke-width="1.5"/>
+
+  <!-- Decision: DeepSeek available? -->
+  <polygon points="625,640 685,680 625,720 565,680" fill="#FFFDE7" stroke="#F9A825" stroke-width="2"/>
+  <text x="625" y="678" text-anchor="middle" font-size="10" fill="#F57F17">DeepSeek可用?</text>
+
+  <!-- [Yes] → Build prompt & Call DeepSeek -->
+  <rect x="800" y="680" width="170" height="40" rx="8" fill="#FFE0B2" stroke="#FF9800" stroke-width="2"/>
+  <text x="885" y="706" text-anchor="middle" font-size="12" fill="#E65100">构建Prompt + 调用</text>
+  <line x1="685" y1="680" x2="800" y2="700" stroke="#E65100" stroke-width="1.2"/>
+  <text x="735" y="672" font-size="9" fill="#E65100">[是]</text>
+
+  <rect x="800" y="740" width="170" height="40" rx="8" fill="#FFE0B2" stroke="#FF9800" stroke-width="2"/>
+  <text x="885" y="766" text-anchor="middle" font-size="12" fill="#E65100">解析LLM响应</text>
+
+  <line x1="885" y1="780" x2="885" y2="810" stroke="#333" stroke-width="1.5"/>
+
+  <!-- [No] → Keyword match -->
+  <rect x="530" y="680" width="190" height="40" rx="8" fill="#F3E5F5" stroke="#9C27B0" stroke-width="2"/>
+  <text x="625" y="706" text-anchor="middle" font-size="12" fill="#6A1B9A">关键词匹配 → FAQ</text>
+  <line x1="625" y1="720" x2="625" y2="750" stroke="#333" stroke-width="1.5"/>
+  <text x="595" y="672" font-size="9" fill="#9C27B0">[否/降级]</text>
+
+  <!-- Content safety filter -->
+  <rect x="530" y="750" width="190" height="40" rx="8" fill="#FFF3E0" stroke="#FF9800" stroke-width="2"/>
+  <text x="625" y="776" text-anchor="middle" font-size="12" fill="#E65100">内容安全过滤</text>
+
+  <line x1="625" y1="790" x2="625" y2="820" stroke="#333" stroke-width="1.5"/>
+
+  <!-- Assemble and return -->
+  <rect x="530" y="820" width="190" height="40" rx="8" fill="#C8E6C9" stroke="#4CAF50" stroke-width="2"/>
+  <text x="625" y="846" text-anchor="middle" font-size="12" fill="#2E7D32">组装AnswerResponse</text>
+
+  <!-- Return to frontend -->
+  <line x1="530" y1="840" x2="430" y2="840" stroke="#333" stroke-width="1.2"/>
+  <rect x="240" y="820" width="190" height="40" rx="8" fill="#BBDEFB" stroke="#2196F3" stroke-width="2"/>
+  <text x="335" y="846" text-anchor="middle" font-size="12" fill="#1565C0">ChatPanel渲染回答</text>
+
+  <line x1="240" y1="840" x2="170" y2="840" stroke="#333" stroke-width="1.2"/>
+  <rect x="40" y="820" width="130" height="40" rx="8" fill="#E3F2FD" stroke="#2196F3" stroke-width="2"/>
+  <text x="105" y="846" text-anchor="middle" font-size="12" fill="#1565C0">用户查看回答</text>
+
+  <!-- End -->
+  <circle cx="105" cy="885" r="12" fill="#333" stroke="#333" stroke-width="2"/>
+  <circle cx="105" cy="885" r="6" fill="#fff"/>
+  <line x1="105" y1="860" x2="105" y2="885" stroke="#333" stroke-width="1.5"/>
+
+  <!-- Side note - [No] from tool call bypass -->
+  <line x1="565" y1="430" x2="530" y2="640" stroke="#333" stroke-width="1.2"/>
+  <text x="555" y="535" font-size="9" fill="#555">[否] → 直接</text>
+</svg>

@@ -1,0 +1,141 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 680" width="980" height="680">
+  <defs>
+    <style>
+      text { font-family: "Microsoft YaHei", "SimHei", sans-serif; }
+      .title { font-size: 20px; font-weight: bold; fill: #1a1a2e; }
+      .state-text { font-size: 13px; font-weight: bold; }
+      .trans-text { font-size: 10px; fill: #555; }
+      .section-title { font-size: 15px; font-weight: bold; fill: #2c3e50; }
+    </style>
+    <filter id="shadow"><feDropShadow dx="1" dy="2" stdDeviation="2" flood-opacity="0.12"/></filter>
+    <marker id="arrowH" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#555"/></marker>
+  </defs>
+  <rect width="980" height="680" fill="#FAFBFC" rx="8"/>
+
+  <!-- Title -->
+  <text x="490" y="28" text-anchor="middle" class="title">子系统二——状态迁移图 (场地运维状态 &amp; 评论生命周期状态)</text>
+  <line x1="100" y1="40" x2="880" y2="40" stroke="#4A90D9" stroke-width="1.5"/>
+
+  <!-- ========== Section 1: 场地运维状态 ========== -->
+  <text x="490" y="68" text-anchor="middle" class="section-title">一、场地运维状态迁移图 (VenueOps maintenance_status &amp; lighting_status)</text>
+  <line x1="100" y1="78" x2="880" y2="78" stroke="#ddd" stroke-width="1"/>
+
+  <!-- State: NORMAL -->
+  <rect x="30" y="95" width="140" height="65" rx="30" fill="#50B86C" stroke="#3DA05A" stroke-width="2" filter="url(#shadow)"/>
+  <text x="100" y="130" text-anchor="middle" class="state-text" fill="#fff">NORMAL</text>
+  <text x="100" y="148" text-anchor="middle" font-size="10" fill="#fff">正常使用</text>
+
+  <!-- State: MAINTENANCE -->
+  <rect x="280" y="95" width="150" height="65" rx="30" fill="#F5A623" stroke="#E0950F" stroke-width="2" filter="url(#shadow)"/>
+  <text x="355" y="130" text-anchor="middle" class="state-text" fill="#fff">MAINTENANCE</text>
+  <text x="355" y="148" text-anchor="middle" font-size="10" fill="#fff">维护中</text>
+
+  <!-- State: PENDING_RECTIFICATION -->
+  <rect x="540" y="95" width="170" height="65" rx="30" fill="#E74C3C" stroke="#C0392B" stroke-width="2" filter="url(#shadow)"/>
+  <text x="625" y="130" text-anchor="middle" class="state-text" fill="#fff">PENDING_RECTIFICATION</text>
+  <text x="625" y="148" text-anchor="middle" font-size="10" fill="#fff">待整改</text>
+
+  <!-- Transitions: NORMAL → MAINTENANCE -->
+  <line x1="170" y1="125" x2="278" y2="125" stroke="#555" stroke-width="1.5" marker-end="url(#arrowH)"/>
+  <text x="210" y="118" class="trans-text">管理员设置维护</text>
+  <text x="210" y="132" class="trans-text">(PUT /api/venue-ops/{id})</text>
+
+  <!-- Transitions: MAINTENANCE → NORMAL -->
+  <line x1="280" y1="140" x2="170" y2="140" stroke="#555" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#arrowH)"/>
+  <text x="215" y="156" class="trans-text">维修完成·恢复</text>
+
+  <!-- Transitions: NORMAL → PENDING_RECTIFICATION -->
+  <path d="M160,155 Q340,230 540,155" fill="none" stroke="#555" stroke-width="1.5" marker-end="url(#arrowH)"/>
+  <text x="330" y="220" class="trans-text">保洁打卡"待整改"</text>
+  <text x="330" y="234" class="trans-text">清洁结果=不合格</text>
+
+  <!-- Transitions: PENDING_RECTIFICATION → NORMAL -->
+  <path d="M540,140" fill="none" stroke="#555" stroke-width="1.5" stroke-dasharray="5,3"/>
+  <text x="505" y="90" class="trans-text">整改完成·检查通过</text>
+
+  <!-- State: FULL_FAULT_LIGHTING -->
+  <rect x="280" y="220" width="170" height="65" rx="30" fill="#9C27B0" stroke="#7B1FA2" stroke-width="2" filter="url(#shadow)"/>
+  <text x="365" y="255" text-anchor="middle" class="state-text" fill="#fff">FULL_FAULT_LIGHTING</text>
+  <text x="365" y="273" text-anchor="middle" font-size="10" fill="#fff">灯光全故障(禁止夜间户外)</text>
+
+  <!-- NORMAL → FULL_FAULT_LIGHTING -->
+  <path d="M130,160 Q200,260 280,255" fill="none" stroke="#555" stroke-width="1.5" marker-end="url(#arrowH)"/>
+  <text x="155" y="220" class="trans-text">灯区全部故障</text>
+
+  <!-- FULL_FAULT_LIGHTING → NORMAL -->
+  <path d="M350,220 Q300,185 230,160" fill="none" stroke="#555" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#arrowH)"/>
+  <text x="310" y="195" class="trans-text">灯具修复</text>
+
+  <!-- ========== Section 2: 评论生命周期状态 ========== -->
+  <text x="490" y="320" text-anchor="middle" class="section-title">二、评论生命周期状态迁移图 (Comment status)</text>
+  <line x1="180" y1="330" x2="800" y2="330" stroke="#ddd" stroke-width="1"/>
+
+  <!-- State: DRAFT (temp) -->
+  <rect x="30" y="355" width="120" height="55" rx="8" fill="#90A4AE" stroke="#607D8B" stroke-width="2" filter="url(#shadow)"/>
+  <text x="90" y="377" text-anchor="middle" class="state-text" fill="#fff">DRAFT</text>
+  <text x="90" y="395" text-anchor="middle" font-size="10" fill="#fff">草稿（客户端暂存）</text>
+
+  <!-- State: PENDING_REVIEW -->
+  <rect x="230" y="355" width="140" height="55" rx="8" fill="#42A5F5" stroke="#1E88E5" stroke-width="2" filter="url(#shadow)"/>
+  <text x="300" y="377" text-anchor="middle" class="state-text" fill="#fff">PENDING_REVIEW</text>
+  <text x="300" y="395" text-anchor="middle" font-size="10" fill="#fff">待审核（敏感词待人工）</text>
+
+  <!-- State: PUBLISHED -->
+  <rect x="470" y="355" width="140" height="55" rx="8" fill="#50B86C" stroke="#3DA05A" stroke-width="2" filter="url(#shadow)"/>
+  <text x="540" y="377" text-anchor="middle" class="state-text" fill="#fff">PUBLISHED</text>
+  <text x="540" y="395" text-anchor="middle" font-size="10" fill="#fff">已发布（公开可见）</text>
+
+  <!-- State: HIDDEN -->
+  <rect x="710" y="355" width="130" height="55" rx="8" fill="#F5A623" stroke="#E0950F" stroke-width="2" filter="url(#shadow)"/>
+  <text x="775" y="377" text-anchor="middle" class="state-text" fill="#fff">HIDDEN</text>
+  <text x="775" y="395" text-anchor="middle" font-size="10" fill="#fff">已隐藏（管理员操作）</text>
+
+  <!-- State: DELETED -->
+  <rect x="710" y="455" width="130" height="55" rx="8" fill="#E74C3C" stroke="#C0392B" stroke-width="2" filter="url(#shadow)"/>
+  <text x="775" y="477" text-anchor="middle" class="state-text" fill="#fff">DELETED</text>
+  <text x="775" y="495" text-anchor="middle" font-size="10" fill="#fff">已删除（软删除）</text>
+
+  <!-- Transitions -->
+  <!-- DRAFT → PENDING_REVIEW -->
+  <line x1="150" y1="380" x2="228" y2="380" stroke="#555" stroke-width="1.5" marker-end="url(#arrowH)"/>
+  <text x="170" y="372" class="trans-text">提交评论</text>
+
+  <!-- DRAFT → PUBLISHED (no sensitive word) -->
+  <path d="M90,410 Q90,450 320,450 Q540,450 540,412" fill="none" stroke="#555" stroke-width="1.5" marker-end="url(#arrowH)"/>
+  <text x="250" y="465" class="trans-text">无敏感词→直接发布</text>
+
+  <!-- PENDING_REVIEW → PUBLISHED -->
+  <line x1="370" y1="382" x2="468" y2="382" stroke="#555" stroke-width="1.5" marker-end="url(#arrowH)"/>
+  <text x="400" y="374" class="trans-text">审核通过</text>
+
+  <!-- PENDING_REVIEW → HIDDEN -->
+  <path d="M370,370 Q420,340 710,370" fill="none" stroke="#555" stroke-width="1.5" marker-end="url(#arrowH)"/>
+  <text x="520" y="335" class="trans-text">审核不通过</text>
+
+  <!-- PUBLISHED → HIDDEN -->
+  <line x1="610" y1="382" x2="708" y2="382" stroke="#555" stroke-width="1.5" marker-end="url(#arrowH)"/>
+  <text x="640" y="374" class="trans-text">管理员隐藏</text>
+
+  <!-- HIDDEN → PUBLISHED -->
+  <path d="M710,370 Q690,345 610,370" fill="none" stroke="#555" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#arrowH)"/>
+  <text x="665" y="345" class="trans-text">解除隐藏</text>
+
+  <!-- HIDDEN → DELETED -->
+  <line x1="775" y1="410" x2="775" y2="453" stroke="#555" stroke-width="1.5" marker-end="url(#arrowH)"/>
+  <text x="785" y="435" class="trans-text">管理员删除</text>
+
+  <!-- PUBLISHED → DELETED -->
+  <line x1="610" y1="370" x2="708" y2="480" stroke="#555" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#arrowH)"/>
+  <text x="655" y="430" class="trans-text">作者自删/管理员删除</text>
+
+  <!-- Initial state markers -->
+  <circle cx="30" cy="365" r="5" fill="#333"/>
+  <text x="18" y="350" font-size="10" fill="#555">初始</text>
+
+  <!-- ===== 评论联动场地运维 ===== -->
+  <rect x="30" y="550" width="900" height="70" rx="10" fill="#FFF8E7" stroke="#F5A623" stroke-width="1.5"/>
+  <text x="480" y="575" text-anchor="middle" font-size="13" font-weight="bold" fill="#E65100">评论与运维状态联动规则</text>
+  <text x="480" y="598" text-anchor="middle" font-size="11" fill="#555">高频负面反馈(PUBLISHED, rating≤2, count≥N) → 自动生成负责人待办(UC-O4) → 持续未处理 → 优先级升级 → 管理员介入</text>
+
+  <text x="490" y="665" text-anchor="middle" font-size="10" fill="#999">图例: ——→ 正常迁移  ----→ 返回迁移  ■ 初始状态</text>
+</svg>

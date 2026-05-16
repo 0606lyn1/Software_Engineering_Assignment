@@ -1,0 +1,157 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 720" width="1000" height="720">
+  <defs>
+    <style>
+      text { font-family: 'Microsoft YaHei', 'SimHei', sans-serif; }
+      .title { font-size: 22px; font-weight: bold; fill: #1a1a2e; }
+      .class-name { font-size: 15px; font-weight: bold; fill: #fff; }
+      .stereotype { font-size: 10px; fill: #ccc; }
+      .attr { font-size: 11px; fill: #333; }
+      .method { font-size: 11px; fill: #555; }
+      .rel { font-size: 10px; fill: #666; }
+      .card { font-size: 10px; fill: #888; }
+    </style>
+    <marker id="arrowH" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#fff" stroke="#555" stroke-width="0.8"/>
+    </marker>
+    <marker id="arrowD" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#555"/>
+    </marker>
+    <marker id="arrowDd" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#888"/>
+    </marker>
+  </defs>
+
+  <rect width="1000" height="720" fill="#fafbff" rx="8"/>
+  <text x="500" y="38" text-anchor="middle" class="title">UML类图 — 核心类的静态结构</text>
+
+  <!-- ===== ReservationController ===== -->
+  <rect x="25" y="60" width="200" height="180" rx="6" fill="#fff" stroke="#4a6cf7" stroke-width="2.5" filter="url(#shadow)"/>
+  <rect x="25" y="60" width="200" height="30" rx="6" fill="#4a6cf7"/>
+  <rect x="25" y="78" width="200" height="12" fill="#4a6cf7"/>
+  <text x="125" y="82" text-anchor="middle" class="class-name">ReservationController</text>
+  <line x1="25" y1="107" x2="225" y2="107" stroke="#ddd"/>
+  <text x="35" y="123" class="attr">- reservationService: ReservationService</text>
+  <text x="35" y="141" class="attr">- apiResponse: ApiResponse</text>
+  <line x1="25" y1="150" x2="225" y2="150" stroke="#ddd"/>
+  <text x="35" y="168" class="method">+ createReservation(req, userId): R</text>
+  <text x="35" y="186" class="method">+ listMyReservations(userId): R</text>
+  <text x="35" y="204" class="method">+ cancelReservation(id, userId): R</text>
+  <text x="35" y="222" class="method">+ getSchedule(venueId, date): R</text>
+  <text x="35" y="238" class="method">+ deleteReservation(id): R</text>
+
+  <!-- ===== ReservationService <<interface>> ===== -->
+  <rect x="350" y="60" width="210" height="140" rx="6" fill="#fff" stroke="#10b981" stroke-width="2.5"/>
+  <rect x="350" y="60" width="210" height="30" rx="6" fill="#10b981"/>
+  <rect x="350" y="78" width="210" height="12" fill="#10b981"/>
+  <text x="455" y="82" text-anchor="middle" class="class-name">«interface» ReservationService</text>
+  <line x1="350" y1="107" x2="560" y2="107" stroke="#ddd"/>
+  <line x1="350" y1="118" x2="560" y2="118" stroke="#ddd"/>
+  <text x="360" y="137" class="method">+ createReservation(req, userId): ApiResponse</text>
+  <text x="360" y="155" class="method">+ listMyReservations(userId): List</text>
+  <text x="360" y="173" class="method">+ cancelReservation(id, userId): ApiResponse</text>
+  <text x="360" y="191" class="method">+ getSchedule(venueId, date): List</text>
+
+  <!-- ===== ReservationServiceImpl ===== -->
+  <rect x="340" y="280" width="230" height="180" rx="6" fill="#fff" stroke="#f59e0b" stroke-width="2.5" filter="url(#shadow)"/>
+  <rect x="340" y="280" width="230" height="30" rx="6" fill="#f59e0b"/>
+  <rect x="340" y="298" width="230" height="12" fill="#f59e0b"/>
+  <text x="455" y="302" text-anchor="middle" class="class-name">ReservationServiceImpl</text>
+  <line x1="340" y1="327" x2="570" y2="327" stroke="#ddd"/>
+  <text x="350" y="345" class="attr">- reservationMapper: ReservationMapper</text>
+  <text x="350" y="363" class="attr">- venueOpsService: VenueOpsService</text>
+  <text x="350" y="381" class="attr">- venueMapper: VenueMapper</text>
+  <line x1="340" y1="392" x2="570" y2="392" stroke="#ddd"/>
+  <text x="350" y="410" class="method">+ createReservation(req, userId): ApiResponse</text>
+  <text x="350" y="428" class="method">+ listMyReservations(userId): List</text>
+  <text x="350" y="446" class="method">+ cancelReservation(id, userId): ApiResponse</text>
+  <text x="350" y="462" class="method">+ getSchedule(venueId, date): List</text>
+
+  <!-- ===== Reservation (Entity) ===== -->
+  <rect x="680" y="60" width="195" height="200" rx="6" fill="#fff" stroke="#ec4899" stroke-width="2.5" filter="url(#shadow)"/>
+  <rect x="680" y="60" width="195" height="30" rx="6" fill="#ec4899"/>
+  <rect x="680" y="78" width="195" height="12" fill="#ec4899"/>
+  <text x="778" y="82" text-anchor="middle" class="class-name">Reservation</text>
+  <line x1="680" y1="107" x2="875" y2="107" stroke="#ddd"/>
+  <text x="690" y="125" class="attr">- id: Long</text>
+  <text x="690" y="143" class="attr">- userId: Long</text>
+  <text x="690" y="161" class="attr">- venueId: Long</text>
+  <text x="690" y="179" class="attr">- startTime: LocalDateTime</text>
+  <text x="690" y="197" class="attr">- endTime: LocalDateTime</text>
+  <text x="690" y="215" class="attr">- status: String</text>
+  <text x="690" y="233" class="attr">- version: Integer</text>
+  <line x1="680" y1="240" x2="875" y2="240" stroke="#ddd"/>
+  <text x="690" y="256" class="method">+ getter/setter()</text>
+
+  <!-- ===== ReservationCreateRequest (DTO) ===== -->
+  <rect x="680" y="320" width="220" height="120" rx="6" fill="#fff" stroke="#8b5cf6" stroke-width="2.5"/>
+  <rect x="680" y="320" width="220" height="30" rx="6" fill="#8b5cf6"/>
+  <rect x="680" y="338" width="220" height="12" fill="#8b5cf6"/>
+  <text x="790" y="342" text-anchor="middle" class="class-name">ReservationCreateRequest</text>
+  <line x1="680" y1="367" x2="900" y2="367" stroke="#ddd"/>
+  <text x="690" y="385" class="attr">- venueId: Long @NotNull</text>
+  <text x="690" y="403" class="attr">- startTime: LocalDateTime @NotNull</text>
+  <text x="690" y="421" class="attr">- endTime: LocalDateTime @NotNull</text>
+
+  <!-- ===== ReservationMapper ===== -->
+  <rect x="350" y="530" width="220" height="100" rx="6" fill="#fff" stroke="#06b6d4" stroke-width="2.5"/>
+  <rect x="350" y="530" width="220" height="30" rx="6" fill="#06b6d4"/>
+  <rect x="350" y="548" width="220" height="12" fill="#06b6d4"/>
+  <text x="460" y="552" text-anchor="middle" class="class-name">ReservationMapper</text>
+  <line x1="350" y1="577" x2="570" y2="577" stroke="#ddd"/>
+  <text x="360" y="595" class="method">extends BaseMapper&lt;Reservation&gt;</text>
+  <text x="360" y="613" class="method">+ customSelectList(wrapper): List</text>
+
+  <!-- ===== ApiResponse ===== -->
+  <rect x="680" y="510" width="180" height="100" rx="6" fill="#fff" stroke="#84cc16" stroke-width="2.5"/>
+  <rect x="680" y="510" width="180" height="30" rx="6" fill="#84cc16"/>
+  <rect x="680" y="528" width="180" height="12" fill="#84cc16"/>
+  <text x="770" y="532" text-anchor="middle" class="class-name">ApiResponse&lt;T&gt;</text>
+  <line x1="680" y1="557" x2="860" y2="557" stroke="#ddd"/>
+  <text x="690" y="575" class="attr">- code: Integer</text>
+  <text x="690" y="593" class="attr">- message: String</text>
+  <text x="690" y="609" class="attr">- data: T</text>
+
+  <!-- ===== VenueOpsService ===== -->
+  <rect x="30" y="530" width="180" height="110" rx="6" fill="#fff" stroke="#6366f1" stroke-width="2.5"/>
+  <rect x="30" y="530" width="180" height="30" rx="6" fill="#6366f1"/>
+  <rect x="30" y="548" width="180" height="12" fill="#6366f1"/>
+  <text x="120" y="552" text-anchor="middle" class="class-name">VenueOpsService</text>
+  <line x1="30" y1="577" x2="210" y2="577" stroke="#ddd"/>
+  <text x="40" y="595" class="method">+ evaluateAvailability(id,</text>
+  <text x="40" y="613" class="method">  start, end): AvailabilityResult</text>
+  <text x="40" y="631" class="method">+ lockSlots(venueId, start, end)</text>
+
+  <!-- ===== RELATIONSHIPS ===== -->
+
+  <!-- Controller → Service (dependency) -->
+  <line x1="225" y1="130" x2="350" y2="130" stroke="#555" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#arrowDd)"/>
+  <text x="280" y="122" class="rel" font-style="italic">&lt;&lt;依赖&gt;&gt;</text>
+
+  <!-- ServiceImpl implements Service (realization) -->
+  <line x1="455" y1="200" x2="455" y2="280" stroke="#555" stroke-width="1.5" stroke-dasharray="8,4" marker-end="url(#arrowH)"/>
+  <text x="465" y="245" class="rel" font-style="italic">&lt;&lt;实现&gt;&gt;</text>
+
+  <!-- ServiceImpl → Mapper (dependency) -->
+  <line x1="455" y1="460" x2="455" y2="530" stroke="#555" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#arrowDd)"/>
+  <text x="465" y="500" class="rel" font-style="italic">&lt;&lt;依赖&gt;&gt;</text>
+
+  <!-- ServiceImpl → VenueOpsService (dependency) -->
+  <line x1="340" y1="380" x2="210" y2="580" stroke="#555" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#arrowDd)"/>
+  <text x="240" y="475" class="rel" font-style="italic">&lt;&lt;依赖&gt;&gt;</text>
+
+  <!-- ServiceImpl → ReservationCreateRequest (dependency) -->
+  <line x1="570" y1="310" x2="680" y2="370" stroke="#555" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#arrowDd)"/>
+  <text x="610" y="330" class="rel" font-style="italic">&lt;&lt;依赖&gt;&gt;</text>
+
+  <!-- ServiceImpl → Reservation (dependency/association) -->
+  <line x1="570" y1="340" x2="680" y2="140" stroke="#555" stroke-width="1.5" marker-end="url(#arrowDd)"/>
+  <text x="615" y="230" class="rel" font-style="italic">&lt;&lt;关联&gt;&gt;</text>
+
+  <!-- Controller → ApiResponse (dependency) -->
+  <line x1="225" y1="200" x2="680" y2="550" stroke="#555" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#arrowDd)"/>
+  <text x="400" y="380" class="rel" font-style="italic">&lt;&lt;依赖&gt;&gt;</text>
+
+  <!-- Mapper extends BaseMapper (generalization) -->
+  <line x1="455" y1="630" x2="455" y2="670" stroke="#555" stroke-width="1.5" marker-end="url(#arrowH)"/>
+  <text x="465" y="655" class="rel" font-style="italic">&lt;&lt;泛化&gt;&gt;</text>
+</svg>

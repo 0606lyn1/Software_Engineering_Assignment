@@ -1,0 +1,168 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 700" width="1000" height="700">
+  <defs>
+    <style>
+      text { font-family: 'Microsoft YaHei', 'SimHei', sans-serif; }
+      .title { font-size: 22px; font-weight: bold; fill: #1a1a2e; }
+      .entity-name { font-size: 16px; font-weight: bold; fill: #fff; }
+      .attr { font-size: 11px; fill: #333; }
+      .attr-pk { font-size: 11px; font-weight: bold; fill: #1a1a2e; }
+      .rel { font-size: 11px; fill: #666; }
+      .card { font-size: 10px; fill: #888; }
+    </style>
+    <marker id="arrowPk" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#4a6cf7"/>
+    </marker>
+  </defs>
+
+  <rect width="1000" height="700" fill="#fafbff" rx="8"/>
+
+  <text x="500" y="38" text-anchor="middle" class="title">ER实体关系图 — 体育场馆预约子系统</text>
+
+  <!-- ========== Entity: 用户 User ========== -->
+  <rect x="40" y="65" width="200" height="150" rx="8" fill="#fff" stroke="#4a6cf7" stroke-width="2" filter="url(#shadow)"/>
+  <rect x="40" y="65" width="200" height="32" rx="8" fill="#4a6cf7"/>
+  <rect x="40" y="81" width="200" height="16" fill="#4a6cf7"/>
+  <text x="140" y="86" text-anchor="middle" class="entity-name">用户 User</text>
+  <line x1="40" y1="115" x2="240" y2="115" stroke="#ddd" stroke-width="1"/>
+  <text x="52" y="133" class="attr-pk">id (PK) - INT</text>
+  <text x="52" y="151" class="attr">username - VARCHAR</text>
+  <text x="52" y="169" class="attr">password - VARCHAR</text>
+  <text x="52" y="187" class="attr">email - VARCHAR</text>
+  <text x="52" y="205" class="attr">role - VARCHAR</text>
+  <text x="52" y="220" class="attr">tenant_id - VARCHAR</text>
+
+  <!-- ========== Entity: 场馆 Venue ========== -->
+  <rect x="400" y="65" width="200" height="150" rx="8" fill="#fff" stroke="#10b981" stroke-width="2" filter="url(#shadow)"/>
+  <rect x="400" y="65" width="200" height="32" rx="8" fill="#10b981"/>
+  <rect x="400" y="81" width="200" height="16" fill="#10b981"/>
+  <text x="500" y="86" text-anchor="middle" class="entity-name">场馆 Venue</text>
+  <line x1="400" y1="115" x2="600" y2="115" stroke="#ddd" stroke-width="1"/>
+  <text x="412" y="133" class="attr-pk">id (PK) - INT</text>
+  <text x="412" y="151" class="attr">name - VARCHAR</text>
+  <text x="412" y="169" class="attr">type_id (FK) - INT</text>
+  <text x="412" y="187" class="attr">price - DECIMAL</text>
+  <text x="412" y="205" class="attr">description - TEXT</text>
+  <text x="412" y="220" class="attr">tenant_id - VARCHAR</text>
+
+  <!-- ========== Entity: 预约单 Reservation ========== -->
+  <rect x="40" y="300" width="210" height="150" rx="8" fill="#fff" stroke="#f59e0b" stroke-width="2" filter="url(#shadow)"/>
+  <rect x="40" y="300" width="210" height="32" rx="8" fill="#f59e0b"/>
+  <rect x="40" y="316" width="210" height="16" fill="#f59e0b"/>
+  <text x="145" y="321" text-anchor="middle" class="entity-name">预约单 Reservation</text>
+  <line x1="40" y1="350" x2="250" y2="350" stroke="#ddd" stroke-width="1"/>
+  <text x="52" y="368" class="attr-pk">id (PK) - INT</text>
+  <text x="52" y="386" class="attr">user_id (FK) - INT</text>
+  <text x="52" y="404" class="attr">venue_id (FK) - INT</text>
+  <text x="52" y="422" class="attr">start_time - DATETIME</text>
+  <text x="52" y="440" class="attr">end_time - DATETIME</text>
+  <text x="52" y="455" class="attr">status - VARCHAR</text>
+
+  <!-- ========== Entity: 教学占场 TeachingOccupancy ========== -->
+  <rect x="400" y="300" width="210" height="150" rx="8" fill="#fff" stroke="#f5576c" stroke-width="2" filter="url(#shadow)"/>
+  <rect x="400" y="300" width="210" height="32" rx="8" fill="#f5576c"/>
+  <rect x="400" y="316" width="210" height="16" fill="#f5576c"/>
+  <text x="505" y="321" text-anchor="middle" class="entity-name">教学占场 TeachingOcc</text>
+  <line x1="400" y1="350" x2="610" y2="350" stroke="#ddd" stroke-width="1"/>
+  <text x="412" y="368" class="attr-pk">id (PK) - INT</text>
+  <text x="412" y="386" class="attr">venue_id (FK) - INT</text>
+  <text x="412" y="404" class="attr">teacher_id (FK) - INT</text>
+  <text x="412" y="422" class="attr">cron_rule - VARCHAR</text>
+  <text x="412" y="440" class="attr">exception_dates - TEXT</text>
+  <text x="412" y="455" class="attr">semester - VARCHAR</text>
+
+  <!-- ========== Entity: 锁定记录 LockRecord ========== -->
+  <rect x="40" y="525" width="210" height="130" rx="8" fill="#fff" stroke="#8b5cf6" stroke-width="2" filter="url(#shadow)"/>
+  <rect x="40" y="525" width="210" height="32" rx="8" fill="#8b5cf6"/>
+  <rect x="40" y="541" width="210" height="16" fill="#8b5cf6"/>
+  <text x="145" y="546" text-anchor="middle" class="entity-name">锁定记录 LockRecord</text>
+  <line x1="40" y1="575" x2="250" y2="575" stroke="#ddd" stroke-width="1"/>
+  <text x="52" y="593" class="attr-pk">id (PK) - INT</text>
+  <text x="52" y="611" class="attr">venue_id (FK) - INT</text>
+  <text x="52" y="629" class="attr">start_time - DATETIME</text>
+  <text x="52" y="647" class="attr">end_time - DATETIME</text>
+
+  <!-- ========== Entity: 评论 Comment ========== -->
+  <rect x="400" y="525" width="180" height="130" rx="8" fill="#fff" stroke="#ec4899" stroke-width="2" filter="url(#shadow)"/>
+  <rect x="400" y="525" width="180" height="32" rx="8" fill="#ec4899"/>
+  <rect x="400" y="541" width="180" height="16" fill="#ec4899"/>
+  <text x="490" y="546" text-anchor="middle" class="entity-name">评论 Comment</text>
+  <line x1="400" y1="575" x2="580" y2="575" stroke="#ddd" stroke-width="1"/>
+  <text x="412" y="593" class="attr-pk">id (PK) - INT</text>
+  <text x="412" y="611" class="attr">user_id (FK) - INT</text>
+  <text x="412" y="629" class="attr">venue_id (FK) - INT</text>
+  <text x="412" y="647" class="attr">rating - INT</text>
+
+  <!-- ========== Entity: 运维信息 VenueOps ========== -->
+  <rect x="650" y="525" width="200" height="130" rx="8" fill="#fff" stroke="#06b6d4" stroke-width="2" filter="url(#shadow)"/>
+  <rect x="650" y="525" width="200" height="32" rx="8" fill="#06b6d4"/>
+  <rect x="650" y="541" width="200" height="16" fill="#06b6d4"/>
+  <text x="750" y="546" text-anchor="middle" class="entity-name">运维信息 VenueOps</text>
+  <line x1="650" y1="575" x2="850" y2="575" stroke="#ddd" stroke-width="1"/>
+  <text x="662" y="593" class="attr-pk">id (PK) - INT</text>
+  <text x="662" y="611" class="attr">venue_id (FK) - INT</text>
+  <text x="662" y="629" class="attr">status - VARCHAR</text>
+  <text x="662" y="647" class="attr">last_check - DATETIME</text>
+
+  <!-- ========== Entity: 场馆类型 VenueType ========== -->
+  <rect x="740" y="65" width="180" height="110" rx="8" fill="#fff" stroke="#84cc16" stroke-width="2" filter="url(#shadow)"/>
+  <rect x="740" y="65" width="180" height="32" rx="8" fill="#84cc16"/>
+  <rect x="740" y="81" width="180" height="16" fill="#84cc16"/>
+  <text x="830" y="86" text-anchor="middle" class="entity-name">场馆类型 VenueType</text>
+  <line x1="740" y1="115" x2="920" y2="115" stroke="#ddd" stroke-width="1"/>
+  <text x="752" y="133" class="attr-pk">id (PK) - INT</text>
+  <text x="752" y="151" class="attr">name - VARCHAR</text>
+  <text x="752" y="169" class="attr">icon - VARCHAR</text>
+
+  <!-- ========== RELATIONSHIPS ========== -->
+
+  <!-- User 1:N Reservation -->
+  <line x1="240" y1="200" x2="250" y2="320" stroke="#4a6cf7" stroke-width="2.5"/>
+  <text x="258" y="265" class="rel" fill="#4a6cf7">1</text>
+  <text x="258" y="245" class="card" fill="#4a6cf7">发起</text>
+
+  <line x1="40" y1="200" x2="30" y2="320" stroke="#4a6cf7" stroke-width="2.5"/>
+  <text x="10" y="265" text-anchor="end" class="rel" fill="#4a6cf7">N</text>
+
+  <!-- Venue 1:N Reservation -->
+  <line x1="400" y1="200" x2="250" y2="350" stroke="#10b981" stroke-width="2.5"/>
+  <text x="310" y="265" class="rel" fill="#10b981">1</text>
+  <text x="310" y="245" class="card" fill="#10b981">被预约</text>
+
+  <line x1="240" y1="200" x2="250" y2="350" stroke="#10b981" stroke-width="2.5" stroke-dasharray="0"/>
+  <text x="260" y="300" class="rel" fill="#10b981">N</text>
+
+  <!-- Venue 1:N TeachingOcc -->
+  <line x1="600" y1="215" x2="505" y2="300" stroke="#f5576c" stroke-width="2.5"/>
+  <text x="540" y="255" class="rel" fill="#f5576c">1</text>
+  <text x="540" y="245" class="card" fill="#f5576c">包含</text>
+
+  <!-- Venue 1:N LockRecord -->
+  <line x1="400" y1="150" x2="145" y2="525" stroke="#8b5cf6" stroke-width="2.5"/>
+  <text x="240" y="330" class="rel" fill="#8b5cf6">1</text>
+  <text x="240" y="320" class="card" fill="#8b5cf6">创建</text>
+
+  <!-- Venue 1:N Comment -->
+  <line x1="580" y1="215" x2="490" y2="525" stroke="#ec4899" stroke-width="2.5"/>
+  <text x="525" y="370" class="rel" fill="#ec4899">1</text>
+  <text x="520" y="360" class="card" fill="#ec4899">获得</text>
+
+  <!-- Venue 1:1 VenueOps -->
+  <line x1="600" y1="140" x2="650" y2="560" stroke="#06b6d4" stroke-width="2.5"/>
+  <text x="610" y="340" class="rel" fill="#06b6d4">1</text>
+  <text x="600" y="330" class="card" fill="#06b6d4">关联</text>
+
+  <line x1="850" y1="525" x2="600" y2="170" stroke="#06b6d4" stroke-width="2.5"/>
+  <text x="740" y="340" class="rel" fill="#06b6d4">1</text>
+
+  <!-- VenueType 1:N Venue -->
+  <line x1="740" y1="120" x2="600" y2="120" stroke="#84cc16" stroke-width="2.5"/>
+  <text x="670" y="115" class="rel" fill="#84cc16">1</text>
+  <text x="670" y="105" class="card" fill="#84cc16">分类</text>
+
+  <line x1="400" y1="120" x2="380" y2="120" stroke="#84cc16" stroke-width="2.5"/>
+  <text x="400" y="115" class="rel" fill="#84cc16">N</text>
+
+  <!-- Legend -->
+  <rect x="30" y="665" width="940" height="30" rx="6" fill="#f0f0f0"/>
+  <text x="50" y="686" font-size="11" fill="#666">图例：▬ 1 → N 强实体关系 | PK=主键 | FK=外键</text>
+</svg>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>三子系统数据流图（DFD）浏览</title>
+  <style>
+    :root {
+      --ink: #0d1b2a;
+      --muted: #5c6b7a;
+      --bg: #f6f4f0;
+      --card: #fff;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Noto Sans SC", "Microsoft YaHei", "PingFang SC", system-ui, sans-serif;
+      color: var(--ink);
+      background: var(--bg);
+      line-height: 1.5;
+    }
+    header {
+      padding: 1.5rem 1.25rem 1rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    h1 { font-size: 1.35rem; font-weight: 700; margin: 0 0 0.35rem; }
+    p.lead { margin: 0; color: var(--muted); font-size: 0.95rem; }
+    nav {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.25rem 1rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem 1rem;
+    }
+    nav a { color: #1b4f72; text-decoration: none; font-size: 0.9rem; }
+    nav a:hover { text-decoration: underline; }
+    section {
+      max-width: 1200px;
+      margin: 0 auto 2.5rem;
+      padding: 0 1.25rem;
+    }
+    .card {
+      background: var(--card);
+      border-radius: 10px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+      overflow: auto;
+    }
+    h2 {
+      font-size: 1.1rem;
+      margin: 0 0 0.75rem;
+      padding: 1rem 1rem 0;
+    }
+    .diagram-wrap {
+      padding: 0 0.5rem 1rem;
+      overflow-x: auto;
+    }
+    .diagram-wrap img {
+      display: block;
+      width: min(1100px, 100%);
+      height: auto;
+      margin: 0 auto;
+    }
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>智慧校园体育场地平台 — 三子系统数据流图</h1>
+    <p class="lead">依据《需求分析》三份子系统文档绘制：各含<strong>上下文图（顶层）</strong>与<strong>0层分解图</strong>。单独 SVG 可与课程报告直接嵌入。</p>
+  </header>
+  <nav aria-label="章节跳转">
+    <a href="#sub1">子系统一 · 预约与时空调度</a>
+    <a href="#sub2">子系统二 · 运维与公众监督</a>
+    <a href="#sub3">子系统三 · 智能辅助 DeepSeek</a>
+  </nav>
+
+  <section id="sub1">
+    <div class="card">
+      <h2>子系统一：多校体育场地预约与时空调度</h2>
+      <p class="lead" style="padding: 0 1rem 0.5rem;">文件：<code>dfd-subsystem-1-booking.svg</code></p>
+      <div class="diagram-wrap">
+        <img src="dfd-subsystem-1-booking.svg" alt="子系统一 预约调度 数据流图" />
+      </div>
+    </div>
+  </section>
+
+  <section id="sub2">
+    <div class="card">
+      <h2>子系统二：场地运维、资产与公众监督</h2>
+      <p class="lead" style="padding: 0 1rem 0.5rem;">文件：<code>dfd-subsystem-2-operations.svg</code></p>
+      <div class="diagram-wrap">
+        <img src="dfd-subsystem-2-operations.svg" alt="子系统二 运维监督 数据流图" />
+      </div>
+    </div>
+  </section>
+
+  <section id="sub3">
+    <div class="card">
+      <h2>子系统三：智能辅助与多角色用户服务（DeepSeek）</h2>
+      <p class="lead" style="padding: 0 1rem 0.5rem;">文件：<code>dfd-subsystem-3-assistant.svg</code></p>
+      <div class="diagram-wrap">
+        <img src="dfd-subsystem-3-assistant.svg" alt="子系统三 智能助手 数据流图" />
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    矢量图源文件位于 <code>docs/dfd/</code>；可用浏览器打开本页预览，或将 SVG 插入 Word / Typora / draw.io 进一步编辑。<br />
+    Visio（.vsdx）格式需在本机用 Visio / draw.io「导入 SVG」另存。
+  </footer>
+</body>
+</html>

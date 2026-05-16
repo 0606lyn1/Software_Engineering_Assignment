@@ -1,0 +1,110 @@
+﻿openapi: 3.0.3
+info:
+  title: 体育场馆预约系统 API
+  version: 1.0.0
+servers:
+  - url: http://localhost:8080
+paths:
+  /api/auth/login:
+    post:
+      summary: 用户登录
+      requestBody:
+        required: true
+        content:
+          application/json:
+            example:
+              username: admin
+              password: admin123
+      responses:
+        '200':
+          description: 登录成功
+          content:
+            application/json:
+              example:
+                code: 0
+                msg: success
+                data:
+                  token: jwt-token
+                  user:
+                    id: 1
+                    username: admin
+                    email: admin@example.com
+                    role: ADMIN
+                    createdAt: 2026-03-12T10:00:00
+  /api/auth/register:
+    post:
+      summary: 用户注册
+      responses:
+        '200':
+          description: 注册成功
+        '400':
+          description: 参数错误
+  /api/venues:
+    get:
+      summary: 场馆列表
+      parameters:
+        - in: query
+          name: typeId
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: 查询成功
+    post:
+      summary: 新增场馆
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: 创建成功
+        '401':
+          description: 未授权
+  /api/reservations:
+    get:
+      summary: 我的预约
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: 查询成功
+    post:
+      summary: 创建预约
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            example:
+              venueId: 1
+              startTime: 2026-03-15T10:00:00
+              endTime: 2026-03-15T11:00:00
+      responses:
+        '200':
+          description: 预约成功
+        '400':
+          description: 冲突或参数错误
+  /api/comments:
+    get:
+      summary: 场馆评论列表
+      parameters:
+        - in: query
+          name: venueId
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: 查询成功
+    post:
+      summary: 发布评论
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: 发布成功
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
