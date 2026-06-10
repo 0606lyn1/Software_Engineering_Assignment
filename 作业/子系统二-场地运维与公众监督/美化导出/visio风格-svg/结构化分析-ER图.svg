@@ -1,0 +1,273 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1256 916" width="1256" height="916">
+  <defs id="codex-visio-style">
+    <filter id="codexVisioShadow" x="-8%" y="-8%" width="116%" height="116%">
+      <feDropShadow dx="0" dy="2" stdDeviation="1.8" flood-color="#1f3b73" flood-opacity="0.16"/>
+    </filter>
+    <linearGradient id="codexPageGradient" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#fbfdff"/>
+      <stop offset="100%" stop-color="#eef4fb"/>
+    </linearGradient>
+    <pattern id="codexGrid" width="28" height="28" patternUnits="userSpaceOnUse">
+      <path d="M 28 0 L 0 0 0 28" fill="none" stroke="#d9e3f0" stroke-width="0.8" opacity="0.38"/>
+    </pattern>
+    <style><![CDATA[
+      svg {
+        background: #edf2f8;
+      }
+      text {
+        font-family: "Microsoft YaHei", "Microsoft JhengHei", "SimHei", "Segoe UI", Arial, sans-serif !important;
+        paint-order: stroke fill;
+        stroke: rgba(255,255,255,0.72);
+        stroke-width: 1.2px;
+        letter-spacing: 0.05px;
+      }
+      .codex-text-overlay text {
+        filter: none !important;
+        paint-order: stroke fill !important;
+        stroke: #ffffff !important;
+        stroke-width: 3.2px !important;
+        stroke-linejoin: round !important;
+      }
+      .codex-text-overlay .swimlane,
+      .codex-text-overlay .action,
+      .codex-text-overlay .lifeline,
+      .codex-text-overlay text[fill="#fff"],
+      .codex-text-overlay text[fill="#ffffff"],
+      .codex-text-overlay text[fill="white"] {
+        stroke: rgba(18, 32, 54, 0.55) !important;
+        stroke-width: 0.85px !important;
+      }
+      .title {
+        fill: #17345d !important;
+        font-weight: 700 !important;
+      }
+      rect:not(.codex-page-bg):not(.codex-grid-bg),
+      ellipse,
+      circle,
+      polygon {
+        filter: url(#codexVisioShadow);
+        stroke-linejoin: round;
+      }
+      path,
+      line,
+      polyline {
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+      marker path {
+        filter: none;
+      }
+    ]]></style>
+  </defs>
+  <rect class="codex-page-bg" x="0" y="0" width="1256" height="916" rx="14" fill="url(#codexPageGradient)"/>
+  <rect class="codex-grid-bg" x="0" y="0" width="1256" height="916" fill="url(#codexGrid)" opacity="0.12"/>
+
+  <g transform="translate(80 80)">
+
+  <defs>
+    <style>
+      text { font-family: "Microsoft YaHei", "SimHei", sans-serif; }
+      .title { font-size: 20px; font-weight: bold; fill: #1a1a2e; }
+      .entity-title { font-size: 12px; font-weight: bold; fill: #fff; }
+      .attr { font-size: 10px; fill: #333; }
+      .pk { font-size: 10px; fill: #C62828; font-weight: bold; }
+      .fk { font-size: 10px; fill: #1565C0; font-style: italic; }
+      .rel-label { font-size: 10px; fill: #555; }
+    </style>
+    <filter id="shadow"><feDropShadow dx="1" dy="2" stdDeviation="1.5" flood-opacity="0.1"/></filter>
+  </defs>
+  <rect width="1000" height="680" fill="#FAFBFC" rx="8"/>
+
+  <!-- Title -->
+  <text x="500" y="28" text-anchor="middle" class="title">子系统二——场地运维与公众监督系统 ER 实体关系图</text>
+  <line x1="140" y1="38" x2="860" y2="38" stroke="#4A90D9" stroke-width="1.5"/>
+
+  <!-- ===== Entity: t_venue (场地) ===== -->
+  <rect x="40" y="60" width="200" height="195" rx="6" fill="#fff" stroke="#1976D2" stroke-width="2" filter="url(#shadow)"/>
+  <rect x="40" y="60" width="200" height="28" rx="6" fill="#1976D2"/>
+  <rect x="40" y="78" width="200" height="10" fill="#1976D2"/>
+  <text x="140" y="79" text-anchor="middle" class="entity-title">t_venue (场地)</text>
+  <text x="56" y="108" class="pk">◆ id (PK)</text>
+  <text x="56" y="126" class="attr">  name 场地名称</text>
+  <text x="56" y="144" class="attr">  type 场地类型</text>
+  <text x="56" y="162" class="attr">  location 位置</text>
+  <text x="56" y="180" class="attr">  capacity 容量</text>
+  <text x="56" y="198" class="attr">  status 场地状态</text>
+  <text x="56" y="216" class="attr">  created_at / updated_at</text>
+  <text x="56" y="234" class="attr">  is_outdoor 是否室外</text>
+
+  <!-- ===== Entity: t_venue_ops (场地运维信息) ===== -->
+  <rect x="380" y="60" width="210" height="280" rx="6" fill="#fff" stroke="#388E3C" stroke-width="2" filter="url(#shadow)"/>
+  <rect x="380" y="60" width="210" height="28" rx="6" fill="#388E3C"/>
+  <rect x="380" y="78" width="210" height="10" fill="#388E3C"/>
+  <text x="485" y="79" text-anchor="middle" class="entity-title">t_venue_ops (场地运维信息)</text>
+  <text x="396" y="108" class="pk">◆ id (PK)</text>
+  <text x="396" y="126" class="fk"># venue_id (FK)</text>
+  <text x="396" y="144" class="attr">  maintenance_status(ENUM)</text>
+  <text x="396" y="159" class="attr">    NORMAL|MAINTENANCE</text>
+  <text x="396" y="177" class="attr">  cleaning_status(ENUM)</text>
+  <text x="396" y="192" class="attr">    QUALIFIED|PENDING_RECTIFICATION</text>
+  <text x="396" y="210" class="attr">  lighting_status(ENUM)</text>
+  <text x="396" y="225" class="attr">    NORMAL|PARTIAL_FAULT|FULL_FAULT</text>
+  <text x="396" y="243" class="attr">  reservation_policy(ENUM)</text>
+  <text x="396" y="258" class="attr">  responsible_name/role/phone</text>
+  <text x="396" y="276" class="attr">  equipment_policy</text>
+  <text x="396" y="294" class="attr">  self_equipment_required/list</text>
+  <text x="396" y="312" class="attr">  last_cleaned_at/inspected_at</text>
+
+  <!-- ===== Entity: t_comment (评论) ===== -->
+  <rect x="730" y="60" width="210" height="165" rx="6" fill="#fff" stroke="#F57C00" stroke-width="2" filter="url(#shadow)"/>
+  <rect x="730" y="60" width="210" height="28" rx="6" fill="#F57C00"/>
+  <rect x="730" y="78" width="210" height="10" fill="#F57C00"/>
+  <text x="835" y="79" text-anchor="middle" class="entity-title">t_comment (评论)</text>
+  <text x="746" y="108" class="pk">◆ id (PK)</text>
+  <text x="746" y="126" class="fk"># user_id (FK)</text>
+  <text x="746" y="144" class="fk"># venue_id (FK)</text>
+  <text x="746" y="162" class="attr">  rating (1-5)</text>
+  <text x="746" y="180" class="attr">  content (max 500)</text>
+  <text x="746" y="198" class="attr">  status (PUBLISHED/HIDDEN/DELETED)</text>
+  <text x="746" y="216" class="attr">  created_at / updated_at</text>
+
+  <!-- ===== Entity: t_user (用户) ===== -->
+  <rect x="40" y="340" width="180" height="155" rx="6" fill="#fff" stroke="#7B1FA2" stroke-width="2" filter="url(#shadow)"/>
+  <rect x="40" y="340" width="180" height="28" rx="6" fill="#7B1FA2"/>
+  <rect x="40" y="358" width="180" height="10" fill="#7B1FA2"/>
+  <text x="130" y="359" text-anchor="middle" class="entity-title">t_user (用户)</text>
+  <text x="56" y="388" class="pk">◆ id (PK)</text>
+  <text x="56" y="406" class="attr">  username 用户名</text>
+  <text x="56" y="424" class="attr">  password 密码(加密)</text>
+  <text x="56" y="442" class="attr">  role (USER/ADMIN/CLEANER)</text>
+  <text x="56" y="460" class="attr">  phone 电话</text>
+  <text x="56" y="478" class="attr">  avatar 头像</text>
+
+  <!-- ===== Entity: t_responsible_history (负责人变更历史) ===== -->
+  <rect x="380" y="400" width="200" height="135" rx="6" fill="#fff" stroke="#00897B" stroke-width="2" filter="url(#shadow)"/>
+  <rect x="380" y="400" width="200" height="28" rx="6" fill="#00897B"/>
+  <rect x="380" y="418" width="200" height="10" fill="#00897B"/>
+  <text x="480" y="419" text-anchor="middle" class="entity-title">t_responsible_history (负责人变更历史)</text>
+  <text x="396" y="448" class="pk">◆ id (PK)</text>
+  <text x="396" y="466" class="fk"># venue_id (FK)</text>
+  <text x="396" y="484" class="attr">  old_responsible_name</text>
+  <text x="396" y="502" class="attr">  new_responsible_name</text>
+  <text x="396" y="520" class="attr">  changed_by 操作人</text>
+
+  <!-- ===== Entity: t_cleaning_log (清洁日志) ===== -->
+  <rect x="720" y="400" width="200" height="155" rx="6" fill="#fff" stroke="#5C6BC0" stroke-width="2" filter="url(#shadow)"/>
+  <rect x="720" y="400" width="200" height="28" rx="6" fill="#5C6BC0"/>
+  <rect x="720" y="418" width="200" height="10" fill="#5C6BC0"/>
+  <text x="820" y="419" text-anchor="middle" class="entity-title">t_cleaning_log (清洁日志)</text>
+  <text x="736" y="448" class="pk">◆ id (PK)</text>
+  <text x="736" y="466" class="fk"># venue_id (FK)</text>
+  <text x="736" y="484" class="fk"># cleaner_id (FK)</text>
+  <text x="736" y="502" class="attr">  clean_result 清洁结果</text>
+  <text x="736" y="520" class="attr">  clean_notes 备注</text>
+  <text x="736" y="538" class="attr">  photo_url 照片</text>
+
+  <!-- ===== Entity: t_lighting_log (灯光记录) ===== -->
+  <rect x="110" y="560" width="200" height="110" rx="6" fill="#fff" stroke="#EC407A" stroke-width="2" filter="url(#shadow)"/>
+  <rect x="110" y="560" width="200" height="28" rx="6" fill="#EC407A"/>
+  <rect x="110" y="578" width="200" height="10" fill="#EC407A"/>
+  <text x="210" y="579" text-anchor="middle" class="entity-title">t_lighting_log (灯光记录)</text>
+  <text x="126" y="608" class="pk">◆ id (PK)</text>
+  <text x="126" y="626" class="fk"># venue_id (FK)</text>
+  <text x="126" y="644" class="attr">  lighting_zone 灯区</text>
+  <text x="126" y="662" class="attr">  status 灯区状态</text>
+
+  <!-- Relationships -->
+  <!-- venue 1:1 venue_ops -->
+  <line x1="240" y1="160" x2="378" y2="160" stroke="#388E3C" stroke-width="1.5"/>
+  <text x="290" y="152" class="rel-label">1:1 拥有</text>
+  <text x="310" y="172" font-size="9" fill="#666">venue_id</text>
+
+  <!-- venue 1:N comment -->
+  <line x1="240" y1="120" x2="728" y2="120" stroke="#F57C00" stroke-width="1.5"/>
+  <text x="460" y="112" class="rel-label">1:N 被评论</text>
+
+  <!-- user 1:N comment -->
+  <line x1="220" y1="410" x2="728" y2="170" stroke="#7B1FA2" stroke-width="1.5"/>
+  <text x="450" y="340" class="rel-label">1:N 发表</text>
+
+  <!-- venue 1:N cleaning_log -->
+  <line x1="160" y1="255" x2="780" y2="398" stroke="#5C6BC0" stroke-width="1.5"/>
+  <text x="340" y="330" class="rel-label">1:N 清洁记录</text>
+
+  <!-- venue 1:N lighting_log -->
+  <line x1="140" y1="255" x2="190" y2="558" stroke="#EC407A" stroke-width="1.5"/>
+  <text x="100" y="410" class="rel-label">1:N 灯光</text>
+
+  <!-- venue 1:N responsible_history -->
+  <line x1="240" y1="210" x2="378" y2="460" stroke="#00897B" stroke-width="1.5"/>
+  <text x="310" y="340" class="rel-label">1:N 变更</text>
+
+  <!-- Footer -->
+  <text x="500" y="670" text-anchor="middle" font-size="10" fill="#999">图例: ◆ 主键(PK)   # 外键(FK)   —— 普通属性   1:1/1:N 基数关系</text>
+
+  </g>
+  <g class="codex-text-overlay" transform="translate(80 80)">
+    <text x="500" y="28" text-anchor="middle" class="title">子系统二——场地运维与公众监督系统 ER 实体关系图</text>
+    <text x="140" y="79" text-anchor="middle" class="entity-title">t_venue (场地)</text>
+    <text x="56" y="108" class="pk">◆ id (PK)</text>
+    <text x="56" y="126" class="attr">  name 场地名称</text>
+    <text x="56" y="144" class="attr">  type 场地类型</text>
+    <text x="56" y="162" class="attr">  location 位置</text>
+    <text x="56" y="180" class="attr">  capacity 容量</text>
+    <text x="56" y="198" class="attr">  status 场地状态</text>
+    <text x="56" y="216" class="attr">  created_at / updated_at</text>
+    <text x="56" y="234" class="attr">  is_outdoor 是否室外</text>
+    <text x="485" y="79" text-anchor="middle" class="entity-title">t_venue_ops (场地运维信息)</text>
+    <text x="396" y="108" class="pk">◆ id (PK)</text>
+    <text x="396" y="126" class="fk"># venue_id (FK)</text>
+    <text x="396" y="144" class="attr">  maintenance_status(ENUM)</text>
+    <text x="396" y="159" class="attr">    NORMAL|MAINTENANCE</text>
+    <text x="396" y="177" class="attr">  cleaning_status(ENUM)</text>
+    <text x="396" y="192" class="attr">    QUALIFIED|PENDING_RECTIFICATION</text>
+    <text x="396" y="210" class="attr">  lighting_status(ENUM)</text>
+    <text x="396" y="225" class="attr">    NORMAL|PARTIAL_FAULT|FULL_FAULT</text>
+    <text x="396" y="243" class="attr">  reservation_policy(ENUM)</text>
+    <text x="396" y="258" class="attr">  responsible_name/role/phone</text>
+    <text x="396" y="276" class="attr">  equipment_policy</text>
+    <text x="396" y="294" class="attr">  self_equipment_required/list</text>
+    <text x="396" y="312" class="attr">  last_cleaned_at/inspected_at</text>
+    <text x="835" y="79" text-anchor="middle" class="entity-title">t_comment (评论)</text>
+    <text x="746" y="108" class="pk">◆ id (PK)</text>
+    <text x="746" y="126" class="fk"># user_id (FK)</text>
+    <text x="746" y="144" class="fk"># venue_id (FK)</text>
+    <text x="746" y="162" class="attr">  rating (1-5)</text>
+    <text x="746" y="180" class="attr">  content (max 500)</text>
+    <text x="746" y="198" class="attr">  status (PUBLISHED/HIDDEN/DELETED)</text>
+    <text x="746" y="216" class="attr">  created_at / updated_at</text>
+    <text x="130" y="359" text-anchor="middle" class="entity-title">t_user (用户)</text>
+    <text x="56" y="388" class="pk">◆ id (PK)</text>
+    <text x="56" y="406" class="attr">  username 用户名</text>
+    <text x="56" y="424" class="attr">  password 密码(加密)</text>
+    <text x="56" y="442" class="attr">  role (USER/ADMIN/CLEANER)</text>
+    <text x="56" y="460" class="attr">  phone 电话</text>
+    <text x="56" y="478" class="attr">  avatar 头像</text>
+    <text x="480" y="419" text-anchor="middle" class="entity-title">t_responsible_history (负责人变更历史)</text>
+    <text x="396" y="448" class="pk">◆ id (PK)</text>
+    <text x="396" y="466" class="fk"># venue_id (FK)</text>
+    <text x="396" y="484" class="attr">  old_responsible_name</text>
+    <text x="396" y="502" class="attr">  new_responsible_name</text>
+    <text x="396" y="520" class="attr">  changed_by 操作人</text>
+    <text x="820" y="419" text-anchor="middle" class="entity-title">t_cleaning_log (清洁日志)</text>
+    <text x="736" y="448" class="pk">◆ id (PK)</text>
+    <text x="736" y="466" class="fk"># venue_id (FK)</text>
+    <text x="736" y="484" class="fk"># cleaner_id (FK)</text>
+    <text x="736" y="502" class="attr">  clean_result 清洁结果</text>
+    <text x="736" y="520" class="attr">  clean_notes 备注</text>
+    <text x="736" y="538" class="attr">  photo_url 照片</text>
+    <text x="210" y="579" text-anchor="middle" class="entity-title">t_lighting_log (灯光记录)</text>
+    <text x="126" y="608" class="pk">◆ id (PK)</text>
+    <text x="126" y="626" class="fk"># venue_id (FK)</text>
+    <text x="126" y="644" class="attr">  lighting_zone 灯区</text>
+    <text x="126" y="662" class="attr">  status 灯区状态</text>
+    <text x="290" y="152" class="rel-label">1:1 拥有</text>
+    <text x="310" y="172" font-size="9" fill="#666">venue_id</text>
+    <text x="460" y="112" class="rel-label">1:N 被评论</text>
+    <text x="450" y="340" class="rel-label">1:N 发表</text>
+    <text x="340" y="330" class="rel-label">1:N 清洁记录</text>
+    <text x="100" y="410" class="rel-label">1:N 灯光</text>
+    <text x="310" y="340" class="rel-label">1:N 变更</text>
+    <text x="500" y="670" text-anchor="middle" font-size="10" fill="#999">图例: ◆ 主键(PK)   # 外键(FK)   —— 普通属性   1:1/1:N 基数关系</text>
+  </g>
+</svg>

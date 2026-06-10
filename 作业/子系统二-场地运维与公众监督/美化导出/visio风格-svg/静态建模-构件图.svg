@@ -1,0 +1,221 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1186 856" width="1186" height="856">
+  <defs id="codex-visio-style">
+    <filter id="codexVisioShadow" x="-8%" y="-8%" width="116%" height="116%">
+      <feDropShadow dx="0" dy="2" stdDeviation="1.8" flood-color="#1f3b73" flood-opacity="0.16"/>
+    </filter>
+    <linearGradient id="codexPageGradient" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#fbfdff"/>
+      <stop offset="100%" stop-color="#eef4fb"/>
+    </linearGradient>
+    <pattern id="codexGrid" width="28" height="28" patternUnits="userSpaceOnUse">
+      <path d="M 28 0 L 0 0 0 28" fill="none" stroke="#d9e3f0" stroke-width="0.8" opacity="0.38"/>
+    </pattern>
+    <style><![CDATA[
+      svg {
+        background: #edf2f8;
+      }
+      text {
+        font-family: "Microsoft YaHei", "Microsoft JhengHei", "SimHei", "Segoe UI", Arial, sans-serif !important;
+        paint-order: stroke fill;
+        stroke: rgba(255,255,255,0.72);
+        stroke-width: 1.2px;
+        letter-spacing: 0.05px;
+      }
+      .codex-text-overlay text {
+        filter: none !important;
+        paint-order: stroke fill !important;
+        stroke: #ffffff !important;
+        stroke-width: 3.2px !important;
+        stroke-linejoin: round !important;
+      }
+      .codex-text-overlay .swimlane,
+      .codex-text-overlay .action,
+      .codex-text-overlay .lifeline,
+      .codex-text-overlay text[fill="#fff"],
+      .codex-text-overlay text[fill="#ffffff"],
+      .codex-text-overlay text[fill="white"] {
+        stroke: rgba(18, 32, 54, 0.55) !important;
+        stroke-width: 0.85px !important;
+      }
+      .title {
+        fill: #17345d !important;
+        font-weight: 700 !important;
+      }
+      rect:not(.codex-page-bg):not(.codex-grid-bg),
+      ellipse,
+      circle,
+      polygon {
+        filter: url(#codexVisioShadow);
+        stroke-linejoin: round;
+      }
+      path,
+      line,
+      polyline {
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+      marker path {
+        filter: none;
+      }
+    ]]></style>
+  </defs>
+  <rect class="codex-page-bg" x="0" y="0" width="1186" height="856" rx="14" fill="url(#codexPageGradient)"/>
+  <rect class="codex-grid-bg" x="0" y="0" width="1186" height="856" fill="url(#codexGrid)" opacity="0.12"/>
+
+  <g transform="translate(80 80)">
+
+  <defs>
+    <style>
+      text { font-family: "Microsoft YaHei", "SimHei", sans-serif; }
+      .title { font-size: 20px; font-weight: bold; fill: #1a1a2e; }
+      .comp-text { font-size: 12px; font-weight: bold; fill: #fff; }
+      .port-text { font-size: 10px; fill: #333; }
+      .rel-label { font-size: 10px; fill: #555; }
+    </style>
+    <filter id="shadow"><feDropShadow dx="1" dy="2" stdDeviation="1.5" flood-opacity="0.1"/></filter>
+    <marker id="arrowH" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#555"/></marker>
+  </defs>
+  <rect width="930" height="620" fill="#FAFBFC" rx="8"/>
+
+  <text x="465" y="28" text-anchor="middle" class="title">子系统二——场地运维与公众监督系统 构件图 (Component Diagram)</text>
+  <line x1="100" y1="40" x2="830" y2="40" stroke="#4A90D9" stroke-width="1.5"/>
+
+  <!-- ========== Frontend Component ========== -->
+  <rect x="30" y="60" width="360" height="250" rx="8" fill="none" stroke="#1976D2" stroke-width="2" filter="url(#shadow)"/>
+  <rect x="30" y="60" width="200" height="24" rx="4" fill="#1976D2"/>
+  <text x="130" y="77" text-anchor="middle" font-size="11" font-weight="bold" fill="#fff">«前端构件» Vue3 + TypeScript</text>
+
+  <!-- Sub components -->
+  <rect x="50" y="100" width="150" height="50" rx="6" fill="#42A5F5" stroke="#1E88E5" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="125" y="122" text-anchor="middle" class="comp-text">VenueList.vue</text>
+  <text x="125" y="140" text-anchor="middle" class="comp-text" font-size="10" font-weight="normal">场地列表+运维状态</text>
+
+  <rect x="220" y="100" width="150" height="50" rx="6" fill="#42A5F5" stroke="#1E88E5" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="295" y="122" text-anchor="middle" class="comp-text">CommentList.vue</text>
+  <text x="295" y="140" text-anchor="middle" class="comp-text" font-size="10" font-weight="normal">评论列表+发表</text>
+
+  <rect x="50" y="175" width="150" height="50" rx="6" fill="#42A5F5" stroke="#1E88E5" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="125" y="197" text-anchor="middle" class="comp-text">AdminManage.vue</text>
+  <text x="125" y="215" text-anchor="middle" class="comp-text" font-size="10" font-weight="normal">管理员运维配置</text>
+
+  <rect x="220" y="175" width="150" height="50" rx="6" fill="#AB47BC" stroke="#8E24AA" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="295" y="197" text-anchor="middle" class="comp-text">Pinia Store</text>
+  <text x="295" y="215" text-anchor="middle" class="comp-text" font-size="10" font-weight="normal">状态管理+JWT</text>
+
+  <rect x="50" y="248" width="320" height="45" rx="6" fill="#E3F2FD" stroke="#1976D2" stroke-width="1"/>
+  <text x="210" y="268" text-anchor="middle" font-size="10" fill="#555">HTTP Client (Axios) + Ant Design Vue UI组件</text>
+
+  <!-- ========== Backend Component ========== -->
+  <rect x="470" y="60" width="430" height="300" rx="8" fill="none" stroke="#388E3C" stroke-width="2" filter="url(#shadow)"/>
+  <rect x="470" y="60" width="240" height="24" rx="4" fill="#388E3C"/>
+  <text x="590" y="77" text-anchor="middle" font-size="11" font-weight="bold" fill="#fff">«后端构件» Spring Boot 3.4.4</text>
+
+  <rect x="490" y="100" width="180" height="55" rx="6" fill="#50B86C" stroke="#3DA05A" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="580" y="122" text-anchor="middle" class="comp-text">VenueOpsController</text>
+  <text x="580" y="140" text-anchor="middle" class="comp-text" font-size="10" font-weight="normal">REST API /venue-ops/**</text>
+
+  <rect x="690" y="100" width="190" height="55" rx="6" fill="#50B86C" stroke="#3DA05A" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="785" y="122" text-anchor="middle" class="comp-text">CommentController</text>
+  <text x="785" y="140" text-anchor="middle" class="comp-text" font-size="10" font-weight="normal">REST API /comments/**</text>
+
+  <rect x="490" y="175" width="180" height="50" rx="6" fill="#66BB6A" stroke="#43A047" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="580" y="197" text-anchor="middle" class="comp-text">VenueOpsService</text>
+  <text x="580" y="215" text-anchor="middle" class="comp-text" font-size="10" font-weight="normal">业务逻辑+可用性评估</text>
+
+  <rect x="690" y="175" width="190" height="50" rx="6" fill="#66BB6A" stroke="#43A047" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="785" y="197" text-anchor="middle" class="comp-text">CommentService</text>
+  <text x="785" y="215" text-anchor="middle" class="comp-text" font-size="10" font-weight="normal">敏感词+反刷屏+CRUD</text>
+
+  <rect x="490" y="248" width="180" height="45" rx="6" fill="#A5D6A7" stroke="#66BB6A" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="580" y="270" text-anchor="middle" class="comp-text">VenueOpsMapper</text>
+  <text x="580" y="288" text-anchor="middle" class="comp-text" font-size="10" font-weight="normal">MyBatis-Plus BaseMapper</text>
+
+  <rect x="690" y="248" width="190" height="45" rx="6" fill="#A5D6A7" stroke="#66BB6A" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="785" y="270" text-anchor="middle" class="comp-text">CommentMapper</text>
+  <text x="785" y="288" text-anchor="middle" class="comp-text" font-size="10" font-weight="normal">MyBatis-Plus BaseMapper</text>
+
+  <rect x="490" y="310" width="390" height="35" rx="6" fill="#E8F5E9" stroke="#388E3C" stroke-width="1"/>
+  <text x="685" y="333" text-anchor="middle" font-size="10" fill="#555">Spring Security + JWT 认证授权 | application.yml 配置管理</text>
+
+  <!-- ========== Database Component ========== -->
+  <rect x="30" y="350" width="200" height="95" rx="8" fill="none" stroke="#F57C00" stroke-width="2" filter="url(#shadow)"/>
+  <rect x="30" y="350" width="180" height="24" rx="4" fill="#F57C00"/>
+  <text x="120" y="367" text-anchor="middle" font-size="11" font-weight="bold" fill="#fff">«数据构件» MySQL 8.4</text>
+  <rect x="50" y="388" width="160" height="45" rx="4" fill="#FFF3E0" stroke="#F57C00" stroke-width="1"/>
+  <text x="130" y="408" text-anchor="middle" font-size="10" fill="#555">t_venue_ops</text>
+  <text x="130" y="424" text-anchor="middle" font-size="10" fill="#555">t_comment</text>
+
+  <!-- ========== External System Component ========== -->
+  <rect x="700" y="380" width="200" height="80" rx="8" fill="none" stroke="#7B1FA2" stroke-width="2" filter="url(#shadow)"/>
+  <rect x="700" y="380" width="180" height="24" rx="4" fill="#7B1FA2"/>
+  <text x="790" y="397" text-anchor="middle" font-size="11" font-weight="bold" fill="#fff">«外部系统» 子系统一</text>
+  <text x="800" y="425" text-anchor="middle" font-size="10" fill="#666">场地预约子系统</text>
+  <text x="800" y="442" text-anchor="middle" font-size="10" fill="#666">GET /availability</text>
+
+  <!-- ========== Relationships ========== -->
+  <!-- Frontend → Backend (REST API) -->
+  <line x1="390" y1="180" x2="468" y2="180" stroke="#555" stroke-width="1.5" marker-end="url(#arrowH)"/>
+  <text x="420" y="172" class="rel-label">REST API</text>
+  <text x="420" y="190" class="rel-label">(HTTP/JSON)</text>
+
+  <line x1="390" y1="250" x2="468" y2="250" stroke="#555" stroke-width="1.5" marker-end="url(#arrowH)"/>
+
+  <!-- Backend → Database (JDBC) -->
+  <line x1="500" y1="360" x2="230" y2="395" stroke="#555" stroke-width="1.5" marker-end="url(#arrowH)"/>
+  <text x="340" y="375" class="rel-label">JDBC / MyBatis</text>
+
+  <!-- Backend → 子系统一 -->
+  <line x1="800" y1="360" x2="800" y2="380" stroke="#555" stroke-width="1.5" marker-end="url(#arrowH)"/>
+  <text x="810" y="370" class="rel-label">可用性数据输出</text>
+
+  <!-- ========== Frontend → Backend Details ========== -->
+  <rect x="30" y="480" width="870" height="55" rx="8" fill="#F5F7FA" stroke="#ddd" stroke-width="1"/>
+  <text x="465" y="500" text-anchor="middle" font-size="11" font-weight="bold" fill="#2c3e50">构件接口说明</text>
+  <text x="465" y="520" text-anchor="middle" font-size="10" fill="#555">VenueOps API: GET /api/venue-ops/{venueId} · PUT /api/venue-ops/{venueId} (admin) · GET /api/venue-ops/{venueId}/availability</text>
+  <text x="465" y="535" text-anchor="middle" font-size="10" fill="#555">Comment API: GET /api/comments · POST /api/comments · DELETE /api/comments/{id}</text>
+
+  <text x="465" y="605" text-anchor="middle" font-size="10" fill="#999">构件图：展示子系统二的软件架构、构件组成及各构件之间的依赖关系与接口</text>
+
+  </g>
+  <g class="codex-text-overlay" transform="translate(80 80)">
+    <text x="465" y="28" text-anchor="middle" class="title">子系统二——场地运维与公众监督系统 构件图 (Component Diagram)</text>
+    <text x="130" y="77" text-anchor="middle" font-size="11" font-weight="bold" fill="#fff">«前端构件» Vue3 + TypeScript</text>
+    <text x="125" y="122" text-anchor="middle" class="comp-text">VenueList.vue</text>
+    <text x="125" y="140" text-anchor="middle" class="comp-text" font-size="10" font-weight="normal">场地列表+运维状态</text>
+    <text x="295" y="122" text-anchor="middle" class="comp-text">CommentList.vue</text>
+    <text x="295" y="140" text-anchor="middle" class="comp-text" font-size="10" font-weight="normal">评论列表+发表</text>
+    <text x="125" y="197" text-anchor="middle" class="comp-text">AdminManage.vue</text>
+    <text x="125" y="215" text-anchor="middle" class="comp-text" font-size="10" font-weight="normal">管理员运维配置</text>
+    <text x="295" y="197" text-anchor="middle" class="comp-text">Pinia Store</text>
+    <text x="295" y="215" text-anchor="middle" class="comp-text" font-size="10" font-weight="normal">状态管理+JWT</text>
+    <text x="210" y="268" text-anchor="middle" font-size="10" fill="#555">HTTP Client (Axios) + Ant Design Vue UI组件</text>
+    <text x="590" y="77" text-anchor="middle" font-size="11" font-weight="bold" fill="#fff">«后端构件» Spring Boot 3.4.4</text>
+    <text x="580" y="122" text-anchor="middle" class="comp-text">VenueOpsController</text>
+    <text x="580" y="140" text-anchor="middle" class="comp-text" font-size="10" font-weight="normal">REST API /venue-ops/**</text>
+    <text x="785" y="122" text-anchor="middle" class="comp-text">CommentController</text>
+    <text x="785" y="140" text-anchor="middle" class="comp-text" font-size="10" font-weight="normal">REST API /comments/**</text>
+    <text x="580" y="197" text-anchor="middle" class="comp-text">VenueOpsService</text>
+    <text x="580" y="215" text-anchor="middle" class="comp-text" font-size="10" font-weight="normal">业务逻辑+可用性评估</text>
+    <text x="785" y="197" text-anchor="middle" class="comp-text">CommentService</text>
+    <text x="785" y="215" text-anchor="middle" class="comp-text" font-size="10" font-weight="normal">敏感词+反刷屏+CRUD</text>
+    <text x="580" y="270" text-anchor="middle" class="comp-text">VenueOpsMapper</text>
+    <text x="580" y="288" text-anchor="middle" class="comp-text" font-size="10" font-weight="normal">MyBatis-Plus BaseMapper</text>
+    <text x="785" y="270" text-anchor="middle" class="comp-text">CommentMapper</text>
+    <text x="785" y="288" text-anchor="middle" class="comp-text" font-size="10" font-weight="normal">MyBatis-Plus BaseMapper</text>
+    <text x="685" y="333" text-anchor="middle" font-size="10" fill="#555">Spring Security + JWT 认证授权 | application.yml 配置管理</text>
+    <text x="120" y="367" text-anchor="middle" font-size="11" font-weight="bold" fill="#fff">«数据构件» MySQL 8.4</text>
+    <text x="130" y="408" text-anchor="middle" font-size="10" fill="#555">t_venue_ops</text>
+    <text x="130" y="424" text-anchor="middle" font-size="10" fill="#555">t_comment</text>
+    <text x="790" y="397" text-anchor="middle" font-size="11" font-weight="bold" fill="#fff">«外部系统» 子系统一</text>
+    <text x="800" y="425" text-anchor="middle" font-size="10" fill="#666">场地预约子系统</text>
+    <text x="800" y="442" text-anchor="middle" font-size="10" fill="#666">GET /availability</text>
+    <text x="420" y="172" class="rel-label">REST API</text>
+    <text x="420" y="190" class="rel-label">(HTTP/JSON)</text>
+    <text x="340" y="375" class="rel-label">JDBC / MyBatis</text>
+    <text x="810" y="370" class="rel-label">可用性数据输出</text>
+    <text x="465" y="500" text-anchor="middle" font-size="11" font-weight="bold" fill="#2c3e50">构件接口说明</text>
+    <text x="465" y="520" text-anchor="middle" font-size="10" fill="#555">VenueOps API: GET /api/venue-ops/{venueId} · PUT /api/venue-ops/{venueId} (admin) · GET /api/venue-ops/{venueId}/availability</text>
+    <text x="465" y="535" text-anchor="middle" font-size="10" fill="#555">Comment API: GET /api/comments · POST /api/comments · DELETE /api/comments/{id}</text>
+    <text x="465" y="605" text-anchor="middle" font-size="10" fill="#999">构件图：展示子系统二的软件架构、构件组成及各构件之间的依赖关系与接口</text>
+  </g>
+</svg>

@@ -1,0 +1,252 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1256 886" width="1256" height="886">
+  <defs id="codex-visio-style">
+    <filter id="codexVisioShadow" x="-8%" y="-8%" width="116%" height="116%">
+      <feDropShadow dx="0" dy="2" stdDeviation="1.8" flood-color="#1f3b73" flood-opacity="0.16"/>
+    </filter>
+    <linearGradient id="codexPageGradient" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#fbfdff"/>
+      <stop offset="100%" stop-color="#eef4fb"/>
+    </linearGradient>
+    <pattern id="codexGrid" width="28" height="28" patternUnits="userSpaceOnUse">
+      <path d="M 28 0 L 0 0 0 28" fill="none" stroke="#d9e3f0" stroke-width="0.8" opacity="0.38"/>
+    </pattern>
+    <style><![CDATA[
+      svg {
+        background: #edf2f8;
+      }
+      text {
+        font-family: "Microsoft YaHei", "Microsoft JhengHei", "SimHei", "Segoe UI", Arial, sans-serif !important;
+        paint-order: stroke fill;
+        stroke: rgba(255,255,255,0.72);
+        stroke-width: 1.2px;
+        letter-spacing: 0.05px;
+      }
+      .codex-text-overlay text {
+        filter: none !important;
+        paint-order: stroke fill !important;
+        stroke: #ffffff !important;
+        stroke-width: 3.2px !important;
+        stroke-linejoin: round !important;
+      }
+      .codex-text-overlay .swimlane,
+      .codex-text-overlay .action,
+      .codex-text-overlay .lifeline,
+      .codex-text-overlay text[fill="#fff"],
+      .codex-text-overlay text[fill="#ffffff"],
+      .codex-text-overlay text[fill="white"] {
+        stroke: rgba(18, 32, 54, 0.55) !important;
+        stroke-width: 0.85px !important;
+      }
+      .title {
+        fill: #17345d !important;
+        font-weight: 700 !important;
+      }
+      rect:not(.codex-page-bg):not(.codex-grid-bg),
+      ellipse,
+      circle,
+      polygon {
+        filter: url(#codexVisioShadow);
+        stroke-linejoin: round;
+      }
+      path,
+      line,
+      polyline {
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+      marker path {
+        filter: none;
+      }
+    ]]></style>
+  </defs>
+  <rect class="codex-page-bg" x="0" y="0" width="1256" height="886" rx="14" fill="url(#codexPageGradient)"/>
+  <rect class="codex-grid-bg" x="0" y="0" width="1256" height="886" fill="url(#codexGrid)" opacity="0.12"/>
+
+  <g transform="translate(80 80)">
+
+  <defs>
+    <style>
+      text { font-family: 'Microsoft YaHei', 'SimHei', sans-serif; }
+      .title { font-size: 22px; font-weight: bold; fill: #1a1a2e; }
+      .rolename { font-size: 18px; font-weight: bold; fill: #fff; }
+      .scenario { font-size: 14px; fill: #333; }
+      .scenario-num { font-size: 13px; font-weight: bold; fill: #e94560; }
+      .header { font-size: 24px; font-weight: bold; fill: #16213e; }
+    </style>
+    <filter id="shadow">
+      <feDropShadow dx="2" dy="3" stdDeviation="3" flood-opacity="0.15"/>
+    </filter>
+    <linearGradient id="grad1" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#667eea"/>
+      <stop offset="100%" style="stop-color:#764ba2"/>
+    </linearGradient>
+    <linearGradient id="grad2" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#f093fb"/>
+      <stop offset="100%" style="stop-color:#f5576c"/>
+    </linearGradient>
+    <linearGradient id="grad3" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#4facfe"/>
+      <stop offset="100%" style="stop-color:#00f2fe"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1000" height="650" fill="#f8f9fe" rx="8"/>
+
+  <!-- Title -->
+  <text x="500" y="45" text-anchor="middle" class="header" fill="#1a1a2e">系统用户角色与业务场景图</text>
+
+  <!-- ========== 学生角色 Column ========== -->
+  <rect x="30" y="70" width="300" height="560" rx="12" fill="#fff" filter="url(#shadow)" stroke="#e0e0e0"/>
+  <rect x="30" y="70" width="300" height="55" rx="12" fill="url(#grad1)"/>
+  <rect x="30" y="105" width="300" height="20" fill="url(#grad1)"/>
+  <text x="180" y="105" text-anchor="middle" class="rolename">🎓 学生 Student</text>
+
+  <!-- Student Icon -->
+  <circle cx="180" cy="160" r="28" fill="#e8ecff" stroke="#667eea" stroke-width="2"/>
+  <circle cx="180" cy="152" r="10" fill="#667eea"/>
+  <ellipse cx="180" cy="176" rx="16" ry="8" fill="#667eea"/>
+
+  <!-- Student Scenarios -->
+  <rect x="48" y="205" width="264" height="52" rx="6" fill="#f0f3ff" stroke="#c4d0ff" stroke-width="1"/>
+  <text x="58" y="226" class="scenario-num">SC-S-01</text>
+  <text x="58" y="246" class="scenario">按场馆类型筛选,选择日期</text>
+  <text x="58" y="252" class="scenario">与时段,提交预约申请</text>
+
+  <rect x="48" y="267" width="264" height="42" rx="6" fill="#f0f3ff" stroke="#c4d0ff" stroke-width="1"/>
+  <text x="58" y="288" class="scenario-num">SC-S-02</text>
+  <text x="58" y="304" class="scenario">查看个人预约记录,取消预约</text>
+
+  <rect x="48" y="319" width="264" height="42" rx="6" fill="#f0f3ff" stroke="#c4d0ff" stroke-width="1"/>
+  <text x="58" y="340" class="scenario-num">SC-S-03</text>
+  <text x="58" y="356" class="scenario">按地理距离获取附近场馆推荐</text>
+
+  <rect x="48" y="371" width="264" height="42" rx="6" fill="#f0f3ff" stroke="#c4d0ff" stroke-width="1"/>
+  <text x="58" y="392" class="scenario-num">SC-S-04</text>
+  <text x="58" y="408" class="scenario">查看个人时间线与预约提醒</text>
+
+  <rect x="48" y="423" width="264" height="42" rx="6" fill="#f0f3ff" stroke="#c4d0ff" stroke-width="1"/>
+  <text x="58" y="444" class="scenario-num">SC-S-05</text>
+  <text x="58" y="460" class="scenario">对已使用的场馆进行评价</text>
+
+  <!-- Student summary -->
+  <text x="58" y="500" class="scenario" font-size="12" fill="#666">核心需求：便捷预约、时段可视化、</text>
+  <text x="58" y="518" class="scenario" font-size="12" fill="#666">冲突检测、取消灵活、位置推荐</text>
+
+  <!-- ========== 教师角色 Column ========== -->
+  <rect x="350" y="70" width="300" height="560" rx="12" fill="#fff" filter="url(#shadow)" stroke="#e0e0e0"/>
+  <rect x="350" y="70" width="300" height="55" rx="12" fill="url(#grad2)"/>
+  <rect x="350" y="105" width="300" height="20" fill="url(#grad2)"/>
+  <text x="500" y="105" text-anchor="middle" class="rolename">👨‍🏫 教师 Teacher</text>
+
+  <!-- Teacher Icon -->
+  <circle cx="500" cy="160" r="28" fill="#fff0f5" stroke="#f5576c" stroke-width="2"/>
+  <rect x="486" y="146" width="12" height="14" rx="3" fill="#f5576c"/>
+  <rect x="502" y="146" width="12" height="14" rx="3" fill="#f5576c"/>
+  <circle cx="500" cy="170" r="10" fill="#f5576c"/>
+
+  <!-- Teacher Scenarios -->
+  <rect x="368" y="205" width="264" height="52" rx="6" fill="#fff5f7" stroke="#fdd" stroke-width="1"/>
+  <text x="378" y="226" class="scenario-num">SC-T-01</text>
+  <text x="378" y="246" class="scenario">按学期设置周期性教学占场</text>
+  <text x="378" y="252" class="scenario">规则,支持例外日期</text>
+
+  <rect x="368" y="267" width="264" height="42" rx="6" fill="#fff5f7" stroke="#fdd" stroke-width="1"/>
+  <text x="378" y="288" class="scenario-num">SC-T-02</text>
+  <text x="378" y="304" class="scenario">查看课程场地占用的甘特图</text>
+
+  <rect x="368" y="319" width="264" height="42" rx="6" fill="#fff5f7" stroke="#fdd" stroke-width="1"/>
+  <text x="378" y="340" class="scenario-num">SC-T-03</text>
+  <text x="378" y="356" class="scenario">临时调课变更教学场地时段</text>
+
+  <rect x="368" y="371" width="264" height="42" rx="6" fill="#fff5f7" stroke="#fdd" stroke-width="1"/>
+  <text x="378" y="392" class="scenario-num">SC-T-04</text>
+  <text x="378" y="408" class="scenario">查看场馆使用率统计报表</text>
+
+  <!-- Teacher summary -->
+  <text x="378" y="500" class="scenario" font-size="12" fill="#666">核心需求：周期占场管理、甘特图</text>
+  <text x="378" y="518" class="scenario" font-size="12" fill="#666">视图、调课通知、利用率统计</text>
+
+  <!-- ========== 管理员角色 Column ========== -->
+  <rect x="670" y="70" width="300" height="560" rx="12" fill="#fff" filter="url(#shadow)" stroke="#e0e0e0"/>
+  <rect x="670" y="70" width="300" height="55" rx="12" fill="url(#grad3)"/>
+  <rect x="670" y="105" width="300" height="20" fill="url(#grad3)"/>
+  <text x="820" y="105" text-anchor="middle" class="rolename">🛡️ 管理员 Admin</text>
+
+  <!-- Admin Icon -->
+  <circle cx="820" cy="160" r="28" fill="#e6f7ff" stroke="#4facfe" stroke-width="2"/>
+  <rect x="805" y="148" width="12" height="10" rx="2" fill="#4facfe"/>
+  <rect x="822" y="148" width="12" height="10" rx="2" fill="#4facfe"/>
+  <circle cx="820" cy="172" r="8" fill="#4facfe"/>
+
+  <!-- Admin Scenarios -->
+  <rect x="688" y="205" width="264" height="42" rx="6" fill="#f0faff" stroke="#b8e4ff" stroke-width="1"/>
+  <text x="698" y="226" class="scenario-num">SC-A-01</text>
+  <text x="698" y="242" class="scenario">管理场馆信息(增删改查)与类型</text>
+
+  <rect x="688" y="257" width="264" height="52" rx="6" fill="#f0faff" stroke="#b8e4ff" stroke-width="1"/>
+  <text x="698" y="278" class="scenario-num">SC-A-02</text>
+  <text x="698" y="298" class="scenario">因维修/赛事一键锁定时段,</text>
+  <text x="698" y="304" class="scenario">自动取消已预约并通知用户</text>
+
+  <rect x="688" y="319" width="264" height="42" rx="6" fill="#f0faff" stroke="#b8e4ff" stroke-width="1"/>
+  <text x="698" y="340" class="scenario-num">SC-A-03</text>
+  <text x="698" y="356" class="scenario">全维度预约查看与状态管理</text>
+
+  <rect x="688" y="371" width="264" height="42" rx="6" fill="#f0faff" stroke="#b8e4ff" stroke-width="1"/>
+  <text x="698" y="392" class="scenario-num">SC-A-04</text>
+  <text x="698" y="408" class="scenario">用户管理与角色权限分配</text>
+
+  <rect x="688" y="423" width="264" height="42" rx="6" fill="#f0faff" stroke="#b8e4ff" stroke-width="1"/>
+  <text x="698" y="444" class="scenario-num">SC-A-05</text>
+  <text x="698" y="460" class="scenario">多校租户隔离配置与管理</text>
+
+  <!-- Admin summary -->
+  <text x="698" y="500" class="scenario" font-size="12" fill="#666">核心需求：场馆CRUD、时段锁定、</text>
+  <text x="698" y="518" class="scenario" font-size="12" fill="#666">全局管理、租户隔离、权限控制</text>
+
+  </g>
+  <g class="codex-text-overlay" transform="translate(80 80)">
+    <text x="500" y="45" text-anchor="middle" class="header" fill="#1a1a2e">系统用户角色与业务场景图</text>
+    <text x="180" y="105" text-anchor="middle" class="rolename">🎓 学生 Student</text>
+    <text x="58" y="226" class="scenario-num">SC-S-01</text>
+    <text x="58" y="246" class="scenario">按场馆类型筛选,选择日期</text>
+    <text x="58" y="252" class="scenario">与时段,提交预约申请</text>
+    <text x="58" y="288" class="scenario-num">SC-S-02</text>
+    <text x="58" y="304" class="scenario">查看个人预约记录,取消预约</text>
+    <text x="58" y="340" class="scenario-num">SC-S-03</text>
+    <text x="58" y="356" class="scenario">按地理距离获取附近场馆推荐</text>
+    <text x="58" y="392" class="scenario-num">SC-S-04</text>
+    <text x="58" y="408" class="scenario">查看个人时间线与预约提醒</text>
+    <text x="58" y="444" class="scenario-num">SC-S-05</text>
+    <text x="58" y="460" class="scenario">对已使用的场馆进行评价</text>
+    <text x="58" y="500" class="scenario" font-size="12" fill="#666">核心需求：便捷预约、时段可视化、</text>
+    <text x="58" y="518" class="scenario" font-size="12" fill="#666">冲突检测、取消灵活、位置推荐</text>
+    <text x="500" y="105" text-anchor="middle" class="rolename">👨‍🏫 教师 Teacher</text>
+    <text x="378" y="226" class="scenario-num">SC-T-01</text>
+    <text x="378" y="246" class="scenario">按学期设置周期性教学占场</text>
+    <text x="378" y="252" class="scenario">规则,支持例外日期</text>
+    <text x="378" y="288" class="scenario-num">SC-T-02</text>
+    <text x="378" y="304" class="scenario">查看课程场地占用的甘特图</text>
+    <text x="378" y="340" class="scenario-num">SC-T-03</text>
+    <text x="378" y="356" class="scenario">临时调课变更教学场地时段</text>
+    <text x="378" y="392" class="scenario-num">SC-T-04</text>
+    <text x="378" y="408" class="scenario">查看场馆使用率统计报表</text>
+    <text x="378" y="500" class="scenario" font-size="12" fill="#666">核心需求：周期占场管理、甘特图</text>
+    <text x="378" y="518" class="scenario" font-size="12" fill="#666">视图、调课通知、利用率统计</text>
+    <text x="820" y="105" text-anchor="middle" class="rolename">🛡️ 管理员 Admin</text>
+    <text x="698" y="226" class="scenario-num">SC-A-01</text>
+    <text x="698" y="242" class="scenario">管理场馆信息(增删改查)与类型</text>
+    <text x="698" y="278" class="scenario-num">SC-A-02</text>
+    <text x="698" y="298" class="scenario">因维修/赛事一键锁定时段,</text>
+    <text x="698" y="304" class="scenario">自动取消已预约并通知用户</text>
+    <text x="698" y="340" class="scenario-num">SC-A-03</text>
+    <text x="698" y="356" class="scenario">全维度预约查看与状态管理</text>
+    <text x="698" y="392" class="scenario-num">SC-A-04</text>
+    <text x="698" y="408" class="scenario">用户管理与角色权限分配</text>
+    <text x="698" y="444" class="scenario-num">SC-A-05</text>
+    <text x="698" y="460" class="scenario">多校租户隔离配置与管理</text>
+    <text x="698" y="500" class="scenario" font-size="12" fill="#666">核心需求：场馆CRUD、时段锁定、</text>
+    <text x="698" y="518" class="scenario" font-size="12" fill="#666">全局管理、租户隔离、权限控制</text>
+  </g>
+</svg>

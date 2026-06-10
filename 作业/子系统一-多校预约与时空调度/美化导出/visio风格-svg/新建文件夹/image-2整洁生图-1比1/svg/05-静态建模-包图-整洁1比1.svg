@@ -1,0 +1,275 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024" role="img" aria-label="05-静态建模-包图-整洁1比1">
+
+  <defs>
+    <filter id="outerDrop" x="-8%" y="-8%" width="116%" height="116%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#17345d" flood-opacity="0.10"/>
+    </filter>
+    <linearGradient id="outerPage" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#fbfdff"/>
+      <stop offset="100%" stop-color="#eef5fc"/>
+    </linearGradient>
+    <pattern id="outerGrid" width="32" height="32" patternUnits="userSpaceOnUse">
+      <path d="M 32 0 L 0 0 0 32" fill="none" stroke="#d6e2f0" stroke-width="0.75" opacity="0.34"/>
+    </pattern>
+    <style><![CDATA[
+      text { font-family: "Microsoft YaHei", "Microsoft JhengHei", "SimHei", "Segoe UI", Arial, sans-serif !important; }
+      .title { fill: #17345d !important; font-weight: 700 !important; }
+      path, line, polyline { stroke-linecap: round; stroke-linejoin: round; }
+      rect, ellipse, circle, polygon { stroke-linejoin: round; }
+    ]]></style>
+  </defs>
+  <defs id="codex-visio-style">
+    <filter id="codexVisioShadow" x="-8%" y="-8%" width="116%" height="116%">
+      <feDropShadow dx="0" dy="2" stdDeviation="1.8" flood-color="#1f3b73" flood-opacity="0.16"/>
+    </filter>
+    <linearGradient id="codexPageGradient" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#fbfdff"/>
+      <stop offset="100%" stop-color="#eef4fb"/>
+    </linearGradient>
+    <pattern id="codexGrid" width="28" height="28" patternUnits="userSpaceOnUse">
+      <path d="M 28 0 L 0 0 0 28" fill="none" stroke="#d9e3f0" stroke-width="0.8" opacity="0.38"/>
+    </pattern>
+    <style><![CDATA[
+      svg {
+        background: #edf2f8;
+      }
+      text {
+        font-family: "Microsoft YaHei", "Microsoft JhengHei", "SimHei", "Segoe UI", Arial, sans-serif !important;
+        paint-order: stroke fill;
+        stroke: rgba(255,255,255,0.72);
+        stroke-width: 1.2px;
+        letter-spacing: 0.05px;
+      }
+      .codex-text-overlay text {
+        filter: none !important;
+        paint-order: stroke fill !important;
+        stroke: #ffffff !important;
+        stroke-width: 3.2px !important;
+        stroke-linejoin: round !important;
+      }
+      .codex-text-overlay .swimlane,
+      .codex-text-overlay .action,
+      .codex-text-overlay .lifeline,
+      .codex-text-overlay text[fill="#fff"],
+      .codex-text-overlay text[fill="#ffffff"],
+      .codex-text-overlay text[fill="white"] {
+        stroke: rgba(18, 32, 54, 0.55) !important;
+        stroke-width: 0.85px !important;
+      }
+      .title {
+        fill: #17345d !important;
+        font-weight: 700 !important;
+      }
+      rect:not(.codex-page-bg):not(.codex-grid-bg),
+      ellipse,
+      circle,
+      polygon {
+        filter: url(#codexVisioShadow);
+        stroke-linejoin: round;
+      }
+      path,
+      line,
+      polyline {
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+      marker path {
+        filter: none;
+      }
+    ]]></style>
+  </defs>
+  <rect x="0" y="0" width="1024" height="1024" rx="22" fill="url(#outerPage)"/>
+  <rect x="0" y="0" width="1024" height="1024" fill="url(#outerGrid)" opacity="0.18"/>
+  <g filter="url(#outerDrop)">
+  <g transform="translate(44.000 189.600) scale(1.040000)">
+
+  <defs>
+    <style>
+      text { font-family: 'Microsoft YaHei', 'SimHei', sans-serif; }
+      .title { font-size: 22px; font-weight: bold; fill: #1a1a2e; }
+      .pkg-name { font-size: 14px; font-weight: bold; fill: #333; }
+      .subpkg-name { font-size: 12px; font-weight: bold; fill: #555; }
+      .cls { font-size: 11px; fill: #555; }
+      .dep { font-size: 9px; fill: #888; }
+    </style>
+    <marker id="arrowDep" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#888"/>
+    </marker>
+  </defs>
+
+  <rect width="900" height="620" fill="#fafbff" rx="8"/>
+  <text x="450" y="35" text-anchor="middle" class="title">UML包图 — com.example.tiyu 包结构</text>
+
+  <!-- ===== Root Package: com.example.tiyu ===== -->
+  <rect x="30" y="50" width="840" height="555" rx="10" fill="none" stroke="#333" stroke-width="3"/>
+  <rect x="30" y="50" width="240" height="28" rx="6" fill="#333"/>
+  <text x="150" y="70" text-anchor="middle" font-size="14" font-weight="bold" fill="#fff">com.example.tiyu</text>
+
+  <!-- controller package -->
+  <rect x="55" y="95" width="240" height="180" rx="8" fill="#f0f4ff" stroke="#4a6cf7" stroke-width="2"/>
+  <rect x="55" y="95" width="240" height="28" rx="8" fill="#4a6cf7"/>
+  <rect x="55" y="111" width="240" height="12" fill="#4a6cf7"/>
+  <text x="175" y="115" text-anchor="middle" class="pkg-name" fill="#fff">controller</text>
+  <text x="70" y="145" class="cls">ReservationController</text>
+  <text x="70" y="163" class="cls">VenueController</text>
+  <text x="70" y="181" class="cls">UserController</text>
+  <text x="70" y="199" class="cls">CommentController</text>
+  <text x="70" y="217" class="cls">VenueOpsController</text>
+  <text x="70" y="240" class="cls" fill="#888" font-style="italic">...其他Controller</text>
+
+  <!-- service package -->
+  <rect x="330" y="95" width="240" height="180" rx="8" fill="#f0faf5" stroke="#10b981" stroke-width="2"/>
+  <rect x="330" y="95" width="240" height="28" rx="8" fill="#10b981"/>
+  <rect x="330" y="111" width="240" height="12" fill="#10b981"/>
+  <text x="450" y="115" text-anchor="middle" class="pkg-name" fill="#fff">service</text>
+  <text x="345" y="145" class="cls">ReservationService (接口)</text>
+  <text x="345" y="163" class="cls">VenueService (接口)</text>
+  <text x="345" y="181" class="cls">UserService (接口)</text>
+  <text x="345" y="199" class="cls">VenueOpsService</text>
+  <text x="345" y="217" class="cls">NotificationService</text>
+  <text x="345" y="240" class="cls" fill="#888" font-style="italic">...其他Service接口</text>
+
+  <!-- service/impl package (nested) -->
+  <rect x="330" y="300" width="240" height="140" rx="8" fill="#fdf5e6" stroke="#f59e0b" stroke-width="2"/>
+  <rect x="330" y="300" width="240" height="28" rx="8" fill="#f59e0b"/>
+  <rect x="330" y="316" width="240" height="12" fill="#f59e0b"/>
+  <text x="450" y="320" text-anchor="middle" class="subpkg-name" fill="#fff">service.impl</text>
+  <text x="345" y="350" class="cls">ReservationServiceImpl</text>
+  <text x="345" y="368" class="cls">VenueServiceImpl</text>
+  <text x="345" y="386" class="cls">UserServiceImpl</text>
+  <text x="345" y="404" class="cls">VenueOpsServiceImpl</text>
+  <text x="345" y="422" class="cls" fill="#888" font-style="italic">...其他Service实现</text>
+
+  <!-- mapper package -->
+  <rect x="610" y="95" width="240" height="120" rx="8" fill="#f0fcf5" stroke="#06b6d4" stroke-width="2"/>
+  <rect x="610" y="95" width="240" height="28" rx="8" fill="#06b6d4"/>
+  <rect x="610" y="111" width="240" height="12" fill="#06b6d4"/>
+  <text x="730" y="115" text-anchor="middle" class="pkg-name" fill="#fff">mapper</text>
+  <text x="625" y="145" class="cls">ReservationMapper</text>
+  <text x="625" y="163" class="cls">VenueMapper</text>
+  <text x="625" y="181" class="cls">UserMapper</text>
+  <text x="625" y="199" class="cls">CommentMapper</text>
+
+  <!-- entity package -->
+  <rect x="610" y="240" width="240" height="120" rx="8" fill="#fdf0f7" stroke="#ec4899" stroke-width="2"/>
+  <rect x="610" y="240" width="240" height="28" rx="8" fill="#ec4899"/>
+  <rect x="610" y="256" width="240" height="12" fill="#ec4899"/>
+  <text x="730" y="260" text-anchor="middle" class="pkg-name" fill="#fff">entity</text>
+  <text x="625" y="290" class="cls">Reservation</text>
+  <text x="625" y="308" class="cls">Venue</text>
+  <text x="625" y="326" class="cls">User</text>
+  <text x="625" y="344" class="cls">Comment</text>
+
+  <!-- dto package -->
+  <rect x="55" y="370" width="240" height="100" rx="8" fill="#f5f0ff" stroke="#8b5cf6" stroke-width="2"/>
+  <rect x="55" y="370" width="240" height="28" rx="8" fill="#8b5cf6"/>
+  <rect x="55" y="386" width="240" height="12" fill="#8b5cf6"/>
+  <text x="175" y="390" text-anchor="middle" class="pkg-name" fill="#fff">dto</text>
+  <text x="70" y="420" class="cls">ReservationCreateRequest</text>
+  <text x="70" y="438" class="cls">ReservationListResponse</text>
+  <text x="70" y="456" class="cls" fill="#888" font-style="italic">...其他DTO</text>
+
+  <!-- config package -->
+  <rect x="610" y="385" width="240" height="70" rx="8" fill="#f0f7ff" stroke="#84cc16" stroke-width="2"/>
+  <rect x="610" y="385" width="240" height="28" rx="8" fill="#84cc16"/>
+  <rect x="610" y="401" width="240" height="12" fill="#84cc16"/>
+  <text x="730" y="405" text-anchor="middle" class="pkg-name" fill="#fff">config</text>
+  <text x="625" y="432" class="cls">MyBatisPlusConfig</text>
+  <text x="625" y="448" class="cls">SecurityConfig</text>
+
+  <!-- security package -->
+  <rect x="610" y="475" width="240" height="70" rx="8" fill="#f0f7fa" stroke="#6366f1" stroke-width="2"/>
+  <rect x="610" y="475" width="240" height="28" rx="8" fill="#6366f1"/>
+  <rect x="610" y="491" width="240" height="12" fill="#6366f1"/>
+  <text x="730" y="495" text-anchor="middle" class="pkg-name" fill="#fff">security</text>
+  <text x="625" y="522" class="cls">JwtUtil</text>
+  <text x="625" y="538" class="cls">JwtAuthenticationFilter</text>
+
+  <!-- common package -->
+  <rect x="55" y="490" width="240" height="70" rx="8" fill="#fff0e6" stroke="#f59e0b" stroke-width="2"/>
+  <rect x="55" y="490" width="240" height="28" rx="8" fill="#f59e0b"/>
+  <rect x="55" y="506" width="240" height="12" fill="#f59e0b"/>
+  <text x="175" y="510" text-anchor="middle" class="pkg-name" fill="#fff">common</text>
+  <text x="70" y="538" class="cls">ApiResponse&lt;T&gt;</text>
+  <text x="70" y="554" class="cls">PageResponse</text>
+
+  <!-- exception package -->
+  <rect x="330" y="470" width="240" height="70" rx="8" fill="#fee2e2" stroke="#ef4444" stroke-width="2"/>
+  <rect x="330" y="470" width="240" height="28" rx="8" fill="#ef4444"/>
+  <rect x="330" y="486" width="240" height="12" fill="#ef4444"/>
+  <text x="450" y="490" text-anchor="middle" class="pkg-name" fill="#fff">exception</text>
+  <text x="345" y="518" class="cls">GlobalExceptionHandler</text>
+  <text x="345" y="534" class="cls">BusinessException</text>
+
+  <!-- Dependency Arrows -->
+  <line x1="295" y1="180" x2="330" y2="180" stroke="#888" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#arrowDep)"/>
+  <text x="310" y="173" class="dep">&lt;&lt;dep&gt;&gt;</text>
+
+  <line x1="570" y1="180" x2="610" y2="155" stroke="#888" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#arrowDep)"/>
+  <text x="590" y="168" class="dep">&lt;&lt;dep&gt;&gt;</text>
+
+  <line x1="570" y1="370" x2="610" y2="300" stroke="#888" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#arrowDep)"/>
+  <text x="590" y="340" class="dep">&lt;&lt;dep&gt;&gt;</text>
+
+  <line x1="295" y1="400" x2="330" y2="380" stroke="#888" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#arrowDep)"/>
+
+  <line x1="570" y1="500" x2="610" y2="510" stroke="#888" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#arrowDep)"/>
+
+  <line x1="295" y1="520" x2="330" y2="510" stroke="#888" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#arrowDep)"/>
+
+  </g>
+  <g class="codex-text-overlay" transform="translate(44.000 189.600) scale(1.040000)">
+    <text x="450" y="35" text-anchor="middle" class="title">UML包图 — com.example.tiyu 包结构</text>
+    <text x="150" y="70" text-anchor="middle" font-size="14" font-weight="bold" fill="#fff">com.example.tiyu</text>
+    <text x="175" y="115" text-anchor="middle" class="pkg-name" fill="#fff">controller</text>
+    <text x="70" y="145" class="cls">ReservationController</text>
+    <text x="70" y="163" class="cls">VenueController</text>
+    <text x="70" y="181" class="cls">UserController</text>
+    <text x="70" y="199" class="cls">CommentController</text>
+    <text x="70" y="217" class="cls">VenueOpsController</text>
+    <text x="70" y="240" class="cls" fill="#888" font-style="italic">...其他Controller</text>
+    <text x="450" y="115" text-anchor="middle" class="pkg-name" fill="#fff">service</text>
+    <text x="345" y="145" class="cls">ReservationService (接口)</text>
+    <text x="345" y="163" class="cls">VenueService (接口)</text>
+    <text x="345" y="181" class="cls">UserService (接口)</text>
+    <text x="345" y="199" class="cls">VenueOpsService</text>
+    <text x="345" y="217" class="cls">NotificationService</text>
+    <text x="345" y="240" class="cls" fill="#888" font-style="italic">...其他Service接口</text>
+    <text x="450" y="320" text-anchor="middle" class="subpkg-name" fill="#fff">service.impl</text>
+    <text x="345" y="350" class="cls">ReservationServiceImpl</text>
+    <text x="345" y="368" class="cls">VenueServiceImpl</text>
+    <text x="345" y="386" class="cls">UserServiceImpl</text>
+    <text x="345" y="404" class="cls">VenueOpsServiceImpl</text>
+    <text x="345" y="422" class="cls" fill="#888" font-style="italic">...其他Service实现</text>
+    <text x="730" y="115" text-anchor="middle" class="pkg-name" fill="#fff">mapper</text>
+    <text x="625" y="145" class="cls">ReservationMapper</text>
+    <text x="625" y="163" class="cls">VenueMapper</text>
+    <text x="625" y="181" class="cls">UserMapper</text>
+    <text x="625" y="199" class="cls">CommentMapper</text>
+    <text x="730" y="260" text-anchor="middle" class="pkg-name" fill="#fff">entity</text>
+    <text x="625" y="290" class="cls">Reservation</text>
+    <text x="625" y="308" class="cls">Venue</text>
+    <text x="625" y="326" class="cls">User</text>
+    <text x="625" y="344" class="cls">Comment</text>
+    <text x="175" y="390" text-anchor="middle" class="pkg-name" fill="#fff">dto</text>
+    <text x="70" y="420" class="cls">ReservationCreateRequest</text>
+    <text x="70" y="438" class="cls">ReservationListResponse</text>
+    <text x="70" y="456" class="cls" fill="#888" font-style="italic">...其他DTO</text>
+    <text x="730" y="405" text-anchor="middle" class="pkg-name" fill="#fff">config</text>
+    <text x="625" y="432" class="cls">MyBatisPlusConfig</text>
+    <text x="625" y="448" class="cls">SecurityConfig</text>
+    <text x="730" y="495" text-anchor="middle" class="pkg-name" fill="#fff">security</text>
+    <text x="625" y="522" class="cls">JwtUtil</text>
+    <text x="625" y="538" class="cls">JwtAuthenticationFilter</text>
+    <text x="175" y="510" text-anchor="middle" class="pkg-name" fill="#fff">common</text>
+    <text x="70" y="538" class="cls">ApiResponse&lt;T&gt;</text>
+    <text x="70" y="554" class="cls">PageResponse</text>
+    <text x="450" y="490" text-anchor="middle" class="pkg-name" fill="#fff">exception</text>
+    <text x="345" y="518" class="cls">GlobalExceptionHandler</text>
+    <text x="345" y="534" class="cls">BusinessException</text>
+    <text x="310" y="173" class="dep">&lt;&lt;dep&gt;&gt;</text>
+    <text x="590" y="168" class="dep">&lt;&lt;dep&gt;&gt;</text>
+    <text x="590" y="340" class="dep">&lt;&lt;dep&gt;&gt;</text>
+  </g>
+  </g>
+</svg>

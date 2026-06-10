@@ -1,0 +1,230 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1317 886" width="1317" height="886">
+  <defs id="codex-visio-style">
+    <filter id="codexVisioShadow" x="-8%" y="-8%" width="116%" height="116%">
+      <feDropShadow dx="0" dy="2" stdDeviation="1.8" flood-color="#1f3b73" flood-opacity="0.16"/>
+    </filter>
+    <linearGradient id="codexPageGradient" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#fbfdff"/>
+      <stop offset="100%" stop-color="#eef4fb"/>
+    </linearGradient>
+    <pattern id="codexGrid" width="28" height="28" patternUnits="userSpaceOnUse">
+      <path d="M 28 0 L 0 0 0 28" fill="none" stroke="#d9e3f0" stroke-width="0.8" opacity="0.38"/>
+    </pattern>
+    <style><![CDATA[
+      svg {
+        background: #edf2f8;
+      }
+      text {
+        font-family: "Microsoft YaHei", "Microsoft JhengHei", "SimHei", "Segoe UI", Arial, sans-serif !important;
+        paint-order: stroke fill;
+        stroke: rgba(255,255,255,0.72);
+        stroke-width: 1.2px;
+        letter-spacing: 0.05px;
+      }
+      .codex-text-overlay text {
+        filter: none !important;
+        paint-order: stroke fill !important;
+        stroke: #ffffff !important;
+        stroke-width: 3.2px !important;
+        stroke-linejoin: round !important;
+      }
+      .codex-text-overlay .swimlane,
+      .codex-text-overlay .action,
+      .codex-text-overlay .lifeline,
+      .codex-text-overlay text[fill="#fff"],
+      .codex-text-overlay text[fill="#ffffff"],
+      .codex-text-overlay text[fill="white"] {
+        stroke: rgba(18, 32, 54, 0.55) !important;
+        stroke-width: 0.85px !important;
+      }
+      .title {
+        fill: #17345d !important;
+        font-weight: 700 !important;
+      }
+      rect:not(.codex-page-bg):not(.codex-grid-bg),
+      ellipse,
+      circle,
+      polygon {
+        filter: url(#codexVisioShadow);
+        stroke-linejoin: round;
+      }
+      path,
+      line,
+      polyline {
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+      marker path {
+        filter: none;
+      }
+    ]]></style>
+  </defs>
+  <rect class="codex-page-bg" x="0" y="0" width="1317" height="886" rx="14" fill="url(#codexPageGradient)"/>
+  <rect class="codex-grid-bg" x="0" y="0" width="1317" height="886" fill="url(#codexGrid)" opacity="0.12"/>
+
+  <g transform="translate(80 80)">
+
+  <defs>
+    <style>
+      text { font-family: "Microsoft YaHei", "SimHei", sans-serif; }
+      .title { font-size: 20px; font-weight: bold; fill: #1a1a2e; }
+      .lifeline { font-size: 11px; font-weight: bold; fill: #fff; }
+      .msg-text { font-size: 10px; fill: #333; }
+      .frag-text { font-size: 11px; font-weight: bold; fill: #2c3e50; }
+    </style>
+    <filter id="shadow"><feDropShadow dx="1" dy="2" stdDeviation="1.5" flood-opacity="0.08"/></filter>
+    <marker id="arrowF" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#1976D2"/></marker>
+    <marker id="arrowR" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#E65100"/></marker>
+    <marker id="arrowG" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#388E3C"/></marker>
+  </defs>
+  <rect width="1000" height="650" fill="#FAFBFC" rx="8"/>
+
+  <text x="500" y="28" text-anchor="middle" class="title">子系统二——顺序图：用户发表评论完整流程</text>
+  <line x1="120" y1="40" x2="880" y2="40" stroke="#4A90D9" stroke-width="1.5"/>
+
+  <!-- Lifelines -->
+  <rect x="30" y="55" width="80" height="26" rx="3" fill="#1976D2" filter="url(#shadow)"/>
+  <text x="70" y="73" text-anchor="middle" class="lifeline" font-size="10">用户(User)</text>
+  <line x1="70" y1="81" x2="70" y2="610" stroke="#1976D2" stroke-width="1" stroke-dasharray="5,4"/>
+
+  <rect x="160" y="55" width="90" height="26" rx="3" fill="#1976D2" filter="url(#shadow)"/>
+  <text x="205" y="73" text-anchor="middle" class="lifeline" font-size="10">VenueList.vue</text>
+  <line x1="205" y1="81" x2="205" y2="610" stroke="#1976D2" stroke-width="1" stroke-dasharray="5,4"/>
+
+  <rect x="310" y="55" width="100" height="26" rx="3" fill="#1976D2" filter="url(#shadow)"/>
+  <text x="360" y="73" text-anchor="middle" class="lifeline" font-size="10">CommentList.vue</text>
+  <line x1="360" y1="81" x2="360" y2="610" stroke="#1976D2" stroke-width="1" stroke-dasharray="5,4"/>
+
+  <rect x="480" y="55" width="120" height="26" rx="3" fill="#388E3C" filter="url(#shadow)"/>
+  <text x="540" y="73" text-anchor="middle" class="lifeline" font-size="10">CommentController</text>
+  <line x1="540" y1="81" x2="540" y2="610" stroke="#388E3C" stroke-width="1" stroke-dasharray="5,4"/>
+
+  <rect x="670" y="55" width="130" height="26" rx="3" fill="#388E3C" filter="url(#shadow)"/>
+  <text x="735" y="73" text-anchor="middle" class="lifeline" font-size="10">CommentService</text>
+  <line x1="735" y1="81" x2="735" y2="610" stroke="#388E3C" stroke-width="1" stroke-dasharray="5,4"/>
+
+  <rect x="860" y="55" width="100" height="26" rx="3" fill="#F57C00" filter="url(#shadow)"/>
+  <text x="910" y="73" text-anchor="middle" class="lifeline" font-size="10">MySQL(DB)</text>
+  <line x1="910" y1="81" x2="910" y2="610" stroke="#F57C00" stroke-width="1" stroke-dasharray="5,4"/>
+
+  <!-- Messages -->
+
+  <!-- 1. User opens venue detail -->
+  <line x1="70" y1="120" x2="158" y2="120" stroke="#1976D2" stroke-width="1.5" marker-end="url(#arrowF)"/>
+  <text x="110" y="113" class="msg-text">1. 打开场地详情</text>
+
+  <!-- 2. VenueList → CommentList (open drawer) -->
+  <line x1="205" y1="140" x2="358" y2="140" stroke="#1976D2" stroke-width="1.5" marker-end="url(#arrowF)"/>
+  <text x="270" y="133" class="msg-text">2. 点击"查看评论"</text>
+
+  <!-- 3. CommentList fetches comments -->
+  <line x1="360" y1="160" x2="478" y2="160" stroke="#1976D2" stroke-width="1.5" marker-end="url(#arrowF)"/>
+  <text x="410" y="153" class="msg-text">3. GET /api/comments?venueId=101</text>
+
+  <!-- 4. Controller → Service -->
+  <line x1="540" y1="180" x2="733" y2="180" stroke="#388E3C" stroke-width="1.5" marker-end="url(#arrowF)"/>
+  <text x="630" y="173" class="msg-text">4. listLatest(venueId, keyword)</text>
+
+  <!-- 5. Service → DB -->
+  <line x1="735" y1="200" x2="908" y2="200" stroke="#F57C00" stroke-width="1.5" marker-end="url(#arrowF)"/>
+  <text x="810" y="193" class="msg-text">5. SELECT * FROM t_comment WHERE venue_id=101</text>
+
+  <!-- 6. DB → Service (return) -->
+  <line x1="908" y1="220" x2="737" y2="220" stroke="#F57C00" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#arrowR)"/>
+  <text x="810" y="215" class="msg-text">6. 返回评论列表(含用户名)</text>
+
+  <!-- 7. Service → Controller (return) -->
+  <line x1="733" y1="240" x2="542" y2="240" stroke="#388E3C" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#arrowR)"/>
+  <text x="630" y="235" class="msg-text">7. List&lt;Comment&gt;(含username)</text>
+
+  <!-- 8. Display to user -->
+  <line x1="540" y1="260" x2="362" y2="260" stroke="#1976D2" stroke-width="1.5" stroke-dasharray="5,3"/>
+  <text x="440" y="255" class="msg-text">8. 渲染评论列表</text>
+
+  <!-- ===== alt fragment: Post Comment ===== -->
+  <rect x="40" y="285" width="940" height="300" rx="6" fill="none" stroke="#E65100" stroke-width="1.5" stroke-dasharray="6,3"/>
+  <rect x="40" y="285" width="70" height="20" rx="3" fill="#FFF3E0"/>
+  <text x="75" y="299" class="frag-text" font-size="10" fill="#E65100">alt [发表评论]</text>
+
+  <!-- 9. User fills comment form -->
+  <line x1="70" y1="320" x2="358" y2="320" stroke="#1976D2" stroke-width="1.5" marker-end="url(#arrowF)"/>
+  <text x="200" y="313" class="msg-text">9. 输入1-5评分 + 文字(≤500字)</text>
+
+  <!-- 10. Submit form -->
+  <line x1="360" y1="345" x2="478" y2="345" stroke="#1976D2" stroke-width="1.5" marker-end="url(#arrowF)"/>
+  <text x="410" y="338" class="msg-text">10. POST /api/comments (JSON body)</text>
+
+  <!-- 11. Controller → Service.validateBeforeCreate() -->
+  <line x1="540" y1="370" x2="733" y2="370" stroke="#388E3C" stroke-width="1.5" marker-end="url(#arrowF)"/>
+  <text x="630" y="363" class="msg-text">11. validateBeforeCreate(userId,venueId,content)</text>
+
+  <!-- Self-call: anti-spam check -->
+  <rect x="710" y="390" width="230" height="45" rx="4" fill="#FFF3E0" stroke="#F57C00" stroke-width="0.5"/>
+  <text x="825" y="408" text-anchor="middle" class="msg-text" font-size="9">12. checkSpam(userId, venueId)</text>
+  <text x="825" y="422" text-anchor="middle" class="msg-text" font-size="9">60秒冷却: 同一用户-场地</text>
+
+  <!-- 13. Sensitive word filter -->
+  <rect x="710" y="445" width="230" height="45" rx="4" fill="#FFEBEE" stroke="#D32F2F" stroke-width="0.5"/>
+  <text x="825" y="463" text-anchor="middle" class="msg-text" font-size="9">13. filterSensitiveWords(content)</text>
+  <text x="825" y="477" text-anchor="middle" class="msg-text" font-size="9">匹配: 诈骗|赌博|代打|代练|广告</text>
+
+  <!-- alt for sensitive word -->
+  <rect x="680" y="500" width="270" height="30" rx="4" fill="#FFEBEE" stroke="#D32F2F" stroke-width="0.8" stroke-dasharray="4,2"/>
+  <text x="815" y="520" text-anchor="middle" class="msg-text" fill="#D32F2F">[敏感词?] → 返回提示"含敏感词"</text>
+
+  <!-- 14. Save comment -->
+  <line x1="735" y1="550" x2="908" y2="550" stroke="#F57C00" stroke-width="1.5" marker-end="url(#arrowF)"/>
+  <text x="810" y="543" class="msg-text">14. INSERT INTO t_comment</text>
+
+  <!-- 15. Return success -->
+  <line x1="908" y1="575" x2="737" y2="575" stroke="#F57C00" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#arrowR)"/>
+  <text x="810" y="570" class="msg-text">15. 保存成功</text>
+
+  <!-- ===== After alt ===== -->
+  <!-- 16. Return to frontend -->
+  <line x1="733" y1="600" x2="362" y2="600" stroke="#388E3C" stroke-width="1.5" stroke-dasharray="5,3"/>
+  <text x="530" y="595" class="msg-text">16. 返回201 Created + Comment JSON</text>
+
+  <!-- 17. Refresh list -->
+  <line x1="360" y1="625" x2="205" y2="625" stroke="#1976D2" stroke-width="1.5" stroke-dasharray="5,3"/>
+  <text x="280" y="620" class="msg-text">17. 更新评论列表</text>
+
+  <line x1="205" y1="640" x2="72" y2="640" stroke="#1976D2" stroke-width="1.5" stroke-dasharray="5,3"/>
+  <text x="130" y="635" class="msg-text">18. 显示新评论</text>
+
+  <text x="500" y="645" text-anchor="middle" font-size="10" fill="#888">——→ 同步调用  ----→ 返回  alt [分支]  self-call 自调用  ■ 激活期</text>
+
+  </g>
+  <g class="codex-text-overlay" transform="translate(80 80)">
+    <text x="500" y="28" text-anchor="middle" class="title">子系统二——顺序图：用户发表评论完整流程</text>
+    <text x="70" y="73" text-anchor="middle" class="lifeline" font-size="10">用户(User)</text>
+    <text x="205" y="73" text-anchor="middle" class="lifeline" font-size="10">VenueList.vue</text>
+    <text x="360" y="73" text-anchor="middle" class="lifeline" font-size="10">CommentList.vue</text>
+    <text x="540" y="73" text-anchor="middle" class="lifeline" font-size="10">CommentController</text>
+    <text x="735" y="73" text-anchor="middle" class="lifeline" font-size="10">CommentService</text>
+    <text x="910" y="73" text-anchor="middle" class="lifeline" font-size="10">MySQL(DB)</text>
+    <text x="110" y="113" class="msg-text">1. 打开场地详情</text>
+    <text x="270" y="133" class="msg-text">2. 点击"查看评论"</text>
+    <text x="410" y="153" class="msg-text">3. GET /api/comments?venueId=101</text>
+    <text x="630" y="173" class="msg-text">4. listLatest(venueId, keyword)</text>
+    <text x="810" y="193" class="msg-text">5. SELECT * FROM t_comment WHERE venue_id=101</text>
+    <text x="810" y="215" class="msg-text">6. 返回评论列表(含用户名)</text>
+    <text x="630" y="235" class="msg-text">7. List&lt;Comment&gt;(含username)</text>
+    <text x="440" y="255" class="msg-text">8. 渲染评论列表</text>
+    <text x="75" y="299" class="frag-text" font-size="10" fill="#E65100">alt [发表评论]</text>
+    <text x="200" y="313" class="msg-text">9. 输入1-5评分 + 文字(≤500字)</text>
+    <text x="410" y="338" class="msg-text">10. POST /api/comments (JSON body)</text>
+    <text x="630" y="363" class="msg-text">11. validateBeforeCreate(userId,venueId,content)</text>
+    <text x="825" y="408" text-anchor="middle" class="msg-text" font-size="9">12. checkSpam(userId, venueId)</text>
+    <text x="825" y="422" text-anchor="middle" class="msg-text" font-size="9">60秒冷却: 同一用户-场地</text>
+    <text x="825" y="463" text-anchor="middle" class="msg-text" font-size="9">13. filterSensitiveWords(content)</text>
+    <text x="825" y="477" text-anchor="middle" class="msg-text" font-size="9">匹配: 诈骗|赌博|代打|代练|广告</text>
+    <text x="815" y="520" text-anchor="middle" class="msg-text" fill="#D32F2F">[敏感词?] → 返回提示"含敏感词"</text>
+    <text x="810" y="543" class="msg-text">14. INSERT INTO t_comment</text>
+    <text x="810" y="570" class="msg-text">15. 保存成功</text>
+    <text x="530" y="595" class="msg-text">16. 返回201 Created + Comment JSON</text>
+    <text x="280" y="620" class="msg-text">17. 更新评论列表</text>
+    <text x="130" y="635" class="msg-text">18. 显示新评论</text>
+    <text x="500" y="645" text-anchor="middle" font-size="10" fill="#888">——→ 同步调用  ----→ 返回  alt [分支]  self-call 自调用  ■ 激活期</text>
+  </g>
+</svg>

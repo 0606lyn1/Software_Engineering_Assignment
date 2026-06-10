@@ -1,0 +1,257 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1256 936" width="1256" height="936">
+  <defs id="codex-visio-style">
+    <filter id="codexVisioShadow" x="-8%" y="-8%" width="116%" height="116%">
+      <feDropShadow dx="0" dy="2" stdDeviation="1.8" flood-color="#1f3b73" flood-opacity="0.16"/>
+    </filter>
+    <linearGradient id="codexPageGradient" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#fbfdff"/>
+      <stop offset="100%" stop-color="#eef4fb"/>
+    </linearGradient>
+    <pattern id="codexGrid" width="28" height="28" patternUnits="userSpaceOnUse">
+      <path d="M 28 0 L 0 0 0 28" fill="none" stroke="#d9e3f0" stroke-width="0.8" opacity="0.38"/>
+    </pattern>
+    <style><![CDATA[
+      svg {
+        background: #edf2f8;
+      }
+      text {
+        font-family: "Microsoft YaHei", "Microsoft JhengHei", "SimHei", "Segoe UI", Arial, sans-serif !important;
+        paint-order: stroke fill;
+        stroke: rgba(255,255,255,0.72);
+        stroke-width: 1.2px;
+        letter-spacing: 0.05px;
+      }
+      .codex-text-overlay text {
+        filter: none !important;
+        paint-order: stroke fill !important;
+        stroke: #ffffff !important;
+        stroke-width: 3.2px !important;
+        stroke-linejoin: round !important;
+      }
+      .codex-text-overlay .swimlane,
+      .codex-text-overlay .action,
+      .codex-text-overlay .lifeline,
+      .codex-text-overlay text[fill="#fff"],
+      .codex-text-overlay text[fill="#ffffff"],
+      .codex-text-overlay text[fill="white"] {
+        stroke: rgba(18, 32, 54, 0.55) !important;
+        stroke-width: 0.85px !important;
+      }
+      .title {
+        fill: #17345d !important;
+        font-weight: 700 !important;
+      }
+      rect:not(.codex-page-bg):not(.codex-grid-bg),
+      ellipse,
+      circle,
+      polygon {
+        filter: url(#codexVisioShadow);
+        stroke-linejoin: round;
+      }
+      path,
+      line,
+      polyline {
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+      marker path {
+        filter: none;
+      }
+    ]]></style>
+  </defs>
+  <rect class="codex-page-bg" x="0" y="0" width="1256" height="936" rx="14" fill="url(#codexPageGradient)"/>
+  <rect class="codex-grid-bg" x="0" y="0" width="1256" height="936" fill="url(#codexGrid)" opacity="0.12"/>
+
+  <g transform="translate(80 80)">
+
+  <defs>
+    <style>
+      text { font-family: 'Microsoft YaHei', 'SimHei', sans-serif; }
+      .title { font-size: 22px; font-weight: bold; fill: #1a1a2e; }
+      .swimlane { font-size: 14px; font-weight: bold; fill: #fff; }
+      .action { font-size: 12px; fill: #fff; }
+      .decn { font-size: 11px; fill: #555; }
+      .guard { font-size: 10px; fill: #888; }
+    </style>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#555"/>
+    </marker>
+    <filter id="shadow">
+      <feDropShadow dx="1" dy="1" stdDeviation="2" flood-opacity="0.12"/>
+    </filter>
+  </defs>
+
+  <rect width="1000" height="700" fill="#fafbff" rx="8"/>
+  <text x="500" y="38" text-anchor="middle" class="title">UML活动图 — 学生预约场馆（带泳道）</text>
+
+  <!-- Swimlanes -->
+  <rect x="30" y="55" width="220" height="630" rx="0" fill="#f0f4ff" opacity="0.5" stroke="#4a6cf7" stroke-width="1.5"/>
+  <rect x="30" y="55" width="220" height="32" rx="0" fill="#4a6cf7"/>
+  <text x="140" y="77" text-anchor="middle" class="swimlane">学生 (Student)</text>
+
+  <rect x="255" y="55" width="220" height="630" rx="0" fill="#f0faf5" opacity="0.5" stroke="#10b981" stroke-width="1.5"/>
+  <rect x="255" y="55" width="220" height="32" rx="0" fill="#10b981"/>
+  <text x="365" y="77" text-anchor="middle" class="swimlane">前端 (Reservation.vue)</text>
+
+  <rect x="480" y="55" width="250" height="630" rx="0" fill="#fdf5e6" opacity="0.5" stroke="#f59e0b" stroke-width="1.5"/>
+  <rect x="480" y="55" width="250" height="32" rx="0" fill="#f59e0b"/>
+  <text x="605" y="77" text-anchor="middle" class="swimlane">后端 (Spring Boot)</text>
+
+  <rect x="735" y="55" width="235" height="630" rx="0" fill="#fdf0f7" opacity="0.5" stroke="#ec4899" stroke-width="1.5"/>
+  <rect x="735" y="55" width="235" height="32" rx="0" fill="#ec4899"/>
+  <text x="852" y="77" text-anchor="middle" class="swimlane">数据库 (MySQL)</text>
+
+  <!-- Start -->
+  <circle cx="140" cy="105" r="16" fill="#333"/>
+  <circle cx="140" cy="105" r="7" fill="#fff"/>
+
+  <!-- Action: 进入预约页面 -->
+  <rect x="85" y="135" width="110" height="36" rx="18" fill="#4a6cf7" filter="url(#shadow)"/>
+  <text x="140" y="157" text-anchor="middle" class="action">进入预约页面</text>
+
+  <!-- Action: 检索场馆列表 -->
+  <rect x="305" y="135" width="120" height="36" rx="18" fill="#10b981" filter="url(#shadow)"/>
+  <text x="365" y="157" text-anchor="middle" class="action">检索场馆列表</text>
+
+  <!-- Flow -->
+  <line x1="140" y1="121" x2="140" y2="135" stroke="#555" stroke-width="1.8" marker-end="url(#arrow)"/>
+  <line x1="195" y1="153" x2="305" y2="153" stroke="#555" stroke-width="1.8" marker-end="url(#arrow)"/>
+
+  <!-- Action: 选择场馆 -->
+  <rect x="85" y="195" width="110" height="36" rx="18" fill="#4a6cf7" filter="url(#shadow)"/>
+  <text x="140" y="217" text-anchor="middle" class="action">选择场馆</text>
+
+  <!-- Action: 选择日期 -->
+  <rect x="85" y="255" width="110" height="36" rx="18" fill="#4a6cf7" filter="url(#shadow)"/>
+  <text x="140" y="277" text-anchor="middle" class="action">选择日期</text>
+
+  <line x1="140" y1="231" x2="140" y2="255" stroke="#555" stroke-width="1.8" marker-end="url(#arrow)"/>
+
+  <!-- Action: 加载时段网格 -->
+  <rect x="305" y="245" width="120" height="36" rx="18" fill="#10b981" filter="url(#shadow)"/>
+  <text x="365" y="267" text-anchor="middle" class="action">加载时段网格</text>
+
+  <line x1="195" y1="273" x2="305" y2="263" stroke="#555" stroke-width="1.8" marker-end="url(#arrow)"/>
+
+  <!-- Action: 查询可用性 → Backend -->
+  <rect x="530" y="245" width="140" height="36" rx="6" fill="#f59e0b" filter="url(#shadow)"/>
+  <text x="600" y="267" text-anchor="middle" class="action">查询时段可用性</text>
+
+  <line x1="425" y1="263" x2="530" y2="263" stroke="#555" stroke-width="1.8" marker-end="url(#arrow)"/>
+
+  <!-- Action: 查询数据库 -->
+  <rect x="780" y="245" width="140" height="36" rx="6" fill="#ec4899" filter="url(#shadow)"/>
+  <text x="850" y="267" text-anchor="middle" class="action">SELECT 预约表</text>
+
+  <line x1="670" y1="263" x2="780" y2="263" stroke="#555" stroke-width="1.8" marker-end="url(#arrow)"/>
+
+  <!-- 渲染网格 -->
+  <rect x="305" y="305" width="120" height="36" rx="18" fill="#10b981" filter="url(#shadow)"/>
+  <text x="365" y="327" text-anchor="middle" class="action">渲染时段网格</text>
+
+  <line x1="850" y1="281" x2="305" y2="305" stroke="#555" stroke-width="1.8" marker-end="url(#arrow)"/>
+
+  <!-- Action: 选择时段 -->
+  <rect x="85" y="315" width="110" height="36" rx="18" fill="#4a6cf7" filter="url(#shadow)"/>
+  <text x="140" y="337" text-anchor="middle" class="action">选择连续时段</text>
+
+  <line x1="195" y1="333" x2="305" y2="323" stroke="#555" stroke-width="1.8" marker-end="url(#arrow)"/>
+
+  <!-- Decision: 有冲突? -->
+  <line x1="140" y1="351" x2="140" y2="385" stroke="#555" stroke-width="1.8" marker-end="url(#arrow)"/>
+  <polygon points="140,390 215,440 140,490 65,440" fill="#fef3c7" stroke="#f59e0b" stroke-width="2" filter="url(#shadow)"/>
+  <text x="140" y="443" text-anchor="middle" class="decn" fill="#92400e">有冲突?</text>
+
+  <!-- [是] 分支 -->
+  <line x1="65" y1="440" x2="30" y2="440" stroke="#ef4444" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="40" y="432" class="guard" fill="#ef4444">[是]</text>
+  <rect x="30" y="420" width="20" height="45" rx="4" fill="#fee2e2" stroke="#ef4444" stroke-width="1.5"/>
+  <text x="40" y="450" text-anchor="middle" font-size="9" fill="#ef4444" transform="rotate(-90,40,450)">提示重选</text>
+  <line x1="30" y1="465" x2="30" y2="540" stroke="#ef4444" stroke-width="2"/>
+  <line x1="30" y1="540" x2="140" y2="540" stroke="#ef4444" stroke-width="2"/>
+  <line x1="140" y1="540" x2="140" y2="315" stroke="#ef4444" stroke-width="2" stroke-dasharray="5,3" marker-end="url(#arrow)"/>
+
+  <!-- [否] 分支 -->
+  <line x1="215" y1="440" x2="250" y2="440" stroke="#10b981" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="225" y="432" class="guard" fill="#10b981">[否]</text>
+
+  <!-- Action: 提交预约 -->
+  <rect x="305" y="420" width="120" height="36" rx="18" fill="#10b981" filter="url(#shadow)"/>
+  <text x="365" y="442" text-anchor="middle" class="action">提交预约请求</text>
+
+  <line x1="250" y1="440" x2="305" y2="438" stroke="#555" stroke-width="1.8" marker-end="url(#arrow)"/>
+
+  <!-- Action: 校验权限 -->
+  <rect x="530" y="418" width="140" height="36" rx="6" fill="#f59e0b" filter="url(#shadow)"/>
+  <text x="600" y="440" text-anchor="middle" class="action">校验身份与权限</text>
+
+  <line x1="425" y1="438" x2="530" y2="438" stroke="#555" stroke-width="1.8" marker-end="url(#arrow)"/>
+
+  <!-- Action: 冲突检测 -->
+  <rect x="530" y="475" width="140" height="36" rx="6" fill="#f59e0b" filter="url(#shadow)"/>
+  <text x="600" y="497" text-anchor="middle" class="action">冲突检测与乐观锁</text>
+
+  <line x1="600" y1="454" x2="600" y2="475" stroke="#555" stroke-width="1.8" marker-end="url(#arrow)"/>
+
+  <!-- Action: 数据库事务 -->
+  <rect x="780" y="475" width="140" height="36" rx="6" fill="#ec4899" filter="url(#shadow)"/>
+  <text x="850" y="497" text-anchor="middle" class="action">INSERT 事务写入</text>
+
+  <line x1="670" y1="493" x2="780" y2="493" stroke="#555" stroke-width="1.8" marker-end="url(#arrow)"/>
+
+  <!-- Join -->
+  <line x1="850" y1="511" x2="850" y2="540" stroke="#555" stroke-width="1.8"/>
+  <line x1="780" y1="540" x2="920" y2="540" stroke="#555" stroke-width="3"/>
+  <text x="920" y="544" font-size="10" fill="#555">成功</text>
+
+  <!-- Action: 返回结果 -->
+  <rect x="530" y="555" width="140" height="36" rx="6" fill="#f59e0b" filter="url(#shadow)"/>
+  <text x="600" y="577" text-anchor="middle" class="action">返回预约详情</text>
+
+  <line x1="850" y1="540" x2="670" y2="573" stroke="#555" stroke-width="1.8" marker-end="url(#arrow)"/>
+
+  <!-- Action: 显示成功 -->
+  <rect x="305" y="555" width="120" height="36" rx="18" fill="#10b981" filter="url(#shadow)"/>
+  <text x="365" y="577" text-anchor="middle" class="action">显示预约成功</text>
+
+  <line x1="530" y1="573" x2="425" y2="573" stroke="#555" stroke-width="1.8" marker-end="url(#arrow)"/>
+
+  <!-- End -->
+  <circle cx="365" cy="625" r="16" fill="#333"/>
+  <circle cx="365" cy="625" r="7" fill="#fff"/>
+
+  <line x1="365" y1="591" x2="365" y2="609" stroke="#555" stroke-width="1.8" marker-end="url(#arrow)"/>
+
+  <!-- Fork/Join annotations -->
+  <text x="910" y="530" font-size="9" fill="#888">并行汇合</text>
+
+  </g>
+  <g class="codex-text-overlay" transform="translate(80 80)">
+    <text x="500" y="38" text-anchor="middle" class="title">UML活动图 — 学生预约场馆（带泳道）</text>
+    <text x="140" y="77" text-anchor="middle" class="swimlane">学生 (Student)</text>
+    <text x="365" y="77" text-anchor="middle" class="swimlane">前端 (Reservation.vue)</text>
+    <text x="605" y="77" text-anchor="middle" class="swimlane">后端 (Spring Boot)</text>
+    <text x="852" y="77" text-anchor="middle" class="swimlane">数据库 (MySQL)</text>
+    <text x="140" y="157" text-anchor="middle" class="action">进入预约页面</text>
+    <text x="365" y="157" text-anchor="middle" class="action">检索场馆列表</text>
+    <text x="140" y="217" text-anchor="middle" class="action">选择场馆</text>
+    <text x="140" y="277" text-anchor="middle" class="action">选择日期</text>
+    <text x="365" y="267" text-anchor="middle" class="action">加载时段网格</text>
+    <text x="600" y="267" text-anchor="middle" class="action">查询时段可用性</text>
+    <text x="850" y="267" text-anchor="middle" class="action">SELECT 预约表</text>
+    <text x="365" y="327" text-anchor="middle" class="action">渲染时段网格</text>
+    <text x="140" y="337" text-anchor="middle" class="action">选择连续时段</text>
+    <text x="140" y="443" text-anchor="middle" class="decn" fill="#92400e">有冲突?</text>
+    <text x="40" y="432" class="guard" fill="#ef4444">[是]</text>
+    <text x="40" y="450" text-anchor="middle" font-size="9" fill="#ef4444" transform="rotate(-90,40,450)">提示重选</text>
+    <text x="225" y="432" class="guard" fill="#10b981">[否]</text>
+    <text x="365" y="442" text-anchor="middle" class="action">提交预约请求</text>
+    <text x="600" y="440" text-anchor="middle" class="action">校验身份与权限</text>
+    <text x="600" y="497" text-anchor="middle" class="action">冲突检测与乐观锁</text>
+    <text x="850" y="497" text-anchor="middle" class="action">INSERT 事务写入</text>
+    <text x="920" y="544" font-size="10" fill="#555">成功</text>
+    <text x="600" y="577" text-anchor="middle" class="action">返回预约详情</text>
+    <text x="365" y="577" text-anchor="middle" class="action">显示预约成功</text>
+    <text x="910" y="530" font-size="9" fill="#888">并行汇合</text>
+  </g>
+</svg>

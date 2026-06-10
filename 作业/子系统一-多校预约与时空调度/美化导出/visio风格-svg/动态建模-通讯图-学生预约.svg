@@ -1,0 +1,223 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1256 936" width="1256" height="936">
+  <defs id="codex-visio-style">
+    <filter id="codexVisioShadow" x="-8%" y="-8%" width="116%" height="116%">
+      <feDropShadow dx="0" dy="2" stdDeviation="1.8" flood-color="#1f3b73" flood-opacity="0.16"/>
+    </filter>
+    <linearGradient id="codexPageGradient" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#fbfdff"/>
+      <stop offset="100%" stop-color="#eef4fb"/>
+    </linearGradient>
+    <pattern id="codexGrid" width="28" height="28" patternUnits="userSpaceOnUse">
+      <path d="M 28 0 L 0 0 0 28" fill="none" stroke="#d9e3f0" stroke-width="0.8" opacity="0.38"/>
+    </pattern>
+    <style><![CDATA[
+      svg {
+        background: #edf2f8;
+      }
+      text {
+        font-family: "Microsoft YaHei", "Microsoft JhengHei", "SimHei", "Segoe UI", Arial, sans-serif !important;
+        paint-order: stroke fill;
+        stroke: rgba(255,255,255,0.72);
+        stroke-width: 1.2px;
+        letter-spacing: 0.05px;
+      }
+      .codex-text-overlay text {
+        filter: none !important;
+        paint-order: stroke fill !important;
+        stroke: #ffffff !important;
+        stroke-width: 3.2px !important;
+        stroke-linejoin: round !important;
+      }
+      .codex-text-overlay .swimlane,
+      .codex-text-overlay .action,
+      .codex-text-overlay .lifeline,
+      .codex-text-overlay text[fill="#fff"],
+      .codex-text-overlay text[fill="#ffffff"],
+      .codex-text-overlay text[fill="white"] {
+        stroke: rgba(18, 32, 54, 0.55) !important;
+        stroke-width: 0.85px !important;
+      }
+      .title {
+        fill: #17345d !important;
+        font-weight: 700 !important;
+      }
+      rect:not(.codex-page-bg):not(.codex-grid-bg),
+      ellipse,
+      circle,
+      polygon {
+        filter: url(#codexVisioShadow);
+        stroke-linejoin: round;
+      }
+      path,
+      line,
+      polyline {
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+      marker path {
+        filter: none;
+      }
+    ]]></style>
+  </defs>
+  <rect class="codex-page-bg" x="0" y="0" width="1256" height="936" rx="14" fill="url(#codexPageGradient)"/>
+  <rect class="codex-grid-bg" x="0" y="0" width="1256" height="936" fill="url(#codexGrid)" opacity="0.12"/>
+
+  <g transform="translate(80 80)">
+
+  <defs>
+    <style>
+      text { font-family: 'Microsoft YaHei', 'SimHei', sans-serif; }
+      .title { font-size: 22px; font-weight: bold; fill: #1a1a2e; }
+      .obj { font-size: 13px; font-weight: bold; fill: #333; }
+      .msg { font-size: 10px; fill: #444; }
+    </style>
+    <filter id="shadow">
+      <feDropShadow dx="2" dy="2" stdDeviation="2" flood-opacity="0.1"/>
+    </filter>
+  </defs>
+
+  <rect width="1000" height="700" fill="#fafbff" rx="8"/>
+  <text x="500" y="38" text-anchor="middle" class="title">通讯图 — 学生预约场地（编号消息传递）</text>
+
+  <!-- Objects -->
+  <!-- Student -->
+  <rect x="430" y="90" width="140" height="55" rx="10" fill="#fff" stroke="#4a6cf7" stroke-width="2.5" filter="url(#shadow)"/>
+  <text x="500" y="118" text-anchor="middle" class="obj" fill="#4a6cf7">学生</text>
+  <text x="500" y="136" text-anchor="middle" font-size="11" fill="#888">:Student</text>
+
+  <!-- Reservation.vue -->
+  <rect x="430" y="210" width="140" height="55" rx="10" fill="#fff" stroke="#10b981" stroke-width="2.5" filter="url(#shadow)"/>
+  <text x="500" y="238" text-anchor="middle" class="obj" fill="#10b981">Reservation.vue</text>
+  <text x="500" y="256" text-anchor="middle" font-size="11" fill="#888">:VueComponent</text>
+
+  <!-- ReservationController -->
+  <rect x="430" y="330" width="160" height="55" rx="10" fill="#fff" stroke="#f59e0b" stroke-width="2.5" filter="url(#shadow)"/>
+  <text x="510" y="358" text-anchor="middle" class="obj" fill="#f59e0b">ReservationController</text>
+  <text x="510" y="376" text-anchor="middle" font-size="11" fill="#888">:Controller</text>
+
+  <!-- ReservationServiceImpl -->
+  <rect x="140" y="450" width="170" height="55" rx="10" fill="#fff" stroke="#8b5cf6" stroke-width="2.5" filter="url(#shadow)"/>
+  <text x="225" y="478" text-anchor="middle" class="obj" fill="#8b5cf6">ReservationServiceImpl</text>
+  <text x="225" y="496" text-anchor="middle" font-size="11" fill="#888">:Service</text>
+
+  <!-- ReservationMapper -->
+  <rect x="430" y="450" width="160" height="55" rx="10" fill="#fff" stroke="#06b6d4" stroke-width="2.5" filter="url(#shadow)"/>
+  <text x="510" y="478" text-anchor="middle" class="obj" fill="#06b6d4">ReservationMapper</text>
+  <text x="510" y="496" text-anchor="middle" font-size="11" fill="#888">:Mapper</text>
+
+  <!-- MySQL -->
+  <rect x="690" y="450" width="130" height="55" rx="10" fill="#fff" stroke="#ec4899" stroke-width="2.5" filter="url(#shadow)"/>
+  <text x="755" y="478" text-anchor="middle" class="obj" fill="#ec4899">MySQL</text>
+  <text x="755" y="496" text-anchor="middle" font-size="11" fill="#888">:Database</text>
+
+  <!-- VenueOpsService -->
+  <rect x="140" y="570" width="150" height="55" rx="10" fill="#fff" stroke="#84cc16" stroke-width="2.5" filter="url(#shadow)"/>
+  <text x="215" y="598" text-anchor="middle" class="obj" fill="#84cc16">VenueOpsService</text>
+  <text x="215" y="616" text-anchor="middle" font-size="11" fill="#888">:Service</text>
+
+  <!-- NotificationService -->
+  <rect x="690" y="580" width="140" height="55" rx="10" fill="#fff" stroke="#f5576c" stroke-width="2.5" filter="url(#shadow)"/>
+  <text x="760" y="608" text-anchor="middle" class="obj" fill="#f5576c">NotificationService</text>
+  <text x="760" y="626" text-anchor="middle" font-size="11" fill="#888">:Service</text>
+
+  <!-- Links -->
+  <line x1="500" y1="145" x2="500" y2="210" stroke="#4a6cf7" stroke-width="1.8"/>
+  <line x1="500" y1="265" x2="500" y2="330" stroke="#10b981" stroke-width="1.8"/>
+  <line x1="510" y1="385" x2="225" y2="450" stroke="#f59e0b" stroke-width="1.8"/>
+  <line x1="225" y1="505" x2="500" y2="505" stroke="#8b5cf6" stroke-width="1.8"/>
+  <line x1="590" y1="478" x2="690" y2="478" stroke="#06b6d4" stroke-width="1.8"/>
+  <line x1="310" y1="478" x2="225" y2="570" stroke="#8b5cf6" stroke-width="1.8"/>
+  <line x1="510" y1="478" x2="690" y2="595" stroke="#06b6d4" stroke-width="1.5" stroke-dasharray="5,3"/>
+
+  <!-- Messages (numbered) -->
+  <!-- 1 -->
+  <rect x="470" y="165" width="80" height="20" rx="10" fill="#4a6cf7"/>
+  <text x="510" y="180" text-anchor="middle" font-size="10" fill="#fff" font-weight="bold">1: 选择场馆+日期</text>
+
+  <!-- 2 -->
+  <rect x="470" y="285" width="145" height="20" rx="10" fill="#10b981"/>
+  <text x="542" y="300" text-anchor="middle" font-size="10" fill="#fff" font-weight="bold">2: GET schedule(venueId,date)</text>
+
+  <!-- 3 -->
+  <rect x="575" y="300" width="100" height="20" rx="10" fill="#888"/>
+  <text x="625" y="315" text-anchor="middle" font-size="10" fill="#fff" font-weight="bold">3: 返回可用性网格</text>
+
+  <!-- 4 -->
+  <rect x="470" y="250" width="120" height="20" rx="10" fill="#4a6cf7"/>
+  <text x="530" y="265" text-anchor="middle" font-size="10" fill="#fff" font-weight="bold">4: 选择时段+确认</text>
+
+  <!-- 5 -->
+  <rect x="500" y="400" width="110" height="20" rx="10" fill="#f59e0b"/>
+  <text x="555" y="415" text-anchor="middle" font-size="10" fill="#fff" font-weight="bold">5: POST create(REQ)</text>
+
+  <!-- 6 -->
+  <rect x="300" y="415" width="115" height="20" rx="10" fill="#f59e0b"/>
+  <text x="358" y="430" text-anchor="middle" font-size="10" fill="#fff" font-weight="bold">6: createReservation()</text>
+
+  <!-- 7 self-call: validate -->
+  <rect x="130" y="520" width="80" height="20" rx="10" fill="#7c3aed"/>
+  <text x="170" y="535" text-anchor="middle" font-size="10" fill="#fff" font-weight="bold">7: 校验时间</text>
+
+  <!-- 8 -->
+  <rect x="240" y="520" width="105" height="20" rx="10" fill="#84cc16"/>
+  <text x="292" y="535" text-anchor="middle" font-size="10" fill="#fff" font-weight="bold">8: evaluateAvailability()</text>
+
+  <!-- 9 -->
+  <rect x="350" y="492" width="90" height="20" rx="10" fill="#06b6d4"/>
+  <text x="395" y="507" text-anchor="middle" font-size="10" fill="#fff" font-weight="bold">9: SELECT(冲突检测)</text>
+
+  <!-- 10 -->
+  <rect x="570" y="492" width="80" height="20" rx="10" fill="#888"/>
+  <text x="610" y="507" text-anchor="middle" font-size="10" fill="#fff" font-weight="bold">10: 无冲突</text>
+
+  <!-- 11 -->
+  <rect x="350" y="452" width="90" height="20" rx="10" fill="#06b6d4"/>
+  <text x="395" y="467" text-anchor="middle" font-size="10" fill="#fff" font-weight="bold">11: INSERT(预约)</text>
+
+  <!-- 12 -->
+  <rect x="570" y="452" width="80" height="20" rx="10" fill="#888"/>
+  <text x="610" y="467" text-anchor="middle" font-size="10" fill="#fff" font-weight="bold">12: 插入成功</text>
+
+  <!-- 13 async notify -->
+  <rect x="580" y="600" width="80" height="20" rx="10" fill="#f5576c"/>
+  <text x="620" y="615" text-anchor="middle" font-size="10" fill="#fff" font-weight="bold">13: 推送通知</text>
+
+  <!-- 14 return success -->
+  <rect x="285" y="365" width="90" height="20" rx="10" fill="#888"/>
+  <text x="330" y="380" text-anchor="middle" font-size="10" fill="#fff" font-weight="bold">14: ApiResponse</text>
+
+  </g>
+  <g class="codex-text-overlay" transform="translate(80 80)">
+    <text x="500" y="38" text-anchor="middle" class="title">通讯图 — 学生预约场地（编号消息传递）</text>
+    <text x="500" y="118" text-anchor="middle" class="obj" fill="#4a6cf7">学生</text>
+    <text x="500" y="136" text-anchor="middle" font-size="11" fill="#888">:Student</text>
+    <text x="500" y="238" text-anchor="middle" class="obj" fill="#10b981">Reservation.vue</text>
+    <text x="500" y="256" text-anchor="middle" font-size="11" fill="#888">:VueComponent</text>
+    <text x="510" y="358" text-anchor="middle" class="obj" fill="#f59e0b">ReservationController</text>
+    <text x="510" y="376" text-anchor="middle" font-size="11" fill="#888">:Controller</text>
+    <text x="225" y="478" text-anchor="middle" class="obj" fill="#8b5cf6">ReservationServiceImpl</text>
+    <text x="225" y="496" text-anchor="middle" font-size="11" fill="#888">:Service</text>
+    <text x="510" y="478" text-anchor="middle" class="obj" fill="#06b6d4">ReservationMapper</text>
+    <text x="510" y="496" text-anchor="middle" font-size="11" fill="#888">:Mapper</text>
+    <text x="755" y="478" text-anchor="middle" class="obj" fill="#ec4899">MySQL</text>
+    <text x="755" y="496" text-anchor="middle" font-size="11" fill="#888">:Database</text>
+    <text x="215" y="598" text-anchor="middle" class="obj" fill="#84cc16">VenueOpsService</text>
+    <text x="215" y="616" text-anchor="middle" font-size="11" fill="#888">:Service</text>
+    <text x="760" y="608" text-anchor="middle" class="obj" fill="#f5576c">NotificationService</text>
+    <text x="760" y="626" text-anchor="middle" font-size="11" fill="#888">:Service</text>
+    <text x="510" y="180" text-anchor="middle" font-size="10" fill="#fff" font-weight="bold">1: 选择场馆+日期</text>
+    <text x="542" y="300" text-anchor="middle" font-size="10" fill="#fff" font-weight="bold">2: GET schedule(venueId,date)</text>
+    <text x="625" y="315" text-anchor="middle" font-size="10" fill="#fff" font-weight="bold">3: 返回可用性网格</text>
+    <text x="530" y="265" text-anchor="middle" font-size="10" fill="#fff" font-weight="bold">4: 选择时段+确认</text>
+    <text x="555" y="415" text-anchor="middle" font-size="10" fill="#fff" font-weight="bold">5: POST create(REQ)</text>
+    <text x="358" y="430" text-anchor="middle" font-size="10" fill="#fff" font-weight="bold">6: createReservation()</text>
+    <text x="170" y="535" text-anchor="middle" font-size="10" fill="#fff" font-weight="bold">7: 校验时间</text>
+    <text x="292" y="535" text-anchor="middle" font-size="10" fill="#fff" font-weight="bold">8: evaluateAvailability()</text>
+    <text x="395" y="507" text-anchor="middle" font-size="10" fill="#fff" font-weight="bold">9: SELECT(冲突检测)</text>
+    <text x="610" y="507" text-anchor="middle" font-size="10" fill="#fff" font-weight="bold">10: 无冲突</text>
+    <text x="395" y="467" text-anchor="middle" font-size="10" fill="#fff" font-weight="bold">11: INSERT(预约)</text>
+    <text x="610" y="467" text-anchor="middle" font-size="10" fill="#fff" font-weight="bold">12: 插入成功</text>
+    <text x="620" y="615" text-anchor="middle" font-size="10" fill="#fff" font-weight="bold">13: 推送通知</text>
+    <text x="330" y="380" text-anchor="middle" font-size="10" fill="#fff" font-weight="bold">14: ApiResponse</text>
+  </g>
+</svg>

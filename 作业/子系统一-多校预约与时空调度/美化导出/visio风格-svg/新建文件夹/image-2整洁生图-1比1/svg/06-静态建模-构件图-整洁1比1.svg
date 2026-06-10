@@ -1,0 +1,230 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024" role="img" aria-label="06-静态建模-构件图-整洁1比1">
+
+  <defs>
+    <filter id="outerDrop" x="-8%" y="-8%" width="116%" height="116%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#17345d" flood-opacity="0.10"/>
+    </filter>
+    <linearGradient id="outerPage" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#fbfdff"/>
+      <stop offset="100%" stop-color="#eef5fc"/>
+    </linearGradient>
+    <pattern id="outerGrid" width="32" height="32" patternUnits="userSpaceOnUse">
+      <path d="M 32 0 L 0 0 0 32" fill="none" stroke="#d6e2f0" stroke-width="0.75" opacity="0.34"/>
+    </pattern>
+    <style><![CDATA[
+      text { font-family: "Microsoft YaHei", "Microsoft JhengHei", "SimHei", "Segoe UI", Arial, sans-serif !important; }
+      .title { fill: #17345d !important; font-weight: 700 !important; }
+      path, line, polyline { stroke-linecap: round; stroke-linejoin: round; }
+      rect, ellipse, circle, polygon { stroke-linejoin: round; }
+    ]]></style>
+  </defs>
+  <defs id="codex-visio-style">
+    <filter id="codexVisioShadow" x="-8%" y="-8%" width="116%" height="116%">
+      <feDropShadow dx="0" dy="2" stdDeviation="1.8" flood-color="#1f3b73" flood-opacity="0.16"/>
+    </filter>
+    <linearGradient id="codexPageGradient" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#fbfdff"/>
+      <stop offset="100%" stop-color="#eef4fb"/>
+    </linearGradient>
+    <pattern id="codexGrid" width="28" height="28" patternUnits="userSpaceOnUse">
+      <path d="M 28 0 L 0 0 0 28" fill="none" stroke="#d9e3f0" stroke-width="0.8" opacity="0.38"/>
+    </pattern>
+    <style><![CDATA[
+      svg {
+        background: #edf2f8;
+      }
+      text {
+        font-family: "Microsoft YaHei", "Microsoft JhengHei", "SimHei", "Segoe UI", Arial, sans-serif !important;
+        paint-order: stroke fill;
+        stroke: rgba(255,255,255,0.72);
+        stroke-width: 1.2px;
+        letter-spacing: 0.05px;
+      }
+      .codex-text-overlay text {
+        filter: none !important;
+        paint-order: stroke fill !important;
+        stroke: #ffffff !important;
+        stroke-width: 3.2px !important;
+        stroke-linejoin: round !important;
+      }
+      .codex-text-overlay .swimlane,
+      .codex-text-overlay .action,
+      .codex-text-overlay .lifeline,
+      .codex-text-overlay text[fill="#fff"],
+      .codex-text-overlay text[fill="#ffffff"],
+      .codex-text-overlay text[fill="white"] {
+        stroke: rgba(18, 32, 54, 0.55) !important;
+        stroke-width: 0.85px !important;
+      }
+      .title {
+        fill: #17345d !important;
+        font-weight: 700 !important;
+      }
+      rect:not(.codex-page-bg):not(.codex-grid-bg),
+      ellipse,
+      circle,
+      polygon {
+        filter: url(#codexVisioShadow);
+        stroke-linejoin: round;
+      }
+      path,
+      line,
+      polyline {
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+      marker path {
+        filter: none;
+      }
+    ]]></style>
+  </defs>
+  <rect x="0" y="0" width="1024" height="1024" rx="22" fill="url(#outerPage)"/>
+  <rect x="0" y="0" width="1024" height="1024" fill="url(#outerGrid)" opacity="0.18"/>
+  <g filter="url(#outerDrop)">
+  <g transform="translate(44.000 206.568) scale(0.985263)">
+
+  <defs>
+    <style>
+      text { font-family: 'Microsoft YaHei', 'SimHei', sans-serif; }
+      .title { font-size: 22px; font-weight: bold; fill: #1a1a2e; }
+      .comp-name { font-size: 15px; font-weight: bold; fill: #fff; }
+      .iface { font-size: 10px; fill: #666; }
+      .dep { font-size: 10px; fill: #888; }
+    </style>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#555"/>
+    </marker>
+  </defs>
+
+  <rect width="950" height="620" fill="#fafbff" rx="8"/>
+  <text x="475" y="38" text-anchor="middle" class="title">UML构件图 — 系统构件组成与依赖关系</text>
+
+  <!-- Component: Vue前端 WebApp -->
+  <rect x="50" y="70" width="220" height="180" rx="12" fill="#fff" stroke="#4a6cf7" stroke-width="2.5" filter="url(#shadow)"/>
+  <rect x="50" y="70" width="220" height="35" rx="12" fill="#4a6cf7"/>
+  <rect x="50" y="93" width="220" height="12" fill="#4a6cf7"/>
+  <text x="160" y="93" text-anchor="middle" class="comp-name">«component» WebApp</text>
+  <text x="65" y="125" font-size="12" fill="#555">Vue 3 + Vite + Pinia</text>
+  <text x="65" y="145" font-size="12" fill="#555">Ant Design Vue + TypeScript</text>
+  <text x="65" y="165" font-size="12" fill="#555">Axios HTTP Client</text>
+  <text x="65" y="185" font-size="11" fill="#888">组件化 SPA 单页应用</text>
+  <!-- Lollipop: REST API client interface -->
+  <line x1="270" y1="150" x2="320" y2="150" stroke="#4a6cf7" stroke-width="2"/>
+  <circle cx="320" cy="150" r="10" fill="#4a6cf7" stroke="#fff" stroke-width="2"/>
+  <text x="340" y="148" font-size="10" fill="#4a6cf7">HTTP/REST</text>
+
+  <!-- Component: Spring Boot API -->
+  <rect x="370" y="70" width="240" height="200" rx="12" fill="#fff" stroke="#10b981" stroke-width="2.5" filter="url(#shadow)"/>
+  <rect x="370" y="70" width="240" height="35" rx="12" fill="#10b981"/>
+  <rect x="370" y="93" width="240" height="12" fill="#10b981"/>
+  <text x="490" y="93" text-anchor="middle" class="comp-name">«component» API Server</text>
+  <text x="385" y="125" font-size="12" fill="#555">Spring Boot 3.4.4</text>
+  <text x="385" y="145" font-size="12" fill="#555">ReservationController</text>
+  <text x="385" y="165" font-size="12" fill="#555">VenueController</text>
+  <text x="385" y="185" font-size="12" fill="#555">UserController</text>
+  <text x="385" y="205" font-size="12" fill="#555">Service / ServiceImpl</text>
+  <text x="385" y="225" font-size="11" fill="#888">RESTful API 服务组件</text>
+
+  <!-- Socket for API Server (JDBC) -->
+  <line x1="370" y1="160" x2="340" y2="160" stroke="#10b981" stroke-width="2"/>
+  <path d="M340,150 L328,160 L340,170 Z" fill="#10b981"/>
+  <text x="330" y="145" font-size="9" fill="#10b981">JDBC</text>
+
+  <!-- Component: MySQL Database -->
+  <rect x="50" y="340" width="220" height="150" rx="12" fill="#fff" stroke="#f59e0b" stroke-width="2.5" filter="url(#shadow)"/>
+  <rect x="50" y="340" width="220" height="35" rx="12" fill="#f59e0b"/>
+  <rect x="50" y="363" width="220" height="12" fill="#f59e0b"/>
+  <text x="160" y="363" text-anchor="middle" class="comp-name">«component» Database</text>
+  <text x="65" y="395" font-size="12" fill="#555">MySQL 8.4</text>
+  <text x="65" y="415" font-size="12" fill="#555">MyBatis-Plus 3.5.7</text>
+  <text x="65" y="435" font-size="12" fill="#555">数据存储 + 事务控制</text>
+  <text x="65" y="455" font-size="11" fill="#888">乐观锁并发控制</text>
+
+  <!-- Lollipop for Database (SQL) -->
+  <line x1="270" y1="410" x2="320" y2="410" stroke="#f59e0b" stroke-width="2"/>
+  <circle cx="320" cy="410" r="10" fill="#f59e0b" stroke="#fff" stroke-width="2"/>
+  <text x="340" y="408" font-size="10" fill="#f59e0b">SQL/TCP</text>
+
+  <!-- Component: Auth组件 -->
+  <rect x="50" y="520" width="150" height="90" rx="12" fill="#fff" stroke="#8b5cf6" stroke-width="2.5"/>
+  <rect x="50" y="520" width="150" height="32" rx="12" fill="#8b5cf6"/>
+  <rect x="50" y="540" width="150" height="12" fill="#8b5cf6"/>
+  <text x="125" y="542" text-anchor="middle" class="comp-name" font-size="13">«component» Auth</text>
+  <text x="65" y="568" font-size="11" fill="#555">Spring Security + JWT</text>
+  <text x="65" y="586" font-size="11" fill="#555">JwtAuthenticationFilter</text>
+
+  <!-- Component: DeepSeek AI -->
+  <rect x="600" y="370" width="180" height="130" rx="12" fill="#fff" stroke="#ec4899" stroke-width="2.5"/>
+  <rect x="600" y="370" width="180" height="35" rx="12" fill="#ec4899"/>
+  <rect x="600" y="393" width="180" height="12" fill="#ec4899"/>
+  <text x="690" y="393" text-anchor="middle" class="comp-name">«component» DeepSeek API</text>
+  <text x="615" y="425" font-size="12" fill="#555">推荐算法引擎</text>
+  <text x="615" y="445" font-size="12" fill="#555">用户行为分析</text>
+  <text x="615" y="465" font-size="12" fill="#555">个性化推荐生成</text>
+  <text x="615" y="485" font-size="11" fill="#888">REST API 外部调用</text>
+
+  <!-- Dependencies -->
+  <!-- WebApp → API Server -->
+  <line x1="320" y1="150" x2="370" y2="120" stroke="#555" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="340" y="126" class="dep">HTTP Request</text>
+
+  <!-- API Server → Database -->
+  <line x1="370" y1="160" x2="320" y2="410" stroke="#555" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="340" y="310" class="dep">JDBC Query</text>
+
+  <!-- WebApp → Database (indirect) -->
+  <line x1="340" y1="160" x2="320" y2="410" stroke="#555" stroke-width="1.5" stroke-dasharray="5,3"/>
+  <text x="315" y="300" class="dep" font-size="9" fill="#aaa">间接访问</text>
+
+  <!-- Auth → API Server -->
+  <line x1="200" y1="520" x2="490" y2="270" stroke="#8b5cf6" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#arrow)"/>
+  <text x="300" y="390" class="dep" fill="#8b5cf6">认证拦截</text>
+
+  <!-- API Server → DeepSeek -->
+  <line x1="610" y1="160" x2="600" y2="430" stroke="#ec4899" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#arrow)"/>
+  <text x="620" y="300" class="dep" fill="#ec4899">推荐数据交换</text>
+
+  <!-- Legend -->
+  <rect x="30" y="620" width="890" height="35" rx="6" fill="#f0f0f0" stroke="#ddd" stroke-width="1"/>
+  <text x="50" y="642" font-size="11" fill="#666">⬤ lollipop = 提供接口 | 半圆sockets = 所需接口 | ──► 实线 = 调用/依赖 | - - -► 虚线 = 间接/外部依赖</text>
+
+  </g>
+  <g class="codex-text-overlay" transform="translate(44.000 206.568) scale(0.985263)">
+    <text x="475" y="38" text-anchor="middle" class="title">UML构件图 — 系统构件组成与依赖关系</text>
+    <text x="160" y="93" text-anchor="middle" class="comp-name">«component» WebApp</text>
+    <text x="65" y="125" font-size="12" fill="#555">Vue 3 + Vite + Pinia</text>
+    <text x="65" y="145" font-size="12" fill="#555">Ant Design Vue + TypeScript</text>
+    <text x="65" y="165" font-size="12" fill="#555">Axios HTTP Client</text>
+    <text x="65" y="185" font-size="11" fill="#888">组件化 SPA 单页应用</text>
+    <text x="340" y="148" font-size="10" fill="#4a6cf7">HTTP/REST</text>
+    <text x="490" y="93" text-anchor="middle" class="comp-name">«component» API Server</text>
+    <text x="385" y="125" font-size="12" fill="#555">Spring Boot 3.4.4</text>
+    <text x="385" y="145" font-size="12" fill="#555">ReservationController</text>
+    <text x="385" y="165" font-size="12" fill="#555">VenueController</text>
+    <text x="385" y="185" font-size="12" fill="#555">UserController</text>
+    <text x="385" y="205" font-size="12" fill="#555">Service / ServiceImpl</text>
+    <text x="385" y="225" font-size="11" fill="#888">RESTful API 服务组件</text>
+    <text x="330" y="145" font-size="9" fill="#10b981">JDBC</text>
+    <text x="160" y="363" text-anchor="middle" class="comp-name">«component» Database</text>
+    <text x="65" y="395" font-size="12" fill="#555">MySQL 8.4</text>
+    <text x="65" y="415" font-size="12" fill="#555">MyBatis-Plus 3.5.7</text>
+    <text x="65" y="435" font-size="12" fill="#555">数据存储 + 事务控制</text>
+    <text x="65" y="455" font-size="11" fill="#888">乐观锁并发控制</text>
+    <text x="340" y="408" font-size="10" fill="#f59e0b">SQL/TCP</text>
+    <text x="125" y="542" text-anchor="middle" class="comp-name" font-size="13">«component» Auth</text>
+    <text x="65" y="568" font-size="11" fill="#555">Spring Security + JWT</text>
+    <text x="65" y="586" font-size="11" fill="#555">JwtAuthenticationFilter</text>
+    <text x="690" y="393" text-anchor="middle" class="comp-name">«component» DeepSeek API</text>
+    <text x="615" y="425" font-size="12" fill="#555">推荐算法引擎</text>
+    <text x="615" y="445" font-size="12" fill="#555">用户行为分析</text>
+    <text x="615" y="465" font-size="12" fill="#555">个性化推荐生成</text>
+    <text x="615" y="485" font-size="11" fill="#888">REST API 外部调用</text>
+    <text x="340" y="126" class="dep">HTTP Request</text>
+    <text x="340" y="310" class="dep">JDBC Query</text>
+    <text x="315" y="300" class="dep" font-size="9" fill="#aaa">间接访问</text>
+    <text x="300" y="390" class="dep" fill="#8b5cf6">认证拦截</text>
+    <text x="620" y="300" class="dep" fill="#ec4899">推荐数据交换</text>
+    <text x="50" y="642" font-size="11" fill="#666">⬤ lollipop = 提供接口 | 半圆sockets = 所需接口 | ──► 实线 = 调用/依赖 | - - -► 虚线 = 间接/外部依赖</text>
+  </g>
+  </g>
+</svg>

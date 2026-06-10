@@ -1,0 +1,303 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1277 936" width="1277" height="936">
+  <defs id="codex-visio-style">
+    <filter id="codexVisioShadow" x="-8%" y="-8%" width="116%" height="116%">
+      <feDropShadow dx="0" dy="2" stdDeviation="1.8" flood-color="#1f3b73" flood-opacity="0.16"/>
+    </filter>
+    <linearGradient id="codexPageGradient" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#fbfdff"/>
+      <stop offset="100%" stop-color="#eef4fb"/>
+    </linearGradient>
+    <pattern id="codexGrid" width="28" height="28" patternUnits="userSpaceOnUse">
+      <path d="M 28 0 L 0 0 0 28" fill="none" stroke="#d9e3f0" stroke-width="0.8" opacity="0.38"/>
+    </pattern>
+    <style><![CDATA[
+      svg {
+        background: #edf2f8;
+      }
+      text {
+        font-family: "Microsoft YaHei", "Microsoft JhengHei", "SimHei", "Segoe UI", Arial, sans-serif !important;
+        paint-order: stroke fill;
+        stroke: rgba(255,255,255,0.72);
+        stroke-width: 1.2px;
+        letter-spacing: 0.05px;
+      }
+      .codex-text-overlay text {
+        filter: none !important;
+        paint-order: stroke fill !important;
+        stroke: #ffffff !important;
+        stroke-width: 3.2px !important;
+        stroke-linejoin: round !important;
+      }
+      .codex-text-overlay .swimlane,
+      .codex-text-overlay .action,
+      .codex-text-overlay .lifeline,
+      .codex-text-overlay text[fill="#fff"],
+      .codex-text-overlay text[fill="#ffffff"],
+      .codex-text-overlay text[fill="white"] {
+        stroke: rgba(18, 32, 54, 0.55) !important;
+        stroke-width: 0.85px !important;
+      }
+      .title {
+        fill: #17345d !important;
+        font-weight: 700 !important;
+      }
+      rect:not(.codex-page-bg):not(.codex-grid-bg),
+      ellipse,
+      circle,
+      polygon {
+        filter: url(#codexVisioShadow);
+        stroke-linejoin: round;
+      }
+      path,
+      line,
+      polyline {
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+      marker path {
+        filter: none;
+      }
+    ]]></style>
+  </defs>
+  <rect class="codex-page-bg" x="0" y="0" width="1277" height="936" rx="14" fill="url(#codexPageGradient)"/>
+  <rect class="codex-grid-bg" x="0" y="0" width="1277" height="936" fill="url(#codexGrid)" opacity="0.12"/>
+
+  <g transform="translate(80 80)">
+
+  <defs>
+    <style>
+      text { font-family: "Microsoft YaHei", "SimHei", sans-serif; }
+      .title { font-size: 20px; font-weight: bold; fill: #1a1a2e; }
+      .lane-title { font-size: 12px; font-weight: bold; fill: #fff; }
+      .act-text { font-size: 11px; fill: #333; text-anchor: middle; }
+      .cond-text { font-size: 10px; fill: #555; font-weight: bold; }
+      .note-text { font-size: 9px; fill: #777; }
+    </style>
+    <filter id="shadow"><feDropShadow dx="1" dy="1" stdDeviation="1.5" flood-opacity="0.1"/></filter>
+  </defs>
+  <rect width="1000" height="700" fill="#FAFBFC" rx="8"/>
+
+  <text x="500" y="28" text-anchor="middle" class="title">子系统二——活动图：用户发表评论 (带游泳道 Activity Diagram)</text>
+  <line x1="120" y1="40" x2="880" y2="40" stroke="#4A90D9" stroke-width="1.5"/>
+
+  <!-- Swimlanes -->
+  <rect x="5" y="50" width="245" height="635" fill="#E3F2FD" rx="4"/>
+  <rect x="250" y="50" width="245" height="635" fill="#E8F5E9" rx="4"/>
+  <rect x="495" y="50" width="245" height="635" fill="#FFF3E0" rx="4"/>
+  <rect x="740" y="50" width="255" height="635" fill="#F3E5F5" rx="4"/>
+
+  <!-- Lane headers -->
+  <rect x="5" y="50" width="245" height="28" rx="4" fill="#1976D2"/>
+  <text x="127" y="69" text-anchor="middle" class="lane-title">用户 (User)</text>
+  <rect x="250" y="50" width="245" height="28" rx="4" fill="#388E3C"/>
+  <text x="372" y="69" text-anchor="middle" class="lane-title">前端 (Vue3)</text>
+  <rect x="495" y="50" width="245" height="28" rx="4" fill="#F57C00"/>
+  <text x="617" y="69" text-anchor="middle" class="lane-title">后端 (Spring Boot)</text>
+  <rect x="740" y="50" width="255" height="28" rx="4" fill="#7B1FA2"/>
+  <text x="867" y="69" text-anchor="middle" class="lane-title">数据库 (MySQL)</text>
+
+  <!-- Start -->
+  <circle cx="127" cy="105" r="8" fill="#333"/>
+  <text x="127" y="130" text-anchor="middle" class="cond-text">开始</text>
+
+  <!-- Activity 1: 打开场地详情 -->
+  <rect x="42" y="143" width="170" height="38" rx="8" fill="#fff" stroke="#1976D2" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="127" y="158" class="act-text">打开场地详情页</text>
+  <text x="127" y="174" class="note-text">VenueList → 点击场地</text>
+
+  <line x1="127" y1="113" x2="127" y2="141" stroke="#555" stroke-width="1.5" marker-end="url(#aA)"/>
+
+  <!-- Activity 2: 点击写评论 -->
+  <rect x="62" y="200" width="130" height="30" rx="8" fill="#fff" stroke="#1976D2" stroke-width="1" filter="url(#shadow)"/>
+  <text x="127" y="219" class="act-text">点击"写评论"</text>
+
+  <line x1="127" y1="181" x2="127" y2="198" stroke="#555" stroke-width="1.5" marker-end="url(#aA)"/>
+
+  <!-- Cross to Frontend -->
+  <line x1="192" y1="215" x2="248" y2="215" stroke="#555" stroke-width="1.5"/>
+
+  <!-- Activity 3: 前端显示表单 -->
+  <rect x="290" y="200" width="160" height="30" rx="8" fill="#fff" stroke="#388E3C" stroke-width="1" filter="url(#shadow)"/>
+  <text x="370" y="219" class="act-text">显示评论表单</text>
+
+  <line x1="370" y1="230" x2="370" y2="248" stroke="#555" stroke-width="1.5" marker-end="url(#aA)"/>
+
+  <!-- Activity 4: 输入内容 -->
+  <rect x="290" y="250" width="160" height="30" rx="8" fill="#fff" stroke="#388E3C" stroke-width="1" filter="url(#shadow)"/>
+  <text x="370" y="269" class="act-text">输入文字 + 评分(1-5)</text>
+
+  <line x1="370" y1="280" x2="370" y2="298" stroke="#555" stroke-width="1.5" marker-end="url(#aA)"/>
+
+  <!-- Activity 5: 提交按钮 -->
+  <rect x="290" y="300" width="160" height="30" rx="8" fill="#fff" stroke="#388E3C" stroke-width="1" filter="url(#shadow)"/>
+  <text x="370" y="319" class="act-text">提交评论</text>
+
+  <line x1="370" y1="330" x2="370" y2="348" stroke="#555" stroke-width="1.5" marker-end="url(#aA)"/>
+
+  <!-- Activity 6: 前端校验 -->
+  <rect x="290" y="350" width="160" height="30" rx="8" fill="#C8E6C9" stroke="#388E3C" stroke-width="1" filter="url(#shadow)"/>
+  <text x="370" y="369" class="act-text">前端校验 (字数/评分)</text>
+
+  <line x1="370" y1="380" x2="370" y2="398" stroke="#555" stroke-width="1.5"/>
+
+  <!-- Decision 1: 校验通过? -->
+  <polygon points="370,400 410,425 370,450 330,425" fill="#fff" stroke="#D32F2F" stroke-width="1.5"/>
+  <text x="370" y="428" class="cond-text">校验?</text>
+
+  <!-- [No] return -->
+  <line x1="330" y1="425" x2="260" y2="425" stroke="#555" stroke-width="1"/>
+  <text x="295" y="418" class="note-text">[否]</text>
+  <rect x="80" y="408" width="110" height="34" rx="8" fill="#FFEBEE" stroke="#D32F2F" stroke-width="1"/>
+  <text x="135" y="422" class="act-text" fill="#D32F2F">提示修改</text>
+  <text x="135" y="436" class="note-text" fill="#D32F2F">字数超限/评分无效</text>
+  <line x1="190" y1="425" x2="260" y2="425" stroke="#555" stroke-width="1"/>
+
+  <!-- [Yes] → Backend -->
+  <line x1="410" y1="425" x2="493" y2="425" stroke="#555" stroke-width="1.5"/>
+  <text x="450" y="418" class="note-text">[是] POST /api/comments</text>
+
+  <!-- Activity 7: 反刷屏检测 -->
+  <rect x="525" y="350" width="180" height="30" rx="8" fill="#FFF3E0" stroke="#F57C00" stroke-width="1" filter="url(#shadow)"/>
+  <text x="615" y="365" class="act-text">反刷屏检测 (60秒冷却)</text>
+  <text x="615" y="378" class="note-text">checkSpam(userId, venueId)</text>
+
+  <line x1="615" y1="380" x2="615" y2="398" stroke="#555" stroke-width="1.5"/>
+
+  <!-- Decision 2: 刷屏? -->
+  <polygon points="615,400 655,425 615,450 575,425" fill="#fff" stroke="#D32F2F" stroke-width="1.5"/>
+  <text x="615" y="428" class="cond-text">刷屏?</text>
+
+  <!-- [Yes] return anti-spam -->
+  <line x1="575" y1="425" x2="510" y2="425" stroke="#555" stroke-width="1"/>
+  <text x="545" y="418" class="note-text">[是] 429 Too Many</text>
+  <rect x="310" y="408" width="120" height="34" rx="8" fill="#FFEBEE" stroke="#D32F2F" stroke-width="1"/>
+  <text x="370" y="422" class="act-text" fill="#D32F2F">提示"请稍候"</text>
+  <text x="370" y="436" class="note-text" fill="#D32F2F">60秒后再试</text>
+
+  <!-- [No] → next -->
+  <line x1="655" y1="425" x2="730" y2="425" stroke="#555" stroke-width="1.5"/>
+  <text x="690" y="418" class="note-text">[否]</text>
+
+  <!-- Activity 8: 敏感词过滤 -->
+  <rect x="495" y="400" width="200" height="30" rx="8" fill="#FFEBEE" stroke="#D32F2F" stroke-width="1" filter="url(#shadow)"/>
+  <text x="595" y="415" class="act-text">敏感词过滤</text>
+  <text x="595" y="428" class="note-text">filterSensitiveWords(content)</text>
+  <text x="595" y="440" class="note-text">匹配: 诈骗|赌博|代打|代练|广告</text>
+
+  <line x1="595" y1="430" x2="595" y2="448" stroke="#555" stroke-width="1.5"/>
+
+  <!-- Decision 3: 敏感词? -->
+  <polygon points="595,450 635,475 595,500 555,475" fill="#fff" stroke="#D32F2F" stroke-width="1.5"/>
+  <text x="595" y="478" class="cond-text">敏感词?</text>
+
+  <!-- [Yes] return reject -->
+  <line x1="555" y1="475" x2="510" y2="475" stroke="#555" stroke-width="1"/>
+  <text x="535" y="468" class="note-text">[是] 400 Bad Request</text>
+  <rect x="305" y="458" width="130" height="34" rx="8" fill="#FFEBEE" stroke="#D32F2F" stroke-width="1"/>
+  <text x="370" y="472" class="act-text" fill="#D32F2F">提示"含敏感词"</text>
+  <text x="370" y="486" class="note-text" fill="#D32F2F">请修改后重新提交</text>
+
+  <!-- [No] → DB -->
+  <line x1="635" y1="475" x2="738" y2="475" stroke="#555" stroke-width="1.5"/>
+  <text x="685" y="468" class="note-text">[否] INSERT</text>
+
+  <!-- Activity 9: 保存到数据库 -->
+  <rect x="770" y="458" width="180" height="34" rx="8" fill="#E1BEE7" stroke="#7B1FA2" stroke-width="1" filter="url(#shadow)"/>
+  <text x="860" y="472" class="act-text">INSERT INTO t_comment</text>
+  <text x="860" y="486" class="note-text">user_id, venue_id, rating, content</text>
+
+  <line x1="860" y1="492" x2="860" y2="510" stroke="#555" stroke-width="1.5" marker-end="url(#aA)"/>
+
+  <!-- Activity 10: 返回成功 -->
+  <rect x="770" y="512" width="180" height="30" rx="8" fill="#E1BEE7" stroke="#7B1FA2" stroke-width="1" filter="url(#shadow)"/>
+  <text x="860" y="531" class="act-text">返回保存成功</text>
+
+  <!-- Return to backend -->
+  <line x1="770" y1="527" x2="740" y2="527" stroke="#555" stroke-width="1.5"/>
+
+  <!-- Activity 11: 后端响应 -->
+  <rect x="525" y="510" width="200" height="34" rx="8" fill="#FFF3E0" stroke="#F57C00" stroke-width="1" filter="url(#shadow)"/>
+  <text x="625" y="524" class="act-text">201 Created + Comment JSON</text>
+  <text x="625" y="538" class="note-text">触发UC-O4 (评分≤2时)</text>
+
+  <line x1="525" y1="527" x2="495" y2="527" stroke="#555" stroke-width="1.5"/>
+
+  <!-- Activity 12: 前端更新 -->
+  <rect x="290" y="510" width="160" height="34" rx="8" fill="#C8E6C9" stroke="#388E3C" stroke-width="1" filter="url(#shadow)"/>
+  <text x="370" y="524" class="act-text">刷新评论列表</text>
+  <text x="370" y="538" class="note-text">GET /api/comments</text>
+
+  <line x1="290" y1="527" x2="255" y2="527" stroke="#555" stroke-width="1.5"/>
+
+  <!-- Activity 13: 用户看到新评论 -->
+  <rect x="42" y="510" width="170" height="34" rx="8" fill="#E3F2FD" stroke="#1976D2" stroke-width="1" filter="url(#shadow)"/>
+  <text x="127" y="524" class="act-text">查看新评论</text>
+  <text x="127" y="538" class="note-text">评论出现在列表中</text>
+
+  <line x1="127" y1="544" x2="127" y2="562" stroke="#555" stroke-width="1.5" marker-end="url(#aA)"/>
+
+  <!-- End -->
+  <circle cx="127" cy="575" r="7" fill="#333" stroke="#333" stroke-width="3"/>
+  <text x="127" y="595" text-anchor="middle" class="cond-text">结束</text>
+
+  <!-- Fork/Join annotation -->
+  <rect x="350" y="570" width="380" height="50" rx="8" fill="#F5F7FA" stroke="#ddd" stroke-width="1"/>
+  <text x="540" y="590" text-anchor="middle" font-size="10" fill="#555">并行: [敏感词检测] 与 [反刷屏检测] 可并行执行, 两者均通过方可保存</text>
+  <text x="540" y="608" text-anchor="middle" font-size="10" fill="#555">分支: 任一检测不通过则立即返回错误提示, 不进入数据库写操作</text>
+
+  <defs>
+    <marker id="aA" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#555"/></marker>
+  </defs>
+
+  <text x="500" y="688" text-anchor="middle" font-size="10" fill="#999">活动图: 以游泳道展示用户发表评论的完整业务流程, 包含分支判断与前后端协作逻辑</text>
+
+  </g>
+  <g class="codex-text-overlay" transform="translate(80 80)">
+    <text x="500" y="28" text-anchor="middle" class="title">子系统二——活动图：用户发表评论 (带游泳道 Activity Diagram)</text>
+    <text x="127" y="69" text-anchor="middle" class="lane-title">用户 (User)</text>
+    <text x="372" y="69" text-anchor="middle" class="lane-title">前端 (Vue3)</text>
+    <text x="617" y="69" text-anchor="middle" class="lane-title">后端 (Spring Boot)</text>
+    <text x="867" y="69" text-anchor="middle" class="lane-title">数据库 (MySQL)</text>
+    <text x="127" y="130" text-anchor="middle" class="cond-text">开始</text>
+    <text x="127" y="158" class="act-text">打开场地详情页</text>
+    <text x="127" y="174" class="note-text">VenueList → 点击场地</text>
+    <text x="127" y="219" class="act-text">点击"写评论"</text>
+    <text x="370" y="219" class="act-text">显示评论表单</text>
+    <text x="370" y="269" class="act-text">输入文字 + 评分(1-5)</text>
+    <text x="370" y="319" class="act-text">提交评论</text>
+    <text x="370" y="369" class="act-text">前端校验 (字数/评分)</text>
+    <text x="370" y="428" class="cond-text">校验?</text>
+    <text x="295" y="418" class="note-text">[否]</text>
+    <text x="135" y="422" class="act-text" fill="#D32F2F">提示修改</text>
+    <text x="135" y="436" class="note-text" fill="#D32F2F">字数超限/评分无效</text>
+    <text x="450" y="418" class="note-text">[是] POST /api/comments</text>
+    <text x="615" y="365" class="act-text">反刷屏检测 (60秒冷却)</text>
+    <text x="615" y="378" class="note-text">checkSpam(userId, venueId)</text>
+    <text x="615" y="428" class="cond-text">刷屏?</text>
+    <text x="545" y="418" class="note-text">[是] 429 Too Many</text>
+    <text x="370" y="422" class="act-text" fill="#D32F2F">提示"请稍候"</text>
+    <text x="370" y="436" class="note-text" fill="#D32F2F">60秒后再试</text>
+    <text x="690" y="418" class="note-text">[否]</text>
+    <text x="595" y="415" class="act-text">敏感词过滤</text>
+    <text x="595" y="428" class="note-text">filterSensitiveWords(content)</text>
+    <text x="595" y="440" class="note-text">匹配: 诈骗|赌博|代打|代练|广告</text>
+    <text x="595" y="478" class="cond-text">敏感词?</text>
+    <text x="535" y="468" class="note-text">[是] 400 Bad Request</text>
+    <text x="370" y="472" class="act-text" fill="#D32F2F">提示"含敏感词"</text>
+    <text x="370" y="486" class="note-text" fill="#D32F2F">请修改后重新提交</text>
+    <text x="685" y="468" class="note-text">[否] INSERT</text>
+    <text x="860" y="472" class="act-text">INSERT INTO t_comment</text>
+    <text x="860" y="486" class="note-text">user_id, venue_id, rating, content</text>
+    <text x="860" y="531" class="act-text">返回保存成功</text>
+    <text x="625" y="524" class="act-text">201 Created + Comment JSON</text>
+    <text x="625" y="538" class="note-text">触发UC-O4 (评分≤2时)</text>
+    <text x="370" y="524" class="act-text">刷新评论列表</text>
+    <text x="370" y="538" class="note-text">GET /api/comments</text>
+    <text x="127" y="524" class="act-text">查看新评论</text>
+    <text x="127" y="538" class="note-text">评论出现在列表中</text>
+    <text x="127" y="595" text-anchor="middle" class="cond-text">结束</text>
+    <text x="540" y="590" text-anchor="middle" font-size="10" fill="#555">并行: [敏感词检测] 与 [反刷屏检测] 可并行执行, 两者均通过方可保存</text>
+    <text x="540" y="608" text-anchor="middle" font-size="10" fill="#555">分支: 任一检测不通过则立即返回错误提示, 不进入数据库写操作</text>
+    <text x="500" y="688" text-anchor="middle" font-size="10" fill="#999">活动图: 以游泳道展示用户发表评论的完整业务流程, 包含分支判断与前后端协作逻辑</text>
+  </g>
+</svg>
