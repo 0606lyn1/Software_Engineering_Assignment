@@ -1,10 +1,14 @@
 <script setup lang="ts">
-import { reactive } from 'vue'
+import { reactive, ref } from 'vue'
+import { useRouter } from 'vue-router'
 import { message } from 'ant-design-vue'
+import { MailOutlined, SafetyCertificateOutlined, SaveOutlined, UserOutlined } from '@ant-design/icons-vue'
 import { api } from '../api'
 import { useAuthStore } from '../stores/auth'
 
+const router = useRouter()
 const authStore = useAuthStore()
+const saving = ref(false)
 const form = reactive({
   username: authStore.user?.username || '',
   email: authStore.user?.email || '',
@@ -12,26 +16,72 @@ const form = reactive({
 
 const save = async () => {
   if (!authStore.user) {
-    message.warning('\u8bf7\u5148\u767b\u5f55')
+    message.warning('请先登录')
+    router.push('/login')
     return
   }
-  const res = await api.updateUser(authStore.user.id, {
-    username: form.username,
-    email: form.email,
-    role: authStore.user.role,
-  })
-  authStore.setAuth(authStore.token, res.data)
-  message.success('\u4e2a\u4eba\u8d44\u6599\u5df2\u66f4\u65b0')
+  saving.value = true
+  try {
+    const res = await api.updateUser(authStore.user.id, {
+      username: form.username,
+      email: form.email,
+      role: authStore.user.role,
+    })
+    authStore.setAuth(authStore.token, res.data)
+    message.success('个人资料已更新')
+  } finally {
+    saving.value = false
+  }
 }
 </script>
 
 <template>
-  <a-card class="academic-card" :title="'\u4e2a\u4eba\u4fe1\u606f\u7ef4\u62a4'">
-    <a-form layout="vertical" @finish="save">
-      <a-form-item :label="'\u7528\u6237\u540d'"><a-input v-model:value="form.username" /></a-form-item>
-      <a-form-item :label="'\u90ae\u7bb1'"><a-input v-model:value="form.email" /></a-form-item>
-      <a-form-item :label="'\u89d2\u8272'"><a-input :value="authStore.user?.role" disabled /></a-form-item>
-      <a-button type="primary" html-type="submit">&#20445;&#23384;&#20462;&#25913;</a-button>
-    </a-form>
-  </a-card>
+  <section class="page-hero compact">
+    <div>
+      <a-tag color="blue">Profile</a-tag>
+      <h1>个人信息</h1>
+      <p>维护账号基础资料，保证预约记录和评论反馈归属清晰。</p>
+    </div>
+  </section>
+
+  <div class="profile-layout">
+    <a-card class="profile-card" :bordered="false">
+      <a-avatar :size="72" class="profile-avatar">
+        {{ authStore.user?.username?.slice(0, 1)?.toUpperCase() || 'U' }}
+      </a-avatar>
+      <h2>{{ authStore.user?.username || '未登录用户' }}</h2>
+      <p>{{ authStore.user?.email || '登录后查看邮箱' }}</p>
+      <a-tag color="gold"><SafetyCertificateOutlined /> {{ authStore.user?.role || 'GUEST' }}</a-tag>
+    </a-card>
+
+    <a-card class="form-card" :bordered="false">
+      <a-form layout="vertical" @finish="save">
+        <a-form-item
+          label="用户名"
+          name="username"
+          :rules="[{ required: true, message: '请输入用户名' }]"
+        >
+          <a-input v-model:value="form.username" size="large">
+            <template #prefix><UserOutlined /></template>
+          </a-input>
+        </a-form-item>
+        <a-form-item
+          label="邮箱"
+          name="email"
+          :rules="[{ required: true, type: 'email', message: '请输入正确邮箱' }]"
+        >
+          <a-input v-model:value="form.email" size="large">
+            <template #prefix><MailOutlined /></template>
+          </a-input>
+        </a-form-item>
+        <a-form-item label="角色">
+          <a-input :value="authStore.user?.role" disabled size="large" />
+        </a-form-item>
+        <a-button type="primary" html-type="submit" size="large" :loading="saving">
+          <SaveOutlined />
+          保存修改
+        </a-button>
+      </a-form>
+    </a-card>
+  </div>
 </template>

@@ -22,11 +22,18 @@ const router = createRouter({
 
 router.beforeEach((to, _from, next) => {
   const token = localStorage.getItem('token')
-  const needAuth = ['/my-reservations', '/user-center', '/reservation']
-  if (needAuth.includes(to.path) && !token) {
+  const publicPages = ['/login', '/register']
+
+  if (token && to.path === '/login') {
+    next('/')
+    return
+  }
+
+  if (!publicPages.includes(to.path) && !token) {
     next('/login')
     return
   }
+
   next()
 })
 

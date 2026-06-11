@@ -1,11 +1,14 @@
 <script setup lang="ts">
 import { onMounted, reactive, ref, watch } from 'vue'
+import dayjs from 'dayjs'
 import { message } from 'ant-design-vue'
+import { CommentOutlined, SendOutlined, UserOutlined } from '@ant-design/icons-vue'
 import { api } from '../api'
 import type { CommentItem } from '../types'
 
 const props = defineProps<{ venueId: number }>()
 const loading = ref(false)
+const submitLoading = ref(false)
 const comments = ref<CommentItem[]>([])
 const form = reactive({ content: '' })
 
@@ -20,15 +23,22 @@ const loadData = async () => {
   }
 }
 
+const formatTime = (value: string) => (value ? dayjs(value).format('YYYY-MM-DD HH:mm') : '')
+
 const submit = async () => {
   if (!form.content.trim()) {
-    message.warning('\u8bf7\u8f93\u5165\u8bc4\u8bba\u5185\u5bb9')
+    message.warning('请输入评论内容')
     return
   }
-  await api.createComment({ venueId: props.venueId, content: form.content })
-  message.success('\u8bc4\u8bba\u53d1\u5e03\u6210\u529f')
-  form.content = ''
-  await loadData()
+  submitLoading.value = true
+  try {
+    await api.createComment({ venueId: props.venueId, content: form.content.trim() })
+    message.success('评论发布成功')
+    form.content = ''
+    await loadData()
+  } finally {
+    submitLoading.value = false
+  }
 }
 
 watch(() => props.venueId, loadData, { immediate: true })
@@ -36,21 +46,44 @@ onMounted(loadData)
 </script>
 
 <template>
-  <a-space direction="vertical" style="width: 100%">
-    <a-form @finish="submit" layout="vertical">
-      <a-form-item :label="'\u5199\u4e0b\u4f60\u7684\u4f7f\u7528\u4f53\u9a8c'">
-        <a-textarea v-model:value="form.content" :rows="3" :placeholder="'\u4f8b\u5982\uff1a\u5730\u9762\u6e05\u6d01\u3001\u706f\u5149\u3001\u9884\u7ea6\u6d41\u7a0b\u7b49'" />
+  <a-space direction="vertical" class="comment-panel">
+    <div class="comment-head">
+      <div>
+        <h3><CommentOutlined /> 使用体验</h3>
+        <p>{{ comments.length }} 条评论，围绕场地、灯光、设备和预约流程。</p>
+      </div>
+      <a-button size="small" @click="loadData">刷新</a-button>
+    </div>
+
+    <a-form @finish="submit" layout="vertical" class="comment-form">
+      <a-form-item label="写下你的使用体验">
+        <a-textarea
+          v-model:value="form.content"
+          :rows="3"
+          :maxlength="200"
+          show-count
+          placeholder="例如：地面清洁、灯光、预约流程等"
+        />
       </a-form-item>
-      <a-button type="primary" html-type="submit">&#21457;&#34920;&#35780;&#35770;</a-button>
+      <a-button type="primary" html-type="submit" :loading="submitLoading">
+        <SendOutlined />
+        发表评论
+      </a-button>
     </a-form>
 
-    <a-list :loading="loading" :data-source="comments" bordered>
+    <a-list :loading="loading" :data-source="comments" class="comment-list">
+      <template #emptyText>
+        <a-empty description="暂无评论，成为第一个反馈的人" />
+      </template>
       <template #renderItem="{ item }">
         <a-list-item>
-          <a-list-item-meta :description="item.createdAt">
-            <template #title>&#29992;&#25143; {{ item.userId }}</template>
+          <a-list-item-meta :description="formatTime(item.createdAt)">
+            <template #avatar>
+              <a-avatar><UserOutlined /></a-avatar>
+            </template>
+            <template #title>用户 {{ item.userId }}</template>
           </a-list-item-meta>
-          <div>{{ item.content }}</div>
+          <p class="comment-content">{{ item.content }}</p>
         </a-list-item>
       </template>
     </a-list>
