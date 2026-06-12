@@ -42,3 +42,34 @@ export interface VenueType {
   id: number
   name: string
 }
+
+export interface VenueOps {
+  id: number
+  venueId: number
+  maintenanceStatus: string
+  cleaningStatus: string
+  lightingStatus: string
+  equipmentStatus: string
+  responsiblePerson?: string
+  contactPhone?: string
+  lastInspector?: string
+  lastCheckedAt: string
+  remark?: string
+}
+
+export interface VenueOpsPayload {
+  maintenanceStatus: string
+  cleaningStatus: string
+  lightingStatus: string
+  equipmentStatus: string
+  responsiblePerson?: string
+  contactPhone?: string
+  remark?: string
+}
+
+export interface VenueAvailability {
+  venueId: number
+  available: boolean
+  status: string
+  reason: string
+}

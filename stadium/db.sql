@@ -28,6 +28,22 @@ CREATE TABLE t_venue (
   CONSTRAINT fk_venue_type FOREIGN KEY (type_id) REFERENCES t_venue_type(id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+CREATE TABLE t_venue_ops (
+  id BIGINT PRIMARY KEY AUTO_INCREMENT,
+  venue_id BIGINT NOT NULL UNIQUE,
+  maintenance_status VARCHAR(32) NOT NULL DEFAULT 'NORMAL',
+  cleaning_status VARCHAR(32) NOT NULL DEFAULT 'CLEAN',
+  lighting_status VARCHAR(32) NOT NULL DEFAULT 'NORMAL',
+  equipment_status VARCHAR(32) NOT NULL DEFAULT 'COMPLETE',
+  responsible_person VARCHAR(64) NULL,
+  contact_phone VARCHAR(32) NULL,
+  last_inspector VARCHAR(64) NULL,
+  last_checked_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  remark VARCHAR(512) NULL,
+  INDEX idx_venue_ops_status(maintenance_status, cleaning_status, lighting_status, equipment_status),
+  CONSTRAINT fk_venue_ops_venue FOREIGN KEY (venue_id) REFERENCES t_venue(id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
 CREATE TABLE t_reservation (
   id BIGINT PRIMARY KEY AUTO_INCREMENT,
   user_id BIGINT NOT NULL,
@@ -56,7 +72,9 @@ CREATE TABLE t_comment (
 -- 默认管理员：admin / admin123
 INSERT INTO t_user(username, password, email, role, created_at) VALUES
 ('admin', '$2a$10$8QH1Olk9hK7o4VQ6O0skB.5M9rG4w9P34J68UYoXhYwIMfHAdXQdS', 'admin@example.com', 'ADMIN', NOW()),
-('zhangsan', '$2a$10$8QH1Olk9hK7o4VQ6O0skB.5M9rG4w9P34J68UYoXhYwIMfHAdXQdS', 'zhangsan@example.com', 'USER', NOW());
+('zhangsan', '$2a$10$K/FVXTeoHZfJYsBDGEWGSuybHyp4oSTvHZiLcokmIIwRdsVsq4.2a', 'zhangsan@example.com', 'STUDENT', NOW()),
+('lisi', '$2a$10$K/FVXTeoHZfJYsBDGEWGSuybHyp4oSTvHZiLcokmIIwRdsVsq4.2a', 'lisi@example.com', 'TEACHER', NOW()),
+('wangwu', '$2a$10$K/FVXTeoHZfJYsBDGEWGSuybHyp4oSTvHZiLcokmIIwRdsVsq4.2a', 'wangwu@example.com', 'STAFF', NOW());
 
 INSERT INTO t_venue_type(name) VALUES
 ('羽毛球'), ('篮球'), ('游泳');
@@ -65,6 +83,14 @@ INSERT INTO t_venue(name, type_id, price, description, notes) VALUES
 ('羽毛球1号馆', 1, 80.00, '标准羽毛球场地，木地板', '请自带球拍'),
 ('篮球A馆', 2, 120.00, '全场篮球场地，含计时器', '仅支持整点预约'),
 ('恒温泳池', 3, 150.00, '25米四泳道恒温泳池', '需佩戴泳帽');
+
+INSERT INTO t_venue_ops(
+  venue_id, maintenance_status, cleaning_status, lighting_status, equipment_status,
+  responsible_person, contact_phone, last_inspector, last_checked_at, remark
+) VALUES
+(1, 'NORMAL', 'CLEAN', 'NORMAL', 'COMPLETE', '李老师', '13800000001', 'admin', NOW(), '木地板已完成晨检，适合开放'),
+(2, 'NORMAL', 'PENDING_RECHECK', 'NORMAL', 'COMPLETE', '王老师', '13800000002', 'admin', NOW(), '赛后清洁待复检，建议复核后开放'),
+(3, 'MAINTENANCE', 'CLEAN', 'FAULT', 'COMPLETE', '赵老师', '13800000003', 'admin', NOW(), '恒温设备检修中，暂不开放预约');
 
 INSERT INTO t_reservation(user_id, venue_id, start_time, end_time, status) VALUES
 (2, 1, '2026-03-15 10:00:00', '2026-03-15 11:00:00', 'BOOKED');

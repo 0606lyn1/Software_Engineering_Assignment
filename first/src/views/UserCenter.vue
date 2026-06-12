@@ -51,7 +51,7 @@ const save = async () => {
       </a-avatar>
       <h2>{{ authStore.user?.username || '未登录用户' }}</h2>
       <p>{{ authStore.user?.email || '登录后查看邮箱' }}</p>
-      <a-tag color="gold"><SafetyCertificateOutlined /> {{ authStore.user?.role || 'GUEST' }}</a-tag>
+      <a-tag color="gold"><SafetyCertificateOutlined /> {{ authStore.roleLabel }}</a-tag>
     </a-card>
 
     <a-card class="form-card" :bordered="false">
@@ -75,7 +75,7 @@ const save = async () => {
           </a-input>
         </a-form-item>
         <a-form-item label="角色">
-          <a-input :value="authStore.user?.role" disabled size="large" />
+          <a-input :value="authStore.roleLabel" disabled size="large" />
         </a-form-item>
         <a-button type="primary" html-type="submit" size="large" :loading="saving">
           <SaveOutlined />

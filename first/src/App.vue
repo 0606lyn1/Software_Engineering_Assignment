@@ -7,7 +7,9 @@ import {
   LoginOutlined,
   LogoutOutlined,
   ReadOutlined,
+  SettingOutlined,
   TeamOutlined,
+  ToolOutlined,
   UserOutlined,
 } from '@ant-design/icons-vue'
 import { useAuthStore } from './stores/auth'
@@ -17,6 +19,9 @@ const router = useRouter()
 const authStore = useAuthStore()
 const selectedKeys = computed(() => [route.path])
 const isAuthPage = computed(() => ['/login', '/register'].includes(route.path))
+const canReserve = computed(() => authStore.canReserve)
+const canManageMaintenance = computed(() => authStore.canManageMaintenance)
+const canManageUsers = computed(() => authStore.isAdmin)
 
 const logout = () => {
   authStore.clearAuth()
@@ -44,11 +49,17 @@ const logout = () => {
         <a-menu-item key="/venues">
           <router-link to="/venues"><ReadOutlined /> 场馆目录</router-link>
         </a-menu-item>
-        <a-menu-item key="/reservation">
+        <a-menu-item v-if="canReserve" key="/reservation">
           <router-link to="/reservation"><CalendarOutlined /> 在线预约</router-link>
         </a-menu-item>
-        <a-menu-item key="/my-reservations">
+        <a-menu-item v-if="canReserve" key="/my-reservations">
           <router-link to="/my-reservations"><TeamOutlined /> 我的预约</router-link>
+        </a-menu-item>
+        <a-menu-item v-if="canManageMaintenance" key="/maintenance">
+          <router-link to="/maintenance"><ToolOutlined /> 场地维护</router-link>
+        </a-menu-item>
+        <a-menu-item v-if="canManageUsers" key="/users">
+          <router-link to="/users"><SettingOutlined /> 人员管理</router-link>
         </a-menu-item>
         <a-menu-item key="/user-center">
           <router-link to="/user-center"><UserOutlined /> 个人信息</router-link>
@@ -58,6 +69,7 @@ const logout = () => {
       <div class="user-area">
         <a-space v-if="authStore.user">
           <span class="user-name">你好，{{ authStore.user.username }}</span>
+          <a-tag color="cyan">{{ authStore.roleLabel }}</a-tag>
           <a-button size="small" ghost @click="logout">
             <LogoutOutlined />
             退出

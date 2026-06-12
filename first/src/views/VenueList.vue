@@ -11,11 +11,12 @@ import {
 import { useVenueStore } from '../stores/venue'
 import { api } from '../api'
 import CommentList from './CommentList.vue'
-import type { VenueType } from '../types'
+import type { VenueOps, VenueType } from '../types'
 
 const venueStore = useVenueStore()
 const router = useRouter()
 const types = ref<VenueType[]>([])
+const opsList = ref<VenueOps[]>([])
 const loading = ref(false)
 const filter = reactive({ typeId: undefined as number | undefined, keyword: '' })
 const open = ref(false)
@@ -23,6 +24,7 @@ const selectedVenueId = ref(0)
 const selectedVenueName = ref('')
 
 const typeMap = computed(() => new Map(types.value.map((item) => [item.id, item.name])))
+const opsMap = computed(() => new Map(opsList.value.map((item) => [item.venueId, item])))
 const filteredVenues = computed(() => {
   const keyword = filter.keyword.trim().toLowerCase()
   if (!keyword) return venueStore.venues
@@ -35,13 +37,36 @@ const averagePrice = computed(() => {
   const total = filteredVenues.value.reduce((sum, venue) => sum + Number(venue.price || 0), 0)
   return Math.round(total / filteredVenues.value.length)
 })
+const statusText: Record<string, string> = {
+  NORMAL: '正常开放',
+  MAINTENANCE: '维护中',
+  CLOSED: '暂停开放',
+  CLEAN: '已清洁',
+  NEED_CLEANING: '待清洁',
+  PENDING_RECHECK: '待复检',
+  FAULT: '灯光故障',
+  DIM: '灯光偏暗',
+  COMPLETE: '器材完整',
+  MISSING: '器材缺件',
+  DAMAGED: '器材损坏',
+}
+const getStatusText = (value?: string) => (value ? statusText[value] || value : '未填报')
+const getOpsColor = (ops?: VenueOps) => {
+  if (!ops) return 'default'
+  if (['MAINTENANCE', 'CLOSED'].includes(ops.maintenanceStatus) || ops.lightingStatus === 'FAULT') return 'red'
+  if (['NEED_CLEANING', 'PENDING_RECHECK'].includes(ops.cleaningStatus) || ['MISSING', 'DAMAGED'].includes(ops.equipmentStatus)) {
+    return 'orange'
+  }
+  return 'green'
+}
 
 const loadData = async () => {
   loading.value = true
   try {
     await venueStore.fetchVenues(filter.typeId)
-    const typeRes = await api.getVenueTypes()
+    const [typeRes, opsRes] = await Promise.all([api.getVenueTypes(), api.getVenueOps()])
     types.value = typeRes.data
+    opsList.value = opsRes.data
   } finally {
     loading.value = false
   }
@@ -128,6 +153,13 @@ onMounted(loadData)
         <div class="venue-note">
           <FieldTimeOutlined />
           <span>{{ venue.notes || '开放时段以预约页可选时间为准' }}</span>
+        </div>
+        <div class="venue-ops-row">
+          <a-tag :color="getOpsColor(opsMap.get(venue.id))">
+            {{ getStatusText(opsMap.get(venue.id)?.maintenanceStatus) }}
+          </a-tag>
+          <span>清洁：{{ getStatusText(opsMap.get(venue.id)?.cleaningStatus) }}</span>
+          <span>灯光：{{ getStatusText(opsMap.get(venue.id)?.lightingStatus) }}</span>
         </div>
         <div class="venue-actions">
           <a-button type="primary" @click="reserveVenue(venue.id)">

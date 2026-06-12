@@ -6,6 +6,7 @@ import com.example.tiyu.dto.RegisterRequest;
 import com.example.tiyu.entity.User;
 import com.example.tiyu.exception.BusinessException;
 import com.example.tiyu.security.JwtUtil;
+import com.example.tiyu.security.RoleNames;
 import com.example.tiyu.service.UserService;
 import io.swagger.v3.oas.annotations.Operation;
 import jakarta.validation.Valid;
@@ -49,7 +50,7 @@ public class AuthController {
         user.setUsername(request.getUsername());
         user.setPassword(passwordEncoder.encode(request.getPassword()));
         user.setEmail(request.getEmail());
-        user.setRole("USER");
+        user.setRole(RoleNames.STUDENT);
         user.setCreatedAt(LocalDateTime.now());
         userService.save(user);
 
@@ -66,7 +67,8 @@ public class AuthController {
     public ApiResponse<Map<String, Object>> login(@Valid @RequestBody LoginRequest request) {
         authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(request.getUsername(), request.getPassword()));
         User user = userService.findByUsername(request.getUsername());
-        String token = jwtUtil.generateToken(user.getUsername(), user.getRole());
+        String role = RoleNames.normalize(user.getRole());
+        String token = jwtUtil.generateToken(user.getUsername(), role);
 
         Map<String, Object> result = new HashMap<>();
         result.put("token", token);
@@ -74,7 +76,7 @@ public class AuthController {
                 "id", user.getId(),
                 "username", user.getUsername(),
                 "email", user.getEmail(),
-                "role", user.getRole(),
+                "role", role,
                 "createdAt", user.getCreatedAt()
         ));
 

@@ -9,6 +9,7 @@ import com.example.tiyu.service.ReservationService;
 import com.example.tiyu.service.UserService;
 import io.swagger.v3.oas.annotations.Operation;
 import jakarta.validation.Valid;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
@@ -28,9 +29,10 @@ public class ReservationController {
 
     @GetMapping
     @Operation(summary = "预约列表")
+    @PreAuthorize("hasAnyRole('ADMIN','STAFF','TEACHER','STUDENT','USER')")
     public ApiResponse<List<Reservation>> list(Authentication authentication,
                                                @RequestParam(required = false, defaultValue = "false") boolean all) {
-        if (all) {
+        if (all && isAdminOrStaff(authentication)) {
             return ApiResponse.success(reservationService.list());
         }
         User user = userService.findByUsername(authentication.getName());
@@ -42,6 +44,7 @@ public class ReservationController {
 
     @PostMapping
     @Operation(summary = "创建预约")
+    @PreAuthorize("hasAnyRole('ADMIN','TEACHER','STUDENT','USER')")
     public ApiResponse<Reservation> create(@Valid @RequestBody ReservationCreateRequest request,
                                            Authentication authentication) {
         User user = userService.findByUsername(authentication.getName());
@@ -54,8 +57,23 @@ public class ReservationController {
 
     @DeleteMapping("/{id}")
     @Operation(summary = "删除预约")
-    public ApiResponse<Void> delete(@PathVariable Long id) {
+    @PreAuthorize("hasAnyRole('ADMIN','TEACHER','STUDENT','USER')")
+    public ApiResponse<Void> delete(@PathVariable Long id, Authentication authentication) {
+        Reservation reservation = reservationService.getById(id);
+        if (reservation == null) {
+            throw new BusinessException("预约不存在");
+        }
+        User user = userService.findByUsername(authentication.getName());
+        if (!isAdminOrStaff(authentication) && (user == null || !reservation.getUserId().equals(user.getId()))) {
+            throw new BusinessException("无权删除该预约");
+        }
         reservationService.removeById(id);
         return ApiResponse.success("删除成功", null);
+    }
+
+    private boolean isAdminOrStaff(Authentication authentication) {
+        return authentication != null && authentication.getAuthorities().stream()
+                .map(authority -> authority.getAuthority())
+                .anyMatch(role -> "ROLE_ADMIN".equals(role) || "ROLE_STAFF".equals(role));
     }
 }

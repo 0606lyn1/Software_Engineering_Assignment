@@ -1,4 +1,5 @@
 import http from './http'
+import type { VenueOpsPayload } from '../types'
 
 export const api = {
   login: (data: { username: string; password: string }) => http.post('/auth/login', data),
@@ -10,7 +11,13 @@ export const api = {
   deleteReservation: (id: number) => http.delete(`/reservations/${id}`),
   getComments: (venueId: number) => http.get('/comments', { params: { venueId } }),
   createComment: (data: { venueId: number; content: string }) => http.post('/comments', data),
+  getVenueOps: (venueId?: number) => http.get('/venue-ops', { params: { venueId } }),
+  getVenueOpsByVenue: (venueId: number) => http.get(`/venue-ops/${venueId}`),
+  updateVenueOps: (venueId: number, data: VenueOpsPayload) => http.put(`/venue-ops/${venueId}`, data),
+  getVenueAvailability: (venueId: number) => http.get(`/venue-ops/${venueId}/availability`),
   getUsers: () => http.get('/users'),
   getUserById: (id: number) => http.get(`/users/${id}`),
+  createUser: (data: { username: string; password: string; email: string; role: string }) => http.post('/users', data),
   updateUser: (id: number, data: { username: string; email: string; role?: string }) => http.put(`/users/${id}`, data),
+  deleteUser: (id: number) => http.delete(`/users/${id}`),
 }
