@@ -31,7 +31,7 @@ mysql -uroot -p < stadium/db.sql
 默认数据库配置（后端 `application.yml`）：
 - 数据库：`tiyu`
 - 用户名：`root`
-- 密码：`123456`
+- 密码：通过环境变量 `DB_PASSWORD` 配置
 
 如不一致，请修改 `stadium/src/main/resources/application.yml`。
 
@@ -39,7 +39,17 @@ mysql -uroot -p < stadium/db.sql
 
 ```bash
 cd stadium
+set DB_PASSWORD=你的数据库密码
+set JWT_SECRET=至少32位的JWT签名密钥
 mvn clean install
+mvn spring-boot:run
+```
+
+PowerShell 中请使用：
+
+```powershell
+$env:DB_PASSWORD="你的数据库密码"
+$env:JWT_SECRET="至少32位的JWT签名密钥"
 mvn spring-boot:run
 ```
 

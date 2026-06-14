@@ -5,9 +5,9 @@ spring:
   application:
     name: tiyu-backend
   datasource:
-    url: jdbc:mysql://localhost:3306/tiyu?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai
-    username: root
-    password: 123456
+    url: ${DB_URL:jdbc:mysql://localhost:3306/tiyu?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai}
+    username: ${DB_USERNAME:root}
+    password: ${DB_PASSWORD}
     driver-class-name: com.mysql.cj.jdbc.Driver
   jackson:
     time-zone: Asia/Shanghai
@@ -22,5 +22,5 @@ mybatis-plus:
       id-type: auto
 
 jwt:
-  secret: tiyu-demo-secret-key-change-in-production-1234567890
+  secret: ${JWT_SECRET}
   expiration-seconds: 86400
