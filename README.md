@@ -88,3 +88,31 @@ npm run dev
 - `POST /api/reservations`：创建预约（防同用户同场地重叠）
 - `GET /api/reservations`：我的预约
 - `GET/POST /api/comments`：评论查询与发布
+
+## 9. 部署到 GitHub Pages
+
+本仓库已包含 GitHub Actions 工作流：`.github/workflows/deploy-frontend.yml`。
+
+1. 在 GitHub 创建仓库，并把本地仓库推送到 GitHub：
+
+```bash
+git remote add github https://github.com/<your-user>/<your-repo>.git
+git push github master
+```
+
+如默认分支是 `main`，请改为：
+
+```bash
+git push github main
+```
+
+2. 打开 GitHub 仓库的 `Settings -> Pages`，`Source` 选择 `GitHub Actions`。
+3. 如后端已经部署到公网，在 `Settings -> Secrets and variables -> Actions -> Variables` 中新增变量：
+
+```text
+VITE_API_BASE_URL=https://<your-backend-domain>/api
+```
+
+未设置时默认使用 `/api`，适合本地开发或同域反向代理部署。
+
+4. 推送到 `master` 或 `main` 后，Actions 会自动构建 `first` 前端并发布到 GitHub Pages。

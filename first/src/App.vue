@@ -11,6 +11,8 @@ import {
   TeamOutlined,
   ToolOutlined,
   UserOutlined,
+  BellOutlined,
+  ControlOutlined,
 } from '@ant-design/icons-vue'
 import { useAuthStore } from './stores/auth'
 
@@ -60,6 +62,12 @@ const logout = () => {
         </a-menu-item>
         <a-menu-item v-if="canManageUsers" key="/users">
           <router-link to="/users"><SettingOutlined /> 人员管理</router-link>
+        </a-menu-item>
+        <a-menu-item v-if="canManageUsers" key="/operations-admin">
+          <router-link to="/operations-admin"><ControlOutlined /> 运营配置</router-link>
+        </a-menu-item>
+        <a-menu-item key="/notifications">
+          <router-link to="/notifications"><BellOutlined /> 消息</router-link>
         </a-menu-item>
         <a-menu-item key="/user-center">
           <router-link to="/user-center"><UserOutlined /> 个人信息</router-link>

@@ -1775,11 +1775,260 @@ a {
   font-weight: 700;
 }
 
+.reservation-hero,
+.ops-admin-hero,
+.notification-hero {
+  background:
+    linear-gradient(110deg, rgba(255, 255, 255, 0.96), rgba(239, 246, 255, 0.9)),
+    radial-gradient(circle at 88% 15%, rgba(20, 184, 166, 0.18), transparent 34%);
+  border: 1px solid rgba(14, 165, 233, 0.18);
+  color: #0f172a;
+}
+
+.reservation-hero h1,
+.reservation-hero p,
+.ops-admin-hero h1,
+.ops-admin-hero p,
+.notification-hero h1,
+.notification-hero p {
+  color: #0f172a;
+}
+
+.booking-alerts,
+.campus-service-band,
+.checkin-console,
+.ops-admin-grid {
+  display: grid;
+  gap: 16px;
+  margin-bottom: 22px;
+}
+
+.booking-alerts,
+.campus-service-band {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.campus-service-band {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-top: 22px;
+}
+
+.booking-alerts article,
+.campus-service-band article {
+  display: grid;
+  grid-template-columns: 42px 1fr;
+  gap: 12px;
+  align-items: center;
+  min-height: 92px;
+  padding: 18px;
+  border: 1px solid rgba(14, 165, 233, 0.16);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 18px 42px rgba(15, 23, 42, 0.07);
+}
+
+.booking-alerts .anticon,
+.campus-service-band .anticon {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 14px;
+  color: #0891b2;
+  background: #ecfeff;
+  font-size: 20px;
+}
+
+.booking-alerts strong,
+.campus-service-band strong {
+  display: block;
+  color: #0f172a;
+}
+
+.booking-alerts span,
+.campus-service-band span {
+  display: block;
+  margin-top: 4px;
+  color: #64748b;
+  font-weight: 600;
+}
+
+.booking-mobile-flow {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(300px, 0.36fr);
+  gap: 22px;
+  align-items: start;
+}
+
+.booking-picker-card,
+.booking-confirm-card .info-card,
+.checkin-card,
+.ops-admin-card,
+.notification-list {
+  border: 1px solid rgba(148, 163, 184, 0.18);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 22px 48px rgba(15, 23, 42, 0.08);
+}
+
+.slot-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.slot-card {
+  min-height: 86px;
+  padding: 14px;
+  border: 1px solid rgba(14, 165, 233, 0.18);
+  border-radius: 14px;
+  background: #f8fafc;
+  color: #0f172a;
+  text-align: left;
+}
+
+.slot-card strong {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.slot-card.active {
+  border-color: rgba(20, 184, 166, 0.56);
+  background: #ecfdf5;
+  box-shadow: 0 16px 34px rgba(20, 184, 166, 0.14);
+}
+
+.slot-card.disabled {
+  opacity: 0.56;
+  cursor: not-allowed;
+}
+
+.booking-confirm-card {
+  display: grid;
+  gap: 16px;
+  position: sticky;
+  top: 96px;
+}
+
+.rule-list {
+  display: grid;
+  gap: 10px;
+  color: #475569;
+  font-weight: 700;
+}
+
+.rule-list p {
+  margin: 0;
+}
+
+.checkin-console,
+.ops-admin-grid {
+  grid-template-columns: minmax(0, 1fr) minmax(320px, 0.42fr);
+}
+
+.checkin-card {
+  min-width: 0;
+}
+
+.checkin-card .ant-card-body {
+  display: grid;
+  gap: 16px;
+}
+
+.checkin-card h2 {
+  margin: 8px 0;
+  color: #0f172a;
+  font-size: 30px;
+}
+
+.checkin-card p {
+  margin: 0;
+  color: #64748b;
+}
+
+.today-reservation-list {
+  display: grid;
+  gap: 10px;
+}
+
+.today-reservation-list article {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto auto;
+  gap: 8px;
+  align-items: center;
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: #f8fafc;
+}
+
+.checkin-code {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 8px;
+  border-radius: 999px;
+  background: #ecfeff;
+  color: #0f766e;
+  font-weight: 900;
+}
+
+.ops-admin-card {
+  min-width: 0;
+}
+
+.notification-list .ant-card-body {
+  display: grid;
+  gap: 12px;
+}
+
+.notification-list article {
+  display: grid;
+  grid-template-columns: 42px 1fr auto;
+  gap: 14px;
+  align-items: center;
+  padding: 16px;
+  border: 1px solid rgba(148, 163, 184, 0.18);
+  border-radius: 14px;
+  background: #f8fafc;
+  cursor: pointer;
+}
+
+.notification-list article.unread {
+  border-color: rgba(14, 165, 233, 0.32);
+  background: #eff6ff;
+}
+
+.notification-list article > .anticon {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 14px;
+  color: #0891b2;
+  background: #ecfeff;
+}
+
+.notification-list p {
+  margin: 4px 0;
+  color: #475569;
+}
+
+.notification-list span {
+  color: #64748b;
+  font-size: 13px;
+  font-weight: 700;
+}
+
 @media (max-width: 900px) {
   .ops-summary,
   .ops-duty-board,
   .ops-workbench,
   .ops-log-grid,
+  .booking-alerts,
+  .campus-service-band,
+  .booking-mobile-flow,
+  .checkin-console,
+  .ops-admin-grid,
   .user-role-strip,
   .user-admin-layout {
     grid-template-columns: 1fr;
@@ -1792,6 +2041,14 @@ a {
 
   .ops-venue-panel {
     position: static;
+  }
+
+  .booking-confirm-card {
+    position: static;
+  }
+
+  .slot-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .ops-form-grid {
@@ -1927,7 +2184,13 @@ a {
 
   .summary-strip,
   .feature-grid,
-  .venue-grid {
+  .venue-grid,
+  .slot-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .today-reservation-list article,
+  .notification-list article {
     grid-template-columns: 1fr;
   }
 

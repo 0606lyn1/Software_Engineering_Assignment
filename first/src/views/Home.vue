@@ -6,16 +6,20 @@ import {
   CheckCircleOutlined,
   ClockCircleOutlined,
   FireOutlined,
+  NotificationOutlined,
   RocketOutlined,
   SafetyCertificateOutlined,
   TrophyOutlined,
 } from '@ant-design/icons-vue'
 import { useVenueStore } from '../stores/venue'
+import { api } from '../api'
+import type { Announcement } from '../types'
 
 const router = useRouter()
 const venueStore = useVenueStore()
 const activeChapter = ref(0)
 const scrolled = ref(0)
+const announcements = ref<Announcement[]>([])
 let observer: IntersectionObserver | null = null
 
 const chapters = [
@@ -52,7 +56,8 @@ const scrollToChapter = (index: number) => {
 }
 
 onMounted(async () => {
-  await venueStore.fetchVenues()
+  const [announcementRes] = await Promise.all([api.getAnnouncements(), venueStore.fetchVenues()])
+  announcements.value = announcementRes.data
   handleScroll()
   window.addEventListener('scroll', handleScroll, { passive: true })
 
@@ -113,6 +118,16 @@ onUnmounted(() => {
         <strong>羽毛球 / 篮球 / 游泳</strong>
       </div>
     </div>
+  </section>
+
+  <section class="campus-service-band">
+    <article v-for="item in announcements.slice(0, 3)" :key="item.id">
+      <NotificationOutlined />
+      <div>
+        <strong>{{ item.title }}</strong>
+        <span>{{ item.content }}</span>
+      </div>
+    </article>
   </section>
 
   <section class="story-section">

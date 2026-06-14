@@ -28,6 +28,51 @@ export interface Reservation {
   startTime: string
   endTime: string
   status: string
+  checkinCode?: string
+  checkedInAt?: string
+  cancelDeadline?: string
+  cancelReason?: string
+  appealReason?: string
+  appealStatus?: string
+  createdAt?: string
+}
+
+export interface ReservationSlot {
+  startTime: string
+  endTime: string
+  status: string
+  label: string
+}
+
+export interface ReservationRule {
+  id?: number
+  venueId?: number
+  advanceDays: number
+  cancelBeforeHours: number
+  maxHoursPerBooking: number
+  dailyLimit: number
+  weeklyLimit: number
+  openTime: string
+  closeTime: string
+  slotMinutes: number
+}
+
+export interface Announcement {
+  id: number
+  title: string
+  content: string
+  level: string
+  createdAt: string
+}
+
+export interface UserNotification {
+  id: number
+  userId: number
+  title: string
+  content: string
+  type: string
+  readFlag: boolean
+  createdAt: string
 }
 
 export interface CommentItem {

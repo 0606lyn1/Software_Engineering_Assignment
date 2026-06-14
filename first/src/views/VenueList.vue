@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, onMounted, reactive, ref } from 'vue'
+import { computed, onMounted, onUnmounted, reactive, ref } from 'vue'
 import { useRouter } from 'vue-router'
 import {
   CalendarOutlined,
@@ -11,20 +11,23 @@ import {
 import { useVenueStore } from '../stores/venue'
 import { api } from '../api'
 import CommentList from './CommentList.vue'
-import type { VenueOps, VenueType } from '../types'
+import type { VenueAvailability, VenueOps, VenueType } from '../types'
 
 const venueStore = useVenueStore()
 const router = useRouter()
 const types = ref<VenueType[]>([])
 const opsList = ref<VenueOps[]>([])
+const availabilityList = ref<VenueAvailability[]>([])
 const loading = ref(false)
 const filter = reactive({ typeId: undefined as number | undefined, keyword: '' })
 const open = ref(false)
 const selectedVenueId = ref(0)
 const selectedVenueName = ref('')
+let refreshTimer: number | undefined
 
 const typeMap = computed(() => new Map(types.value.map((item) => [item.id, item.name])))
 const opsMap = computed(() => new Map(opsList.value.map((item) => [item.venueId, item])))
+const availabilityMap = computed(() => new Map(availabilityList.value.map((item) => [item.venueId, item])))
 const filteredVenues = computed(() => {
   const keyword = filter.keyword.trim().toLowerCase()
   if (!keyword) return venueStore.venues
@@ -44,6 +47,7 @@ const statusText: Record<string, string> = {
   CLEAN: '已清洁',
   NEED_CLEANING: '待清洁',
   PENDING_RECHECK: '待复检',
+  CLEANING_EXPIRED: '超过 3 天未清扫',
   FAULT: '灯光故障',
   DIM: '灯光偏暗',
   COMPLETE: '器材完整',
@@ -51,22 +55,25 @@ const statusText: Record<string, string> = {
   DAMAGED: '器材损坏',
 }
 const getStatusText = (value?: string) => (value ? statusText[value] || value : '未填报')
-const getOpsColor = (ops?: VenueOps) => {
-  if (!ops) return 'default'
-  if (['MAINTENANCE', 'CLOSED'].includes(ops.maintenanceStatus) || ops.lightingStatus === 'FAULT') return 'red'
-  if (['NEED_CLEANING', 'PENDING_RECHECK'].includes(ops.cleaningStatus) || ['MISSING', 'DAMAGED'].includes(ops.equipmentStatus)) {
-    return 'orange'
-  }
-  return 'green'
+const getAvailabilityColor = (venueId: number) => (availabilityMap.value.get(venueId)?.available ? 'green' : 'red')
+
+const refreshOperationalStatus = async () => {
+  if (!venueStore.venues.length) return
+  const [opsRes, availabilityRes] = await Promise.all([
+    api.getVenueOps(),
+    Promise.all(venueStore.venues.map((venue) => api.getVenueAvailability(venue.id))),
+  ])
+  opsList.value = opsRes.data
+  availabilityList.value = availabilityRes.map((item) => item.data)
 }
 
 const loadData = async () => {
   loading.value = true
   try {
     await venueStore.fetchVenues(filter.typeId)
-    const [typeRes, opsRes] = await Promise.all([api.getVenueTypes(), api.getVenueOps()])
+    const typeRes = await api.getVenueTypes()
     types.value = typeRes.data
-    opsList.value = opsRes.data
+    await refreshOperationalStatus()
   } finally {
     loading.value = false
   }
@@ -82,7 +89,18 @@ const reserveVenue = (venueId: number) => {
   router.push({ path: '/reservation', query: { venueId } })
 }
 
-onMounted(loadData)
+onMounted(async () => {
+  await loadData()
+  refreshTimer = window.setInterval(() => {
+    refreshOperationalStatus()
+  }, 15000)
+})
+
+onUnmounted(() => {
+  if (refreshTimer) {
+    window.clearInterval(refreshTimer)
+  }
+})
 </script>
 
 <template>
@@ -155,16 +173,18 @@ onMounted(loadData)
           <span>{{ venue.notes || '开放时段以预约页可选时间为准' }}</span>
         </div>
         <div class="venue-ops-row">
-          <a-tag :color="getOpsColor(opsMap.get(venue.id))">
-            {{ getStatusText(opsMap.get(venue.id)?.maintenanceStatus) }}
+          <a-tag :color="getAvailabilityColor(venue.id)">
+            {{ availabilityMap.get(venue.id)?.available ? '可预约' : '暂停预约' }}
           </a-tag>
+          <span>{{ availabilityMap.get(venue.id)?.reason || '等待实时状态' }}</span>
           <span>清洁：{{ getStatusText(opsMap.get(venue.id)?.cleaningStatus) }}</span>
           <span>灯光：{{ getStatusText(opsMap.get(venue.id)?.lightingStatus) }}</span>
+          <span>器材：{{ getStatusText(opsMap.get(venue.id)?.equipmentStatus) }}</span>
         </div>
         <div class="venue-actions">
-          <a-button type="primary" @click="reserveVenue(venue.id)">
+          <a-button type="primary" :disabled="availabilityMap.get(venue.id)?.available === false" @click="reserveVenue(venue.id)">
             <CalendarOutlined />
-            预约此场馆
+            {{ availabilityMap.get(venue.id)?.available === false ? '暂不可约' : '预约此场馆' }}
           </a-button>
           <a-button @click="openComments(venue.id, venue.name)">
             <CommentOutlined />

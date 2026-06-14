@@ -4,13 +4,14 @@ import {
   CheckCircleOutlined,
   ClockCircleOutlined,
   FieldTimeOutlined,
+  QrcodeOutlined,
   SafetyCertificateOutlined,
   ToolOutlined,
   WarningOutlined,
 } from '@ant-design/icons-vue'
 import { message } from 'ant-design-vue'
 import { api } from '../api'
-import type { Venue, VenueAvailability, VenueOps, VenueOpsPayload } from '../types'
+import type { Reservation, Venue, VenueAvailability, VenueOps, VenueOpsPayload } from '../types'
 
 const venues = ref<Venue[]>([])
 const opsList = ref<VenueOps[]>([])
@@ -18,6 +19,9 @@ const availability = ref<VenueAvailability | null>(null)
 const selectedVenueId = ref<number>()
 const loading = ref(false)
 const saving = ref(false)
+const reservations = ref<Reservation[]>([])
+const checkinCode = ref('')
+const checking = ref(false)
 
 const formState = reactive<VenueOpsPayload>({
   maintenanceStatus: 'NORMAL',
@@ -53,19 +57,26 @@ const blockedCount = computed(
       (item) =>
         ['MAINTENANCE', 'CLOSED'].includes(item.maintenanceStatus) ||
         ['NEED_CLEANING', 'PENDING_RECHECK'].includes(item.cleaningStatus) ||
+        isCleaningExpired(item) ||
         item.lightingStatus === 'FAULT' ||
         ['MISSING', 'DAMAGED'].includes(item.equipmentStatus),
     ).length,
 )
 const cleanCount = computed(() => opsList.value.filter((item) => item.cleaningStatus === 'CLEAN').length)
+const todayReservations = computed(() =>
+  reservations.value.filter((item) => item.startTime?.slice(0, 10) === new Date().toISOString().slice(0, 10)),
+)
 
 const getStatusText = (value?: string) => (value ? statusText[value] || value : '未填报')
+const isCleaningExpired = (item?: VenueOps) =>
+  item?.cleaningStatus === 'CLEAN' && (!item.lastCheckedAt || Date.now() - new Date(item.lastCheckedAt).getTime() > 3 * 24 * 60 * 60 * 1000)
 const dutyName = computed(() => selectedOps.value?.responsiblePerson || formState.responsiblePerson || '待分配')
 const dutyPhone = computed(() => selectedOps.value?.contactPhone || formState.contactPhone || '暂无联系方式')
 const latestCheckTime = computed(() => selectedOps.value?.lastCheckedAt?.replace('T', ' ').slice(0, 16) || '等待首次填报')
 const getRiskColor = (item?: VenueOps) => {
   if (!item) return 'default'
   if (['MAINTENANCE', 'CLOSED'].includes(item.maintenanceStatus) || item.lightingStatus === 'FAULT') return 'red'
+  if (isCleaningExpired(item)) return 'red'
   if (['NEED_CLEANING', 'PENDING_RECHECK'].includes(item.cleaningStatus) || ['MISSING', 'DAMAGED'].includes(item.equipmentStatus)) {
     return 'orange'
   }
@@ -92,9 +103,10 @@ const loadOpsForVenue = async (venueId: number) => {
 const loadData = async () => {
   loading.value = true
   try {
-    const [venueRes, opsRes] = await Promise.all([api.getVenues(), api.getVenueOps()])
+    const [venueRes, opsRes, reservationRes] = await Promise.all([api.getVenues(), api.getVenueOps(), api.getAllReservations()])
     venues.value = venueRes.data
     opsList.value = opsRes.data
+    reservations.value = reservationRes.data
     if (!selectedVenueId.value && venues.value.length) {
       selectedVenueId.value = venues.value[0].id
     }
@@ -103,6 +115,22 @@ const loadData = async () => {
     }
   } finally {
     loading.value = false
+  }
+}
+
+const checkIn = async () => {
+  if (!checkinCode.value.trim()) {
+    message.warning('请输入核销码')
+    return
+  }
+  checking.value = true
+  try {
+    await api.checkInReservation(checkinCode.value.trim())
+    message.success('入场核销成功')
+    checkinCode.value = ''
+    await loadData()
+  } finally {
+    checking.value = false
   }
 }
 
@@ -165,6 +193,41 @@ onMounted(loadData)
     </div>
   </section>
 
+  <section class="checkin-console">
+    <a-card class="checkin-card" :bordered="false">
+      <div>
+        <a-tag color="blue">Check-in Desk</a-tag>
+        <h2>入场核销</h2>
+        <p>学生或教师到场后出示“我的预约”中的核销码，维护人员输入核销码完成入场确认。</p>
+      </div>
+      <a-input-search
+        v-model:value="checkinCode"
+        size="large"
+        placeholder="输入 6 位核销码"
+        enter-button="核销入场"
+        :loading="checking"
+        @search="checkIn"
+      >
+        <template #prefix><QrcodeOutlined /></template>
+      </a-input-search>
+    </a-card>
+
+    <a-card class="checkin-card compact" :bordered="false">
+      <div class="section-heading">
+        <span>今日场次</span>
+        <strong>{{ todayReservations.length }} 条</strong>
+      </div>
+      <div class="today-reservation-list">
+        <article v-for="item in todayReservations.slice(0, 5)" :key="item.id">
+          <strong>#{{ item.id }} 场馆 {{ item.venueId }}</strong>
+          <span>{{ item.startTime?.replace('T', ' ').slice(11, 16) }} - {{ item.endTime?.replace('T', ' ').slice(11, 16) }}</span>
+          <a-tag :color="item.status === 'CHECKED_IN' ? 'blue' : 'green'">{{ item.status }}</a-tag>
+        </article>
+        <a-empty v-if="!todayReservations.length" description="今日暂无预约" />
+      </div>
+    </a-card>
+  </section>
+
   <section class="ops-duty-board">
     <div class="ops-duty-primary">
       <div>
@@ -192,6 +255,7 @@ onMounted(loadData)
       <span>巡检清单</span>
       <div>
         <a-tag :color="getRiskColor(selectedOps)">清洁 {{ getStatusText(selectedOps?.cleaningStatus) }}</a-tag>
+        <a-tag v-if="isCleaningExpired(selectedOps)" color="red">超过 3 天未清扫</a-tag>
         <a-tag :color="getRiskColor(selectedOps)">灯光 {{ getStatusText(selectedOps?.lightingStatus) }}</a-tag>
         <a-tag :color="getRiskColor(selectedOps)">器材 {{ getStatusText(selectedOps?.equipmentStatus) }}</a-tag>
       </div>

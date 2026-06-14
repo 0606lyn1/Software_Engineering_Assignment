@@ -1,5 +1,5 @@
 import http from './http'
-import type { VenueOpsPayload } from '../types'
+import type { Announcement, ReservationRule, VenueOpsPayload } from '../types'
 
 export const api = {
   login: (data: { username: string; password: string }) => http.post('/auth/login', data),
@@ -7,8 +7,20 @@ export const api = {
   getVenues: (typeId?: number) => http.get('/venues', { params: { typeId } }),
   getVenueTypes: () => http.get('/venue-types'),
   createReservation: (data: { venueId: number; startTime: string; endTime: string }) => http.post('/reservations', data),
+  getReservationSlots: (venueId: number, date: string) => http.get('/reservations/slots', { params: { venueId, date } }),
   getMyReservations: () => http.get('/reservations'),
+  getAllReservations: () => http.get('/reservations', { params: { all: true } }),
+  cancelReservation: (id: number, reason?: string) => http.post(`/reservations/${id}/cancel`, { reason }),
+  checkInReservation: (code: string) => http.post('/reservations/check-in', { code }),
+  appealReservation: (id: number, reason: string) => http.post(`/reservations/${id}/appeal`, { reason }),
   deleteReservation: (id: number) => http.delete(`/reservations/${id}`),
+  getReservationRules: () => http.get('/reservation-rules'),
+  getEffectiveRule: (venueId?: number) => http.get('/reservation-rules/effective', { params: { venueId } }),
+  saveReservationRule: (data: ReservationRule) => http.post('/reservation-rules', data),
+  getAnnouncements: () => http.get('/announcements'),
+  createAnnouncement: (data: Pick<Announcement, 'title' | 'content' | 'level'>) => http.post('/announcements', data),
+  getNotifications: () => http.get('/notifications'),
+  readNotification: (id: number) => http.put(`/notifications/${id}/read`),
   getComments: (venueId: number) => http.get('/comments', { params: { venueId } }),
   createComment: (data: { venueId: number; content: string }) => http.post('/comments', data),
   getVenueOps: (venueId?: number) => http.get('/venue-ops', { params: { venueId } }),
