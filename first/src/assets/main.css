@@ -14,8 +14,8 @@
   --bg: #f8fafc;
   --shadow: 0 24px 60px rgba(127, 29, 29, 0.12);
   --login-image: url('https://images.unsplash.com/photo-1517649763962-0c623066013b?auto=format&fit=crop&w=1800&q=80');
-  --auth-image: url('https://images.unsplash.com/photo-1710926851153-c5c4cd1e4596?auto=format&fit=crop&w=1800&q=80');
-  --campus-field-image: url('https://images.unsplash.com/photo-1758936382103-c1dbffcea2ad?auto=format&fit=crop&w=2400&q=75');
+  --auth-image: url('https://images.unsplash.com/photo-1517649763962-0c623066013b?auto=format&fit=crop&w=1800&q=80');
+  --campus-field-image: url('https://images.unsplash.com/photo-1517649763962-0c623066013b?auto=format&fit=crop&w=2400&q=80');
   font-family: 'Fira Sans', 'Noto Sans SC', 'Microsoft YaHei', sans-serif;
   color: var(--ink);
 }

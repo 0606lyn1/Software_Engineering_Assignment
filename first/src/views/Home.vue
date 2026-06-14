@@ -86,8 +86,8 @@ onUnmounted(() => {
 
   <section class="home-hero">
     <div class="home-hero-content reveal-up">
-      <a-tag color="red">校园体育资源数字化服务</a-tag>
-      <h1>预约、进场、反馈，在一个运动节奏里完成。</h1>
+      <a-tag color="red">体育场预约服务</a-tag>
+      <h1>体育场预约</h1>
       <p>
         为学生提供规范透明的场馆预约服务，覆盖场馆目录、在线预约、预约记录、
         评论反馈和个人信息维护，让体育资源使用更清晰、更高效。

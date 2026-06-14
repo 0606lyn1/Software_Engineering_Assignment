@@ -37,10 +37,10 @@ const logout = () => {
   <a-layout v-else class="shell">
     <a-layout-header class="shell-header">
       <router-link class="brand" to="/">
-        <div class="brand-mark">CS</div>
+        <div class="brand-mark">TY</div>
         <div>
-          <div class="brand-title">体育场馆预约平台</div>
-          <div class="brand-subtitle">Campus Sports Hub</div>
+          <div class="brand-title">体育场预约</div>
+          <div class="brand-subtitle">Sports Booking</div>
         </div>
       </router-link>
 

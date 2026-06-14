@@ -56,7 +56,7 @@ const onSubmit = async () => {
         <a-tag color="green" class="auth-kicker">Student Access</a-tag>
         <h1>创建学生账号，开启场馆预约服务。</h1>
         <p>
-          注册后即可进入校园体育场馆预约平台，完成场馆查询、预约提交、
+          注册后即可进入体育场预约，完成场馆查询、预约提交、
           记录追踪和体验反馈。
         </p>
 

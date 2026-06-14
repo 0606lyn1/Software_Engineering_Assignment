@@ -47,11 +47,11 @@ const onSubmit = async () => {
 
     <section class="auth-hero">
       <div class="auth-copy reveal-up">
-        <a-tag color="cyan" class="auth-kicker">Campus Sports Service</a-tag>
-        <h1>校园体育场馆预约服务平台</h1>
+        <a-tag color="cyan" class="auth-kicker">Sports Booking Service</a-tag>
+        <h1>体育场预约</h1>
         <p>
           面向学生提供场馆查询、在线预约、记录管理与体验反馈，
-          让校园体育资源使用更透明、更高效。
+          让体育场资源使用更透明、更高效。
         </p>
 
         <div class="auth-service-grid">
