@@ -18,6 +18,7 @@ import java.util.Set;
 
 @Service
 public class VenueOpsServiceImpl extends ServiceImpl<VenueOpsMapper, VenueOps> implements VenueOpsService {
+    private static final int CLEANING_EXPIRE_DAYS = 3;
     private static final Set<String> BLOCKING_MAINTENANCE = Set.of("MAINTENANCE", "CLOSED");
     private static final Set<String> BLOCKING_CLEANING = Set.of("NEED_CLEANING", "PENDING_RECHECK");
     private static final Set<String> BLOCKING_LIGHTING = Set.of("FAULT");
@@ -97,6 +98,9 @@ public class VenueOpsServiceImpl extends ServiceImpl<VenueOpsMapper, VenueOps> i
         if (BLOCKING_CLEANING.contains(ops.getCleaningStatus())) {
             return new VenueAvailabilityResponse(venueId, false, ops.getCleaningStatus(), "清洁状态未达开放标准");
         }
+        if (isCleaningExpired(ops)) {
+            return new VenueAvailabilityResponse(venueId, false, "CLEANING_EXPIRED", "超过 3 天未完成清扫巡检，已自动暂停预约");
+        }
         if (BLOCKING_LIGHTING.contains(ops.getLightingStatus())) {
             return new VenueAvailabilityResponse(venueId, false, ops.getLightingStatus(), "灯光故障待处理");
         }
@@ -104,5 +108,11 @@ public class VenueOpsServiceImpl extends ServiceImpl<VenueOpsMapper, VenueOps> i
             return new VenueAvailabilityResponse(venueId, false, ops.getEquipmentStatus(), "器材缺失或损坏");
         }
         return new VenueAvailabilityResponse(venueId, true, "AVAILABLE", "运维状态正常，可进入预约流程");
+    }
+
+    private boolean isCleaningExpired(VenueOps ops) {
+        return "CLEAN".equals(ops.getCleaningStatus())
+                && (ops.getLastCheckedAt() == null
+                || ops.getLastCheckedAt().isBefore(LocalDateTime.now().minusDays(CLEANING_EXPIRE_DAYS)));
     }
 }
