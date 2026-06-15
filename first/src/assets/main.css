@@ -434,6 +434,12 @@ a {
   color: var(--muted);
 }
 
+.form-help {
+  margin: 8px 0 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+
 .summary-strip {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));

@@ -9,6 +9,7 @@ export interface UserInfo {
   username: string
   email: string
   role: string
+  emailReminderEnabled?: boolean
   createdAt: string
 }
 
@@ -34,6 +35,7 @@ export interface Reservation {
   cancelReason?: string
   appealReason?: string
   appealStatus?: string
+  reminderStatuses?: string[]
   createdAt?: string
 }
 

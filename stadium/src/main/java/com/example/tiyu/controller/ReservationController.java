@@ -9,6 +9,7 @@ import com.example.tiyu.dto.ReservationSlotResponse;
 import com.example.tiyu.entity.Reservation;
 import com.example.tiyu.entity.User;
 import com.example.tiyu.exception.BusinessException;
+import com.example.tiyu.service.ReminderDeliveryService;
 import com.example.tiyu.service.ReservationService;
 import com.example.tiyu.service.UserService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -26,10 +27,14 @@ public class ReservationController {
 
     private final ReservationService reservationService;
     private final UserService userService;
+    private final ReminderDeliveryService reminderDeliveryService;
 
-    public ReservationController(ReservationService reservationService, UserService userService) {
+    public ReservationController(ReservationService reservationService,
+                                 UserService userService,
+                                 ReminderDeliveryService reminderDeliveryService) {
         this.reservationService = reservationService;
         this.userService = userService;
+        this.reminderDeliveryService = reminderDeliveryService;
     }
 
     @GetMapping
@@ -39,13 +44,17 @@ public class ReservationController {
                                                @RequestParam(required = false, defaultValue = "false") boolean all) {
         reservationService.markExpiredReservations();
         if (all && isAdminOrStaff(authentication)) {
-            return ApiResponse.success(reservationService.list());
+            List<Reservation> reservations = reservationService.list();
+            reminderDeliveryService.attachStatuses(reservations);
+            return ApiResponse.success(reservations);
         }
         User user = userService.findByUsername(authentication.getName());
         if (user == null) {
             throw new BusinessException("当前用户不存在");
         }
-        return ApiResponse.success(reservationService.lambdaQuery().eq(Reservation::getUserId, user.getId()).list());
+        List<Reservation> reservations = reservationService.lambdaQuery().eq(Reservation::getUserId, user.getId()).list();
+        reminderDeliveryService.attachStatuses(reservations);
+        return ApiResponse.success(reservations);
     }
 
     @GetMapping("/slots")

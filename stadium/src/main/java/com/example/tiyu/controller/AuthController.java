@@ -51,6 +51,7 @@ public class AuthController {
         user.setPassword(passwordEncoder.encode(request.getPassword()));
         user.setEmail(request.getEmail());
         user.setRole(RoleNames.STUDENT);
+        user.setEmailReminderEnabled(true);
         user.setCreatedAt(LocalDateTime.now());
         userService.save(user);
 
@@ -59,6 +60,7 @@ public class AuthController {
         result.put("username", user.getUsername());
         result.put("email", user.getEmail());
         result.put("role", user.getRole());
+        result.put("emailReminderEnabled", user.getEmailReminderEnabled() == null || user.getEmailReminderEnabled());
         return ApiResponse.success("注册成功", result);
     }
 
@@ -77,6 +79,7 @@ public class AuthController {
                 "username", user.getUsername(),
                 "email", user.getEmail(),
                 "role", role,
+                "emailReminderEnabled", user.getEmailReminderEnabled() == null || user.getEmailReminderEnabled(),
                 "createdAt", user.getCreatedAt()
         ));
 

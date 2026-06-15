@@ -8,6 +8,7 @@ import {
   CheckCircleOutlined,
   CloseCircleOutlined,
   ExclamationCircleOutlined,
+  MailOutlined,
   QrcodeOutlined,
   ReloadOutlined,
 } from '@ant-design/icons-vue'
@@ -125,7 +126,7 @@ onMounted(loadData)
   </section>
 
   <a-card class="table-card" :bordered="false">
-    <a-table :data-source="data" :loading="loading" row-key="id" :pagination="{ pageSize: 6 }" :scroll="{ x: 980 }">
+    <a-table :data-source="data" :loading="loading" row-key="id" :pagination="{ pageSize: 6 }" :scroll="{ x: 1160 }">
       <template #emptyText>
         <a-empty description="暂无预约记录">
           <a-button type="primary" @click="router.push('/venues')">去选择场馆</a-button>
@@ -151,6 +152,20 @@ onMounted(loadData)
       </a-table-column>
       <a-table-column title="取消截止" data-index="cancelDeadline" width="170">
         <template #default="{ text }">{{ formatTime(text) }}</template>
+      </a-table-column>
+      <a-table-column title="邮件提醒" width="190">
+        <template #default="{ record }">
+          <a-space wrap v-if="record.reminderStatuses?.length">
+            <a-tag
+              v-for="status in record.reminderStatuses"
+              :key="status"
+              :color="status.includes('失败') ? 'red' : 'cyan'"
+            >
+              <MailOutlined /> {{ status }}
+            </a-tag>
+          </a-space>
+          <span v-else>-</span>
+        </template>
       </a-table-column>
       <a-table-column title="申诉" width="120">
         <template #default="{ record }">

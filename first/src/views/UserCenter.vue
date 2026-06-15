@@ -12,6 +12,7 @@ const saving = ref(false)
 const form = reactive({
   username: authStore.user?.username || '',
   email: authStore.user?.email || '',
+  emailReminderEnabled: authStore.user?.emailReminderEnabled !== false,
 })
 
 const save = async () => {
@@ -26,6 +27,7 @@ const save = async () => {
       username: form.username,
       email: form.email,
       role: authStore.user.role,
+      emailReminderEnabled: form.emailReminderEnabled,
     })
     authStore.setAuth(authStore.token, res.data)
     message.success('个人资料已更新')
@@ -76,6 +78,10 @@ const save = async () => {
         </a-form-item>
         <a-form-item label="角色">
           <a-input :value="authStore.roleLabel" disabled size="large" />
+        </a-form-item>
+        <a-form-item label="预约邮件提醒">
+          <a-switch v-model:checked="form.emailReminderEnabled" checked-children="开启" un-checked-children="关闭" />
+          <p class="form-help">开启后，系统会在预约开始前 24 小时和 2 小时发送邮件提醒。</p>
         </a-form-item>
         <a-button type="primary" html-type="submit" size="large" :loading="saving">
           <SaveOutlined />

@@ -12,6 +12,7 @@ public class UserCreateRequest {
     @Email(message = "邮箱格式错误")
     private String email;
     private String role;
+    private Boolean emailReminderEnabled;
 
     public String getUsername() { return username; }
     public void setUsername(String username) { this.username = username; }
@@ -21,4 +22,6 @@ public class UserCreateRequest {
     public void setEmail(String email) { this.email = email; }
     public String getRole() { return role; }
     public void setRole(String role) { this.role = role; }
+    public Boolean getEmailReminderEnabled() { return emailReminderEnabled; }
+    public void setEmailReminderEnabled(Boolean emailReminderEnabled) { this.emailReminderEnabled = emailReminderEnabled; }
 }

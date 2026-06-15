@@ -53,6 +53,19 @@ $env:JWT_SECRET="至少32位的JWT签名密钥"
 mvn spring-boot:run
 ```
 
+预约临近邮件提醒使用环境变量配置 SMTP，不要把邮箱密码写入仓库：
+
+```powershell
+$env:MAIL_HOST="smtp.example.com"
+$env:MAIL_PORT="587"
+$env:MAIL_USERNAME="notice@example.com"
+$env:MAIL_PASSWORD="邮箱授权码或SMTP密码"
+$env:MAIL_FROM="notice@example.com"
+$env:APP_PUBLIC_URL="http://localhost:5173"
+```
+
+系统会每 5 分钟扫描未来预约，并在开场前 24 小时和 2 小时生成站内消息；配置 SMTP 后同步发送邮件。
+
 后端地址：`http://localhost:8080`
 
 Swagger UI：`http://localhost:8080/swagger-ui/index.html`

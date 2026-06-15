@@ -6,6 +6,7 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @TableName("t_reservation")
 public class Reservation {
@@ -34,6 +35,8 @@ public class Reservation {
     private String appealStatus;
     @TableField("created_at")
     private LocalDateTime createdAt;
+    @TableField(exist = false)
+    private List<String> reminderStatuses;
 
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
@@ -61,4 +64,6 @@ public class Reservation {
     public void setAppealStatus(String appealStatus) { this.appealStatus = appealStatus; }
     public LocalDateTime getCreatedAt() { return createdAt; }
     public void setCreatedAt(LocalDateTime createdAt) { this.createdAt = createdAt; }
+    public List<String> getReminderStatuses() { return reminderStatuses; }
+    public void setReminderStatuses(List<String> reminderStatuses) { this.reminderStatuses = reminderStatuses; }
 }

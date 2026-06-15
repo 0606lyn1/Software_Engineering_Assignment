@@ -56,6 +56,7 @@ public class UserController {
         user.setPassword(passwordEncoder.encode(request.getPassword()));
         user.setEmail(request.getEmail());
         user.setRole(RoleNames.normalize(request.getRole()));
+        user.setEmailReminderEnabled(request.getEmailReminderEnabled() == null || request.getEmailReminderEnabled());
         user.setCreatedAt(LocalDateTime.now());
         userService.save(user);
         return ApiResponse.success("创建成功", user);
@@ -72,6 +73,9 @@ public class UserController {
         }
         existing.setUsername(request.getUsername());
         existing.setEmail(request.getEmail());
+        if (request.getEmailReminderEnabled() != null) {
+            existing.setEmailReminderEnabled(request.getEmailReminderEnabled());
+        }
         if (admin && request.getRole() != null && !request.getRole().isBlank()) {
             existing.setRole(RoleNames.normalize(request.getRole()));
         }

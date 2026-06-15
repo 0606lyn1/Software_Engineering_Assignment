@@ -29,7 +29,7 @@ export const api = {
   getVenueAvailability: (venueId: number) => http.get(`/venue-ops/${venueId}/availability`),
   getUsers: () => http.get('/users'),
   getUserById: (id: number) => http.get(`/users/${id}`),
-  createUser: (data: { username: string; password: string; email: string; role: string }) => http.post('/users', data),
-  updateUser: (id: number, data: { username: string; email: string; role?: string }) => http.put(`/users/${id}`, data),
+  createUser: (data: { username: string; password: string; email: string; role: string; emailReminderEnabled?: boolean }) => http.post('/users', data),
+  updateUser: (id: number, data: { username: string; email: string; role?: string; emailReminderEnabled?: boolean }) => http.put(`/users/${id}`, data),
   deleteUser: (id: number) => http.delete(`/users/${id}`),
 }
