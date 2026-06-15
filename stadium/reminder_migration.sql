@@ -1,5 +1,18 @@
-ALTER TABLE t_user
-  ADD COLUMN IF NOT EXISTS email_reminder_enabled TINYINT(1) NOT NULL DEFAULT 1 AFTER role;
+SET @email_reminder_column_exists := (
+  SELECT COUNT(*)
+  FROM INFORMATION_SCHEMA.COLUMNS
+  WHERE TABLE_SCHEMA = DATABASE()
+    AND TABLE_NAME = 't_user'
+    AND COLUMN_NAME = 'email_reminder_enabled'
+);
+SET @email_reminder_column_sql := IF(
+  @email_reminder_column_exists = 0,
+  'ALTER TABLE t_user ADD COLUMN email_reminder_enabled TINYINT(1) NOT NULL DEFAULT 1 AFTER role',
+  'SELECT 1'
+);
+PREPARE email_reminder_column_stmt FROM @email_reminder_column_sql;
+EXECUTE email_reminder_column_stmt;
+DEALLOCATE PREPARE email_reminder_column_stmt;
 
 CREATE TABLE IF NOT EXISTS t_reminder_delivery (
   id BIGINT PRIMARY KEY AUTO_INCREMENT,
