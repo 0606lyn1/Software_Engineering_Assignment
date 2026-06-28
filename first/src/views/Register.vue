@@ -51,7 +51,7 @@ const onSubmit = async () => {
     <div class="campus-orb orb-one" aria-hidden="true" />
     <div class="campus-orb orb-two" aria-hidden="true" />
 
-    <section class="auth-hero compact">
+    <section class="auth-hero compact desktop-register-view">
       <div class="auth-copy reveal-up">
         <a-tag color="green" class="auth-kicker">Student Access</a-tag>
         <h1>创建学生账号，开启场馆预约服务。</h1>
@@ -139,6 +139,77 @@ const onSubmit = async () => {
 
         <div class="auth-footer">
           <span>已有账号？</span>
+          <RouterLink to="/login">返回登录</RouterLink>
+        </div>
+      </a-card>
+    </section>
+
+    <section class="mobile-register-view">
+      <div class="mobile-login-brand mobile-register-brand">
+        <div class="brand-mark">TY</div>
+        <div>
+          <a-tag color="green">Student Access</a-tag>
+          <h1>创建学生账号</h1>
+          <p>用于场馆预约、记录查询和体验反馈。</p>
+        </div>
+      </div>
+
+      <a-card class="mobile-login-card mobile-register-card" :bordered="false">
+        <div class="mobile-login-head">
+          <div>
+            <span>新用户入口</span>
+            <h2>学生注册</h2>
+          </div>
+          <TeamOutlined />
+        </div>
+
+        <a-form :model="formState" layout="vertical" @finish="onSubmit">
+          <a-form-item
+            label="用户名"
+            name="username"
+            :rules="[{ required: true, message: '请输入用户名' }]"
+          >
+            <a-input v-model:value="formState.username" size="large" placeholder="设置用户名">
+              <template #prefix><UserOutlined /></template>
+            </a-input>
+          </a-form-item>
+
+          <a-form-item
+            label="邮箱"
+            name="email"
+            :rules="[{ required: true, type: 'email', message: '请输入正确邮箱' }]"
+          >
+            <a-input v-model:value="formState.email" size="large" placeholder="name@example.com">
+              <template #prefix><MailOutlined /></template>
+            </a-input>
+          </a-form-item>
+
+          <a-form-item
+            label="密码"
+            name="password"
+            :rules="[
+              { required: true, message: '请输入密码' },
+              { min: 6, message: '密码至少 6 位' },
+            ]"
+          >
+            <a-input-password v-model:value="formState.password" size="large" placeholder="至少 6 位">
+              <template #prefix><LockOutlined /></template>
+            </a-input-password>
+          </a-form-item>
+
+          <a-form-item label="确认密码" name="confirmPassword" :rules="[{ validator: validateConfirm }]">
+            <a-input-password v-model:value="formState.confirmPassword" size="large" placeholder="再次输入密码">
+              <template #prefix><LockOutlined /></template>
+            </a-input-password>
+          </a-form-item>
+
+          <a-button type="primary" html-type="submit" block size="large" :loading="loading">
+            创建学生账号
+          </a-button>
+        </a-form>
+
+        <div class="mobile-login-footer">
+          <span><SafetyCertificateOutlined /> 注册后默认获得学生预约权限</span>
           <RouterLink to="/login">返回登录</RouterLink>
         </div>
       </a-card>

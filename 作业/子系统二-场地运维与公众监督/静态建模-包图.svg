@@ -1,98 +1,63 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850 620" width="850" height="620">
-  <defs>
-    <style>
-      text { font-family: "Microsoft YaHei", "SimHei", sans-serif; }
-      .title { font-size: 20px; font-weight: bold; fill: #1a1a2e; }
-      .pkg-text { font-size: 12px; font-weight: bold; fill: #2c3e50; }
-      .sub-text { font-size: 10px; fill: #555; }
-    </style>
-    <filter id="shadow"><feDropShadow dx="1" dy="2" stdDeviation="1.5" flood-opacity="0.08"/></filter>
-    <marker id="arrowD" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#666"/></marker>
-  </defs>
-  <rect width="850" height="620" fill="#FAFBFC" rx="8"/>
-
-  <text x="425" y="28" text-anchor="middle" class="title">子系统二——场地运维与公众监督系统 包图 (Package Diagram)</text>
-  <line x1="100" y1="40" x2="750" y2="40" stroke="#4A90D9" stroke-width="1.5"/>
-
-  <!-- Root package: com.example.tiyu -->
-  <rect x="65" y="55" width="720" height="540" rx="8" fill="none" stroke="#1a1a2e" stroke-width="2" filter="url(#shadow)"/>
-  <rect x="65" y="55" width="220" height="24" rx="4" fill="#1a1a2e"/>
-  <text x="175" y="72" text-anchor="middle" font-size="11" font-weight="bold" fill="#fff">com.example.tiyu</text>
-
-  <!-- Controller package -->
-  <rect x="90" y="95" width="320" height="170" rx="6" fill="#E3F2FD" stroke="#1976D2" stroke-width="1.5" filter="url(#shadow)"/>
-  <rect x="110" y="105" width="160" height="22" rx="3" fill="#1976D2"/>
-  <text x="190" y="120" text-anchor="middle" font-size="11" fill="#fff" font-weight="bold">controller</text>
-  <text x="110" y="148" class="sub-text">VenueOpsController</text>
-  <text x="110" y="166" class="sub-text">CommentController</text>
-  <text x="110" y="184" class="sub-text">AdminController</text>
-  <text x="110" y="202" class="sub-text">VenueController</text>
-  <text x="110" y="220" class="sub-text" fill="#999">(GET/POST/PUT/DELETE REST API)</text>
-  <rect x="300" y="140" width="100" height="30" rx="3" fill="none" stroke="#1976D2" stroke-width="0.5"/>
-  <text x="350" y="159" text-anchor="middle" font-size="9" fill="#1976D2">@RestController</text>
-
-  <!-- Service package -->
-  <rect x="480" y="95" width="290" height="170" rx="6" fill="#E8F5E9" stroke="#388E3C" stroke-width="1.5" filter="url(#shadow)"/>
-  <rect x="500" y="105" width="160" height="22" rx="3" fill="#388E3C"/>
-  <text x="580" y="120" text-anchor="middle" font-size="11" fill="#fff" font-weight="bold">service</text>
-  <text x="500" y="148" class="sub-text">«接口» VenueOpsService</text>
-  <text x="500" y="166" class="sub-text">«接口» CommentService</text>
-  <text x="500" y="184" class="sub-text">VenueOpsServiceImpl</text>
-  <text x="500" y="202" class="sub-text">CommentServiceImpl</text>
-  <text x="500" y="220" class="sub-text" fill="#999">(业务逻辑 + 领域服务)</text>
-  <rect x="660" y="140" width="100" height="30" rx="3" fill="none" stroke="#388E3C" stroke-width="0.5"/>
-  <text x="710" y="159" text-anchor="middle" font-size="9" fill="#388E3C">@Service</text>
-
-  <!-- Entity/Model package -->
-  <rect x="90" y="300" width="320" height="120" rx="6" fill="#FFF3E0" stroke="#F57C00" stroke-width="1.5" filter="url(#shadow)"/>
-  <rect x="110" y="310" width="160" height="22" rx="3" fill="#F57C00"/>
-  <text x="190" y="325" text-anchor="middle" font-size="11" fill="#fff" font-weight="bold">entity / model</text>
-  <text x="110" y="355" class="sub-text">VenueOps</text>
-  <text x="110" y="373" class="sub-text">Comment</text>
-  <text x="110" y="391" class="sub-text">Venue / User / CleaningLog</text>
-  <text x="110" y="409" class="sub-text" fill="#999">(JPA/MyBatis-Plus 实体)</text>
-
-  <!-- DTO package -->
-  <rect x="90" y="455" width="320" height="110" rx="6" fill="#F3E5F5" stroke="#7B1FA2" stroke-width="1.5" filter="url(#shadow)"/>
-  <rect x="110" y="465" width="160" height="22" rx="3" fill="#7B1FA2"/>
-  <text x="190" y="480" text-anchor="middle" font-size="11" fill="#fff" font-weight="bold">dto</text>
-  <text x="110" y="505" class="sub-text">VenueOpsUpdateRequest</text>
-  <text x="110" y="523" class="sub-text">VenueAvailabilityResponse</text>
-  <text x="110" y="541" class="sub-text">CommentCreateRequest</text>
-  <text x="110" y="555" class="sub-text" fill="#999">(request/response DTO)</text>
-
-  <!-- Mapper package -->
-  <rect x="480" y="300" width="290" height="100" rx="6" fill="#FFEBEE" stroke="#D32F2F" stroke-width="1.5" filter="url(#shadow)"/>
-  <rect x="500" y="310" width="160" height="22" rx="3" fill="#D32F2F"/>
-  <text x="580" y="325" text-anchor="middle" font-size="11" fill="#fff" font-weight="bold">mapper</text>
-  <text x="500" y="355" class="sub-text">VenueOpsMapper</text>
-  <text x="500" y="373" class="sub-text">CommentMapper</text>
-  <text x="500" y="391" class="sub-text" fill="#999">(MyBatis-Plus BaseMapper)</text>
-
-  <!-- Config package -->
-  <rect x="480" y="430" width="290" height="110" rx="6" fill="#ECEFF1" stroke="#546E7A" stroke-width="1.5" filter="url(#shadow)"/>
-  <rect x="500" y="440" width="160" height="22" rx="3" fill="#546E7A"/>
-  <text x="580" y="455" text-anchor="middle" font-size="11" fill="#fff" font-weight="bold">config</text>
-  <text x="500" y="485" class="sub-text">SecurityConfig</text>
-  <text x="500" y="503" class="sub-text">JwtConfig</text>
-  <text x="500" y="521" class="sub-text">MyBatisPlusConfig</text>
-  <text x="500" y="535" class="sub-text" fill="#999">(@Configuration)</text>
-
-  <!-- Dependency arrows -->
-  <line x1="410" y1="180" x2="478" y2="180" stroke="#666" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#arrowD)"/>
-  <text x="435" y="173" font-size="9" fill="#666">依赖</text>
-
-  <line x1="250" y1="300" x2="250" y2="267" stroke="#666" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#arrowD)"/>
-  <text x="258" y="287" font-size="9" fill="#666">引用</text>
-
-  <line x1="300" y1="455" x2="520" y2="400" stroke="#666" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#arrowD)"/>
-  <text x="380" y="430" font-size="9" fill="#666">数据传输</text>
-
-  <line x1="570" y1="300" x2="570" y2="267" stroke="#666" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#arrowD)"/>
-  <text x="578" y="287" font-size="9" fill="#666">调用</text>
-
-  <line x1="650" y1="430" x2="580" y2="400" stroke="#666" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#arrowD)"/>
-  <text x="630" y="418" font-size="9" fill="#666">注入配置</text>
-
-  <text x="425" y="605" text-anchor="middle" font-size="10" fill="#999">Spring Boot分层架构: Controller → Service → Mapper → Entity | DTO横向贯穿各层</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="980" viewBox="0 0 1600 980">
+<title>子系统二：UML包图</title>
+<defs>
+<linearGradient id="paper" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#F7FBFF"/></linearGradient>
+<pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M32 0H0V32" fill="none" stroke="#EEF4FA" stroke-width="1"/></pattern>
+<marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="strokeWidth">
+<path d="M2,2 L10,6 L2,10 Z" fill="#375A7F"/>
+</marker>
+<marker id="arrow-orange" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="strokeWidth">
+<path d="M2,2 L10,6 L2,10 Z" fill="#C56A1A"/>
+</marker>
+<filter id="shadow" x="-8%" y="-8%" width="116%" height="116%"><feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#94A3B8" flood-opacity=".28"/></filter>
+</defs>
+<rect x="0" y="0" width="1600" height="980" fill="#FFFFFF"/>
+<rect x="26" y="24" width="1548" height="932" rx="16" fill="url(#paper)" stroke="#D9E2EC" stroke-width="2"/>
+<rect x="42" y="124" width="1516" height="804" fill="url(#grid)" opacity=".55"/>
+<rect x="590" y="36" width="420" height="5" rx="3" fill="#2F80ED"/>
+<text x="800" y="78" text-anchor="middle" font-family="Microsoft YaHei,SimHei,Noto Sans CJK SC,Arial,sans-serif" font-size="34" font-weight="700" fill="#173A5E">子系统二：UML包图</text>
+<text x="800" y="112" text-anchor="middle" font-family="Microsoft YaHei,SimHei,Noto Sans CJK SC,Arial,sans-serif" font-size="18" fill="#64748B">UML包图：分层组织与依赖方向</text>
+<path d="M130,210 L220,210 L240,180 L360,180 L360,360 L130,360 Z" fill="#FFFFFF" stroke="#31546F" stroke-width="2" filter="url(#shadow)"/>
+<text x="148" y="244" font-size="17" font-weight="700" fill="#172033"><tspan x="148" dy="0">controller</tspan></text>
+<text x="148" y="284" font-size="14" font-weight="400" fill="#172033"><tspan x="148" dy="0">评论、运维、负责人入口</tspan></text>
+<path d="M480,210 L570,210 L590,180 L710,180 L710,360 L480,360 Z" fill="#FFFFFF" stroke="#31546F" stroke-width="2" filter="url(#shadow)"/>
+<text x="498" y="244" font-size="17" font-weight="700" fill="#172033"><tspan x="498" dy="0">service</tspan></text>
+<text x="498" y="284" font-size="14" font-weight="400" fill="#172033"><tspan x="498" dy="0">审核、待办、可用性评估</tspan></text>
+<path d="M830,210 L920,210 L940,180 L1060,180 L1060,360 L830,360 Z" fill="#FFFFFF" stroke="#31546F" stroke-width="2" filter="url(#shadow)"/>
+<text x="848" y="244" font-size="17" font-weight="700" fill="#172033"><tspan x="848" dy="0">domain/entity</tspan></text>
+<text x="848" y="284" font-size="14" font-weight="400" fill="#172033"><tspan x="848" dy="0">评论、运维、设备实体</tspan></text>
+<path d="M1180,210 L1270,210 L1290,180 L1410,180 L1410,360 L1180,360 Z" fill="#FFFFFF" stroke="#31546F" stroke-width="2" filter="url(#shadow)"/>
+<text x="1198" y="244" font-size="17" font-weight="700" fill="#172033"><tspan x="1198" dy="0">mapper</tspan></text>
+<text x="1198" y="284" font-size="14" font-weight="400" fill="#172033"><tspan x="1198" dy="0">数据访问</tspan></text>
+<path d="M300,590 L390,590 L410,560 L530,560 L530,740 L300,740 Z" fill="#FFFFFF" stroke="#31546F" stroke-width="2" filter="url(#shadow)"/>
+<text x="318" y="624" font-size="17" font-weight="700" fill="#172033"><tspan x="318" dy="0">dto/vo</tspan></text>
+<text x="318" y="664" font-size="14" font-weight="400" fill="#172033"><tspan x="318" dy="0">表单和响应对象</tspan></text>
+<path d="M650,590 L740,590 L760,560 L880,560 L880,740 L650,740 Z" fill="#FFFFFF" stroke="#31546F" stroke-width="2" filter="url(#shadow)"/>
+<text x="668" y="624" font-size="17" font-weight="700" fill="#172033"><tspan x="668" dy="0">integration</tspan></text>
+<text x="668" y="664" font-size="14" font-weight="400" fill="#172033"><tspan x="668" dy="0">子系统一可用性接口</tspan></text>
+<path d="M1000,590 L1090,590 L1110,560 L1230,560 L1230,740 L1000,740 Z" fill="#FFFFFF" stroke="#31546F" stroke-width="2" filter="url(#shadow)"/>
+<text x="1018" y="624" font-size="17" font-weight="700" fill="#172033"><tspan x="1018" dy="0">common</tspan></text>
+<text x="1018" y="664" font-size="14" font-weight="400" fill="#172033"><tspan x="1018" dy="0">权限、审计、敏感词</tspan></text>
+<line x1="245" y1="280" x2="595" y2="280" stroke="#375A7F" stroke-width="2.5" stroke-dasharray="8 6" marker-end="url(#arrow)"/>
+<rect x="328" y="258" width="184" height="28" rx="6" fill="#FFFFFF" stroke="#D9E2EC"/>
+<text x="420" y="277" text-anchor="middle" font-family="Microsoft YaHei,SimHei,Noto Sans CJK SC,Arial,sans-serif" font-size="14" fill="#172033">调用</text>
+<line x1="595" y1="280" x2="945" y2="280" stroke="#375A7F" stroke-width="2.5" stroke-dasharray="8 6" marker-end="url(#arrow)"/>
+<rect x="678" y="258" width="184" height="28" rx="6" fill="#FFFFFF" stroke="#D9E2EC"/>
+<text x="770" y="277" text-anchor="middle" font-family="Microsoft YaHei,SimHei,Noto Sans CJK SC,Arial,sans-serif" font-size="14" fill="#172033">操作</text>
+<line x1="595" y1="280" x2="1295" y2="280" stroke="#375A7F" stroke-width="2.5" stroke-dasharray="8 6" marker-end="url(#arrow)"/>
+<rect x="853" y="258" width="184" height="28" rx="6" fill="#FFFFFF" stroke="#D9E2EC"/>
+<text x="945" y="277" text-anchor="middle" font-family="Microsoft YaHei,SimHei,Noto Sans CJK SC,Arial,sans-serif" font-size="14" fill="#172033">读写</text>
+<line x1="245" y1="280" x2="415" y2="660" stroke="#375A7F" stroke-width="2.5" stroke-dasharray="8 6" marker-end="url(#arrow)"/>
+<rect x="238" y="448" width="184" height="28" rx="6" fill="#FFFFFF" stroke="#D9E2EC"/>
+<text x="330" y="467" text-anchor="middle" font-family="Microsoft YaHei,SimHei,Noto Sans CJK SC,Arial,sans-serif" font-size="14" fill="#172033">使用</text>
+<line x1="595" y1="280" x2="765" y2="660" stroke="#375A7F" stroke-width="2.5" stroke-dasharray="8 6" marker-end="url(#arrow)"/>
+<rect x="588" y="448" width="184" height="28" rx="6" fill="#FFFFFF" stroke="#D9E2EC"/>
+<text x="680" y="467" text-anchor="middle" font-family="Microsoft YaHei,SimHei,Noto Sans CJK SC,Arial,sans-serif" font-size="14" fill="#172033">同步</text>
+<line x1="245" y1="280" x2="1115" y2="660" stroke="#375A7F" stroke-width="2.5" stroke-dasharray="8 6" marker-end="url(#arrow)"/>
+<rect x="588" y="448" width="184" height="28" rx="6" fill="#FFFFFF" stroke="#D9E2EC"/>
+<text x="680" y="467" text-anchor="middle" font-family="Microsoft YaHei,SimHei,Noto Sans CJK SC,Arial,sans-serif" font-size="14" fill="#172033">依赖</text>
+<line x1="595" y1="280" x2="1115" y2="660" stroke="#375A7F" stroke-width="2.5" stroke-dasharray="8 6" marker-end="url(#arrow)"/>
+<rect x="763" y="448" width="184" height="28" rx="6" fill="#FFFFFF" stroke="#D9E2EC"/>
+<text x="855" y="467" text-anchor="middle" font-family="Microsoft YaHei,SimHei,Noto Sans CJK SC,Arial,sans-serif" font-size="14" fill="#172033">依赖</text>
+<text x="1546" y="938" text-anchor="end" font-family="Microsoft YaHei,SimHei,Noto Sans CJK SC,Arial,sans-serif" font-size="13" fill="#94A3B8">SVG / Visio style / latest system model</text>
 </svg>

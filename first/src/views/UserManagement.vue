@@ -19,7 +19,7 @@ const activeRole = ref<string>('ALL')
 
 const form = reactive({
   username: '',
-  password: 'admin123',
+  password: '',
   email: '',
   role: 'STUDENT',
 })
@@ -68,7 +68,7 @@ const loadData = async () => {
 
 const resetForm = () => {
   form.username = ''
-  form.password = 'admin123'
+  form.password = ''
   form.email = ''
   form.role = 'STUDENT'
 }
@@ -141,7 +141,7 @@ onMounted(loadData)
           <a-input v-model:value="form.email" placeholder="例如：teacher01@example.com" />
         </a-form-item>
         <a-form-item label="初始密码" name="password" :rules="[{ required: true, min: 6, message: '密码至少 6 位' }]">
-          <a-input-password v-model:value="form.password" placeholder="默认 admin123" />
+          <a-input-password v-model:value="form.password" placeholder="请输入初始密码" />
         </a-form-item>
         <a-form-item label="人员身份" name="role" :rules="[{ required: true, message: '请选择身份' }]">
           <a-radio-group v-model:value="form.role" class="role-radio-list">
@@ -160,7 +160,7 @@ onMounted(loadData)
       </a-form>
     </a-card>
 
-    <a-card class="user-table-card" :bordered="false">
+    <a-card class="user-table-card desktop-table-card" :bordered="false">
       <div class="section-heading">
         <span>人员列表</span>
         <strong>{{ filteredUsers.length }} 条记录</strong>
@@ -193,5 +193,32 @@ onMounted(loadData)
         </a-table-column>
       </a-table>
     </a-card>
+
+    <section class="mobile-card-list user-mobile-list">
+      <a-spin :spinning="loading">
+        <a-empty v-if="!filteredUsers.length" description="暂无人员" />
+        <article v-for="user in filteredUsers" :key="user.id" class="mobile-record-card">
+          <div class="mobile-record-head">
+            <div>
+              <span>ID {{ user.id }}</span>
+              <strong>{{ user.username }}</strong>
+            </div>
+            <a-tag :color="roleColor(user.role)">{{ roleLabel(user.role) }}</a-tag>
+          </div>
+          <div class="mobile-record-grid">
+            <p><span>邮箱</span><strong>{{ user.email }}</strong></p>
+            <p><span>创建时间</span><strong>{{ user.createdAt }}</strong></p>
+          </div>
+          <div class="mobile-record-actions">
+            <a-popconfirm title="确认删除该人员吗？" @confirm="removeUser(user.id)">
+              <a-button danger block :disabled="user.username === 'admin'">
+                <DeleteOutlined />
+                删除
+              </a-button>
+            </a-popconfirm>
+          </div>
+        </article>
+      </a-spin>
+    </section>
   </div>
 </template>

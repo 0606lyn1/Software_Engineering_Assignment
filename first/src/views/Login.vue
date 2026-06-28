@@ -19,11 +19,6 @@ const authStore = useAuthStore()
 const loading = ref(false)
 const formState = reactive({ username: '', password: '' })
 
-const fillDemoAccount = () => {
-  formState.username = 'admin'
-  formState.password = 'admin123'
-}
-
 const onSubmit = async () => {
   loading.value = true
   try {
@@ -45,13 +40,13 @@ const onSubmit = async () => {
     <div class="campus-orb orb-one" aria-hidden="true" />
     <div class="campus-orb orb-two" aria-hidden="true" />
 
-    <section class="auth-hero">
+    <section class="auth-hero desktop-login-view">
       <div class="auth-copy reveal-up">
         <a-tag color="cyan" class="auth-kicker">Sports Booking Service</a-tag>
         <h1>体育场预约</h1>
         <p>
           面向学生提供场馆查询、在线预约、记录管理与体验反馈，
-          让体育场资源使用更透明、更高效。
+          让校园体育资源使用更透明、更高效。
         </p>
 
         <div class="auth-service-grid">
@@ -68,7 +63,7 @@ const onSubmit = async () => {
           <div>
             <TeamOutlined />
             <strong>记录管理</strong>
-            <span>集中追踪个人预约状态</span>
+            <span>集中跟踪个人预约状态</span>
           </div>
           <div>
             <CheckCircleOutlined />
@@ -82,7 +77,7 @@ const onSubmit = async () => {
           <strong>06:00 - 22:00</strong>
         </div>
 
-        <div class="after-login-preview" aria-label="登录后页面动画预览">
+        <div class="after-login-preview" aria-label="登录后页面动效预览">
           <div class="preview-browser-bar">
             <span />
             <span />
@@ -160,14 +155,6 @@ const onSubmit = async () => {
           </div>
         </div>
 
-        <div class="demo-account">
-          <div>
-            <strong>可用测试账号</strong>
-            <span>admin / admin123</span>
-          </div>
-          <a-button size="small" type="link" @click="fillDemoAccount">一键填入</a-button>
-        </div>
-
         <a-form :model="formState" layout="vertical" @finish="onSubmit">
           <a-form-item
             label="用户名"
@@ -206,6 +193,68 @@ const onSubmit = async () => {
 
         <div class="auth-footer">
           <span><SafetyCertificateOutlined /> 登录后可提交预约、评论和修改资料</span>
+          <RouterLink to="/register">创建新账号</RouterLink>
+        </div>
+      </a-card>
+    </section>
+
+    <section class="mobile-login-view">
+      <div class="mobile-login-brand">
+        <div class="brand-mark">TY</div>
+        <div>
+          <a-tag color="gold">Sports Booking</a-tag>
+          <h1>体育场预约</h1>
+          <p>登录后即可查询场馆、预约时段、查看核销码。</p>
+        </div>
+      </div>
+
+      <a-card class="mobile-login-card" :bordered="false">
+        <div class="mobile-login-head">
+          <div>
+            <span>学生服务入口</span>
+            <h2>账号登录</h2>
+          </div>
+          <SafetyCertificateOutlined />
+        </div>
+
+        <a-form :model="formState" layout="vertical" @finish="onSubmit">
+          <a-form-item
+            label="用户名"
+            name="username"
+            :rules="[{ required: true, message: '请输入用户名' }]"
+          >
+            <a-input
+              v-model:value="formState.username"
+              autocomplete="username"
+              size="large"
+              placeholder="输入校园账号"
+            >
+              <template #prefix><UserOutlined /></template>
+            </a-input>
+          </a-form-item>
+
+          <a-form-item
+            label="密码"
+            name="password"
+            :rules="[{ required: true, message: '请输入密码' }]"
+          >
+            <a-input-password
+              v-model:value="formState.password"
+              autocomplete="current-password"
+              size="large"
+              placeholder="输入登录密码"
+            >
+              <template #prefix><LockOutlined /></template>
+            </a-input-password>
+          </a-form-item>
+
+          <a-button type="primary" html-type="submit" block size="large" :loading="loading">
+            进入预约平台
+          </a-button>
+        </a-form>
+
+        <div class="mobile-login-footer">
+          <span><SafetyCertificateOutlined /> 可提交预约、评论和修改资料</span>
           <RouterLink to="/register">创建新账号</RouterLink>
         </div>
       </a-card>

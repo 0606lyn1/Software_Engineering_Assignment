@@ -13,8 +13,8 @@ paths:
         content:
           application/json:
             example:
-              username: admin
-              password: admin123
+              username: your-username
+              password: your-password
       responses:
         '200':
           description: 登录成功

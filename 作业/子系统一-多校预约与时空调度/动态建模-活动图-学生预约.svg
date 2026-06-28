@@ -1,162 +1,67 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 700" width="1000" height="700">
-  <defs>
-    <style>
-      text { font-family: 'Microsoft YaHei', 'SimHei', sans-serif; }
-      .title { font-size: 22px; font-weight: bold; fill: #1a1a2e; }
-      .swimlane { font-size: 14px; font-weight: bold; fill: #fff; }
-      .action { font-size: 12px; fill: #fff; }
-      .decn { font-size: 11px; fill: #555; }
-      .guard { font-size: 10px; fill: #888; }
-    </style>
-    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
-      <path d="M0,0 L10,5 L0,10 Z" fill="#555"/>
-    </marker>
-    <filter id="shadow">
-      <feDropShadow dx="1" dy="1" stdDeviation="2" flood-opacity="0.12"/>
-    </filter>
-  </defs>
-
-  <rect width="1000" height="700" fill="#fafbff" rx="8"/>
-  <text x="500" y="38" text-anchor="middle" class="title">UML活动图 — 学生预约场馆（带泳道）</text>
-
-  <!-- Swimlanes -->
-  <rect x="30" y="55" width="220" height="630" rx="0" fill="#f0f4ff" opacity="0.5" stroke="#4a6cf7" stroke-width="1.5"/>
-  <rect x="30" y="55" width="220" height="32" rx="0" fill="#4a6cf7"/>
-  <text x="140" y="77" text-anchor="middle" class="swimlane">学生 (Student)</text>
-
-  <rect x="255" y="55" width="220" height="630" rx="0" fill="#f0faf5" opacity="0.5" stroke="#10b981" stroke-width="1.5"/>
-  <rect x="255" y="55" width="220" height="32" rx="0" fill="#10b981"/>
-  <text x="365" y="77" text-anchor="middle" class="swimlane">前端 (Reservation.vue)</text>
-
-  <rect x="480" y="55" width="250" height="630" rx="0" fill="#fdf5e6" opacity="0.5" stroke="#f59e0b" stroke-width="1.5"/>
-  <rect x="480" y="55" width="250" height="32" rx="0" fill="#f59e0b"/>
-  <text x="605" y="77" text-anchor="middle" class="swimlane">后端 (Spring Boot)</text>
-
-  <rect x="735" y="55" width="235" height="630" rx="0" fill="#fdf0f7" opacity="0.5" stroke="#ec4899" stroke-width="1.5"/>
-  <rect x="735" y="55" width="235" height="32" rx="0" fill="#ec4899"/>
-  <text x="852" y="77" text-anchor="middle" class="swimlane">数据库 (MySQL)</text>
-
-  <!-- Start -->
-  <circle cx="140" cy="105" r="16" fill="#333"/>
-  <circle cx="140" cy="105" r="7" fill="#fff"/>
-
-  <!-- Action: 进入预约页面 -->
-  <rect x="85" y="135" width="110" height="36" rx="18" fill="#4a6cf7" filter="url(#shadow)"/>
-  <text x="140" y="157" text-anchor="middle" class="action">进入预约页面</text>
-
-  <!-- Action: 检索场馆列表 -->
-  <rect x="305" y="135" width="120" height="36" rx="18" fill="#10b981" filter="url(#shadow)"/>
-  <text x="365" y="157" text-anchor="middle" class="action">检索场馆列表</text>
-
-  <!-- Flow -->
-  <line x1="140" y1="121" x2="140" y2="135" stroke="#555" stroke-width="1.8" marker-end="url(#arrow)"/>
-  <line x1="195" y1="153" x2="305" y2="153" stroke="#555" stroke-width="1.8" marker-end="url(#arrow)"/>
-
-  <!-- Action: 选择场馆 -->
-  <rect x="85" y="195" width="110" height="36" rx="18" fill="#4a6cf7" filter="url(#shadow)"/>
-  <text x="140" y="217" text-anchor="middle" class="action">选择场馆</text>
-
-  <!-- Action: 选择日期 -->
-  <rect x="85" y="255" width="110" height="36" rx="18" fill="#4a6cf7" filter="url(#shadow)"/>
-  <text x="140" y="277" text-anchor="middle" class="action">选择日期</text>
-
-  <line x1="140" y1="231" x2="140" y2="255" stroke="#555" stroke-width="1.8" marker-end="url(#arrow)"/>
-
-  <!-- Action: 加载时段网格 -->
-  <rect x="305" y="245" width="120" height="36" rx="18" fill="#10b981" filter="url(#shadow)"/>
-  <text x="365" y="267" text-anchor="middle" class="action">加载时段网格</text>
-
-  <line x1="195" y1="273" x2="305" y2="263" stroke="#555" stroke-width="1.8" marker-end="url(#arrow)"/>
-
-  <!-- Action: 查询可用性 → Backend -->
-  <rect x="530" y="245" width="140" height="36" rx="6" fill="#f59e0b" filter="url(#shadow)"/>
-  <text x="600" y="267" text-anchor="middle" class="action">查询时段可用性</text>
-
-  <line x1="425" y1="263" x2="530" y2="263" stroke="#555" stroke-width="1.8" marker-end="url(#arrow)"/>
-
-  <!-- Action: 查询数据库 -->
-  <rect x="780" y="245" width="140" height="36" rx="6" fill="#ec4899" filter="url(#shadow)"/>
-  <text x="850" y="267" text-anchor="middle" class="action">SELECT 预约表</text>
-
-  <line x1="670" y1="263" x2="780" y2="263" stroke="#555" stroke-width="1.8" marker-end="url(#arrow)"/>
-
-  <!-- 渲染网格 -->
-  <rect x="305" y="305" width="120" height="36" rx="18" fill="#10b981" filter="url(#shadow)"/>
-  <text x="365" y="327" text-anchor="middle" class="action">渲染时段网格</text>
-
-  <line x1="850" y1="281" x2="305" y2="305" stroke="#555" stroke-width="1.8" marker-end="url(#arrow)"/>
-
-  <!-- Action: 选择时段 -->
-  <rect x="85" y="315" width="110" height="36" rx="18" fill="#4a6cf7" filter="url(#shadow)"/>
-  <text x="140" y="337" text-anchor="middle" class="action">选择连续时段</text>
-
-  <line x1="195" y1="333" x2="305" y2="323" stroke="#555" stroke-width="1.8" marker-end="url(#arrow)"/>
-
-  <!-- Decision: 有冲突? -->
-  <line x1="140" y1="351" x2="140" y2="385" stroke="#555" stroke-width="1.8" marker-end="url(#arrow)"/>
-  <polygon points="140,390 215,440 140,490 65,440" fill="#fef3c7" stroke="#f59e0b" stroke-width="2" filter="url(#shadow)"/>
-  <text x="140" y="443" text-anchor="middle" class="decn" fill="#92400e">有冲突?</text>
-
-  <!-- [是] 分支 -->
-  <line x1="65" y1="440" x2="30" y2="440" stroke="#ef4444" stroke-width="2" marker-end="url(#arrow)"/>
-  <text x="40" y="432" class="guard" fill="#ef4444">[是]</text>
-  <rect x="30" y="420" width="20" height="45" rx="4" fill="#fee2e2" stroke="#ef4444" stroke-width="1.5"/>
-  <text x="40" y="450" text-anchor="middle" font-size="9" fill="#ef4444" transform="rotate(-90,40,450)">提示重选</text>
-  <line x1="30" y1="465" x2="30" y2="540" stroke="#ef4444" stroke-width="2"/>
-  <line x1="30" y1="540" x2="140" y2="540" stroke="#ef4444" stroke-width="2"/>
-  <line x1="140" y1="540" x2="140" y2="315" stroke="#ef4444" stroke-width="2" stroke-dasharray="5,3" marker-end="url(#arrow)"/>
-
-  <!-- [否] 分支 -->
-  <line x1="215" y1="440" x2="250" y2="440" stroke="#10b981" stroke-width="2" marker-end="url(#arrow)"/>
-  <text x="225" y="432" class="guard" fill="#10b981">[否]</text>
-
-  <!-- Action: 提交预约 -->
-  <rect x="305" y="420" width="120" height="36" rx="18" fill="#10b981" filter="url(#shadow)"/>
-  <text x="365" y="442" text-anchor="middle" class="action">提交预约请求</text>
-
-  <line x1="250" y1="440" x2="305" y2="438" stroke="#555" stroke-width="1.8" marker-end="url(#arrow)"/>
-
-  <!-- Action: 校验权限 -->
-  <rect x="530" y="418" width="140" height="36" rx="6" fill="#f59e0b" filter="url(#shadow)"/>
-  <text x="600" y="440" text-anchor="middle" class="action">校验身份与权限</text>
-
-  <line x1="425" y1="438" x2="530" y2="438" stroke="#555" stroke-width="1.8" marker-end="url(#arrow)"/>
-
-  <!-- Action: 冲突检测 -->
-  <rect x="530" y="475" width="140" height="36" rx="6" fill="#f59e0b" filter="url(#shadow)"/>
-  <text x="600" y="497" text-anchor="middle" class="action">冲突检测与乐观锁</text>
-
-  <line x1="600" y1="454" x2="600" y2="475" stroke="#555" stroke-width="1.8" marker-end="url(#arrow)"/>
-
-  <!-- Action: 数据库事务 -->
-  <rect x="780" y="475" width="140" height="36" rx="6" fill="#ec4899" filter="url(#shadow)"/>
-  <text x="850" y="497" text-anchor="middle" class="action">INSERT 事务写入</text>
-
-  <line x1="670" y1="493" x2="780" y2="493" stroke="#555" stroke-width="1.8" marker-end="url(#arrow)"/>
-
-  <!-- Join -->
-  <line x1="850" y1="511" x2="850" y2="540" stroke="#555" stroke-width="1.8"/>
-  <line x1="780" y1="540" x2="920" y2="540" stroke="#555" stroke-width="3"/>
-  <text x="920" y="544" font-size="10" fill="#555">成功</text>
-
-  <!-- Action: 返回结果 -->
-  <rect x="530" y="555" width="140" height="36" rx="6" fill="#f59e0b" filter="url(#shadow)"/>
-  <text x="600" y="577" text-anchor="middle" class="action">返回预约详情</text>
-
-  <line x1="850" y1="540" x2="670" y2="573" stroke="#555" stroke-width="1.8" marker-end="url(#arrow)"/>
-
-  <!-- Action: 显示成功 -->
-  <rect x="305" y="555" width="120" height="36" rx="18" fill="#10b981" filter="url(#shadow)"/>
-  <text x="365" y="577" text-anchor="middle" class="action">显示预约成功</text>
-
-  <line x1="530" y1="573" x2="425" y2="573" stroke="#555" stroke-width="1.8" marker-end="url(#arrow)"/>
-
-  <!-- End -->
-  <circle cx="365" cy="625" r="16" fill="#333"/>
-  <circle cx="365" cy="625" r="7" fill="#fff"/>
-
-  <line x1="365" y1="591" x2="365" y2="609" stroke="#555" stroke-width="1.8" marker-end="url(#arrow)"/>
-
-  <!-- Fork/Join annotations -->
-  <text x="910" y="530" font-size="9" fill="#888">并行汇合</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="1250" viewBox="0 0 1500 1250">
+<title>子系统一：活动图-学生预约场地</title>
+<defs>
+<linearGradient id="paper" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#F7FBFF"/></linearGradient>
+<pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M32 0H0V32" fill="none" stroke="#EEF4FA" stroke-width="1"/></pattern>
+<marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="strokeWidth">
+<path d="M2,2 L10,6 L2,10 Z" fill="#375A7F"/>
+</marker>
+<marker id="arrow-orange" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="strokeWidth">
+<path d="M2,2 L10,6 L2,10 Z" fill="#C56A1A"/>
+</marker>
+<filter id="shadow" x="-8%" y="-8%" width="116%" height="116%"><feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#94A3B8" flood-opacity=".28"/></filter>
+</defs>
+<rect x="0" y="0" width="1500" height="1250" fill="#FFFFFF"/>
+<rect x="26" y="24" width="1448" height="1202" rx="16" fill="url(#paper)" stroke="#D9E2EC" stroke-width="2"/>
+<rect x="42" y="124" width="1416" height="1074" fill="url(#grid)" opacity=".55"/>
+<rect x="540" y="36" width="420" height="5" rx="3" fill="#2F80ED"/>
+<text x="750" y="78" text-anchor="middle" font-family="Microsoft YaHei,SimHei,Noto Sans CJK SC,Arial,sans-serif" font-size="34" font-weight="700" fill="#173A5E">子系统一：活动图-学生预约场地</text>
+<text x="750" y="112" text-anchor="middle" font-family="Microsoft YaHei,SimHei,Noto Sans CJK SC,Arial,sans-serif" font-size="18" fill="#64748B">UML活动图：业务流程、分支与结束点</text>
+<rect x="80" y="120" width="410" height="1020" fill="#F8FBFF" stroke="#D9E2EC" stroke-width="2"/>
+<rect x="545" y="120" width="410" height="1020" fill="#FFFFFF" stroke="#D9E2EC" stroke-width="2"/>
+<rect x="1010" y="120" width="410" height="1020" fill="#F8FBFF" stroke="#D9E2EC" stroke-width="2"/>
+<text x="285" y="150" text-anchor="middle" font-family="Microsoft YaHei,SimHei,Noto Sans CJK SC,Arial,sans-serif" font-size="18" font-weight="700" fill="#173A5E">用户操作</text>
+<text x="750" y="150" text-anchor="middle" font-family="Microsoft YaHei,SimHei,Noto Sans CJK SC,Arial,sans-serif" font-size="18" font-weight="700" fill="#173A5E">系统校验与处理</text>
+<text x="1215" y="150" text-anchor="middle" font-family="Microsoft YaHei,SimHei,Noto Sans CJK SC,Arial,sans-serif" font-size="18" font-weight="700" fill="#173A5E">结果反馈/异常路径</text>
+<circle cx="750" cy="190" r="24" fill="#172033"/>
+<text x="750" y="236" text-anchor="middle" font-family="Microsoft YaHei,SimHei,Noto Sans CJK SC,Arial,sans-serif" font-size="15" fill="#172033">开始</text>
+<rect x="650" y="290" width="200" height="78" rx="10" fill="#EAF4FF" stroke="#2F80ED" stroke-width="2" filter="url(#shadow)"/>
+<text x="668" y="322" font-size="16" font-weight="700" fill="#172033"><tspan x="668" dy="0">登录并进入预约页</tspan></text>
+<rect x="650" y="430" width="200" height="78" rx="10" fill="#EAF4FF" stroke="#2F80ED" stroke-width="2" filter="url(#shadow)"/>
+<text x="668" y="462" font-size="16" font-weight="700" fill="#172033"><tspan x="668" dy="0">选择场馆/日期/时段</tspan></text>
+<path d="M750,570 L870,630 L750,690 L630,630 Z" fill="#FFF8ED" stroke="#C56A1A" stroke-width="2" filter="url(#shadow)"/>
+<text x="685" y="625" font-size="15" font-weight="700" fill="#172033"><tspan x="685" dy="0">时段是否可用</tspan></text>
+<rect x="650" y="720" width="200" height="78" rx="10" fill="#EAF4FF" stroke="#2F80ED" stroke-width="2" filter="url(#shadow)"/>
+<text x="668" y="752" font-size="16" font-weight="700" fill="#172033"><tspan x="668" dy="0">提交预约申请</tspan></text>
+<rect x="360" y="890" width="200" height="78" rx="10" fill="#EAF4FF" stroke="#2F80ED" stroke-width="2" filter="url(#shadow)"/>
+<text x="378" y="922" font-size="16" font-weight="700" fill="#172033"><tspan x="378" dy="0">提示冲突并重选</tspan></text>
+<rect x="930" y="890" width="200" height="78" rx="10" fill="#EAF4FF" stroke="#2F80ED" stroke-width="2" filter="url(#shadow)"/>
+<text x="948" y="922" font-size="16" font-weight="700" fill="#172033"><tspan x="948" dy="0">写入预约并通知</tspan></text>
+<circle cx="750" cy="1100" r="28" fill="none" stroke="#172033" stroke-width="3"/><circle cx="750" cy="1100" r="18" fill="#172033"/>
+<text x="750" y="1150" text-anchor="middle" font-family="Microsoft YaHei,SimHei,Noto Sans CJK SC,Arial,sans-serif" font-size="15" fill="#172033">结束</text>
+<line x1="750" y1="190" x2="750" y2="330" stroke="#375A7F" stroke-width="2.5" marker-end="url(#arrow)"/>
+<line x1="750" y1="330" x2="750" y2="470" stroke="#375A7F" stroke-width="2.5" marker-end="url(#arrow)"/>
+<line x1="750" y1="470" x2="750" y2="610" stroke="#375A7F" stroke-width="2.5" marker-end="url(#arrow)"/>
+<rect x="658" y="518" width="184" height="28" rx="6" fill="#FFFFFF" stroke="#D9E2EC"/>
+<text x="750" y="537" text-anchor="middle" font-family="Microsoft YaHei,SimHei,Noto Sans CJK SC,Arial,sans-serif" font-size="14" fill="#172033">查询</text>
+<line x1="750" y1="610" x2="750" y2="760" stroke="#375A7F" stroke-width="2.5" marker-end="url(#arrow)"/>
+<rect x="658" y="663" width="184" height="28" rx="6" fill="#FFFFFF" stroke="#D9E2EC"/>
+<text x="750" y="682" text-anchor="middle" font-family="Microsoft YaHei,SimHei,Noto Sans CJK SC,Arial,sans-serif" font-size="14" fill="#172033">是</text>
+<line x1="750" y1="610" x2="460" y2="930" stroke="#375A7F" stroke-width="2.5" marker-end="url(#arrow)"/>
+<rect x="513" y="748" width="184" height="28" rx="6" fill="#FFFFFF" stroke="#D9E2EC"/>
+<text x="605" y="767" text-anchor="middle" font-family="Microsoft YaHei,SimHei,Noto Sans CJK SC,Arial,sans-serif" font-size="14" fill="#172033">否</text>
+<line x1="460" y1="930" x2="750" y2="470" stroke="#375A7F" stroke-width="2.5" marker-end="url(#arrow)"/>
+<rect x="513" y="678" width="184" height="28" rx="6" fill="#FFFFFF" stroke="#D9E2EC"/>
+<text x="605" y="697" text-anchor="middle" font-family="Microsoft YaHei,SimHei,Noto Sans CJK SC,Arial,sans-serif" font-size="14" fill="#172033">重新选择</text>
+<line x1="750" y1="760" x2="1030" y2="930" stroke="#375A7F" stroke-width="2.5" marker-end="url(#arrow)"/>
+<rect x="798" y="823" width="184" height="28" rx="6" fill="#FFFFFF" stroke="#D9E2EC"/>
+<text x="890" y="842" text-anchor="middle" font-family="Microsoft YaHei,SimHei,Noto Sans CJK SC,Arial,sans-serif" font-size="14" fill="#172033">成功</text>
+<line x1="1030" y1="930" x2="750" y2="1100" stroke="#375A7F" stroke-width="2.5" marker-end="url(#arrow)"/>
+<rect x="90" y="1010" width="330" height="95" rx="10" fill="#FFFFFF" stroke="#64748B" stroke-width="2" filter="url(#shadow)"/>
+<text x="108" y="1042" font-size="15" font-weight="700" fill="#172033"><tspan x="108" dy="0">用户侧关注</tspan></text>
+<text x="108" y="1074" font-size="14" font-weight="400" fill="#172033"><tspan x="108" dy="0">操作入口清晰；错误可返回修改；结果需要明确展示</tspan></text>
+<rect x="1060" y="1010" width="320" height="95" rx="10" fill="#FFF8ED" stroke="#C56A1A" stroke-width="2" filter="url(#shadow)"/>
+<text x="1078" y="1042" font-size="15" font-weight="700" fill="#172033"><tspan x="1078" dy="0">系统侧约束</tspan></text>
+<text x="1078" y="1074" font-size="14" font-weight="400" fill="#172033"><tspan x="1078" dy="0">权限校验、状态判断、写入日志、通知联动均需闭环</tspan></text>
+<text x="1446" y="1208" text-anchor="end" font-family="Microsoft YaHei,SimHei,Noto Sans CJK SC,Arial,sans-serif" font-size="13" fill="#94A3B8">SVG / Visio style / latest system model</text>
 </svg>

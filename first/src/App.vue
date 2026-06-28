@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, ref } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import {
   CalendarOutlined,
@@ -13,6 +13,7 @@ import {
   UserOutlined,
   BellOutlined,
   ControlOutlined,
+  MenuOutlined,
 } from '@ant-design/icons-vue'
 import { useAuthStore } from './stores/auth'
 
@@ -24,10 +25,16 @@ const isAuthPage = computed(() => ['/login', '/register'].includes(route.path))
 const canReserve = computed(() => authStore.canReserve)
 const canManageMaintenance = computed(() => authStore.canManageMaintenance)
 const canManageUsers = computed(() => authStore.isAdmin)
+const mobileMenuOpen = ref(false)
 
 const logout = () => {
   authStore.clearAuth()
+  mobileMenuOpen.value = false
   router.push('/login')
+}
+
+const closeMobileMenu = () => {
+  mobileMenuOpen.value = false
 }
 </script>
 
@@ -92,7 +99,47 @@ const logout = () => {
           </router-link>
         </a-space>
       </div>
+
+      <a-button class="mobile-menu-button" ghost @click="mobileMenuOpen = true">
+        <MenuOutlined />
+      </a-button>
     </a-layout-header>
+
+    <a-drawer
+      v-model:open="mobileMenuOpen"
+      class="mobile-nav-drawer"
+      placement="right"
+      width="320"
+      title="体育场预约"
+    >
+      <nav class="mobile-nav-list">
+        <router-link to="/" @click="closeMobileMenu"><HomeOutlined /> 首页</router-link>
+        <router-link to="/venues" @click="closeMobileMenu"><ReadOutlined /> 场馆目录</router-link>
+        <router-link v-if="canReserve" to="/reservation" @click="closeMobileMenu"><CalendarOutlined /> 在线预约</router-link>
+        <router-link v-if="canReserve" to="/my-reservations" @click="closeMobileMenu"><TeamOutlined /> 我的预约</router-link>
+        <router-link v-if="canManageMaintenance" to="/maintenance" @click="closeMobileMenu"><ToolOutlined /> 场地维护</router-link>
+        <router-link v-if="canManageUsers" to="/users" @click="closeMobileMenu"><SettingOutlined /> 人员管理</router-link>
+        <router-link v-if="canManageUsers" to="/operations-admin" @click="closeMobileMenu"><ControlOutlined /> 运营配置</router-link>
+        <router-link to="/notifications" @click="closeMobileMenu"><BellOutlined /> 消息中心</router-link>
+        <router-link to="/user-center" @click="closeMobileMenu"><UserOutlined /> 个人信息</router-link>
+      </nav>
+
+      <div class="mobile-nav-footer">
+        <template v-if="authStore.user">
+          <span>{{ authStore.user.username }}</span>
+          <a-tag color="cyan">{{ authStore.roleLabel }}</a-tag>
+          <a-button danger block @click="logout"><LogoutOutlined /> 退出登录</a-button>
+        </template>
+        <template v-else>
+          <router-link to="/login" @click="closeMobileMenu">
+            <a-button block><LoginOutlined /> 登录</a-button>
+          </router-link>
+          <router-link to="/register" @click="closeMobileMenu">
+            <a-button type="primary" block>注册</a-button>
+          </router-link>
+        </template>
+      </div>
+    </a-drawer>
 
     <a-layout-content>
       <div class="page-wrap">

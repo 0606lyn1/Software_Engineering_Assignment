@@ -8,8 +8,8 @@ import com.example.tiyu.entity.Reservation;
 import com.example.tiyu.entity.ReservationRule;
 import com.example.tiyu.exception.BusinessException;
 import com.example.tiyu.mapper.ReservationMapper;
-import com.example.tiyu.service.ReservationService;
 import com.example.tiyu.service.ReservationRuleService;
+import com.example.tiyu.service.ReservationService;
 import com.example.tiyu.service.UserNotificationService;
 import com.example.tiyu.service.VenueOpsService;
 import org.springframework.stereotype.Service;
@@ -137,7 +137,8 @@ public class ReservationServiceImpl extends ServiceImpl<ReservationMapper, Reser
         reservation.setStatus("CANCELED");
         reservation.setCancelReason(reason);
         updateById(reservation);
-        notificationService.push(reservation.getUserId(), "CANCEL", "预约已取消", reason == null || reason.isBlank() ? "预约已取消" : reason);
+        notificationService.push(reservation.getUserId(), "CANCEL", "预约已取消",
+                reason == null || reason.isBlank() ? "预约已取消" : reason);
         return reservation;
     }
 
@@ -169,6 +170,12 @@ public class ReservationServiceImpl extends ServiceImpl<ReservationMapper, Reser
         }
         if (!reservation.getUserId().equals(currentUserId)) {
             throw new BusinessException("无权申诉该预约");
+        }
+        if (!"NO_SHOW".equals(reservation.getStatus())) {
+            throw new BusinessException("仅爽约记录可以提交申诉");
+        }
+        if ("PENDING".equals(reservation.getAppealStatus())) {
+            throw new BusinessException("申诉已提交，请等待管理员审核");
         }
         reservation.setAppealReason(reason);
         reservation.setAppealStatus("PENDING");
@@ -204,8 +211,8 @@ public class ReservationServiceImpl extends ServiceImpl<ReservationMapper, Reser
         if (start.toLocalTime().isBefore(open) || end.toLocalTime().isAfter(close)) {
             throw new BusinessException("预约时间需在开放时段 " + rule.getOpenTime() + " - " + rule.getCloseTime() + " 内");
         }
-        long hours = Duration.between(start, end).toHours();
-        if (hours <= 0 || hours > rule.getMaxHoursPerBooking()) {
+        long minutes = Duration.between(start, end).toMinutes();
+        if (minutes <= 0 || minutes > rule.getMaxHoursPerBooking() * 60L) {
             throw new BusinessException("单次预约最长 " + rule.getMaxHoursPerBooking() + " 小时");
         }
         long dailyCount = lambdaQuery()

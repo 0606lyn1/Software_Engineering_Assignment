@@ -1,120 +1,84 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 660" width="960" height="660">
-  <defs>
-    <style>
-      text { font-family: "Microsoft YaHei", "SimHei", sans-serif; }
-      .title { font-size: 20px; font-weight: bold; fill: #1a1a2e; }
-      .actor-text { font-size: 12px; font-weight: bold; fill: #2c3e50; }
-      .uc-text { font-size: 12px; fill: #333; }
-      .subtitle { font-size: 11px; fill: #555; }
-      .incl-ext { font-size: 10px; fill: #666; }
-    </style>
-    <filter id="shadow"><feDropShadow dx="1" dy="2" stdDeviation="1.5" flood-opacity="0.1"/></filter>
-  </defs>
-  <rect width="960" height="660" fill="#FAFBFC" rx="8"/>
-
-  <text x="480" y="28" text-anchor="middle" class="title">子系统二——场地运维与公众监督系统 用例图</text>
-  <line x1="140" y1="40" x2="820" y2="40" stroke="#4A90D9" stroke-width="1.5"/>
-
-  <!-- System Boundary -->
-  <rect x="230" y="65" width="680" height="550" rx="12" fill="none" stroke="#4A90D9" stroke-width="2.5" stroke-dasharray="8,4" filter="url(#shadow)"/>
-  <text x="260" y="85" font-size="13" font-weight="bold" fill="#4A90D9">场地运维与公众监督子系统</text>
-
-  <!-- Actor 1: 普通用户 -->
-  <circle cx="90" cy="220" r="18" fill="none" stroke="#1976D2" stroke-width="2"/>
-  <line x1="108" y1="235" x2="130" y2="260" stroke="#1976D2" stroke-width="2"/>
-  <line x1="60" y1="260" x2="120" y2="260" stroke="#1976D2" stroke-width="2"/>
-  <line x1="88" y1="260" x2="88" y2="285" stroke="#1976D2" stroke-width="2"/>
-  <line x1="70" y1="285" x2="106" y2="285" stroke="#1976D2" stroke-width="2"/>
-  <text x="90" y="300" text-anchor="middle" class="actor-text" fill="#1976D2">普通用户</text>
-  <text x="90" y="315" text-anchor="middle" class="subtitle">(学生/教师)</text>
-
-  <!-- Actor 2: 保洁运维人员 -->
-  <circle cx="90" cy="380" r="18" fill="none" stroke="#388E3C" stroke-width="2"/>
-  <line x1="108" y1="395" x2="130" y2="420" stroke="#388E3C" stroke-width="2"/>
-  <line x1="60" y1="420" x2="120" y2="420" stroke="#388E3C" stroke-width="2"/>
-  <line x1="88" y1="420" x2="88" y2="445" stroke="#388E3C" stroke-width="2"/>
-  <line x1="70" y1="445" x2="106" y2="445" stroke="#388E3C" stroke-width="2"/>
-  <text x="90" y="460" text-anchor="middle" class="actor-text" fill="#388E3C">保洁运维人员</text>
-
-  <!-- Actor 3: 管理员 -->
-  <circle cx="90" cy="540" r="18" fill="none" stroke="#D32F2F" stroke-width="2"/>
-  <line x1="108" y1="555" x2="130" y2="580" stroke="#D32F2F" stroke-width="2"/>
-  <line x1="60" y1="580" x2="120" y2="580" stroke="#D32F2F" stroke-width="2"/>
-  <line x1="88" y1="580" x2="88" y2="605" stroke="#D32F2F" stroke-width="2"/>
-  <line x1="70" y1="605" x2="106" y2="605" stroke="#D32F2F" stroke-width="2"/>
-  <text x="90" y="620" text-anchor="middle" class="actor-text" fill="#D32F2F">管理员</text>
-
-  <!-- Actor 4: 场地负责人 -->
-  <circle cx="170" cy="160" r="18" fill="none" stroke="#E65100" stroke-width="2"/>
-  <line x1="188" y1="175" x2="210" y2="200" stroke="#E65100" stroke-width="2"/>
-  <line x1="140" y1="200" x2="200" y2="200" stroke="#E65100" stroke-width="2"/>
-  <line x1="168" y1="200" x2="168" y2="225" stroke="#E65100" stroke-width="2"/>
-  <line x1="150" y1="225" x2="186" y2="225" stroke="#E65100" stroke-width="2"/>
-  <text x="170" y="240" text-anchor="middle" class="actor-text" fill="#E65100">场地负责人</text>
-
-  <!-- Actor 5: 子系统一 -->
-  <rect x="860" y="230" width="85" height="55" rx="6" fill="none" stroke="#7B1FA2" stroke-width="2"/>
-  <text x="902" y="253" text-anchor="middle" font-size="11" font-weight="bold" fill="#7B1FA2">子系统一</text>
-  <text x="902" y="270" text-anchor="middle" font-size="10" fill="#666">场地预约系统</text>
-
-  <!-- ===== Use Cases ===== -->
-  <!-- UC-O1: 保洁完成清洁打卡 -->
-  <ellipse cx="380" cy="380" rx="95" ry="30" fill="#E8F5E9" stroke="#388E3C" stroke-width="2" filter="url(#shadow)"/>
-  <text x="380" y="376" text-anchor="middle" class="uc-text">UC-O1</text>
-  <text x="380" y="392" text-anchor="middle" class="uc-text">保洁完成清洁打卡</text>
-
-  <!-- UC-O2: 用户发表评论 -->
-  <ellipse cx="380" cy="220" rx="95" ry="30" fill="#E3F2FD" stroke="#1976D2" stroke-width="2" filter="url(#shadow)"/>
-  <text x="380" y="216" text-anchor="middle" class="uc-text">UC-O2</text>
-  <text x="380" y="232" text-anchor="middle" class="uc-text">用户发表评论</text>
-
-  <!-- UC-O3: 管理员处理违规评论 -->
-  <ellipse cx="650" cy="220" rx="105" ry="30" fill="#FFEBEE" stroke="#D32F2F" stroke-width="2" filter="url(#shadow)"/>
-  <text x="650" y="216" text-anchor="middle" class="uc-text">UC-O3</text>
-  <text x="650" y="232" text-anchor="middle" class="uc-text">管理员处理违规评论</text>
-
-  <!-- UC-O4: 负责人接收负面反馈待办 -->
-  <ellipse cx="650" cy="380" rx="110" ry="30" fill="#FFF3E0" stroke="#E65100" stroke-width="2" filter="url(#shadow)"/>
-  <text x="650" y="376" text-anchor="middle" class="uc-text">UC-O4</text>
-  <text x="650" y="392" text-anchor="middle" class="uc-text">负责人接收负面反馈待办</text>
-
-  <!-- UC: 查看运维状态与器材 -->
-  <ellipse cx="650" cy="520" rx="105" ry="30" fill="#E3F2FD" stroke="#1976D2" stroke-width="2" filter="url(#shadow)"/>
-  <text x="650" y="516" text-anchor="middle" class="uc-text">查看运维状态与器材</text>
-
-  <!-- UC: 查询场地可用性 (子系统一) -->
-  <ellipse cx="830" y="320" rx="95" ry="30" fill="#F3E5F5" stroke="#7B1FA2" stroke-width="2" filter="url(#shadow)"/>
-  <text x="830" y="316" text-anchor="middle" class="uc-text">查询场地可用性</text>
-
-  <!-- UC: 配置负责人与规则 -->
-  <ellipse cx="380" cy="520" rx="100" ry="30" fill="#FFEBEE" stroke="#D32F2F" stroke-width="2" filter="url(#shadow)"/>
-  <text x="380" y="516" text-anchor="middle" class="uc-text">配置负责人与规则</text>
-
-  <!-- ===== Actor-UseCase Lines ===== -->
-  <line x1="120" y1="220" x2="285" y2="220" stroke="#1976D2" stroke-width="1.5"/>
-  <line x1="130" y1="250" x2="645" y2="495" stroke="#1976D2" stroke-width="1.5"/>
-
-  <line x1="120" y1="380" x2="285" y2="380" stroke="#388E3C" stroke-width="1.5"/>
-
-  <line x1="120" y1="540" x2="280" y2="520" stroke="#D32F2F" stroke-width="1.5"/>
-  <line x1="130" y1="555" x2="545" y2="220" stroke="#D32F2F" stroke-width="1.5"/>
-
-  <line x1="198" y1="175" x2="540" y2="380" stroke="#E65100" stroke-width="1.5"/>
-
-  <line x1="860" y1="260" x2="830" y2="305" stroke="#7B1FA2" stroke-width="1.5"/>
-
-  <!-- Include/Extend -->
-  <line x1="475" y1="220" x2="545" y2="220" stroke="#1976D2" stroke-width="1" stroke-dasharray="4,3"/>
-  <text x="500" y="212" class="incl-ext" fill="#1976D2">«include»</text>
-  <text x="500" y="242" font-size="9" fill="#555">(敏感词过滤+反刷屏)</text>
-
-  <path d="M380,410 Q380,470 650,470 Q650,440 650,410" fill="none" stroke="#388E3C" stroke-width="1" stroke-dasharray="4,3"/>
-  <text x="500" y="458" class="incl-ext" fill="#388E3C">«extend» 可用性重算</text>
-
-  <line x1="540" y1="380" x2="545" y2="220" stroke="#E65100" stroke-width="1" stroke-dasharray="4,3"/>
-  <text x="555" y="280" class="incl-ext" fill="#e65100">«extend» 升级通知管理员</text>
-
-  <rect x="260" y="590" width="440" height="50" rx="8" fill="#F5F7FA" stroke="#ddd" stroke-width="1"/>
-  <text x="480" y="610" text-anchor="middle" font-size="10" fill="#666">图例: —— 关联  ----«include»包含  ----«extend»扩展  系统边界: ======</text>
-  <text x="480" y="628" text-anchor="middle" font-size="10" fill="#666">普通用户泛化: 学生、教师；保洁运维人员泛化: 清洁员、灯光检查员、器材管理员</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="1700" height="1060" viewBox="0 0 1700 1060">
+<title>子系统二：UML用例图</title>
+<defs>
+<linearGradient id="paper" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#F7FBFF"/></linearGradient>
+<pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M32 0H0V32" fill="none" stroke="#EEF4FA" stroke-width="1"/></pattern>
+<marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="strokeWidth">
+<path d="M2,2 L10,6 L2,10 Z" fill="#375A7F"/>
+</marker>
+<marker id="arrow-orange" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="strokeWidth">
+<path d="M2,2 L10,6 L2,10 Z" fill="#C56A1A"/>
+</marker>
+<filter id="shadow" x="-8%" y="-8%" width="116%" height="116%"><feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#94A3B8" flood-opacity=".28"/></filter>
+</defs>
+<rect x="0" y="0" width="1700" height="1060" fill="#FFFFFF"/>
+<rect x="26" y="24" width="1648" height="1012" rx="16" fill="url(#paper)" stroke="#D9E2EC" stroke-width="2"/>
+<rect x="42" y="124" width="1616" height="884" fill="url(#grid)" opacity=".55"/>
+<rect x="640" y="36" width="420" height="5" rx="3" fill="#2F80ED"/>
+<text x="850" y="78" text-anchor="middle" font-family="Microsoft YaHei,SimHei,Noto Sans CJK SC,Arial,sans-serif" font-size="34" font-weight="700" fill="#173A5E">子系统二：UML用例图</text>
+<text x="850" y="112" text-anchor="middle" font-family="Microsoft YaHei,SimHei,Noto Sans CJK SC,Arial,sans-serif" font-size="18" fill="#64748B">UML用例图：参与者、系统边界与核心目标</text>
+<rect x="360" y="145" width="980" height="770" rx="22" fill="#F8FBFF" stroke="#A9BED6" stroke-width="2" stroke-dasharray="10 8"/>
+<text x="850" y="185" text-anchor="middle" font-family="Microsoft YaHei,SimHei,Noto Sans CJK SC,Arial,sans-serif" font-size="22" font-weight="700" fill="#173A5E">系统边界</text>
+<circle cx="140" cy="230" r="22" fill="#FFFFFF" stroke="#2F80ED" stroke-width="3"/>
+<line x1="140" y1="252" x2="140" y2="312" stroke="#2F80ED" stroke-width="3"/>
+<line x1="104" y1="278" x2="176" y2="278" stroke="#2F80ED" stroke-width="3"/>
+<line x1="140" y1="312" x2="108" y2="354" stroke="#2F80ED" stroke-width="3"/>
+<line x1="140" y1="312" x2="172" y2="354" stroke="#2F80ED" stroke-width="3"/>
+<text x="140" y="386" text-anchor="middle" font-family="Microsoft YaHei,SimHei,Noto Sans CJK SC,Arial,sans-serif" font-size="17" font-weight="700" fill="#172033">普通用户</text>
+<circle cx="140" cy="520" r="22" fill="#FFFFFF" stroke="#2F80ED" stroke-width="3"/>
+<line x1="140" y1="542" x2="140" y2="602" stroke="#2F80ED" stroke-width="3"/>
+<line x1="104" y1="568" x2="176" y2="568" stroke="#2F80ED" stroke-width="3"/>
+<line x1="140" y1="602" x2="108" y2="644" stroke="#2F80ED" stroke-width="3"/>
+<line x1="140" y1="602" x2="172" y2="644" stroke="#2F80ED" stroke-width="3"/>
+<text x="140" y="676" text-anchor="middle" font-family="Microsoft YaHei,SimHei,Noto Sans CJK SC,Arial,sans-serif" font-size="17" font-weight="700" fill="#172033">保洁人员</text>
+<circle cx="140" cy="810" r="22" fill="#FFFFFF" stroke="#2F80ED" stroke-width="3"/>
+<line x1="140" y1="832" x2="140" y2="892" stroke="#2F80ED" stroke-width="3"/>
+<line x1="104" y1="858" x2="176" y2="858" stroke="#2F80ED" stroke-width="3"/>
+<line x1="140" y1="892" x2="108" y2="934" stroke="#2F80ED" stroke-width="3"/>
+<line x1="140" y1="892" x2="172" y2="934" stroke="#2F80ED" stroke-width="3"/>
+<text x="140" y="966" text-anchor="middle" font-family="Microsoft YaHei,SimHei,Noto Sans CJK SC,Arial,sans-serif" font-size="17" font-weight="700" fill="#172033">负责人</text>
+<circle cx="1510" cy="300" r="22" fill="#FFFFFF" stroke="#2F80ED" stroke-width="3"/>
+<line x1="1510" y1="322" x2="1510" y2="382" stroke="#2F80ED" stroke-width="3"/>
+<line x1="1474" y1="348" x2="1546" y2="348" stroke="#2F80ED" stroke-width="3"/>
+<line x1="1510" y1="382" x2="1478" y2="424" stroke="#2F80ED" stroke-width="3"/>
+<line x1="1510" y1="382" x2="1542" y2="424" stroke="#2F80ED" stroke-width="3"/>
+<text x="1510" y="456" text-anchor="middle" font-family="Microsoft YaHei,SimHei,Noto Sans CJK SC,Arial,sans-serif" font-size="17" font-weight="700" fill="#172033">管理员</text>
+<circle cx="1510" cy="660" r="22" fill="#FFFFFF" stroke="#2F80ED" stroke-width="3"/>
+<line x1="1510" y1="682" x2="1510" y2="742" stroke="#2F80ED" stroke-width="3"/>
+<line x1="1474" y1="708" x2="1546" y2="708" stroke="#2F80ED" stroke-width="3"/>
+<line x1="1510" y1="742" x2="1478" y2="784" stroke="#2F80ED" stroke-width="3"/>
+<line x1="1510" y1="742" x2="1542" y2="784" stroke="#2F80ED" stroke-width="3"/>
+<text x="1510" y="816" text-anchor="middle" font-family="Microsoft YaHei,SimHei,Noto Sans CJK SC,Arial,sans-serif" font-size="17" font-weight="700" fill="#172033">子系统一</text>
+<ellipse cx="560" cy="285" rx="110" ry="45" fill="#FFFFFF" stroke="#2F80ED" stroke-width="2" filter="url(#shadow)"/>
+<text x="482" y="280" font-size="15" font-weight="700" fill="#172033"><tspan x="482" dy="0">查看场地状态</tspan></text>
+<ellipse cx="840" cy="285" rx="110" ry="45" fill="#FFFFFF" stroke="#2F80ED" stroke-width="2" filter="url(#shadow)"/>
+<text x="762" y="280" font-size="15" font-weight="700" fill="#172033"><tspan x="762" dy="0">发表评论</tspan></text>
+<ellipse cx="1120" cy="285" rx="110" ry="45" fill="#FFFFFF" stroke="#2F80ED" stroke-width="2" filter="url(#shadow)"/>
+<text x="1042" y="280" font-size="15" font-weight="700" fill="#172033"><tspan x="1042" dy="0">关联预约</tspan></text>
+<ellipse cx="560" cy="475" rx="110" ry="45" fill="#FFFFFF" stroke="#2F80ED" stroke-width="2" filter="url(#shadow)"/>
+<text x="482" y="470" font-size="15" font-weight="700" fill="#172033"><tspan x="482" dy="0">清洁打卡</tspan></text>
+<ellipse cx="840" cy="475" rx="110" ry="45" fill="#FFFFFF" stroke="#2F80ED" stroke-width="2" filter="url(#shadow)"/>
+<text x="762" y="470" font-size="15" font-weight="700" fill="#172033"><tspan x="762" dy="0">提交维护记录</tspan></text>
+<ellipse cx="1120" cy="475" rx="110" ry="45" fill="#FFFFFF" stroke="#2F80ED" stroke-width="2" filter="url(#shadow)"/>
+<text x="1042" y="470" font-size="15" font-weight="700" fill="#172033"><tspan x="1042" dy="0">接收负面待办</tspan></text>
+<ellipse cx="560" cy="665" rx="110" ry="45" fill="#FFFFFF" stroke="#2F80ED" stroke-width="2" filter="url(#shadow)"/>
+<text x="482" y="660" font-size="15" font-weight="700" fill="#172033"><tspan x="482" dy="0">处理整改</tspan></text>
+<ellipse cx="840" cy="665" rx="110" ry="45" fill="#FFFFFF" stroke="#2F80ED" stroke-width="2" filter="url(#shadow)"/>
+<text x="762" y="660" font-size="15" font-weight="700" fill="#172033"><tspan x="762" dy="0">审核评论</tspan></text>
+<ellipse cx="1120" cy="665" rx="110" ry="45" fill="#FFFFFF" stroke="#2F80ED" stroke-width="2" filter="url(#shadow)"/>
+<text x="1042" y="660" font-size="15" font-weight="700" fill="#172033"><tspan x="1042" dy="0">维护负责人</tspan></text>
+<ellipse cx="840" cy="835" rx="110" ry="45" fill="#FFFFFF" stroke="#2F80ED" stroke-width="2" filter="url(#shadow)"/>
+<text x="762" y="830" font-size="15" font-weight="700" fill="#172033"><tspan x="762" dy="0">获取可用性</tspan></text>
+<line x1="184" y1="280" x2="560" y2="285" stroke="#64748B" stroke-width="2"/>
+<line x1="184" y1="280" x2="840" y2="285" stroke="#64748B" stroke-width="2"/>
+<line x1="184" y1="280" x2="1120" y2="285" stroke="#64748B" stroke-width="2"/>
+<text x="630" y="249" font-family="Microsoft YaHei,SimHei,Noto Sans CJK SC,Arial,sans-serif" font-size="13" fill="#64748B">&lt;&lt;include&gt;&gt;</text>
+<line x1="184" y1="570" x2="560" y2="475" stroke="#64748B" stroke-width="2"/>
+<line x1="184" y1="570" x2="840" y2="475" stroke="#64748B" stroke-width="2"/>
+<line x1="184" y1="860" x2="1120" y2="475" stroke="#64748B" stroke-width="2"/>
+<line x1="184" y1="860" x2="560" y2="665" stroke="#64748B" stroke-width="2"/>
+<line x1="1466" y1="350" x2="840" y2="665" stroke="#64748B" stroke-width="2"/>
+<line x1="1466" y1="350" x2="1120" y2="665" stroke="#64748B" stroke-width="2"/>
+<line x1="1466" y1="710" x2="840" y2="835" stroke="#64748B" stroke-width="2"/>
+<text x="1646" y="1018" text-anchor="end" font-family="Microsoft YaHei,SimHei,Noto Sans CJK SC,Arial,sans-serif" font-size="13" fill="#94A3B8">SVG / Visio style / latest system model</text>
 </svg>

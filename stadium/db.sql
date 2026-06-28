@@ -130,7 +130,7 @@ CREATE TABLE t_comment (
   CONSTRAINT fk_comment_venue FOREIGN KEY (venue_id) REFERENCES t_venue(id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- 默认管理员：admin / admin123
+-- Seed users for local development. Do not publish plaintext passwords.
 INSERT INTO t_user(username, password, email, role, created_at) VALUES
 ('admin', '$2a$10$K/FVXTeoHZfJYsBDGEWGSuybHyp4oSTvHZiLcokmIIwRdsVsq4.2a', 'admin@example.com', 'ADMIN', NOW()),
 ('zhangsan', '$2a$10$K/FVXTeoHZfJYsBDGEWGSuybHyp4oSTvHZiLcokmIIwRdsVsq4.2a', 'zhangsan@example.com', 'STUDENT', NOW()),

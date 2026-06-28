@@ -1,90 +1,75 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 680" width="960" height="680">
-  <defs>
-    <style>
-      text { font-family: "Microsoft YaHei", "SimHei", sans-serif; }
-      .title { font-size: 22px; font-weight: bold; fill: #1a1a2e; }
-      .role-title { font-size: 16px; font-weight: bold; fill: #fff; }
-      .scenario { font-size: 12px; fill: #333; }
-      .actor-icon { font-size: 13px; font-weight: bold; fill: #fff; }
-    </style>
-    <linearGradient id="g1" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#4A90D9"/><stop offset="100%" stop-color="#357ABD"/></linearGradient>
-    <linearGradient id="g2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#50B86C"/><stop offset="100%" stop-color="#3DA05A"/></linearGradient>
-    <linearGradient id="g3" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#F5A623"/><stop offset="100%" stop-color="#E0950F"/></linearGradient>
-    <linearGradient id="g4" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#E74C3C"/><stop offset="100%" stop-color="#C0392B"/></linearGradient>
-    <filter id="shadow"><feDropShadow dx="1" dy="2" stdDeviation="2" flood-opacity="0.15"/></filter>
-  </defs>
-
-  <!-- Background -->
-  <rect width="960" height="680" fill="#F5F7FA" rx="8"/>
-
-  <!-- Title -->
-  <text x="480" y="36" text-anchor="middle" class="title">子系统二——场地运维与公众监督系统 用户角色与业务场景</text>
-  <line x1="120" y1="48" x2="840" y2="48" stroke="#4A90D9" stroke-width="2"/>
-
-  <!-- ====== Role 1: 学生/教师 (普通用户) ====== -->
-  <rect x="30" y="70" width="920" height="130" fill="#E8F0FE" rx="10" stroke="#4A90D9" stroke-width="1.5" filter="url(#shadow)"/>
-  <rect x="30" y="70" width="220" height="130" fill="url(#g1)" rx="10"/>
-  <rect x="30" y="140" width="220" height="60" fill="url(#g1)" rx="0"/>
-  <text x="140" y="105" text-anchor="middle" class="role-title">学生 / 教师</text>
-  <text x="140" y="125" text-anchor="middle" class="role-title" font-size="12">(普通用户)</text>
-  <circle cx="140" cy="172" r="16" fill="#fff" opacity="0.2"/>
-  <text x="140" y="177" text-anchor="middle" class="actor-icon">U</text>
-
-  <text x="270" y="95" class="scenario" font-weight="bold" font-size="13">场景1: 查看场地运维状态</text>
-  <text x="270" y="115" class="scenario">进入场地列表→浏览各场地状态标签（可开放/维护中/灯光故障/待整改）→查看负责人信息（电话脱敏138****5678）→查看器材清单</text>
-  <text x="270" y="135" class="scenario" font-weight="bold" font-size="13">场景2: 发表评论与评分</text>
-  <text x="270" y="155" class="scenario">进入场地详情→点击发表评论→输入1-5星评分与文字→提交（60秒冷却校验+敏感词过滤）→评论公开可见</text>
-  <text x="270" y="175" class="scenario" font-weight="bold" font-size="13">场景3: 按关键词搜索评论</text>
-  <text x="270" y="195" class="scenario">在场地的评论区输入关键词→系统按时间倒序搜索匹配评论→浏览其他用户的评价信息</text>
-
-  <!-- ====== Role 2: 保洁运维人员 ====== -->
-  <rect x="30" y="215" width="920" height="130" fill="#E8F8EC" rx="10" stroke="#50B86C" stroke-width="1.5" filter="url(#shadow)"/>
-  <rect x="30" y="215" width="220" height="130" fill="url(#g2)" rx="10"/>
-  <rect x="30" y="285" width="220" height="60" fill="url(#g2)" rx="0"/>
-  <text x="140" y="250" text-anchor="middle" class="role-title">保洁运维人员</text>
-  <text x="140" y="270" text-anchor="middle" class="role-title" font-size="12">(清洁/灯光/器材)</text>
-  <circle cx="140" cy="317" r="16" fill="#fff" opacity="0.2"/>
-  <text x="140" y="322" text-anchor="middle" class="actor-icon">P</text>
-
-  <text x="270" y="240" class="scenario" font-weight="bold" font-size="13">场景1: 保洁完成清洁打卡</text>
-  <text x="270" y="260" class="scenario">选择负责场地→填写清洁时间与结果（合格/待整改）→上传照片→系统保存记录→触发可预约性重新评估</text>
-  <text x="270" y="280" class="scenario" font-weight="bold" font-size="13">场景2: 灯光系统检查与记录</text>
-  <text x="270" y="300" class="scenario">检查各灯区状态→记录故障灯具数量与区域→更新灯光状态（正常/部分故障/完全故障）→影响夜间预约</text>
-  <text x="270" y="320" class="scenario" font-weight="bold" font-size="13">场景3: 器材补充与盘点</text>
-  <text x="270" y="340" class="scenario">查看当前器材清单→更新器材数量→标记自备器材要求变更→更新器材策略（免费/租赁/自备）</text>
-
-  <!-- ====== Role 3: 场地负责人 ====== -->
-  <rect x="30" y="360" width="920" height="130" fill="#FFF8E7" rx="10" stroke="#F5A623" stroke-width="1.5" filter="url(#shadow)"/>
-  <rect x="30" y="360" width="220" height="130" fill="url(#g3)" rx="10"/>
-  <rect x="30" y="430" width="220" height="60" fill="url(#g3)" rx="0"/>
-  <text x="140" y="395" text-anchor="middle" class="role-title">场地负责人</text>
-  <text x="140" y="415" text-anchor="middle" class="role-title" font-size="12">(接收反馈/协调维修)</text>
-  <circle cx="140" cy="462" r="16" fill="#fff" opacity="0.2"/>
-  <text x="140" y="467" text-anchor="middle" class="actor-icon">M</text>
-
-  <text x="270" y="385" class="scenario" font-weight="bold" font-size="13">场景1: 接收负面反馈待办</text>
-  <text x="270" y="405" class="scenario">系统检测高频负面评论→自动生成负责人待办任务→负责人查看待办列表→跟进问题并填写说明或发起报修</text>
-  <text x="270" y="425" class="scenario" font-weight="bold" font-size="13">场景2: 协调维修更新状态</text>
-  <text x="270" y="445" class="scenario">确认问题后联系维修人员→维修完成后更新场地状态→从"维护中"恢复为"正常"→系统重新评估可预约性</text>
-  <text x="270" y="465" class="scenario" font-weight="bold" font-size="13">场景3: 查看场地综合报表</text>
-  <text x="270" y="485" class="scenario">查看负责场地的清洁记录/灯光历史/评论摘要→评估运维质量→制定改善计划</text>
-
-  <!-- ====== Role 4: 管理员 ====== -->
-  <rect x="30" y="505" width="920" height="130" fill="#FDE8E8" rx="10" stroke="#E74C3C" stroke-width="1.5" filter="url(#shadow)"/>
-  <rect x="30" y="505" width="220" height="130" fill="url(#g4)" rx="10"/>
-  <rect x="30" y="575" width="220" height="60" fill="url(#g4)" rx="0"/>
-  <text x="140" y="540" text-anchor="middle" class="role-title">系统管理员</text>
-  <text x="140" y="560" text-anchor="middle" class="role-title" font-size="12">(内容/配置管理)</text>
-  <circle cx="140" cy="607" r="16" fill="#fff" opacity="0.2"/>
-  <text x="140" y="612" text-anchor="middle" class="actor-icon">A</text>
-
-  <text x="270" y="530" class="scenario" font-weight="bold" font-size="13">场景1: 处理违规评论</text>
-  <text x="270" y="550" class="scenario">发现敏感词或违规内容→删除/隐藏评论→记录操作原因→写入审计日志（操作人/时间/IP/原因）</text>
-  <text x="270" y="570" class="scenario" font-weight="bold" font-size="13">场景2: 配置场地负责人与运维规则</text>
-  <text x="270" y="590" class="scenario">在AdminManage→点击"运维"按钮→填写负责人姓名/角色/电话→设置器材策略→保存→即时生效</text>
-  <text x="270" y="610" class="scenario" font-weight="bold" font-size="13">场景3: 敏感词与规则配置</text>
-  <text x="270" y="630" class="scenario">修改comment.sensitive-words列表→调整评论反刷冷却时间→设置清洁"待整改"是否阻断预约</text>
-
-  <!-- Footer -->
-  <text x="480" y="670" text-anchor="middle" font-size="10" fill="#999">子系统二：场地运维、资产与公众监督子系统 —— 用户角色与业务场景梳理</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="980" viewBox="0 0 1600 980">
+<title>子系统二：场地运维与公众监督用户角色场景图</title>
+<defs>
+<linearGradient id="paper" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#F7FBFF"/></linearGradient>
+<pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M32 0H0V32" fill="none" stroke="#EEF4FA" stroke-width="1"/></pattern>
+<marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="strokeWidth">
+<path d="M2,2 L10,6 L2,10 Z" fill="#375A7F"/>
+</marker>
+<marker id="arrow-orange" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="strokeWidth">
+<path d="M2,2 L10,6 L2,10 Z" fill="#C56A1A"/>
+</marker>
+<filter id="shadow" x="-8%" y="-8%" width="116%" height="116%"><feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#94A3B8" flood-opacity=".28"/></filter>
+</defs>
+<rect x="0" y="0" width="1600" height="980" fill="#FFFFFF"/>
+<rect x="26" y="24" width="1548" height="932" rx="16" fill="url(#paper)" stroke="#D9E2EC" stroke-width="2"/>
+<rect x="42" y="124" width="1516" height="804" fill="url(#grid)" opacity=".55"/>
+<rect x="590" y="36" width="420" height="5" rx="3" fill="#2F80ED"/>
+<text x="800" y="78" text-anchor="middle" font-family="Microsoft YaHei,SimHei,Noto Sans CJK SC,Arial,sans-serif" font-size="34" font-weight="700" fill="#173A5E">子系统二：场地运维与公众监督用户角色场景图</text>
+<text x="800" y="112" text-anchor="middle" font-family="Microsoft YaHei,SimHei,Noto Sans CJK SC,Arial,sans-serif" font-size="18" fill="#64748B">用户角色、业务职责与系统能力边界</text>
+<circle cx="170" cy="170" r="22" fill="#FFFFFF" stroke="#2F80ED" stroke-width="3"/>
+<line x1="170" y1="192" x2="170" y2="252" stroke="#2F80ED" stroke-width="3"/>
+<line x1="134" y1="218" x2="206" y2="218" stroke="#2F80ED" stroke-width="3"/>
+<line x1="170" y1="252" x2="138" y2="294" stroke="#2F80ED" stroke-width="3"/>
+<line x1="170" y1="252" x2="202" y2="294" stroke="#2F80ED" stroke-width="3"/>
+<text x="170" y="326" text-anchor="middle" font-family="Microsoft YaHei,SimHei,Noto Sans CJK SC,Arial,sans-serif" font-size="17" font-weight="700" fill="#172033">普通用户</text>
+<circle cx="170" cy="420" r="22" fill="#FFFFFF" stroke="#00A86B" stroke-width="3"/>
+<line x1="170" y1="442" x2="170" y2="502" stroke="#00A86B" stroke-width="3"/>
+<line x1="134" y1="468" x2="206" y2="468" stroke="#00A86B" stroke-width="3"/>
+<line x1="170" y1="502" x2="138" y2="544" stroke="#00A86B" stroke-width="3"/>
+<line x1="170" y1="502" x2="202" y2="544" stroke="#00A86B" stroke-width="3"/>
+<text x="170" y="576" text-anchor="middle" font-family="Microsoft YaHei,SimHei,Noto Sans CJK SC,Arial,sans-serif" font-size="17" font-weight="700" fill="#172033">业务人员</text>
+<circle cx="170" cy="670" r="22" fill="#FFFFFF" stroke="#C05621" stroke-width="3"/>
+<line x1="170" y1="692" x2="170" y2="752" stroke="#C05621" stroke-width="3"/>
+<line x1="134" y1="718" x2="206" y2="718" stroke="#C05621" stroke-width="3"/>
+<line x1="170" y1="752" x2="138" y2="794" stroke="#C05621" stroke-width="3"/>
+<line x1="170" y1="752" x2="202" y2="794" stroke="#C05621" stroke-width="3"/>
+<text x="170" y="826" text-anchor="middle" font-family="Microsoft YaHei,SimHei,Noto Sans CJK SC,Arial,sans-serif" font-size="17" font-weight="700" fill="#172033">管理员</text>
+<rect x="430" y="165" width="880" height="650" rx="10" fill="#F8FBFF" stroke="#375A7F" stroke-width="2" filter="url(#shadow)"/>
+<text x="448" y="197" font-size="17" font-weight="700" fill="#172033"><tspan x="448" dy="0">系统能力边界</tspan></text>
+<text x="448" y="229" font-size="14" font-weight="400" fill="#172033"><tspan x="448" dy="0">所有功能均围绕最新实验报告中的业务规则展开：身份权限、数据记录、状态流转、异常处理、审计追踪。</tspan></text>
+<rect x="480" y="275" width="240" height="132" rx="10" fill="#FFFFFF" stroke="#2F80ED" stroke-width="2" filter="url(#shadow)"/>
+<text x="498" y="307" font-size="16" font-weight="700" fill="#172033"><tspan x="498" dy="0">清洁维护台账</tspan></text>
+<text x="498" y="339" font-size="14" font-weight="400" fill="#172033"><tspan x="498" dy="0">保洁打卡、维护记录、整改结果</tspan></text>
+<rect x="775" y="275" width="240" height="132" rx="10" fill="#FFFFFF" stroke="#2F80ED" stroke-width="2" filter="url(#shadow)"/>
+<text x="793" y="307" font-size="16" font-weight="700" fill="#172033"><tspan x="793" dy="0">负责人管理</tspan></text>
+<text x="793" y="339" font-size="14" font-weight="400" fill="#172033"><tspan x="793" dy="0">责任人信息、待办派发</tspan></text>
+<rect x="1070" y="275" width="240" height="132" rx="10" fill="#FFFFFF" stroke="#2F80ED" stroke-width="2" filter="url(#shadow)"/>
+<text x="1088" y="307" font-size="16" font-weight="700" fill="#172033"><tspan x="1088" dy="0">公众评论监督</tspan></text>
+<text x="1088" y="339" font-size="14" font-weight="400" fill="#172033"><tspan x="1088" dy="0">评分、评论、投诉与审核</tspan></text>
+<rect x="480" y="510" width="240" height="132" rx="10" fill="#FFFFFF" stroke="#2F80ED" stroke-width="2" filter="url(#shadow)"/>
+<text x="498" y="542" font-size="16" font-weight="700" fill="#172033"><tspan x="498" dy="0">预约联动</tspan></text>
+<text x="498" y="574" font-size="14" font-weight="400" fill="#172033"><tspan x="498" dy="0">评论与预约记录关联</tspan></text>
+<rect x="775" y="510" width="240" height="132" rx="10" fill="#FFFFFF" stroke="#2F80ED" stroke-width="2" filter="url(#shadow)"/>
+<text x="793" y="542" font-size="16" font-weight="700" fill="#172033"><tspan x="793" dy="0">灯光器材状态</tspan></text>
+<text x="793" y="574" font-size="14" font-weight="400" fill="#172033"><tspan x="793" dy="0">照明、器材、自备说明</tspan></text>
+<rect x="1070" y="510" width="240" height="132" rx="10" fill="#FFFFFF" stroke="#2F80ED" stroke-width="2" filter="url(#shadow)"/>
+<text x="1088" y="542" font-size="16" font-weight="700" fill="#172033"><tspan x="1088" dy="0">可用性输出</tspan></text>
+<text x="1088" y="574" font-size="14" font-weight="400" fill="#172033"><tspan x="1088" dy="0">向子系统一提供预约建议</tspan></text>
+<line x1="255" y1="230" x2="430" y2="320" stroke="#375A7F" stroke-width="2.5" marker-end="url(#arrow)"/>
+<rect x="250" y="253" width="184" height="28" rx="6" fill="#FFFFFF" stroke="#D9E2EC"/>
+<text x="342" y="272" text-anchor="middle" font-family="Microsoft YaHei,SimHei,Noto Sans CJK SC,Arial,sans-serif" font-size="14" fill="#172033">使用/查询</text>
+<line x1="255" y1="480" x2="430" y2="550" stroke="#375A7F" stroke-width="2.5" marker-end="url(#arrow)"/>
+<rect x="250" y="493" width="184" height="28" rx="6" fill="#FFFFFF" stroke="#D9E2EC"/>
+<text x="342" y="512" text-anchor="middle" font-family="Microsoft YaHei,SimHei,Noto Sans CJK SC,Arial,sans-serif" font-size="14" fill="#172033">维护/处理</text>
+<line x1="255" y1="730" x2="430" y2="650" stroke="#375A7F" stroke-width="2.5" marker-end="url(#arrow)"/>
+<rect x="250" y="668" width="184" height="28" rx="6" fill="#FFFFFF" stroke="#D9E2EC"/>
+<text x="342" y="687" text-anchor="middle" font-family="Microsoft YaHei,SimHei,Noto Sans CJK SC,Arial,sans-serif" font-size="14" fill="#172033">配置/审计</text>
+<rect x="1325" y="250" width="180" height="360" rx="10" fill="#FFF8ED" stroke="#C56A1A" stroke-width="2" filter="url(#shadow)"/>
+<text x="1343" y="282" font-size="17" font-weight="700" fill="#172033"><tspan x="1343" dy="0">输出结果</tspan></text>
+<text x="1343" y="314" font-size="14" font-weight="400" fill="#172033"><tspan x="1343" dy="0">场地状态</tspan><tspan x="1343" dy="21">负面反馈待办</tspan><tspan x="1343" dy="21">可用性等级</tspan><tspan x="1343" dy="21">审计记录</tspan></text>
+<line x1="1310" y1="445" x2="1325" y2="430" stroke="#C56A1A" stroke-width="2.5" marker-end="url(#arrow-orange)"/>
+<rect x="1225" y="415" width="184" height="28" rx="6" fill="#FFFFFF" stroke="#D9E2EC"/>
+<text x="1317" y="434" text-anchor="middle" font-family="Microsoft YaHei,SimHei,Noto Sans CJK SC,Arial,sans-serif" font-size="14" fill="#172033">业务闭环</text>
+<text x="1546" y="938" text-anchor="end" font-family="Microsoft YaHei,SimHei,Noto Sans CJK SC,Arial,sans-serif" font-size="13" fill="#94A3B8">SVG / Visio style / latest system model</text>
 </svg>

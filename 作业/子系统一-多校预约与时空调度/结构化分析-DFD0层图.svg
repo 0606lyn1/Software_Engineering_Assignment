@@ -1,162 +1,102 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 700" width="1000" height="700">
-  <defs>
-    <style>
-      text { font-family: 'Microsoft YaHei', 'SimHei', sans-serif; }
-      .title { font-size: 22px; font-weight: bold; fill: #1a1a2e; }
-      .procname { font-size: 15px; font-weight: bold; fill: #fff; }
-      .procnum { font-size: 12px; fill: #ccc; }
-      .dsname { font-size: 12px; font-weight: bold; fill: #333; }
-      .flowname { font-size: 11px; font-weight: bold; fill: #444; }
-    </style>
-    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
-      <path d="M0,0 L10,5 L0,10 Z" fill="#555"/>
-    </marker>
-    <filter id="shadow">
-      <feDropShadow dx="2" dy="3" stdDeviation="3" flood-opacity="0.1"/>
-    </filter>
-  </defs>
-
-  <rect width="1000" height="700" fill="#fafbff" rx="8"/>
-
-  <text x="500" y="38" text-anchor="middle" class="title">DFD 0层图 — 体育场馆预约系统功能级数据流</text>
-
-  <!-- External Entity: 学生 -->
-  <rect x="30" y="70" width="140" height="55" rx="8" fill="#ebf0ff" stroke="#4a6cf7" stroke-width="2"/>
-  <text x="100" y="100" text-anchor="middle" font-size="14" font-weight="bold" fill="#333">学生</text>
-  <text x="100" y="118" text-anchor="middle" font-size="11" fill="#666">Student</text>
-
-  <!-- External Entity: 教师 -->
-  <rect x="30" y="200" width="140" height="55" rx="8" fill="#fff0f5" stroke="#f5576c" stroke-width="2"/>
-  <text x="100" y="230" text-anchor="middle" font-size="14" font-weight="bold" fill="#333">教师</text>
-  <text x="100" y="248" text-anchor="middle" font-size="11" fill="#666">Teacher</text>
-
-  <!-- External Entity: 管理员 -->
-  <rect x="30" y="330" width="140" height="55" rx="8" fill="#e6f7ff" stroke="#4facfe" stroke-width="2"/>
-  <text x="100" y="360" text-anchor="middle" font-size="14" font-weight="bold" fill="#333">管理员</text>
-  <text x="100" y="378" text-anchor="middle" font-size="11" fill="#666">Admin</text>
-
-  <!-- ========== Process 1: 预约处理 ========== -->
-  <rect x="320" y="60" width="200" height="100" rx="14" fill="url(#p1g)" filter="url(#shadow)"/>
-  <defs>
-    <linearGradient id="p1g" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#6366f1"/><stop offset="100%" stop-color="#4f46e5"/></linearGradient>
-    <linearGradient id="p2g" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#10b981"/><stop offset="100%" stop-color="#059669"/></linearGradient>
-    <linearGradient id="p3g" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#f59e0b"/><stop offset="100%" stop-color="#d97706"/></linearGradient>
-  </defs>
-  <text x="420" y="100" text-anchor="middle" class="procname">P1 预约处理</text>
-  <text x="420" y="122" text-anchor="middle" class="procnum">处理预约提交、状态变更、</text>
-  <text x="420" y="138" text-anchor="middle" class="procnum">冲突检测、定时释放</text>
-
-  <!-- ========== Process 2: 信息查询 ========== -->
-  <rect x="320" y="200" width="200" height="100" rx="14" fill="url(#p2g)" filter="url(#shadow)"/>
-  <text x="420" y="240" text-anchor="middle" class="procname">P2 信息查询</text>
-  <text x="420" y="262" text-anchor="middle" class="procnum">场馆浏览、时段查询、</text>
-  <text x="420" y="278" text-anchor="middle" class="procnum">推荐计算、时间线展示</text>
-
-  <!-- ========== Process 3: 系统管理 ========== -->
-  <rect x="320" y="340" width="200" height="100" rx="14" fill="url(#p3g)" filter="url(#shadow)"/>
-  <text x="420" y="380" text-anchor="middle" class="procname">P3 系统管理</text>
-  <text x="420" y="402" text-anchor="middle" class="procnum">场馆维护、锁定管理、</text>
-  <text x="420" y="418" text-anchor="middle" class="procnum">租户配置、权限控制</text>
-
-  <!-- Flows: Student → P1 -->
-  <line x1="170" y1="95" x2="320" y2="90" stroke="#6366f1" stroke-width="2" marker-end="url(#arrow)"/>
-  <text x="240" y="80" text-anchor="middle" class="flowname" fill="#6366f1">预约请求</text>
-  <line x1="320" y1="130" x2="170" y2="120" stroke="#6366f1" stroke-width="2" marker-end="url(#arrow)"/>
-  <text x="240" y="140" text-anchor="middle" class="flowname" fill="#6366f1">预约结果</text>
-
-  <!-- Flows: Student → P2 -->
-  <line x1="170" y1="110" x2="320" y2="220" stroke="#10b981" stroke-width="2" marker-end="url(#arrow)"/>
-  <text x="240" y="170" text-anchor="middle" class="flowname" fill="#10b981">查询请求</text>
-  <line x1="320" y1="250" x2="170" y2="115" stroke="#10b981" stroke-width="2" marker-end="url(#arrow)"/>
-  <text x="240" y="195" text-anchor="middle" class="flowname" fill="#10b981">场馆/推荐列表</text>
-
-  <!-- Flows: Teacher → P1 -->
-  <line x1="170" y1="225" x2="320" y2="150" stroke="#6366f1" stroke-width="2" marker-end="url(#arrow)"/>
-  <text x="240" y="182" text-anchor="middle" class="flowname" fill="#6366f1">占场规则提交</text>
-
-  <!-- Flows: Teacher → P2 -->
-  <line x1="170" y1="240" x2="320" y2="270" stroke="#10b981" stroke-width="2" marker-end="url(#arrow)"/>
-  <text x="240" y="260" text-anchor="middle" class="flowname" fill="#10b981">统计查询</text>
-
-  <!-- Flows: Admin → P3 -->
-  <line x1="170" y1="355" x2="320" y2="370" stroke="#f59e0b" stroke-width="2" marker-end="url(#arrow)"/>
-  <text x="240" y="358" text-anchor="middle" class="flowname" fill="#f59e0b">管理指令</text>
-  <line x1="320" y1="400" x2="170" y2="375" stroke="#f59e0b" stroke-width="2" marker-end="url(#arrow)"/>
-  <text x="240" y="398" text-anchor="middle" class="flowname" fill="#f59e0b">管理视图</text>
-
-  <!-- Data Stores -->
-  <!-- D1 用户表 -->
-  <rect x="620" y="70" width="55" height="75" rx="2" fill="none" stroke="#333" stroke-width="1.5"/>
-  <rect x="620" y="70" width="55" height="18" rx="2" fill="#666" stroke="#333" stroke-width="1"/>
-  <text x="648" y="84" text-anchor="middle" font-size="10" fill="#fff">D1</text>
-  <text x="648" y="117" text-anchor="middle" class="dsname">用户表</text>
-
-  <!-- D2 场馆表 -->
-  <rect x="710" y="70" width="55" height="75" rx="2" fill="none" stroke="#333" stroke-width="1.5"/>
-  <rect x="710" y="70" width="55" height="18" rx="2" fill="#666" stroke="#333" stroke-width="1"/>
-  <text x="738" y="84" text-anchor="middle" font-size="10" fill="#fff">D2</text>
-  <text x="738" y="117" text-anchor="middle" class="dsname">场馆表</text>
-
-  <!-- D3 预约表 -->
-  <rect x="620" y="195" width="55" height="75" rx="2" fill="none" stroke="#333" stroke-width="1.5"/>
-  <rect x="620" y="195" width="55" height="18" rx="2" fill="#666" stroke="#333" stroke-width="1"/>
-  <text x="648" y="209" text-anchor="middle" font-size="10" fill="#fff">D3</text>
-  <text x="648" y="242" text-anchor="middle" class="dsname">预约表</text>
-
-  <!-- D4 占场规则表 -->
-  <rect x="710" y="195" width="55" height="75" rx="2" fill="none" stroke="#333" stroke-width="1.5"/>
-  <rect x="710" y="195" width="55" height="18" rx="2" fill="#666" stroke="#333" stroke-width="1"/>
-  <text x="738" y="209" text-anchor="middle" font-size="10" fill="#fff">D4</text>
-  <text x="738" y="242" text-anchor="middle" class="dsname">占场规则表</text>
-
-  <!-- D5 锁定记录表 -->
-  <rect x="800" y="70" width="55" height="75" rx="2" fill="none" stroke="#333" stroke-width="1.5"/>
-  <rect x="800" y="70" width="55" height="18" rx="2" fill="#666" stroke="#333" stroke-width="1"/>
-  <text x="828" y="84" text-anchor="middle" font-size="10" fill="#fff">D5</text>
-  <text x="828" y="117" text-anchor="middle" class="dsname">锁定记录</text>
-
-  <!-- D6 评论表 -->
-  <rect x="800" y="195" width="55" height="75" rx="2" fill="none" stroke="#333" stroke-width="1.5"/>
-  <rect x="800" y="195" width="55" height="18" rx="2" fill="#666" stroke="#333" stroke-width="1"/>
-  <text x="828" y="209" text-anchor="middle" font-size="10" fill="#fff">D6</text>
-  <text x="828" y="242" text-anchor="middle" class="dsname">评论表</text>
-
-  <!-- Flows: P1 → D3 -->
-  <line x1="520" y1="100" x2="620" y2="220" stroke="#555" stroke-width="1.5" marker-end="url(#arrow)"/>
-  <text x="560" y="165" class="flowname" font-size="10">读写</text>
-
-  <!-- Flows: P1 → D4 -->
-  <line x1="520" y1="140" x2="710" y2="220" stroke="#555" stroke-width="1.5" marker-end="url(#arrow)"/>
-  <text x="610" y="185" class="flowname" font-size="10">读</text>
-
-  <!-- Flows: P2 → D2 D3 -->
-  <line x1="520" y1="240" x2="710" y2="105" stroke="#555" stroke-width="1.5" marker-end="url(#arrow)"/>
-  <text x="610" y="178" class="flowname" font-size="10">读</text>
-  <line x1="520" y1="270" x2="620" y2="220" stroke="#555" stroke-width="1.5" marker-end="url(#arrow)"/>
-  <text x="560" y="250" class="flowname" font-size="10">读</text>
-
-  <!-- Flows: P3 → D5 D1 D2 -->
-  <line x1="520" y1="375" x2="800" y2="105" stroke="#555" stroke-width="1.5" marker-end="url(#arrow)"/>
-  <text x="655" y="250" class="flowname" font-size="10">读写</text>
-  <line x1="520" y1="410" x2="620" y2="105" stroke="#555" stroke-width="1.5" marker-end="url(#arrow)"/>
-  <text x="560" y="265" class="flowname" font-size="10">读写</text>
-
-  <!-- Inter-process flows -->
-  <line x1="425" y1="160" x2="425" y2="200" stroke="#555" stroke-width="1.5" marker-end="url(#arrow)" stroke-dasharray="5,3"/>
-  <text x="435" y="185" class="flowname" font-size="10" fill="#666">可用性数据</text>
-
-  <line x1="415" y1="340" x2="415" y2="300" stroke="#555" stroke-width="1.5" marker-end="url(#arrow)" stroke-dasharray="5,3"/>
-  <text x="425" y="325" class="flowname" font-size="10" fill="#666">配置数据</text>
-
-  <!-- Legend -->
-  <rect x="320" y="490" width="560" height="50" rx="8" fill="#f5f5f5" stroke="#ddd" stroke-width="1"/>
-  <text x="340" y="512" font-size="13" font-weight="bold" fill="#555">图例：</text>
-  <line x1="400" y1="508" x2="440" y2="508" stroke="#555" stroke-width="2" marker-end="url(#arrow)"/>
-  <text x="448" y="514" font-size="12" fill="#555">数据流</text>
-  <line x1="520" y1="508" x2="560" y2="508" stroke="#555" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#arrow)"/>
-  <text x="568" y="514" font-size="12" fill="#555">进程间数据流</text>
-  <rect x="660" y="500" width="22" height="16" rx="2" fill="none" stroke="#555" stroke-width="1"/>
-  <text x="690" y="514" font-size="12" fill="#555">数据存储</text>
-  <rect x="770" y="500" width="22" height="16" rx="5" fill="url(#p1g)"/>
-  <text x="800" y="514" font-size="12" fill="#555">处理进程</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="1700" height="1060" viewBox="0 0 1700 1060">
+<title>子系统一：0层DFD图</title>
+<defs>
+<linearGradient id="paper" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#F7FBFF"/></linearGradient>
+<pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M32 0H0V32" fill="none" stroke="#EEF4FA" stroke-width="1"/></pattern>
+<marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="strokeWidth">
+<path d="M2,2 L10,6 L2,10 Z" fill="#375A7F"/>
+</marker>
+<marker id="arrow-orange" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="strokeWidth">
+<path d="M2,2 L10,6 L2,10 Z" fill="#C56A1A"/>
+</marker>
+<filter id="shadow" x="-8%" y="-8%" width="116%" height="116%"><feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#94A3B8" flood-opacity=".28"/></filter>
+</defs>
+<rect x="0" y="0" width="1700" height="1060" fill="#FFFFFF"/>
+<rect x="26" y="24" width="1648" height="1012" rx="16" fill="url(#paper)" stroke="#D9E2EC" stroke-width="2"/>
+<rect x="42" y="124" width="1616" height="884" fill="url(#grid)" opacity=".55"/>
+<rect x="640" y="36" width="420" height="5" rx="3" fill="#2F80ED"/>
+<text x="850" y="78" text-anchor="middle" font-family="Microsoft YaHei,SimHei,Noto Sans CJK SC,Arial,sans-serif" font-size="34" font-weight="700" fill="#173A5E">子系统一：0层DFD图</text>
+<text x="850" y="112" text-anchor="middle" font-family="Microsoft YaHei,SimHei,Noto Sans CJK SC,Arial,sans-serif" font-size="18" fill="#64748B">0层数据流图：核心处理过程分解</text>
+<rect x="70" y="210" width="230" height="82" rx="10" fill="#FFFFFF" stroke="#64748B" stroke-width="2" filter="url(#shadow)"/>
+<text x="88" y="242" font-size="17" font-weight="700" fill="#172033"><tspan x="88" dy="0">学生</tspan></text>
+<text x="88" y="274" font-size="14" font-weight="400" fill="#172033"><tspan x="88" dy="0">外部实体</tspan></text>
+<rect x="70" y="410" width="230" height="82" rx="10" fill="#FFFFFF" stroke="#64748B" stroke-width="2" filter="url(#shadow)"/>
+<text x="88" y="442" font-size="17" font-weight="700" fill="#172033"><tspan x="88" dy="0">教师</tspan></text>
+<text x="88" y="474" font-size="14" font-weight="400" fill="#172033"><tspan x="88" dy="0">外部实体</tspan></text>
+<rect x="70" y="610" width="230" height="82" rx="10" fill="#FFFFFF" stroke="#64748B" stroke-width="2" filter="url(#shadow)"/>
+<text x="88" y="642" font-size="17" font-weight="700" fill="#172033"><tspan x="88" dy="0">管理员</tspan></text>
+<text x="88" y="674" font-size="14" font-weight="400" fill="#172033"><tspan x="88" dy="0">外部实体</tspan></text>
+<rect x="70" y="810" width="230" height="82" rx="10" fill="#FFFFFF" stroke="#64748B" stroke-width="2" filter="url(#shadow)"/>
+<text x="88" y="842" font-size="17" font-weight="700" fill="#172033"><tspan x="88" dy="0">外部子系统</tspan></text>
+<text x="88" y="874" font-size="14" font-weight="400" fill="#172033"><tspan x="88" dy="0">外部实体</tspan></text>
+<rect x="430" y="190" width="235" height="160" rx="10" fill="#EAF4FF" stroke="#2F80ED" stroke-width="2" filter="url(#shadow)"/>
+<text x="448" y="222" font-size="17" font-weight="700" fill="#172033"><tspan x="448" dy="0">P1 预约处理</tspan></text>
+<text x="448" y="254" font-size="14" font-weight="400" fill="#172033"><tspan x="448" dy="0">提交预约、冲突检测、状态更新</tspan></text>
+<line x1="300" y1="250" x2="430" y2="270" stroke="#375A7F" stroke-width="2.5" marker-end="url(#arrow)"/>
+<rect x="273" y="238" width="184" height="28" rx="6" fill="#FFFFFF" stroke="#D9E2EC"/>
+<text x="365" y="257" text-anchor="middle" font-family="Microsoft YaHei,SimHei,Noto Sans CJK SC,Arial,sans-serif" font-size="14" fill="#172033">输入</text>
+<rect x="735" y="190" width="235" height="160" rx="10" fill="#EAF4FF" stroke="#2F80ED" stroke-width="2" filter="url(#shadow)"/>
+<text x="753" y="222" font-size="17" font-weight="700" fill="#172033"><tspan x="753" dy="0">P2 信息查询</tspan></text>
+<text x="753" y="254" font-size="14" font-weight="400" fill="#172033"><tspan x="753" dy="0">场馆列表、时段可用、个人时间线</tspan></text>
+<line x1="300" y1="450" x2="735" y2="270" stroke="#375A7F" stroke-width="2.5" marker-end="url(#arrow)"/>
+<rect x="425" y="338" width="184" height="28" rx="6" fill="#FFFFFF" stroke="#D9E2EC"/>
+<text x="517" y="357" text-anchor="middle" font-family="Microsoft YaHei,SimHei,Noto Sans CJK SC,Arial,sans-serif" font-size="14" fill="#172033">输入</text>
+<rect x="1040" y="190" width="235" height="160" rx="10" fill="#EAF4FF" stroke="#2F80ED" stroke-width="2" filter="url(#shadow)"/>
+<text x="1058" y="222" font-size="17" font-weight="700" fill="#172033"><tspan x="1058" dy="0">P3 教学占场</tspan></text>
+<text x="1058" y="254" font-size="14" font-weight="400" fill="#172033"><tspan x="1058" dy="0">教师周期占场、例外规则</tspan></text>
+<line x1="300" y1="650" x2="1040" y2="270" stroke="#375A7F" stroke-width="2.5" marker-end="url(#arrow)"/>
+<rect x="578" y="438" width="184" height="28" rx="6" fill="#FFFFFF" stroke="#D9E2EC"/>
+<text x="670" y="457" text-anchor="middle" font-family="Microsoft YaHei,SimHei,Noto Sans CJK SC,Arial,sans-serif" font-size="14" fill="#172033">输入</text>
+<rect x="1345" y="190" width="235" height="160" rx="10" fill="#EAF4FF" stroke="#2F80ED" stroke-width="2" filter="url(#shadow)"/>
+<text x="1363" y="222" font-size="17" font-weight="700" fill="#172033"><tspan x="1363" dy="0">P4 系统管理</tspan></text>
+<text x="1363" y="254" font-size="14" font-weight="400" fill="#172033"><tspan x="1363" dy="0">场馆维护、时段锁定、权限配置</tspan></text>
+<line x1="300" y1="850" x2="1345" y2="270" stroke="#375A7F" stroke-width="2.5" marker-end="url(#arrow)"/>
+<rect x="730" y="538" width="184" height="28" rx="6" fill="#FFFFFF" stroke="#D9E2EC"/>
+<text x="822" y="557" text-anchor="middle" font-family="Microsoft YaHei,SimHei,Noto Sans CJK SC,Arial,sans-serif" font-size="14" fill="#172033">输入</text>
+<rect x="430" y="530" width="235" height="160" rx="10" fill="#EEFDF5" stroke="#00A86B" stroke-width="2" filter="url(#shadow)"/>
+<text x="448" y="562" font-size="17" font-weight="700" fill="#172033"><tspan x="448" dy="0">P5 推荐通知</tspan></text>
+<text x="448" y="594" font-size="14" font-weight="400" fill="#172033"><tspan x="448" dy="0">附近场馆、站内消息</tspan></text>
+<rect x="735" y="530" width="235" height="160" rx="10" fill="#EEFDF5" stroke="#00A86B" stroke-width="2" filter="url(#shadow)"/>
+<text x="753" y="562" font-size="17" font-weight="700" fill="#172033"><tspan x="753" dy="0">P6 审计统计</tspan></text>
+<text x="753" y="594" font-size="14" font-weight="400" fill="#172033"><tspan x="753" dy="0">行为采集、日志与利用率</tspan></text>
+<line x1="665" y1="270" x2="735" y2="270" stroke="#375A7F" stroke-width="2.5" marker-end="url(#arrow)"/>
+<rect x="608" y="248" width="184" height="28" rx="6" fill="#FFFFFF" stroke="#D9E2EC"/>
+<text x="700" y="267" text-anchor="middle" font-family="Microsoft YaHei,SimHei,Noto Sans CJK SC,Arial,sans-serif" font-size="14" fill="#172033">数据流</text>
+<line x1="970" y1="270" x2="1040" y2="270" stroke="#375A7F" stroke-width="2.5" marker-end="url(#arrow)"/>
+<rect x="913" y="248" width="184" height="28" rx="6" fill="#FFFFFF" stroke="#D9E2EC"/>
+<text x="1005" y="267" text-anchor="middle" font-family="Microsoft YaHei,SimHei,Noto Sans CJK SC,Arial,sans-serif" font-size="14" fill="#172033">数据流</text>
+<line x1="1275" y1="270" x2="1345" y2="270" stroke="#375A7F" stroke-width="2.5" marker-end="url(#arrow)"/>
+<rect x="1218" y="248" width="184" height="28" rx="6" fill="#FFFFFF" stroke="#D9E2EC"/>
+<text x="1310" y="267" text-anchor="middle" font-family="Microsoft YaHei,SimHei,Noto Sans CJK SC,Arial,sans-serif" font-size="14" fill="#172033">数据流</text>
+<line x1="1465" y1="350" x2="550" y2="530" stroke="#375A7F" stroke-width="2.5" marker-end="url(#arrow)"/>
+<rect x="915" y="418" width="184" height="28" rx="6" fill="#FFFFFF" stroke="#D9E2EC"/>
+<text x="1007" y="437" text-anchor="middle" font-family="Microsoft YaHei,SimHei,Noto Sans CJK SC,Arial,sans-serif" font-size="14" fill="#172033">状态/事件</text>
+<line x1="665" y1="610" x2="735" y2="610" stroke="#375A7F" stroke-width="2.5" marker-end="url(#arrow)"/>
+<rect x="608" y="588" width="184" height="28" rx="6" fill="#FFFFFF" stroke="#D9E2EC"/>
+<text x="700" y="607" text-anchor="middle" font-family="Microsoft YaHei,SimHei,Noto Sans CJK SC,Arial,sans-serif" font-size="14" fill="#172033">数据流</text>
+<rect x="430" y="830" width="235" height="82" rx="10" fill="#F8FAFC" stroke="#375A7F" stroke-width="2" filter="url(#shadow)"/>
+<text x="448" y="862" font-size="17" font-weight="700" fill="#172033"><tspan x="448" dy="0">D1 用户表</tspan></text>
+<text x="448" y="894" font-size="14" font-weight="400" fill="#172033"><tspan x="448" dy="0">持久化数据</tspan></text>
+<line x1="548" y1="690" x2="548" y2="830" stroke="#375A7F" stroke-width="2.5" marker-end="url(#arrow)"/>
+<rect x="456" y="738" width="184" height="28" rx="6" fill="#FFFFFF" stroke="#D9E2EC"/>
+<text x="548" y="757" text-anchor="middle" font-family="Microsoft YaHei,SimHei,Noto Sans CJK SC,Arial,sans-serif" font-size="14" fill="#172033">读写</text>
+<rect x="735" y="830" width="235" height="82" rx="10" fill="#F8FAFC" stroke="#375A7F" stroke-width="2" filter="url(#shadow)"/>
+<text x="753" y="862" font-size="17" font-weight="700" fill="#172033"><tspan x="753" dy="0">D2 场馆场地表</tspan></text>
+<text x="753" y="894" font-size="14" font-weight="400" fill="#172033"><tspan x="753" dy="0">持久化数据</tspan></text>
+<line x1="853" y1="690" x2="853" y2="830" stroke="#375A7F" stroke-width="2.5" marker-end="url(#arrow)"/>
+<rect x="761" y="738" width="184" height="28" rx="6" fill="#FFFFFF" stroke="#D9E2EC"/>
+<text x="853" y="757" text-anchor="middle" font-family="Microsoft YaHei,SimHei,Noto Sans CJK SC,Arial,sans-serif" font-size="14" fill="#172033">读写</text>
+<rect x="1040" y="830" width="235" height="82" rx="10" fill="#F8FAFC" stroke="#375A7F" stroke-width="2" filter="url(#shadow)"/>
+<text x="1058" y="862" font-size="17" font-weight="700" fill="#172033"><tspan x="1058" dy="0">D3 预约/占场表</tspan></text>
+<text x="1058" y="894" font-size="14" font-weight="400" fill="#172033"><tspan x="1058" dy="0">持久化数据</tspan></text>
+<line x1="1158" y1="690" x2="1158" y2="830" stroke="#375A7F" stroke-width="2.5" marker-end="url(#arrow)"/>
+<rect x="1066" y="738" width="184" height="28" rx="6" fill="#FFFFFF" stroke="#D9E2EC"/>
+<text x="1158" y="757" text-anchor="middle" font-family="Microsoft YaHei,SimHei,Noto Sans CJK SC,Arial,sans-serif" font-size="14" fill="#172033">读写</text>
+<rect x="1345" y="830" width="235" height="82" rx="10" fill="#F8FAFC" stroke="#375A7F" stroke-width="2" filter="url(#shadow)"/>
+<text x="1363" y="862" font-size="17" font-weight="700" fill="#172033"><tspan x="1363" dy="0">D4 锁定/日志表</tspan></text>
+<text x="1363" y="894" font-size="14" font-weight="400" fill="#172033"><tspan x="1363" dy="0">持久化数据</tspan></text>
+<line x1="1463" y1="690" x2="1463" y2="830" stroke="#375A7F" stroke-width="2.5" marker-end="url(#arrow)"/>
+<rect x="1371" y="738" width="184" height="28" rx="6" fill="#FFFFFF" stroke="#D9E2EC"/>
+<text x="1463" y="757" text-anchor="middle" font-family="Microsoft YaHei,SimHei,Noto Sans CJK SC,Arial,sans-serif" font-size="14" fill="#172033">读写</text>
+<text x="1646" y="1018" text-anchor="end" font-family="Microsoft YaHei,SimHei,Noto Sans CJK SC,Arial,sans-serif" font-size="13" fill="#94A3B8">SVG / Visio style / latest system model</text>
 </svg>

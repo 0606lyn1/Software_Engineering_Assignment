@@ -146,7 +146,7 @@ onMounted(loadData)
     </a-card>
   </div>
 
-  <a-card class="table-card" :bordered="false">
+  <a-card class="table-card desktop-table-card" :bordered="false">
     <div class="section-heading">
       <span><CalendarOutlined /> 预约与违约监管</span>
       <strong>{{ reservations.length }} 条</strong>
@@ -170,4 +170,33 @@ onMounted(loadData)
       </a-table-column>
     </a-table>
   </a-card>
+
+  <section class="mobile-card-list ops-mobile-list">
+    <div class="section-heading">
+      <span><CalendarOutlined /> 预约与违约监管</span>
+      <strong>{{ reservations.length }} 条</strong>
+    </div>
+    <a-spin :spinning="loading">
+      <a-empty v-if="!reservations.length" description="暂无预约记录" />
+      <article v-for="item in reservations" :key="item.id" class="mobile-record-card">
+        <div class="mobile-record-head">
+          <div>
+            <span>预约 #{{ item.id }}</span>
+            <strong>{{ formatTime(item.startTime) }}</strong>
+          </div>
+          <a-tag>{{ item.status }}</a-tag>
+        </div>
+        <div class="mobile-record-grid">
+          <p><span>用户</span><strong>ID {{ item.userId }}</strong></p>
+          <p><span>场馆</span><strong>ID {{ item.venueId }}</strong></p>
+          <p><span>时段</span><strong>{{ dayjs(item.startTime).format('HH:mm') }} - {{ dayjs(item.endTime).format('HH:mm') }}</strong></p>
+          <p><span>核销码</span><strong>{{ item.checkinCode || '-' }}</strong></p>
+        </div>
+        <div class="mobile-tag-row">
+          <a-tag :color="item.appealStatus === 'PENDING' ? 'gold' : 'default'">{{ item.appealStatus || 'NONE' }}</a-tag>
+          <span>{{ item.appealReason || '暂无申诉原因' }}</span>
+        </div>
+      </article>
+    </a-spin>
+  </section>
 </template>

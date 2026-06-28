@@ -1,99 +1,78 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 950 650" width="950" height="650">
-  <defs>
-    <style>
-      text { font-family: 'Microsoft YaHei', 'SimHei', sans-serif; }
-      .title { font-size: 22px; font-weight: bold; fill: #1a1a2e; }
-      .lifeline { font-size: 13px; font-weight: bold; fill: #fff; }
-      .msg { font-size: 11px; fill: #333; }
-    </style>
-    <marker id="arrowMsg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
-      <path d="M0,0 L10,5 L0,10 Z" fill="#4facfe"/>
-    </marker>
-    <marker id="arrowRet" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
-      <path d="M0,0 L10,5 L0,10 Z" fill="#888"/>
-    </marker>
-  </defs>
-
-  <rect width="950" height="650" fill="#fafbff" rx="8"/>
-  <text x="475" y="38" text-anchor="middle" class="title">顺序图 — 管理员锁定时段/临时闭馆</text>
-
-  <!-- Lifelines -->
-  <rect x="40" y="65" width="100" height="40" rx="6" fill="#4facfe" filter="url(#shadow)"/>
-  <text x="90" y="90" text-anchor="middle" class="lifeline">管理员</text>
-
-  <rect x="200" y="65" width="130" height="40" rx="6" fill="#10b981" filter="url(#shadow)"/>
-  <text x="265" y="90" text-anchor="middle" class="lifeline">AdminManage.vue</text>
-
-  <rect x="390" y="65" width="160" height="40" rx="6" fill="#f59e0b" filter="url(#shadow)"/>
-  <text x="470" y="75" text-anchor="middle" class="lifeline">Reservation</text>
-  <text x="470" y="93" text-anchor="middle" font-size="10" fill="#e0e0e0">Controller</text>
-
-  <rect x="610" y="65" width="160" height="40" rx="6" fill="#8b5cf6" filter="url(#shadow)"/>
-  <text x="690" y="75" text-anchor="middle" class="lifeline">Reservation</text>
-  <text x="690" y="93" text-anchor="middle" font-size="10" fill="#e0e0e0">ServiceImpl</text>
-
-  <rect x="830" y="65" width="90" height="40" rx="6" fill="#ec4899" filter="url(#shadow)"/>
-  <text x="875" y="90" text-anchor="middle" class="lifeline">MySQL</text>
-
-  <!-- Lifeline lines -->
-  <line x1="90" y1="105" x2="90" y2="620" stroke="#4facfe" stroke-width="1.5" stroke-dasharray="6,4"/>
-  <line x1="265" y1="105" x2="265" y2="620" stroke="#10b981" stroke-width="1.5" stroke-dasharray="6,4"/>
-  <line x1="470" y1="105" x2="470" y2="620" stroke="#f59e0b" stroke-width="1.5" stroke-dasharray="6,4"/>
-  <line x1="690" y1="105" x2="690" y2="620" stroke="#8b5cf6" stroke-width="1.5" stroke-dasharray="6,4"/>
-  <line x1="875" y1="105" x2="875" y2="620" stroke="#ec4899" stroke-width="1.5" stroke-dasharray="6,4"/>
-
-  <!-- Activation -->
-  <rect x="85" y="120" width="10" height="490" fill="#4facfe" opacity="0.2" rx="2"/>
-  <rect x="260" y="170" width="10" height="430" fill="#10b981" opacity="0.2" rx="2"/>
-  <rect x="465" y="230" width="10" height="370" fill="#f59e0b" opacity="0.2" rx="2"/>
-  <rect x="685" y="290" width="10" height="300" fill="#8b5cf6" opacity="0.2" rx="2"/>
-  <rect x="870" y="380" width="10" height="160" fill="#ec4899" opacity="0.2" rx="2"/>
-
-  <!-- Messages -->
-  <line x1="90" y1="135" x2="265" y2="155" stroke="#4facfe" stroke-width="2" marker-end="url(#arrowMsg)"/>
-  <text x="170" y="152" class="msg" fill="#4facfe">1. 进入时段锁定页面</text>
-
-  <line x1="90" y1="175" x2="265" y2="195" stroke="#4facfe" stroke-width="2" marker-end="url(#arrowMsg)"/>
-  <text x="170" y="192" class="msg" fill="#4facfe">2. 选择场馆+时段+锁定原因</text>
-
-  <line x1="265" y1="215" x2="470" y2="235" stroke="#10b981" stroke-width="2" marker-end="url(#arrowMsg)"/>
-  <text x="360" y="232" class="msg" fill="#10b981">3. PUT /api/reservations/lock</text>
-
-  <line x1="470" y1="255" x2="690" y2="275" stroke="#f59e0b" stroke-width="2" marker-end="url(#arrowMsg)"/>
-  <text x="575" y="272" class="msg" fill="#f59e0b">4. lockVenueSlots(venueId, start, end)</text>
-
-  <!-- Self-call: validate -->
-  <rect x="695" y="295" width="190" height="40" rx="4" fill="#f5f3ff" stroke="#8b5cf6" stroke-width="1" stroke-dasharray="3,2"/>
-  <text x="700" y="312" font-size="10" fill="#7c3aed">验证：时段有效性 + 权限</text>
-  <text x="700" y="328" font-size="10" fill="#7c3aed">查询：该时段预约列表(预览影响)</text>
-
-  <!-- INSERT lock record -->
-  <line x1="690" y1="355" x2="875" y2="375" stroke="#8b5cf6" stroke-width="2" marker-end="url(#arrowMsg)"/>
-  <text x="770" y="372" class="msg" fill="#8b5cf6">5. INSERT INTO t_lock_record</text>
-
-  <line x1="875" y1="395" x2="690" y2="415" stroke="#888" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#arrowRet)"/>
-  <text x="790" y="412" class="msg" fill="#888">6. 锁定记录写入成功</text>
-
-  <!-- UPDATE reservations -->
-  <line x1="690" y1="435" x2="875" y2="455" stroke="#8b5cf6" stroke-width="2" marker-end="url(#arrowMsg)"/>
-  <text x="770" y="452" class="msg" fill="#8b5cf6">7. UPDATE t_reservation SET status='CANCELLED'</text>
-  <text x="800" y="468" class="msg" fill="#8b5cf6" font-size="9">(批量取消冲突预约)</text>
-
-  <line x1="875" y1="490" x2="690" y2="510" stroke="#888" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#arrowRet)"/>
-  <text x="790" y="507" class="msg" fill="#888">8. 更新成功(1条被取消)</text>
-
-  <!-- INSERT audit log -->
-  <line x1="690" y1="530" x2="875" y2="550" stroke="#8b5cf6" stroke-width="2" marker-end="url(#arrowMsg)"/>
-  <text x="780" y="547" class="msg" fill="#8b5cf6">9. INSERT INTO t_audit_log</text>
-
-  <line x1="875" y1="570" x2="690" y2="590" stroke="#888" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#arrowRet)"/>
-  <text x="790" y="587" class="msg" fill="#888">10. 审计日志写入成功</text>
-
-  <!-- Return to Controller -->
-  <line x1="690" y1="610" x2="470" y2="625" stroke="#888" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#arrowRet)"/>
-  <text x="575" y="622" class="msg" fill="#888">11. ApiResponse.success</text>
-
-  <!-- Notify (async) -->
-  <line x1="690" y1="635" x2="265" y2="650" stroke="#f5576c" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#arrowRet)"/>
-  <text x="400" y="648" class="msg" fill="#f5576c">12. 异步推送通知(受影响用户)</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="1900" height="1160" viewBox="0 0 1900 1160">
+<title>子系统一：顺序图-管理员锁定时段/临时闭馆</title>
+<defs>
+<linearGradient id="paper" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#F7FBFF"/></linearGradient>
+<pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M32 0H0V32" fill="none" stroke="#EEF4FA" stroke-width="1"/></pattern>
+<marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="strokeWidth">
+<path d="M2,2 L10,6 L2,10 Z" fill="#375A7F"/>
+</marker>
+<marker id="arrow-orange" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="strokeWidth">
+<path d="M2,2 L10,6 L2,10 Z" fill="#C56A1A"/>
+</marker>
+<filter id="shadow" x="-8%" y="-8%" width="116%" height="116%"><feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#94A3B8" flood-opacity=".28"/></filter>
+</defs>
+<rect x="0" y="0" width="1900" height="1160" fill="#FFFFFF"/>
+<rect x="26" y="24" width="1848" height="1112" rx="16" fill="url(#paper)" stroke="#D9E2EC" stroke-width="2"/>
+<rect x="42" y="124" width="1816" height="984" fill="url(#grid)" opacity=".55"/>
+<rect x="740" y="36" width="420" height="5" rx="3" fill="#2F80ED"/>
+<text x="950" y="78" text-anchor="middle" font-family="Microsoft YaHei,SimHei,Noto Sans CJK SC,Arial,sans-serif" font-size="34" font-weight="700" fill="#173A5E">子系统一：顺序图-管理员锁定时段/临时闭馆</text>
+<text x="950" y="112" text-anchor="middle" font-family="Microsoft YaHei,SimHei,Noto Sans CJK SC,Arial,sans-serif" font-size="18" fill="#64748B">UML顺序图：按时间顺序展开对象消息</text>
+<rect x="35" y="150" width="210" height="70" rx="10" fill="#FFFFFF" stroke="#2F80ED" stroke-width="2" filter="url(#shadow)"/>
+<text x="53" y="182" font-size="16" font-weight="700" fill="#172033"><tspan x="53" dy="0">Admin</tspan></text>
+<line x1="140" y1="220" x2="140" y2="1070" stroke="#94A3B8" stroke-width="2" stroke-dasharray="8 6"/>
+<rect x="305" y="150" width="210" height="70" rx="10" fill="#FFFFFF" stroke="#2F80ED" stroke-width="2" filter="url(#shadow)"/>
+<text x="323" y="182" font-size="16" font-weight="700" fill="#172033"><tspan x="323" dy="0">AdminPage</tspan></text>
+<line x1="410" y1="220" x2="410" y2="1070" stroke="#94A3B8" stroke-width="2" stroke-dasharray="8 6"/>
+<rect x="575" y="150" width="210" height="70" rx="10" fill="#FFFFFF" stroke="#2F80ED" stroke-width="2" filter="url(#shadow)"/>
+<text x="593" y="182" font-size="16" font-weight="700" fill="#172033"><tspan x="593" dy="0">ReservationController</tspan></text>
+<line x1="680" y1="220" x2="680" y2="1070" stroke="#94A3B8" stroke-width="2" stroke-dasharray="8 6"/>
+<rect x="845" y="150" width="210" height="70" rx="10" fill="#FFFFFF" stroke="#2F80ED" stroke-width="2" filter="url(#shadow)"/>
+<text x="863" y="182" font-size="16" font-weight="700" fill="#172033"><tspan x="863" dy="0">ReservationService</tspan></text>
+<line x1="950" y1="220" x2="950" y2="1070" stroke="#94A3B8" stroke-width="2" stroke-dasharray="8 6"/>
+<rect x="1115" y="150" width="210" height="70" rx="10" fill="#FFFFFF" stroke="#2F80ED" stroke-width="2" filter="url(#shadow)"/>
+<text x="1133" y="182" font-size="16" font-weight="700" fill="#172033"><tspan x="1133" dy="0">ReservationMapper</tspan></text>
+<line x1="1220" y1="220" x2="1220" y2="1070" stroke="#94A3B8" stroke-width="2" stroke-dasharray="8 6"/>
+<rect x="1385" y="150" width="210" height="70" rx="10" fill="#FFFFFF" stroke="#2F80ED" stroke-width="2" filter="url(#shadow)"/>
+<text x="1403" y="182" font-size="16" font-weight="700" fill="#172033"><tspan x="1403" dy="0">AuditLog</tspan></text>
+<line x1="1490" y1="220" x2="1490" y2="1070" stroke="#94A3B8" stroke-width="2" stroke-dasharray="8 6"/>
+<rect x="1655" y="150" width="210" height="70" rx="10" fill="#FFFFFF" stroke="#2F80ED" stroke-width="2" filter="url(#shadow)"/>
+<text x="1673" y="182" font-size="16" font-weight="700" fill="#172033"><tspan x="1673" dy="0">NoticeService</tspan></text>
+<line x1="1760" y1="220" x2="1760" y2="1070" stroke="#94A3B8" stroke-width="2" stroke-dasharray="8 6"/>
+<line x1="140" y1="285" x2="410" y2="285" stroke="#375A7F" stroke-width="2.5" marker-end="url(#arrow)"/>
+<rect x="183" y="263" width="184" height="28" rx="6" fill="#FFFFFF" stroke="#D9E2EC"/>
+<text x="275" y="282" text-anchor="middle" font-family="Microsoft YaHei,SimHei,Noto Sans CJK SC,Arial,sans-serif" font-size="14" fill="#172033">1. 选择场馆时段与原因</text>
+<line x1="410" y1="347" x2="680" y2="347" stroke="#375A7F" stroke-width="2.5" marker-end="url(#arrow)"/>
+<rect x="453" y="325" width="184" height="28" rx="6" fill="#FFFFFF" stroke="#D9E2EC"/>
+<text x="545" y="344" text-anchor="middle" font-family="Microsoft YaHei,SimHei,Noto Sans CJK SC,Arial,sans-serif" font-size="14" fill="#172033">2. PUT /reservations/lock</text>
+<line x1="680" y1="409" x2="950" y2="409" stroke="#375A7F" stroke-width="2.5" marker-end="url(#arrow)"/>
+<rect x="723" y="387" width="184" height="28" rx="6" fill="#FFFFFF" stroke="#D9E2EC"/>
+<text x="815" y="406" text-anchor="middle" font-family="Microsoft YaHei,SimHei,Noto Sans CJK SC,Arial,sans-serif" font-size="14" fill="#172033">3. lockVenueSlots()</text>
+<line x1="950" y1="471" x2="1490" y2="471" stroke="#375A7F" stroke-width="2.5" marker-end="url(#arrow)"/>
+<rect x="1128" y="449" width="184" height="28" rx="6" fill="#FFFFFF" stroke="#D9E2EC"/>
+<text x="1220" y="468" text-anchor="middle" font-family="Microsoft YaHei,SimHei,Noto Sans CJK SC,Arial,sans-serif" font-size="14" fill="#172033">4. verify permission</text>
+<line x1="950" y1="533" x2="1220" y2="533" stroke="#375A7F" stroke-width="2.5" marker-end="url(#arrow)"/>
+<rect x="993" y="511" width="184" height="28" rx="6" fill="#FFFFFF" stroke="#D9E2EC"/>
+<text x="1085" y="530" text-anchor="middle" font-family="Microsoft YaHei,SimHei,Noto Sans CJK SC,Arial,sans-serif" font-size="14" fill="#172033">5. insert lock record</text>
+<line x1="950" y1="595" x2="1220" y2="595" stroke="#375A7F" stroke-width="2.5" marker-end="url(#arrow)"/>
+<rect x="993" y="573" width="184" height="28" rx="6" fill="#FFFFFF" stroke="#D9E2EC"/>
+<text x="1085" y="592" text-anchor="middle" font-family="Microsoft YaHei,SimHei,Noto Sans CJK SC,Arial,sans-serif" font-size="14" fill="#172033">6. query affected reservations</text>
+<line x1="1220" y1="657" x2="950" y2="657" stroke="#64748B" stroke-width="2.5" stroke-dasharray="8 6" marker-end="url(#arrow)"/>
+<rect x="993" y="635" width="184" height="28" rx="6" fill="#FFFFFF" stroke="#D9E2EC"/>
+<text x="1085" y="654" text-anchor="middle" font-family="Microsoft YaHei,SimHei,Noto Sans CJK SC,Arial,sans-serif" font-size="14" fill="#172033">7. 受影响预约列表</text>
+<line x1="950" y1="719" x2="1220" y2="719" stroke="#375A7F" stroke-width="2.5" marker-end="url(#arrow)"/>
+<rect x="993" y="697" width="184" height="28" rx="6" fill="#FFFFFF" stroke="#D9E2EC"/>
+<text x="1085" y="716" text-anchor="middle" font-family="Microsoft YaHei,SimHei,Noto Sans CJK SC,Arial,sans-serif" font-size="14" fill="#172033">8. batch cancel</text>
+<line x1="950" y1="781" x2="1490" y2="781" stroke="#375A7F" stroke-width="2.5" marker-end="url(#arrow)"/>
+<rect x="1128" y="759" width="184" height="28" rx="6" fill="#FFFFFF" stroke="#D9E2EC"/>
+<text x="1220" y="778" text-anchor="middle" font-family="Microsoft YaHei,SimHei,Noto Sans CJK SC,Arial,sans-serif" font-size="14" fill="#172033">9. write audit log</text>
+<line x1="950" y1="843" x2="1760" y2="843" stroke="#375A7F" stroke-width="2.5" marker-end="url(#arrow)"/>
+<rect x="1263" y="821" width="184" height="28" rx="6" fill="#FFFFFF" stroke="#D9E2EC"/>
+<text x="1355" y="840" text-anchor="middle" font-family="Microsoft YaHei,SimHei,Noto Sans CJK SC,Arial,sans-serif" font-size="14" fill="#172033">10. notify affected users</text>
+<line x1="950" y1="905" x2="680" y2="905" stroke="#64748B" stroke-width="2.5" stroke-dasharray="8 6" marker-end="url(#arrow)"/>
+<rect x="723" y="883" width="184" height="28" rx="6" fill="#FFFFFF" stroke="#D9E2EC"/>
+<text x="815" y="902" text-anchor="middle" font-family="Microsoft YaHei,SimHei,Noto Sans CJK SC,Arial,sans-serif" font-size="14" fill="#172033">11. 锁定成功</text>
+<line x1="680" y1="967" x2="410" y2="967" stroke="#64748B" stroke-width="2.5" stroke-dasharray="8 6" marker-end="url(#arrow)"/>
+<rect x="453" y="945" width="184" height="28" rx="6" fill="#FFFFFF" stroke="#D9E2EC"/>
+<text x="545" y="964" text-anchor="middle" font-family="Microsoft YaHei,SimHei,Noto Sans CJK SC,Arial,sans-serif" font-size="14" fill="#172033">12. 返回结果</text>
+<text x="1846" y="1118" text-anchor="end" font-family="Microsoft YaHei,SimHei,Noto Sans CJK SC,Arial,sans-serif" font-size="13" fill="#94A3B8">SVG / Visio style / latest system model</text>
 </svg>

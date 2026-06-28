@@ -125,7 +125,7 @@ onMounted(loadData)
     </div>
   </section>
 
-  <a-card class="table-card" :bordered="false">
+  <a-card class="table-card desktop-table-card" :bordered="false">
     <a-table :data-source="data" :loading="loading" row-key="id" :pagination="{ pageSize: 6 }" :scroll="{ x: 1160 }">
       <template #emptyText>
         <a-empty description="暂无预约记录">
@@ -192,6 +192,53 @@ onMounted(loadData)
       </a-table-column>
     </a-table>
   </a-card>
+
+  <section class="mobile-card-list reservation-card-list">
+    <a-spin :spinning="loading">
+      <a-empty v-if="!data.length" description="暂无预约记录">
+        <a-button type="primary" @click="router.push('/venues')">去选择场馆</a-button>
+      </a-empty>
+      <article v-for="item in data" :key="item.id" class="mobile-record-card">
+        <div class="mobile-record-head">
+          <div>
+            <span>预约 #{{ item.id }}</span>
+            <strong>{{ formatTime(item.startTime) }}</strong>
+          </div>
+          <a-tag :color="statusMeta[item.status]?.color || 'default'">{{ statusMeta[item.status]?.text || item.status }}</a-tag>
+        </div>
+        <div class="mobile-record-grid">
+          <p><span>场馆</span><strong>ID {{ item.venueId }}</strong></p>
+          <p><span>时段</span><strong>{{ dayjs(item.startTime).format('HH:mm') }} - {{ dayjs(item.endTime).format('HH:mm') }}</strong></p>
+          <p><span>核销码</span><strong v-if="item.status === 'BOOKED'" class="checkin-code"><QrcodeOutlined /> {{ item.checkinCode }}</strong><strong v-else>-</strong></p>
+          <p><span>取消截止</span><strong>{{ formatTime(item.cancelDeadline) }}</strong></p>
+        </div>
+        <div class="mobile-tag-row" v-if="item.reminderStatuses?.length">
+          <a-tag
+            v-for="status in item.reminderStatuses"
+            :key="status"
+            :color="status.includes('失败') ? 'red' : 'cyan'"
+          >
+            <MailOutlined /> {{ status }}
+          </a-tag>
+        </div>
+        <div class="mobile-tag-row" v-if="item.appealStatus">
+          <a-tag :color="item.appealStatus === 'PENDING' ? 'gold' : 'default'">
+            {{ item.appealStatus === 'PENDING' ? '审核中' : item.appealStatus }}
+          </a-tag>
+        </div>
+        <div class="mobile-record-actions">
+          <a-popconfirm v-if="canCancel(item)" title="确认取消该预约吗？" @confirm="cancel(item)">
+            <a-button danger block :loading="workingId === item.id"><CloseCircleOutlined /> 取消预约</a-button>
+          </a-popconfirm>
+          <a-button v-if="canAppeal(item)" block :loading="workingId === item.id" @click="openAppeal(item)">
+            <ExclamationCircleOutlined />
+            提交申诉
+          </a-button>
+          <a-tag v-if="item.status === 'CHECKED_IN'" color="blue"><CheckCircleOutlined /> 已入场</a-tag>
+        </div>
+      </article>
+    </a-spin>
+  </section>
 
   <a-modal v-model:open="appealOpen" title="异常申诉" ok-text="提交申诉" @ok="submitAppeal">
     <p>如因天气、设备故障或场馆临时关闭导致无法使用，请填写原因，管理员可据此处理违约记录。</p>

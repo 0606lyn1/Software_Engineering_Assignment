@@ -1,122 +1,67 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 950 600" width="950" height="600">
-  <defs>
-    <style>
-      text { font-family: "Microsoft YaHei", "SimHei", sans-serif; }
-      .title { font-size: 20px; font-weight: bold; fill: #1a1a2e; }
-      .node-title { font-size: 13px; font-weight: bold; fill: #fff; }
-      .node-text { font-size: 10px; fill: #333; }
-      .rel-label { font-size: 10px; fill: #555; }
-    </style>
-    <filter id="shadow"><feDropShadow dx="1" dy="2" stdDeviation="1.5" flood-opacity="0.1"/></filter>
-    <marker id="arrowH" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#555"/></marker>
-  </defs>
-  <rect width="950" height="600" fill="#FAFBFC" rx="8"/>
-
-  <text x="475" y="28" text-anchor="middle" class="title">子系统二——场地运维与公众监督系统 部署图 (Deployment Diagram)</text>
-  <line x1="120" y1="40" x2="830" y2="40" stroke="#4A90D9" stroke-width="1.5"/>
-
-  <!-- ========== Client Node: 用户浏览器 ========== -->
-  <rect x="20" y="60" width="200" height="160" rx="8" fill="none" stroke="#1976D2" stroke-width="2" filter="url(#shadow)"/>
-  <rect x="20" y="60" width="200" height="26" rx="6" fill="#1976D2"/>
-  <text x="120" y="78" text-anchor="middle" class="node-title">«客户端» 浏览器</text>
-  <rect x="40" y="100" width="160" height="35" rx="4" fill="#E3F2FD" stroke="#1976D2" stroke-width="1"/>
-  <text x="120" y="118" text-anchor="middle" class="node-text">Vue 3 + Vite (SPA)</text>
-  <text x="120" y="130" text-anchor="middle" class="node-text">Ant Design Vue + Pinia</text>
-  <rect x="40" y="148" width="160" height="25" rx="4" fill="#E3F2FD" stroke="#1976D2" stroke-width="1"/>
-  <text x="120" y="165" text-anchor="middle" class="node-text">HTML5 / CSS3 / TypeScript</text>
-  <rect x="40" y="185" width="160" height="24" rx="4" fill="#BBDEFB" stroke="#1976D2" stroke-width="0.5"/>
-  <text x="120" y="202" text-anchor="middle" class="node-text" font-size="9">HTTP(JSON) + JWT Bearer</text>
-
-  <!-- ========== Nginx Load Balancer ========== -->
-  <rect x="280" y="90" width="160" height="90" rx="6" fill="none" stroke="#F57C00" stroke-width="2" filter="url(#shadow)"/>
-  <rect x="280" y="90" width="160" height="26" rx="6" fill="#F57C00"/>
-  <text x="360" y="108" text-anchor="middle" class="node-title">«反向代理» Nginx</text>
-  <text x="360" y="145" text-anchor="middle" class="node-text">HTTP负载均衡</text>
-  <text x="360" y="162" text-anchor="middle" class="node-text">SSL终止 /静态资源</text>
-
-  <!-- ========== Backend Server ========== -->
-  <rect x="510" y="55" width="410" height="230" rx="8" fill="none" stroke="#388E3C" stroke-width="2" filter="url(#shadow)"/>
-  <rect x="510" y="55" width="410" height="26" rx="6" fill="#388E3C"/>
-  <text x="715" y="73" text-anchor="middle" class="node-title">«应用服务器» Spring Boot 3.4.4 (JDK 17)</text>
-
-  <!-- Spring Boot sub-artifacts -->
-  <rect x="530" y="95" width="120" height="52" rx="4" fill="#E8F5E9" stroke="#388E3C" stroke-width="1"/>
-  <text x="590" y="112" text-anchor="middle" class="node-text" font-weight="bold">VenueOps模块</text>
-  <text x="590" y="128" text-anchor="middle" class="node-text">REST /venue-ops/**</text>
-  <text x="590" y="142" text-anchor="middle" class="node-text">Service + Mapper</text>
-
-  <rect x="670" y="95" width="120" height="52" rx="4" fill="#E8F5E9" stroke="#388E3C" stroke-width="1"/>
-  <text x="730" y="112" text-anchor="middle" class="node-text" font-weight="bold">Comment模块</text>
-  <text x="730" y="128" text-anchor="middle" class="node-text">REST /comments/**</text>
-  <text x="730" y="142" text-anchor="middle" class="node-text">Service + Mapper</text>
-
-  <rect x="810" y="95" width="95" height="52" rx="4" fill="#E8F5E9" stroke="#388E3C" stroke-width="1"/>
-  <text x="857" y="112" text-anchor="middle" class="node-text" font-weight="bold">Security</text>
-  <text x="857" y="128" text-anchor="middle" class="node-text">JWT + Filter</text>
-  <text x="857" y="142" text-anchor="middle" class="node-text">CORS</text>
-
-  <!-- Tomcat / Embedded -->
-  <rect x="530" y="162" width="375" height="45" rx="4" fill="#C8E6C9" stroke="#66BB6A" stroke-width="1"/>
-  <text x="717" y="180" text-anchor="middle" class="node-text">Embedded Tomcat (port 8080)</text>
-  <text x="717" y="198" text-anchor="middle" class="node-text">MyBatis-Plus 3.5.7 · Spring Security · JWT 0.12.6</text>
-
-  <!-- Application.yml config artifact -->
-  <rect x="530" y="220" width="375" height="50" rx="4" fill="#E8F5E9" stroke="#388E3C" stroke-width="1"/>
-  <text x="717" y="240" text-anchor="middle" class="node-text">application.yml: comment.anti-spam-seconds=60</text>
-  <text x="717" y="258" text-anchor="middle" class="node-text">comment.sensitive-words=诈骗,赌博,代打,代练,广告</text>
-
-  <!-- ========== Database Server ========== -->
-  <rect x="510" y="320" width="280" height="110" rx="8" fill="none" stroke="#E65100" stroke-width="2" filter="url(#shadow)"/>
-  <rect x="510" y="320" width="280" height="26" rx="6" fill="#E65100"/>
-  <text x="650" y="338" text-anchor="middle" class="node-title">«数据库服务器» MySQL 8.4</text>
-  <rect x="530" y="358" width="240" height="60" rx="4" fill="#FFF3E0" stroke="#F57C00" stroke-width="1"/>
-  <text x="650" y="378" text-anchor="middle" class="node-text">tiyu_db</text>
-  <text x="650" y="394" text-anchor="middle" class="node-text">├── t_venue_ops (运维信息)</text>
-  <text x="650" y="410" text-anchor="middle" class="node-text">└── t_comment (评论数据)</text>
-
-  <!-- ========== Auxiliary Service Node ========== -->
-  <rect x="510" y="460" width="280" height="80" rx="6" fill="none" stroke="#7B1FA2" stroke-width="2" filter="url(#shadow)"/>
-  <rect x="510" y="460" width="280" height="26" rx="6" fill="#7B1FA2"/>
-  <text x="650" y="478" text-anchor="middle" class="node-title">«辅助服务» Redis (可选)</text>
-  <text x="650" y="505" text-anchor="middle" class="node-text">反刷屏缓存 (60s TTL per user-venue)</text>
-  <text x="650" y="525" text-anchor="middle" class="node-text">JWT黑名单 / Session管理</text>
-
-  <!-- ========== 子系统一 Node ========== -->
-  <rect x="830" y="350" width="100" height="80" rx="6" fill="none" stroke="#757575" stroke-width="2" filter="url(#shadow)"/>
-  <rect x="830" y="350" width="100" height="26" rx="6" fill="#757575"/>
-  <text x="880" y="368" text-anchor="middle" class="node-title">«外部系统» 子系统一</text>
-  <text x="880" y="400" text-anchor="middle" class="node-text">场地预约系统</text>
-  <text x="880" y="420" text-anchor="middle" class="node-text" font-size="9">(独立服务器)</text>
-
-  <!-- ========== Relationship Lines ========== -->
-  <!-- Browser → Nginx -->
-  <line x1="220" y1="140" x2="278" y2="135" stroke="#555" stroke-width="1.5" marker-end="url(#arrowH)"/>
-  <text x="245" y="128" class="rel-label">HTTPS</text>
-
-  <!-- Nginx → Spring Boot -->
-  <line x1="440" y1="135" x2="508" y2="135" stroke="#555" stroke-width="1.5" marker-end="url(#arrowH)"/>
-  <text x="465" y="128" class="rel-label">HTTP:8080</text>
-
-  <!-- Spring Boot → Database -->
-  <line x1="650" y1="285" x2="650" y2="318" stroke="#555" stroke-width="1.5" marker-end="url(#arrowH)"/>
-  <text x="660" y="305" class="rel-label">JDBC:3306</text>
-
-  <!-- Spring Boot → Redis -->
-  <line x1="510" y1="240" x2="510" y2="500" stroke="#555" stroke-width="1.5" marker-end="url(#arrowH)"/>
-  <text x="495" y="370" class="rel-label" transform="rotate(-90,495,370)">Redis</text>
-
-  <!-- Spring Boot → 子系统一 -->
-  <line x1="920" y1="230" x2="920" y2="348" stroke="#555" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#arrowH)"/>
-  <text x="925" y="290" class="rel-label">REST API</text>
-
-  <!-- 子系统一 → Spring Boot (query availability) -->
-  <line x1="880" y1="350" x2="880" y2="287" stroke="#555" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#arrowH)"/>
-  <text x="885" y="320" class="rel-label">GET /availability</text>
-
-  <!-- Legend -->
-  <rect x="30" y="480" width="440" height="50" rx="6" fill="#F5F7FA" stroke="#ddd" stroke-width="1"/>
-  <text x="250" y="498" text-anchor="middle" font-size="10" fill="#555">部署环境: 客户端(Browser) + 反向代理(Nginx) + 应用服务器(Spring Boot/JDK17) + 数据库(MySQL 8.4) + 缓存(Redis)</text>
-  <text x="250" y="518" text-anchor="middle" font-size="10" fill="#555">各节点通过内部网络通信，对外通过Nginx暴露HTTPS接口，子系统间通过REST API实现数据交互</text>
-
-  <text x="475" y="585" text-anchor="middle" font-size="10" fill="#999">部署图：展示子系统二的物理部署架构及节点间的通信协议</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="1700" height="1040" viewBox="0 0 1700 1040">
+<title>子系统二：UML部署图</title>
+<defs>
+<linearGradient id="paper" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#F7FBFF"/></linearGradient>
+<pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M32 0H0V32" fill="none" stroke="#EEF4FA" stroke-width="1"/></pattern>
+<marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="strokeWidth">
+<path d="M2,2 L10,6 L2,10 Z" fill="#375A7F"/>
+</marker>
+<marker id="arrow-orange" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="strokeWidth">
+<path d="M2,2 L10,6 L2,10 Z" fill="#C56A1A"/>
+</marker>
+<filter id="shadow" x="-8%" y="-8%" width="116%" height="116%"><feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#94A3B8" flood-opacity=".28"/></filter>
+</defs>
+<rect x="0" y="0" width="1700" height="1040" fill="#FFFFFF"/>
+<rect x="26" y="24" width="1648" height="992" rx="16" fill="url(#paper)" stroke="#D9E2EC" stroke-width="2"/>
+<rect x="42" y="124" width="1616" height="864" fill="url(#grid)" opacity=".55"/>
+<rect x="640" y="36" width="420" height="5" rx="3" fill="#2F80ED"/>
+<text x="850" y="78" text-anchor="middle" font-family="Microsoft YaHei,SimHei,Noto Sans CJK SC,Arial,sans-serif" font-size="34" font-weight="700" fill="#173A5E">子系统二：UML部署图</text>
+<text x="850" y="112" text-anchor="middle" font-family="Microsoft YaHei,SimHei,Noto Sans CJK SC,Arial,sans-serif" font-size="18" fill="#64748B">UML部署图：物理节点、网络连接与运行环境</text>
+<path d="M130,180 L390,180 L420,214 L420,370 L130,370 L100,336 L100,214 Z" fill="#FFFFFF" stroke="#31546F" stroke-width="2" filter="url(#shadow)"/>
+<path d="M100,214 L130,180 M390,180 L420,214" stroke="#31546F" fill="none"/>
+<text x="126" y="238" font-size="17" font-weight="700" fill="#172033"><tspan x="126" dy="0">浏览器/移动端</tspan></text>
+<text x="126" y="280" font-size="14" font-weight="400" fill="#172033"><tspan x="126" dy="0">用户、运维、负责人、管理员</tspan></text>
+<path d="M500,180 L760,180 L790,214 L790,370 L500,370 L470,336 L470,214 Z" fill="#FFFFFF" stroke="#31546F" stroke-width="2" filter="url(#shadow)"/>
+<path d="M470,214 L500,180 M760,180 L790,214" stroke="#31546F" fill="none"/>
+<text x="496" y="238" font-size="17" font-weight="700" fill="#172033"><tspan x="496" dy="0">Nginx/API网关</tspan></text>
+<text x="496" y="280" font-size="14" font-weight="400" fill="#172033"><tspan x="496" dy="0">HTTPS入口</tspan></text>
+<path d="M870,180 L1130,180 L1160,214 L1160,370 L870,370 L840,336 L840,214 Z" fill="#FFFFFF" stroke="#31546F" stroke-width="2" filter="url(#shadow)"/>
+<path d="M840,214 L870,180 M1130,180 L1160,214" stroke="#31546F" fill="none"/>
+<text x="866" y="238" font-size="17" font-weight="700" fill="#172033"><tspan x="866" dy="0">应用服务器</tspan></text>
+<text x="866" y="280" font-size="14" font-weight="400" fill="#172033"><tspan x="866" dy="0">运维与监督服务</tspan></text>
+<path d="M1240,180 L1500,180 L1530,214 L1530,370 L1240,370 L1210,336 L1210,214 Z" fill="#FFFFFF" stroke="#31546F" stroke-width="2" filter="url(#shadow)"/>
+<path d="M1210,214 L1240,180 M1500,180 L1530,214" stroke="#31546F" fill="none"/>
+<text x="1236" y="238" font-size="17" font-weight="700" fill="#172033"><tspan x="1236" dy="0">通知服务节点</tspan></text>
+<text x="1236" y="280" font-size="14" font-weight="400" fill="#172033"><tspan x="1236" dy="0">待办和反馈通知</tspan></text>
+<path d="M315,590 L575,590 L605,624 L605,780 L315,780 L285,746 L285,624 Z" fill="#FFFFFF" stroke="#31546F" stroke-width="2" filter="url(#shadow)"/>
+<path d="M285,624 L315,590 M575,590 L605,624" stroke="#31546F" fill="none"/>
+<text x="311" y="648" font-size="17" font-weight="700" fill="#172033"><tspan x="311" dy="0">MySQL集群</tspan></text>
+<text x="311" y="690" font-size="14" font-weight="400" fill="#172033"><tspan x="311" dy="0">评论与运维数据</tspan></text>
+<path d="M685,590 L945,590 L975,624 L975,780 L685,780 L655,746 L655,624 Z" fill="#FFFFFF" stroke="#31546F" stroke-width="2" filter="url(#shadow)"/>
+<path d="M655,624 L685,590 M945,590 L975,624" stroke="#31546F" fill="none"/>
+<text x="681" y="648" font-size="17" font-weight="700" fill="#172033"><tspan x="681" dy="0">Redis缓存</tspan></text>
+<text x="681" y="690" font-size="14" font-weight="400" fill="#172033"><tspan x="681" dy="0">状态与可用性缓存</tspan></text>
+<path d="M1055,590 L1315,590 L1345,624 L1345,780 L1055,780 L1025,746 L1025,624 Z" fill="#FFFFFF" stroke="#31546F" stroke-width="2" filter="url(#shadow)"/>
+<path d="M1025,624 L1055,590 M1315,590 L1345,624" stroke="#31546F" fill="none"/>
+<text x="1051" y="648" font-size="17" font-weight="700" fill="#172033"><tspan x="1051" dy="0">子系统一节点</tspan></text>
+<text x="1051" y="690" font-size="14" font-weight="400" fill="#172033"><tspan x="1051" dy="0">预约系统读取可用性</tspan></text>
+<line x1="260" y1="275" x2="630" y2="275" stroke="#375A7F" stroke-width="2.5" marker-end="url(#arrow)"/>
+<rect x="353" y="253" width="184" height="28" rx="6" fill="#FFFFFF" stroke="#D9E2EC"/>
+<text x="445" y="272" text-anchor="middle" font-family="Microsoft YaHei,SimHei,Noto Sans CJK SC,Arial,sans-serif" font-size="14" fill="#172033">HTTPS</text>
+<line x1="630" y1="275" x2="1000" y2="275" stroke="#375A7F" stroke-width="2.5" marker-end="url(#arrow)"/>
+<rect x="723" y="253" width="184" height="28" rx="6" fill="#FFFFFF" stroke="#D9E2EC"/>
+<text x="815" y="272" text-anchor="middle" font-family="Microsoft YaHei,SimHei,Noto Sans CJK SC,Arial,sans-serif" font-size="14" fill="#172033">REST</text>
+<line x1="1000" y1="275" x2="1370" y2="275" stroke="#375A7F" stroke-width="2.5" marker-end="url(#arrow)"/>
+<rect x="1093" y="253" width="184" height="28" rx="6" fill="#FFFFFF" stroke="#D9E2EC"/>
+<text x="1185" y="272" text-anchor="middle" font-family="Microsoft YaHei,SimHei,Noto Sans CJK SC,Arial,sans-serif" font-size="14" fill="#172033">消息</text>
+<line x1="1000" y1="275" x2="445" y2="685" stroke="#375A7F" stroke-width="2.5" marker-end="url(#arrow)"/>
+<rect x="630" y="458" width="184" height="28" rx="6" fill="#FFFFFF" stroke="#D9E2EC"/>
+<text x="722" y="477" text-anchor="middle" font-family="Microsoft YaHei,SimHei,Noto Sans CJK SC,Arial,sans-serif" font-size="14" fill="#172033">JDBC</text>
+<line x1="1000" y1="275" x2="815" y2="685" stroke="#375A7F" stroke-width="2.5" marker-end="url(#arrow)"/>
+<rect x="815" y="458" width="184" height="28" rx="6" fill="#FFFFFF" stroke="#D9E2EC"/>
+<text x="907" y="477" text-anchor="middle" font-family="Microsoft YaHei,SimHei,Noto Sans CJK SC,Arial,sans-serif" font-size="14" fill="#172033">Cache</text>
+<line x1="1000" y1="275" x2="1185" y2="685" stroke="#375A7F" stroke-width="2.5" marker-end="url(#arrow)"/>
+<rect x="1000" y="458" width="184" height="28" rx="6" fill="#FFFFFF" stroke="#D9E2EC"/>
+<text x="1092" y="477" text-anchor="middle" font-family="Microsoft YaHei,SimHei,Noto Sans CJK SC,Arial,sans-serif" font-size="14" fill="#172033">REST</text>
+<text x="1646" y="998" text-anchor="end" font-family="Microsoft YaHei,SimHei,Noto Sans CJK SC,Arial,sans-serif" font-size="13" fill="#94A3B8">SVG / Visio style / latest system model</text>
 </svg>
