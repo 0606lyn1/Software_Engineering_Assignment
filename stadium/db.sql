@@ -25,6 +25,7 @@ CREATE TABLE t_venue (
   price DECIMAL(10,2) NOT NULL,
   description VARCHAR(512) NULL,
   notes VARCHAR(512) NULL,
+  manager_user_id BIGINT NULL,
   INDEX idx_venue_type(type_id),
   CONSTRAINT fk_venue_type FOREIGN KEY (type_id) REFERENCES t_venue_type(id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;

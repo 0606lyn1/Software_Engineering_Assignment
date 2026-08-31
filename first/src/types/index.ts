@@ -20,6 +20,16 @@ export interface Venue {
   price: number
   description: string
   notes: string
+  managerUserId?: number | null
+}
+
+export interface VenuePayload {
+  name: string
+  typeId?: number
+  price?: number
+  description?: string
+  notes?: string
+  managerUserId?: number | null
 }
 
 export interface Reservation {

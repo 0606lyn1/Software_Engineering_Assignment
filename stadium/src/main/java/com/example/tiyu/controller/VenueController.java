@@ -6,6 +6,7 @@ import com.example.tiyu.entity.Venue;
 import com.example.tiyu.service.VenueService;
 import io.swagger.v3.oas.annotations.Operation;
 import jakarta.validation.Valid;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -31,37 +32,23 @@ public class VenueController {
 
     @PostMapping
     @Operation(summary = "新增场馆")
+    @PreAuthorize("hasAnyRole('ADMIN','STAFF')")
     public ApiResponse<Venue> create(@Valid @RequestBody VenueRequest request) {
-        Venue venue = new Venue();
-        venue.setName(request.getName());
-        venue.setTypeId(request.getTypeId());
-        venue.setPrice(request.getPrice());
-        venue.setDescription(request.getDescription());
-        venue.setNotes(request.getNotes());
-        venueService.save(venue);
-        return ApiResponse.success("创建成功", venue);
+        return ApiResponse.success("创建成功", venueService.createVenue(request));
     }
 
     @PutMapping("/{id}")
     @Operation(summary = "修改场馆")
+    @PreAuthorize("hasAnyRole('ADMIN','STAFF')")
     public ApiResponse<Venue> update(@PathVariable Long id, @Valid @RequestBody VenueRequest request) {
-        Venue venue = venueService.getById(id);
-        if (venue == null) {
-            return ApiResponse.error(4040, "场馆不存在");
-        }
-        venue.setName(request.getName());
-        venue.setTypeId(request.getTypeId());
-        venue.setPrice(request.getPrice());
-        venue.setDescription(request.getDescription());
-        venue.setNotes(request.getNotes());
-        venueService.updateById(venue);
-        return ApiResponse.success("更新成功", venue);
+        return ApiResponse.success("更新成功", venueService.updateVenue(id, request));
     }
 
     @DeleteMapping("/{id}")
     @Operation(summary = "删除场馆")
+    @PreAuthorize("hasAnyRole('ADMIN','STAFF')")
     public ApiResponse<Void> delete(@PathVariable Long id) {
-        venueService.removeById(id);
+        venueService.deleteVenue(id);
         return ApiResponse.success("删除成功", null);
     }
 }

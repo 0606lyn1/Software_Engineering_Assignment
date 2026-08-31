@@ -19,6 +19,7 @@ public class VenueRequest {
 
     private String description;
     private String notes;
+    private Long managerUserId;
 
     public String getName() { return name; }
     public void setName(String name) { this.name = name; }
@@ -30,4 +31,6 @@ public class VenueRequest {
     public void setDescription(String description) { this.description = description; }
     public String getNotes() { return notes; }
     public void setNotes(String notes) { this.notes = notes; }
+    public Long getManagerUserId() { return managerUserId; }
+    public void setManagerUserId(Long managerUserId) { this.managerUserId = managerUserId; }
 }

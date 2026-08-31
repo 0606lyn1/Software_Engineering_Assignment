@@ -4,9 +4,11 @@ import dayjs from 'dayjs'
 import { message } from 'ant-design-vue'
 import { CommentOutlined, SendOutlined, UserOutlined } from '@ant-design/icons-vue'
 import { api } from '../api'
+import { useAuthStore } from '../stores/auth'
 import type { CommentItem } from '../types'
 
 const props = defineProps<{ venueId: number }>()
+const auth = useAuthStore()
 const loading = ref(false)
 const submitLoading = ref(false)
 const comments = ref<CommentItem[]>([])
@@ -26,6 +28,10 @@ const loadData = async () => {
 const formatTime = (value: string) => (value ? dayjs(value).format('YYYY-MM-DD HH:mm') : '')
 
 const submit = async () => {
+  if (!auth.token) {
+    message.warning('请先登录后再发表评论')
+    return
+  }
   if (!form.content.trim()) {
     message.warning('请输入评论内容')
     return
@@ -55,17 +61,20 @@ onMounted(loadData)
       <a-button size="small" @click="loadData">刷新</a-button>
     </div>
 
-    <a-form @finish="submit" layout="vertical" class="comment-form">
+    <a-alert v-if="!auth.token" type="info" show-icon message="登录后才能发表评论，浏览无需登录。" />
+
+    <a-form :model="form" @finish="submit" layout="vertical" class="comment-form">
       <a-form-item label="写下你的使用体验">
         <a-textarea
           v-model:value="form.content"
           :rows="3"
           :maxlength="200"
           show-count
-          placeholder="例如：地面清洁、灯光、预约流程等"
+          :disabled="!auth.token"
+          :placeholder="auth.token ? '例如：地面清洁、灯光、预约流程等' : '请先登录'"
         />
       </a-form-item>
-      <a-button type="primary" html-type="submit" :loading="submitLoading">
+      <a-button type="primary" html-type="submit" :loading="submitLoading" :disabled="!auth.token">
         <SendOutlined />
         发表评论
       </a-button>

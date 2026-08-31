@@ -1552,6 +1552,16 @@ a {
   padding: 18px;
 }
 
+.ops-form-stack {
+  display: grid;
+  gap: 22px;
+  min-width: 0;
+}
+
+.ops-add-venue {
+  margin-bottom: 14px;
+}
+
 .section-heading {
   display: flex;
   justify-content: space-between;

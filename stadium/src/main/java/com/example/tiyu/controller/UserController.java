@@ -36,6 +36,17 @@ public class UserController {
         return ApiResponse.success(userService.list());
     }
 
+    @GetMapping("/staff")
+    @Operation(summary = "场地负责人候选列表")
+    @PreAuthorize("hasAnyRole('ADMIN','STAFF')")
+    public ApiResponse<List<User>> listStaff() {
+        List<User> data = userService.lambdaQuery()
+                .in(User::getRole, List.of(RoleNames.STAFF, RoleNames.ADMIN))
+                .orderByAsc(User::getUsername)
+                .list();
+        return ApiResponse.success(data);
+    }
+
     @GetMapping("/{id}")
     @Operation(summary = "查询用户")
     public ApiResponse<User> getById(@PathVariable Long id, Authentication authentication) {

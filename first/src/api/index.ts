@@ -1,10 +1,13 @@
 import http from './http'
-import type { Announcement, ReservationRule, VenueOpsPayload } from '../types'
+import type { Announcement, ReservationRule, VenueOpsPayload, VenuePayload } from '../types'
 
 export const api = {
   login: (data: { username: string; password: string }) => http.post('/auth/login', data),
   register: (data: { username: string; password: string; email: string }) => http.post('/auth/register', data),
   getVenues: (typeId?: number) => http.get('/venues', { params: { typeId } }),
+  createVenue: (data: VenuePayload) => http.post('/venues', data),
+  updateVenue: (id: number, data: VenuePayload) => http.put(`/venues/${id}`, data),
+  deleteVenue: (id: number) => http.delete(`/venues/${id}`),
   getVenueTypes: () => http.get('/venue-types'),
   createReservation: (data: { venueId: number; startTime: string; endTime: string }) => http.post('/reservations', data),
   getReservationSlots: (venueId: number, date: string) => http.get('/reservations/slots', { params: { venueId, date } }),
@@ -28,6 +31,7 @@ export const api = {
   updateVenueOps: (venueId: number, data: VenueOpsPayload) => http.put(`/venue-ops/${venueId}`, data),
   getVenueAvailability: (venueId: number) => http.get(`/venue-ops/${venueId}/availability`),
   getUsers: () => http.get('/users'),
+  getStaffCandidates: () => http.get('/users/staff'),
   getUserById: (id: number) => http.get(`/users/${id}`),
   createUser: (data: { username: string; password: string; email: string; role: string; emailReminderEnabled?: boolean }) => http.post('/users', data),
   updateUser: (id: number, data: { username: string; email: string; role?: string; emailReminderEnabled?: boolean }) => http.put(`/users/${id}`, data),

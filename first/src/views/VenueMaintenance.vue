@@ -3,25 +3,50 @@ import { computed, onMounted, reactive, ref, watch } from 'vue'
 import {
   CheckCircleOutlined,
   ClockCircleOutlined,
+  DeleteOutlined,
   FieldTimeOutlined,
+  PlusOutlined,
   QrcodeOutlined,
   SafetyCertificateOutlined,
+  ShopOutlined,
   ToolOutlined,
   WarningOutlined,
 } from '@ant-design/icons-vue'
 import { message } from 'ant-design-vue'
 import { api } from '../api'
-import type { Reservation, Venue, VenueAvailability, VenueOps, VenueOpsPayload } from '../types'
+import type {
+  Reservation,
+  UserInfo,
+  Venue,
+  VenueAvailability,
+  VenueOps,
+  VenueOpsPayload,
+  VenuePayload,
+  VenueType,
+} from '../types'
 
 const venues = ref<Venue[]>([])
+const venueTypes = ref<VenueType[]>([])
+const staffCandidates = ref<UserInfo[]>([])
 const opsList = ref<VenueOps[]>([])
 const availability = ref<VenueAvailability | null>(null)
 const selectedVenueId = ref<number>()
 const loading = ref(false)
 const saving = ref(false)
+const savingVenue = ref(false)
+const creatingVenue = ref(false)
 const reservations = ref<Reservation[]>([])
 const checkinCode = ref('')
 const checking = ref(false)
+
+const venueForm = reactive<VenuePayload>({
+  name: '',
+  typeId: undefined,
+  price: undefined,
+  description: '',
+  notes: '',
+  managerUserId: null,
+})
 
 const formState = reactive<VenueOpsPayload>({
   maintenanceStatus: 'NORMAL',
@@ -83,6 +108,74 @@ const getRiskColor = (item?: VenueOps) => {
   return 'green'
 }
 
+const managerName = computed(() => {
+  const id = venueForm.managerUserId
+  if (!id) return '未绑定'
+  return staffCandidates.value.find((item) => item.id === id)?.username || `用户 ${id}`
+})
+
+const fillVenueForm = (venue?: Venue) => {
+  venueForm.name = venue?.name || ''
+  venueForm.typeId = venue?.typeId
+  venueForm.price = venue?.price
+  venueForm.description = venue?.description || ''
+  venueForm.notes = venue?.notes || ''
+  venueForm.managerUserId = venue?.managerUserId ?? null
+}
+
+const startCreateVenue = () => {
+  creatingVenue.value = true
+  fillVenueForm(undefined)
+}
+
+const cancelCreateVenue = () => {
+  creatingVenue.value = false
+  fillVenueForm(venues.value.find((item) => item.id === selectedVenueId.value))
+}
+
+const submitVenue = async () => {
+  if (!venueForm.name.trim()) {
+    message.warning('请输入场馆名称')
+    return
+  }
+  if (!venueForm.typeId) {
+    message.warning('请选择类型')
+    return
+  }
+  if (venueForm.price === undefined || venueForm.price === null) {
+    message.warning('请输入价格')
+    return
+  }
+  savingVenue.value = true
+  try {
+    const payload: VenuePayload = { ...venueForm, name: venueForm.name.trim() }
+    if (creatingVenue.value) {
+      const res = await api.createVenue(payload)
+      creatingVenue.value = false
+      selectedVenueId.value = (res.data as Venue).id
+      message.success('场馆已添加')
+    } else {
+      if (!selectedVenueId.value) {
+        message.warning('请先选择或保存一个场馆')
+        return
+      }
+      await api.updateVenue(selectedVenueId.value, payload)
+      message.success('场馆属性已更新')
+    }
+    await loadData()
+  } finally {
+    savingVenue.value = false
+  }
+}
+
+const removeVenue = async () => {
+  if (!selectedVenueId.value) return
+  await api.deleteVenue(selectedVenueId.value)
+  message.success('场馆已删除')
+  selectedVenueId.value = undefined
+  await loadData()
+}
+
 const fillForm = (ops: VenueOps) => {
   formState.maintenanceStatus = ops.maintenanceStatus
   formState.cleaningStatus = ops.cleaningStatus
@@ -103,15 +196,26 @@ const loadOpsForVenue = async (venueId: number) => {
 const loadData = async () => {
   loading.value = true
   try {
-    const [venueRes, opsRes, reservationRes] = await Promise.all([api.getVenues(), api.getVenueOps(), api.getAllReservations()])
+    const [venueRes, opsRes, reservationRes, typeRes, staffRes] = await Promise.all([
+      api.getVenues(),
+      api.getVenueOps(),
+      api.getAllReservations(),
+      api.getVenueTypes(),
+      api.getStaffCandidates(),
+    ])
     venues.value = venueRes.data
     opsList.value = opsRes.data
     reservations.value = reservationRes.data
+    venueTypes.value = typeRes.data
+    staffCandidates.value = staffRes.data
     if (!selectedVenueId.value && venues.value.length) {
       selectedVenueId.value = venues.value[0].id
     }
     if (selectedVenueId.value) {
       await loadOpsForVenue(selectedVenueId.value)
+    }
+    if (!creatingVenue.value) {
+      fillVenueForm(venues.value.find((item) => item.id === selectedVenueId.value))
     }
   } finally {
     loading.value = false
@@ -147,7 +251,7 @@ const submit = async () => {
       opsList.value.unshift(next)
     }
     await loadOpsForVenue(selectedVenueId.value)
-    message.success('场地维护状态已保存')
+    message.success('运维状态已保存')
   } finally {
     saving.value = false
   }
@@ -155,6 +259,8 @@ const submit = async () => {
 
 watch(selectedVenueId, async (venueId) => {
   if (venueId) {
+    creatingVenue.value = false
+    fillVenueForm(venues.value.find((item) => item.id === venueId))
     await loadOpsForVenue(venueId)
   }
 })
@@ -166,8 +272,10 @@ onMounted(loadData)
   <section class="page-hero compact ops-hero">
     <div>
       <a-tag color="cyan">Subsystem 2</a-tag>
-      <h1>场地维护人员填报</h1>
-      <p>维护人员可以录入清洁、灯光、器材和闭馆状态，系统会同步影响场地可约性，形成子系统二的运维闭环。</p>
+      <h1>场地管理与维护</h1>
+      <p>
+        场地负责人可以添加、删除和修改场馆属性，并绑定专属场地负责人，同时维护清洁、灯光、器材和开放状态，系统会同步影响场地可约性。
+      </p>
     </div>
     <a-button type="primary" size="large" :loading="loading" @click="loadData">
       <FieldTimeOutlined />
@@ -269,7 +377,8 @@ onMounted(loadData)
           <span>场馆列表</span>
           <strong>{{ venues.length }} 个</strong>
         </div>
-        <a-empty v-if="!venues.length" description="等待后端返回场馆数据" class="ops-empty" />
+        <a-button block class="ops-add-venue" @click="startCreateVenue"><PlusOutlined /> 新增场馆</a-button>
+        <a-empty v-if="!venues.length" description="暂无场馆，点击上方新增" class="ops-empty" />
         <button
           v-for="venue in venues"
           :key="venue.id"
@@ -287,6 +396,69 @@ onMounted(loadData)
           </a-tag>
         </button>
       </aside>
+
+      <div class="ops-form-stack">
+      <a-card class="ops-form-card" :bordered="false">
+        <div class="ops-form-head">
+          <div>
+            <a-tag color="blue">{{ creatingVenue ? '新增场馆' : '场馆属性' }}</a-tag>
+            <h2>{{ creatingVenue ? '添加新场馆' : selectedVenue?.name || '请选择场馆' }}</h2>
+            <p>维护场馆名称、类型、价格与开放说明，并绑定专属负责人。当前负责人：{{ managerName }}</p>
+          </div>
+          <ShopOutlined />
+        </div>
+
+        <a-form layout="vertical" :model="venueForm" @finish="submitVenue">
+          <div class="ops-form-grid">
+            <a-form-item label="场馆名称" required>
+              <a-input v-model:value="venueForm.name" placeholder="例：羽毛球1号馆" />
+            </a-form-item>
+
+            <a-form-item label="类型" required>
+              <a-select v-model:value="venueForm.typeId" placeholder="请选择类型">
+                <a-select-option v-for="type in venueTypes" :key="type.id" :value="type.id">{{ type.name }}</a-select-option>
+              </a-select>
+            </a-form-item>
+
+            <a-form-item label="价格（元/小时）" required>
+              <a-input-number v-model:value="venueForm.price" :min="0" :precision="2" placeholder="请输入价格" style="width: 100%" />
+            </a-form-item>
+
+            <a-form-item label="专属负责人">
+              <a-select v-model:value="venueForm.managerUserId" placeholder="选择场地负责人" allow-clear>
+                <a-select-option v-for="staff in staffCandidates" :key="staff.id" :value="staff.id">
+                  {{ staff.username }}（{{ staff.role === 'ADMIN' ? '管理员' : '场地负责人' }}）
+                </a-select-option>
+              </a-select>
+            </a-form-item>
+          </div>
+
+          <a-form-item label="说明">
+            <a-input v-model:value="venueForm.description" placeholder="描述地板、设备或容量" />
+          </a-form-item>
+
+          <a-form-item label="开放说明">
+            <a-input v-model:value="venueForm.notes" placeholder="例：请自带球拍、仅支持整点预约" />
+          </a-form-item>
+
+          <div class="ops-actions">
+            <span>绑定负责人后会同步到运维台账的负责人与联系方式</span>
+            <a-space>
+              <a-button v-if="creatingVenue" @click="cancelCreateVenue">取消</a-button>
+              <a-popconfirm
+                v-else-if="selectedVenueId"
+                title="删除后该场馆不会再出现在目录和预约入口，确定删除？"
+                ok-text="删除"
+                cancel-text="再想想"
+                @confirm="removeVenue"
+              >
+                <a-button danger><DeleteOutlined /> 删除场馆</a-button>
+              </a-popconfirm>
+              <a-button type="primary" html-type="submit" :loading="savingVenue">保存场馆</a-button>
+            </a-space>
+          </div>
+        </a-form>
+      </a-card>
 
       <a-card class="ops-form-card" :bordered="false">
         <div class="ops-form-head">
@@ -349,10 +521,11 @@ onMounted(loadData)
 
           <div class="ops-actions">
             <span><ClockCircleOutlined /> 最近填报人：{{ opsMap.get(selectedVenueId || 0)?.lastInspector || '暂无' }}</span>
-            <a-button type="primary" html-type="submit" size="large" :loading="saving">保存填报</a-button>
+            <a-button type="primary" html-type="submit" size="large" :loading="saving">保存运维</a-button>
           </div>
         </a-form>
       </a-card>
+      </div>
     </section>
 
     <a-card class="ops-table-card" :bordered="false">

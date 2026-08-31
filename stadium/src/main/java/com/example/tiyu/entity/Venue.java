@@ -17,6 +17,8 @@ public class Venue {
     private BigDecimal price;
     private String description;
     private String notes;
+    @TableField("manager_user_id")
+    private Long managerUserId;
 
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
@@ -30,4 +32,6 @@ public class Venue {
     public void setDescription(String description) { this.description = description; }
     public String getNotes() { return notes; }
     public void setNotes(String notes) { this.notes = notes; }
+    public Long getManagerUserId() { return managerUserId; }
+    public void setManagerUserId(Long managerUserId) { this.managerUserId = managerUserId; }
 }
