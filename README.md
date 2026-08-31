@@ -4,6 +4,7 @@
 - 后端：`stadium`（Java 17 + Spring Boot 3 + MyBatis-Plus + Spring Security + JWT）
 - 前端：`first`（Vue 3 + Vite + Pinia + Axios + Ant Design Vue）
 - 数据库：MySQL 8.4（utf8mb4）
+- 缓存/环境自检：Redis 7.x（默认 `localhost:6379`）
 
 ## 目录结构
 
@@ -35,7 +36,28 @@ mysql -uroot -p < stadium/db.sql
 
 如不一致，请修改 `stadium/src/main/resources/application.yml`。
 
-## 3. 启动后端
+## 3. Redis 环境自检
+
+1. 启动 Redis 7.x，默认监听 `localhost:6379`。
+2. 本机自检：
+
+```bash
+redis-cli ping
+```
+
+正常返回：
+
+```text
+PONG
+```
+
+默认 Redis 配置（后端 `application.yml`）：
+- 主机：`${REDIS_HOST:localhost}`
+- 端口：`${REDIS_PORT:6379}`
+- 数据库：`${REDIS_DATABASE:0}`
+- 密码：`${REDIS_PASSWORD:}`（本地无密码可留空）
+
+## 4. 启动后端
 
 ```bash
 cd stadium
@@ -70,7 +92,7 @@ $env:APP_PUBLIC_URL="http://localhost:5173"
 
 Swagger UI：`http://localhost:8080/swagger-ui/index.html`
 
-## 4. 启动前端
+## 5. 启动前端
 
 ```bash
 cd first
@@ -80,15 +102,15 @@ npm run dev
 
 前端地址：`http://localhost:5173`
 
-## 5. 测试账号
+## 6. 测试账号
 
 测试账号请由管理员在用户管理中创建或向项目维护者获取，不在公开文档中写入明文密码。
 
-## 6. 认证说明
+## 7. 认证说明
 
 登录后会返回 JWT Token，前端自动存储并在后续请求中通过 `Authorization: Bearer <token>` 发送。
 
-## 7. 接口返回格式
+## 8. 接口返回格式
 
 统一 JSON：
 
@@ -100,7 +122,7 @@ npm run dev
 }
 ```
 
-## 8. 关键接口
+## 9. 关键接口
 
 - `POST /api/auth/register`：注册
 - `POST /api/auth/login`：登录
@@ -109,7 +131,7 @@ npm run dev
 - `GET /api/reservations`：我的预约
 - `GET/POST /api/comments`：评论查询与发布
 
-## 9. 部署到 GitHub Pages
+## 10. 部署到 GitHub Pages
 
 本仓库已包含 GitHub Actions 工作流：`.github/workflows/deploy-frontend.yml`。
 
